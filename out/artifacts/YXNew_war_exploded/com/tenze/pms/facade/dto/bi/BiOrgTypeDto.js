@@ -1,0 +1,19 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.bi.BiOrgTypeDto',
+        {
+            table:Ext_UiTable({
+                beanId:'biOrgTypeId',
+                beanName:'biOrgTypeName',
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'id',text:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'version',text:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'createtime',text:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'updatetime',text:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fdelFlag',text:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'typeNo',text:'类型编码',xtype:'textfield',hidden:false,width:150,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'typeName',text:'类型名称',xtype:'textfield',hidden:false,width:250,allowBlank:false,queryFlag:true}),
+            ]
+    }        
+);

@@ -1,0 +1,181 @@
+<#--文件头  fitIE8参数作用:因为IE10不支持FCKEditor，所以在使用FCK的页面，此参数要传true-->
+<#macro page title extDisabled="false" backgroundStyle="" extrequired=[] fitIE8 = "false" enableSupcan="false" isHome=false>
+<#if enableSupcan == "false" >
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+</#if>
+<html>
+<head>
+<title>社保金融服务应用平台</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<#if fitIE8=="true">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+</#if>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="${base}/resources/extjs4/resources/css/ext-all.css"/>
+<link rel="stylesheet" type="text/css" href="${base}/resources/extjs4/resources/css/ext_icon.css"/>
+<link rel="stylesheet" type="text/css" href="${base}/resources/extjs4/resources/css/icon.css"/>
+<link rel="stylesheet" type="text/css" href="${base}/resources/css/animated-dataview.css"/>
+<@artdialog />
+<script type="text/javascript">
+var curLayerIndex = layer.load(1, {
+	  shade: [0.1,'#fff'] //0.1透明度的白色背景
+});
+</script>
+<#if  extDisabled=="false" >   
+<script type="text/javascript" src="${base}/resources/extjs4/ext-all.js"></script>
+<script type="text/javascript" src="${base}/resources/extjs4/locale/ext-lang-zh_CN.js"></script>
+<!--script type="text/javascript" src="${base}/resources/extjs4/ux/TabCloseMenu.js"></script-->
+<script type="text/javascript" src="${base}/resources/extjs4/GridComboBox.js"></script>
+<script type="text/javascript" src="${base}/resources/extjs4/GridComboBoxList.js"></script>     
+<script type="text/javascript" src="${base}/resources/extjs4/ux/datetimefield/UX_TimePickerField.js"></script>
+<script type="text/javascript" src="${base}/resources/extjs4/ux/datetimefield/UX_DateTimePicker.js"></script>
+<script type="text/javascript" src="${base}/resources/extjs4/ux/datetimefield/UX_DateTimeField.js"></script>
+<script type="text/javascript" src="${base}/resources/extjs4/ux/datetimefield/UX_DateTimeMenu.js"></script>   
+<script type="text/javascript" src="${base}/resources/extjs4/ux/IFrame.js"></script>   
+</#if>
+<#if enableSupcan == "true"><#--启发用硕正套件-->
+<script type="text/javascript" src="${base}/binary/dynaload.js?10840"></script>
+<script type="text/javascript" src="${base}/resources/commonjs/supcan_gx.js"></script>
+<script type="text/javascript" src="${base}/resources/commonjs/TreeList.js"></script>
+<script type="text/javascript" src="${base}/resources/commonjs/FreeForm.js"></script>
+<script type="text/javascript" src="${base}/resources/commonjs/xml/jquery.json2xml.js?1"></script>
+<script type="text/javascript" src="${base}/resources/commonjs/xml/jquery.xml2json.js"></script>
+</#if>
+
+<script type="text/javascript" src="${base}/resources/commonjs/common.js"></script>
+<#if isHome>
+<script type="text/javascript" src="${base}/resources/dataindex.js?8"></script>
+<script type="text/javascript" src="${base}/resources/datadic.js?18"></script>
+</#if>
+<script type="text/javascript" src="${base}/resources/buildExt.js?13"></script>
+<#if enableSupcan == "true">
+<script type="text/javascript" src="${base}/resources/buildSupcan.js?7"></script>
+</#if>
+<script type="text/javascript">
+ var webContext = '${base}';
+ <#if extDisabled=="false" >   
+	  Ext.Loader.setConfig({
+		  enabled: true
+		  ,paths:{
+			 'Ext.ux':'${base}/resources/extjs4/ux'
+		  }
+	  });
+	  
+ </#if>
+ Ext.require([
+ 	<#if enableSupcan == "true">
+ 	'Ext.supcan.TreeList',
+ 	'Ext.supcan.FreeForm',
+ 	</#if>
+    'Ext.data.*',
+    'Ext.button.*',
+    'Ext.container.*',
+    'Ext.layout.*',
+    'Ext.menu.*',
+    'Ext.panel.*',
+    'Ext.selection.*',
+    'Ext.slider.*',
+    'Ext.state.*',
+    'Ext.tab.*',
+    'Ext.tip.*',
+    'Ext.toolbar.*',
+    'Ext.tree.*',
+    'Ext.util.*',
+    'Ext.toolbar.*',
+    'Ext.view.*',
+    'Ext.window.*',
+ ]);
+ <#if isHome>
+ var ExtContainer = {};
+ function g_fillInDataModel(curClass,dataModel){
+	 ExtContainer[curClass] = Ext.clone(dataModel);
+ }
+ 
+ function g_preloadDataModel(curClass){
+	 if(!ExtContainer[curClass])return null;
+	 return jQuery.extend({},ExtContainer[curClass]);
+ }
+ 
+ art.dialog.data('g_fillInDataModel',g_fillInDataModel);
+ art.dialog.data('g_preloadDataModel',g_preloadDataModel);
+ function g_close_active_tab(){
+	 getMainTabs().getActiveTab().close();
+ }
+ art.dialog.data('g_close_active_tab',g_close_active_tab);
+ </#if>
+ _global_context = '${base}';
+ var _global_username = '${user_in_session.username?default('')}';
+ var _global_roleId = '${user_in_session.roleId?default('')}';
+ <#if user_in_session.unionId?exists  && user_in_session.unionId!=0>
+ var _global_union ={
+	unionId:'${user_in_session.unionId?default('')}',
+	unionNo:'${user_in_session.unionNo?default('')}',
+	unionName:'${user_in_session.unionName?default('')}'
+ };
+ </#if>
+ <#if user_in_session.merchantId?exists  && user_in_session.merchantId!=0>
+ var _global_merchant = {
+	merchantId:'${user_in_session.merchantId?default('')}',
+	merchantName:'${user_in_session.merchantName?default('')}',	 
+	hisNo:'${user_in_session.hisNo?default('')}'
+ };
+ <#else>
+ var _global_merchant = false;
+ </#if>
+ 
+ function bt_exit_OnClick() {
+ 	Ext.MessageBox.confirm('提示', '是否确认退出', function(btn){
+		if(btn == "yes"){
+			art.dialog.data('g_close_active_tab')();
+		}
+	});
+ }
+ 
+ Ext.onReady(function() {
+ 		 <#if enableSupcan == "true">
+ 		 Ext.useShims = true;<#--盖住treelist-->
+ 		 </#if>
+	     Ext.QuickTips.init();
+	     Ext.define('Datadic', {
+					    extend: 'Ext.data.Model',
+					    fields: [
+					        {name: 'code', type: 'string'},
+					        {name: 'codedesc',  type: 'string'}      
+					    ]
+	     });
+	     layer.close(curLayerIndex);
+	     setTimeout(function(){
+//		     layer.close(curLayerIndex);
+	     },500);
+ });   
+     
+   //全局变量，当前行（上一条，下一条查询用）
+   var cur_record;
+  
+   // 图片渲染
+   function imageRender(value) {	   	    
+       return "<img src='" + webContext
+				+ "/resources/extjs4/resources/image/ext/"+value+"'/>";		
+   }
+  
+  //公共日期渲染器
+  function formatDate(value){        
+        return !isEmpty(value) ? Ext.Date.dateFormat(value, 'Y M, d') : '';
+  }
+</script>
+</head>
+  <body  <#if backgroundStyle != "">style="${backgroundStyle}"</#if> <#--style="background-image:url(/bn.jpg)"-->>
+    <#nested>
+  </body>
+</html>
+</#macro>
+
+<#macro artdialog>
+<link rel="stylesheet" type="text/css" href="${base}/resources/artdialog/skins/blue.css"/>
+<script type="text/javascript" src="${base}/resources/artdialog/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="${base}/resources/artdialog/artDialog.js"></script>
+<script type="text/javascript" src="${base}/resources/artdialog/iframeTools.js"></script>
+<script type="text/javascript" src="${base}/resources/artdialog/jquery.json-2.4.min.js"></script>
+<script type="text/javascript" src="${base}/resources/h4/js/plugins/layer/layerv3/layer.js"></script>
+</#macro>
+

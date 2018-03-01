@@ -1,0 +1,22 @@
+_fillInDataModel(
+		'com.tenze.test.Tree',
+		{
+			table:Ext_UiTable({
+				beanId:'treeId',
+				beanName:'treeName',
+				formLayout:'hbox',
+				hboxColumnCount:2
+			})
+			,
+			fields:[
+			     Ext_UiField({type:'string',name:'expandedflag',hidden:true,xtype:'hidden'})
+			     ,Ext_UiField({type:'string',name:'id',text:'主键',width:200})
+			     ,Ext_UiField({type:'string',name:'text',text:'显示名称',width:200})
+			     ,Ext_UiField({type:'string',name:'menuid',text:'菜单编码'})
+			     ,Ext_UiField({type:'string',name:'expanded',text:'展开状态',width:200})
+			     ,Ext_UiField({type:'string',name:'iconCls',text:'样式'})
+			     ,Ext_UiField({type:'string',name:'request',text:'请求'})
+			     ,Ext_UiField({type:'string',name:'menuname',text:'菜单名称',width:200})
+			]
+	}		
+);

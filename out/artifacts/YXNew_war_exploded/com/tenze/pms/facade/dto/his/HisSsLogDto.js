@@ -1,0 +1,20 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.his.HisSsLogDto',
+        {
+            table:Ext_UiTable({
+                beanId:'hisSsLogId',
+                beanName:'hisSsLogName',
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'id',field:'',xtype:'fieldfield',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'version',field:'',xtype:'fieldfield',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'createtime',field:'',xtype:'fieldfield',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'updatetime',field:'',xtype:'fieldfield',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fdelFlag',field:'',xtype:'fieldfield',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'masId',text:'',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'ssType',text:'',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'content',text:'',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+            ]
+    }        
+);

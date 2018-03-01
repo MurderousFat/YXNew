@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.sys.SysMenuDaoImpl">
+
+    <sql id="table"> sys_menu</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.menu_no, t.menu_name, t.expanded_flag, t.leaf_flag, t.menu_state, t.menu_type, t.parent_no, t.request, t.sort_no, t.remark, t.parent_name ,t.icon_cls</sql>
+
+    <resultMap id="beanMap" type="SysMenu">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="menu_no" property="menuNo" />
+                <result column="menu_name" property="menuName" />
+                <result column="expanded_flag" property="expandedFlag" />
+                <result column="leaf_flag" property="leafFlag" />
+                <result column="menu_state" property="menuState" />
+                <result column="menu_type" property="menuType" />
+                <result column="parent_no" property="parentNo" />
+                <result column="request" property="request" />
+                <result column="sort_no" property="sortNo" />
+                <result column="remark" property="remark" />
+                <result column="parent_name" property="parentName" />
+                <result column="icon_cls" property="iconCls" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, menu_no, menu_name, expanded_flag, leaf_flag, menu_state, menu_type, parent_no, request, sort_no, remark, parent_name,icon_cls)
+        values 
+        (#{id}, 0,now(),now(),0, #{menuNo}, #{menuName}, #{expandedFlag}, #{leafFlag}, #{menuState}, #{menuType}, #{parentNo}, #{request}, #{sortNo}, #{remark}, #{parentName},#{iconCls})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+            VERSION = #{version}+1 ,
+            updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            menu_no=#{menuNo},
+            menu_name=#{menuName},
+            expanded_flag=#{expandedFlag},
+            leaf_flag=#{leafFlag},
+            menu_state=#{menuState},
+            menu_type=#{menuType},
+            parent_no=#{parentNo},
+            request=#{request},
+            sort_no=#{sortNo},
+            remark=#{remark},
+            parent_name=#{parentName},
+            icon_cls=#{iconCls},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!='' and id!=0">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+              <if test="root==null or root=='' "> and t.menu_no!='0' </if>
+             <if test="menuNo!= null and menuNo!=''">and t.menu_no=#{menuNo}</if>
+             <if test="menuState!= null and menuState!=''">and t.menu_state=#{menuState}</if>
+             <if test="parentNo!= null and parentNo!=''">and t.menu_no like concat(#{parentNo},'%')</if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.menu_no asc]]>
+    </select>
+    
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <select id="listByRole" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        left join sys_menu_role mr on t.id=mr.menu_id
+        <where>
+        	and t.FDEL_FLAG = 0
+        	and mr.role_id=#{roleId}
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+    
+     <select id="maxSeq" parameterType="java.util.Map" resultType="string">
+   		select max(t.menu_no) from <include refid="table" /> t where t.parent_no=#{parentNo}
+    </select>
+    
+     <update id="updateSubMenu" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+            menu_no= concat(#{curMenuNo},TRIM(LEADING #{preMenuNo} FROM menu_no)),
+            parent_no = concat(#{curMenuNo},TRIM(LEADING #{preMenuNo} FROM parent_no)),
+        </set>
+        <where>
+            parent_no like  concat(#{preMenuNo},'%') 
+        </where>
+    </update>
+    
+    
+    
+
+</mapper>

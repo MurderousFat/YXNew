@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.his.HisInhospitalMasDaoImpl">
+
+    <sql id="table"> his_inhospital_mas</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.aac044, t.aac057, t.yzz016, t.aka130, t.akc190, t.akc090, t.akf001, t.ykc012, t.akc050, t.akc193, t.ykc601, t.ykc602, t.ckz564, t.ckc798, t.ckc949, t.ykc701, t.aae005, t.aae013, t.in_hosp_type, t.aab014, t.ckc936, t.ckc937, t.merchant_id, m.mer_name as merchant_name, t.jbrmc ,t.person_name,t.aaz217,t.his_bill_state,t.yka115,t.ykc618,t.ykc675</sql>
+
+    <resultMap id="beanMap" type="HisInhospitalMas">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="aac044" property="aac044" />
+                <result column="aac057" property="aac057" />
+                <result column="yzz016" property="yzz016" />
+                <result column="aka130" property="aka130" />
+                <result column="akc190" property="akc190" />
+                <result column="akc090" property="akc090" />
+                <result column="akf001" property="akf001" />
+                <result column="ykc012" property="ykc012" />
+                <result column="akc050" property="akc050" />
+                <result column="akc193" property="akc193" />
+                <result column="ykc601" property="ykc601" />
+                <result column="ykc602" property="ykc602" />
+                <result column="ckz564" property="ckz564" />
+                <result column="ckc798" property="ckc798" />
+                <result column="ckc949" property="ckc949" />
+                <result column="ykc701" property="ykc701" />
+                <result column="aae005" property="aae005" />
+                <result column="aae013" property="aae013" />
+                <result column="in_hosp_type" property="inHospType" />
+                <result column="aab014" property="aab014" />
+                <result column="ckc936" property="ckc936" />
+                <result column="ckc937" property="ckc937" />
+                <result column="merchant_id" property="merchantId" />
+                <result column="merchant_name" property="merchantName" />
+                <result column="jbrmc" property="jbrmc" />
+                <result column="person_name" property="personName" />
+                <result column="aaz217" property="aaz217" />
+                <result column="his_bill_state" property="hisBillState" />
+                <result column="yka115" property="yka115" />
+                <result column="ykc618" property="ykc618" />
+                <result column="ykc675" property="ykc675" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, aac044, aac057, yzz016, aka130, akc190, akc090, akf001, ykc012, akc050, akc193, ykc601, ykc602, ckz564, ckc798, ckc949, ykc701, aae005, aae013, in_hosp_type, aab014, ckc936, ckc937, merchant_id, merchant_name, jbrmc,person_name,aaz217,his_bill_state,yka115,ykc618,ykc675)
+        values 
+                (#{id}, 0,now(),now(),0, #{aac044}, #{aac057}, #{yzz016}, #{aka130}, #{akc190}, #{akc090}, #{akf001}, #{ykc012}, #{akc050}, #{akc193}, #{ykc601}, #{ykc602}, #{ckz564}, #{ckc798}, #{ckc949}, #{ykc701}, #{aae005}, #{aae013}, #{inHospType}, #{aab014}, #{ckc936}, #{ckc937}, #{merchantId}, #{merchantName}, #{jbrmc},#{personName},#{aaz217},#{hisBillState},#{yka115},#{ykc618},#{ykc675})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            aac044=#{aac044},
+            aac057=#{aac057},
+            yzz016=#{yzz016},
+            aka130=#{aka130},
+            akc190=#{akc190},
+            akc090=#{akc090},
+            akf001=#{akf001},
+            ykc012=#{ykc012},
+            akc050=#{akc050},
+            akc193=#{akc193},
+            ykc601=#{ykc601},
+            ykc602=#{ykc602},
+            ckz564=#{ckz564},
+            ckc798=#{ckc798},
+            ckc949=#{ckc949},
+            ykc701=#{ykc701},
+            aae005=#{aae005},
+            aae013=#{aae013},
+            in_hosp_type=#{inHospType},
+            aab014=#{aab014},
+            ckc936=#{ckc936},
+            ckc937=#{ckc937},
+            merchant_id=#{merchantId},
+            merchant_name=#{merchantName},
+            jbrmc=#{jbrmc},
+            person_name=#{personName},
+            aaz217=#{aaz217},
+            his_bill_state=#{hisBillState},
+            yka115=#{yka115},
+            ykc618=#{ykc618},
+            ykc675=#{ykc675},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+
+	<sql id="leftjoin_sql">
+   		left join bi_merchant as m on m.id=t.merchant_id 
+    </sql>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="aac044!= null and aac044!=''">and t.aac044=#{aac044}</if>
+             <if test="aac057!= null and aac057!=''">and t.aac057=#{aac057}</if>
+             <if test="yzz016!= null and yzz016!=''">and t.yzz016=#{yzz016}</if>
+             <if test="aka130!= null and aka130!=''">and t.aka130=#{aka130}</if>
+             <if test="akc190!= null and akc190!=''">and t.akc190=#{akc190}</if>
+             <if test="akc090!= null and akc090!=''">and t.akc090=#{akc090}</if>
+             <if test="akf001!= null and akf001!=''">and t.akf001=#{akf001}</if>
+             <if test="ykc012!= null and ykc012!=''">and t.ykc012=#{ykc012}</if>
+             <if test="akc050!= null and akc050!=''">and t.akc050=#{akc050}</if>
+             <if test="akc193!= null and akc193!=''">and t.akc193=#{akc193}</if>
+             <if test="ykc601!= null and ykc601!=''">and t.ykc601=#{ykc601}</if>
+             <if test="ykc602!= null and ykc602!=''">and t.ykc602=#{ykc602}</if>
+             <if test="ckz564!= null and ckz564!=''">and t.ckz564=#{ckz564}</if>
+             <if test="ckc798!= null and ckc798!=''">and t.ckc798=#{ckc798}</if>
+             <if test="ckc949!= null and ckc949!=''">and t.ckc949=#{ckc949}</if>
+             <if test="ykc701!= null and ykc701!=''">and t.ykc701=#{ykc701}</if>
+             <if test="aae005!= null and aae005!=''">and t.aae005=#{aae005}</if>
+             <if test="aae013!= null and aae013!=''">and t.aae013=#{aae013}</if>
+             <if test="inHospType!= null and inHospType!=''">and t.in_hosp_type=#{inHospType}</if>
+             <if test="aab014!= null and aab014!=''">and t.aab014=#{aab014}</if>
+             <if test="ckc936!= null and ckc936!=''">and t.ckc936=#{ckc936}</if>
+             <if test="ckc937!= null and ckc937!=''">and t.ckc937=#{ckc937}</if>
+             <if test="merchantId!= null and merchantId!=''">and t.merchant_id=#{merchantId}</if>
+             <if test="merchantName!= null and merchantName!=''">and t.merchant_name=#{merchantName}</if>
+             <if test="jbrmc!= null and jbrmc!=''">and t.jbrmc=#{jbrmc}</if>
+             <if test="personName!= null and personName!=''">and t.person_name=#{personName}</if>
+             <if test="aaz217!= null and aaz217!=''">and t.aaz217=#{aaz217}</if>
+             <if test="hisBillState!= null and hisBillState!=''">and t.his_bill_state=#{hisBillState}</if>
+             <if test="ykc618!= null and ykc618!=''">and t.ykc618=#{ykc618}</if>
+             <if test="ykc675!= null and ykc675!=''">and t.ykc675=#{ykc675}</if>
+             
+             <if test="user_in_session!=null">
+            		<if test="user_in_session.merchantId!=null and user_in_session.merchantId!=0 ">
+						and m.id = #{user_in_session.merchantId}            		
+            		</if> 
+             </if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+</mapper>

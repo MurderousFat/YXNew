@@ -1,0 +1,60 @@
+td{
+	padding:5px;
+}
+.container{
+margin-top:10px;
+border-radius:5px;
+border:1px solid #EEEEEE;
+-webkit-box-shadow:0 0 4px #BDC3C7;
+-moz-box-shadow:0 0 4px #BDC3C7;
+box-shadow:0 0 4px #BDC3C7;
+height:500px;
+}
+.container .top{
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	color: #d9eef7;
+	background: #0095cd;
+	background: -webkit-gradient(linear, left top, left bottom, from(#5DB1DD), to(#336CD6));
+	background: -moz-linear-gradient(top,  #5DB1DD,  #336CD6);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#5DB1DD', endColorstr='#336CD6');
+	position:relative;
+}
+.container .top .title{
+	margin-left:12px;
+	height:40px;
+	line-height:40px;
+	font-size:1.2em;
+	
+	font-family:"Î¢ÈíÑÅºÚ";
+	font-weight:lighter; 
+	color:#FFFFFF; 
+	
+}
+.container .top .tools{
+	position:absolute;
+	right:10px;
+	bottom:7px;
+}
+
+.container > .top > .tools {
+    float: right;
+    display: inline-block;
+}
+
+.container > .top > .tools > a.reload {
+    background-image: url(/resources/images/portlet-reload-icon.png);
+    width: 13px;
+    cursor:pointer;
+}
+.container > .top > .tools > a {
+    height: 16px;
+    margin-left: 5px;
+    font-size:12px;
+}
+
+.container > .full{
+	width:100%;
+	height:90%;
+	overflow-y:scroll;
+}

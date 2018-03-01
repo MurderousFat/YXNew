@@ -1,0 +1,5089 @@
+@CHARSET "UTF-8";
+
+.help {
+	background-image: url(../image/ext/help.png);
+}
+
+.info {
+	background-image: url(../image/ext/information.png);
+}
+
+.nav {
+	background-image: url(../image/ext/folder_go.png);
+}
+
+.back {
+	background-image: url(../image/ext/folder_back.png);
+}
+
+.cus_folder {
+	background-image: url(../image/ext/folder.png) !important;
+}
+
+.folder_cameraIcon {
+	background-image: url(../image/ext/folder_camera.png) !important;
+}
+
+.folder_userIcon {
+	background-image: url(../image/ext/folder_user.png) !important;
+}
+
+.folder_award_star_gold_1 {
+	background-image: url(../image/ext/award_star_gold_1.png) !important;
+}
+
+.folder_award_star_gold_2 {
+	background-image: url(../image/ext/award_star_gold_2.png) !important;
+}
+
+.folder_award_star_gold_3 {
+	background-image: url(../image/ext/award_star_gold_3.png) !important;
+}
+
+.folder_feedIcon {
+	background-image: url(../image/ext/folder_feed.png) !important;
+}
+
+.cupIcon {
+	background-image: url(../image/ext/cup.png) !important;
+}
+
+.application_homeIcon {
+	background-image: url(../image/ext/application_home.png) !important;
+}
+
+.groupIcon {
+	background-image: url(../image/ext/group.png) !important;
+}
+
+.commentsIcon {
+	background-image: url(../image/ext/comments.png) !important;
+}
+
+.applicationIcon {
+	background-image: url(../image/ext/application.png) !important;
+}
+
+.application_doubleIcon {
+	background-image: url(../image/ext/application_double.png) !important;
+}
+
+.application_cascadeIcon {
+	background-image: url(../image/ext/application_cascade.png) !important;
+}
+
+.application_goIcon {
+	background-image: url(../image/ext/application_go.png) !important;
+}
+
+.tbar_synchronizeIcon {
+	background-image: url(../image/ext/tbar_synchronize.png) !important;
+}
+
+.comments_addIcon {
+	background-image: url(../image/ext/comments_add.png) !important;
+}
+
+.page_addIcon {
+	background-image: url(../image/ext/page_add.png) !important;
+}
+
+.page_edit_1Icon {
+	background-image: url(../image/ext/page_edit_1.png) !important;
+}
+
+.page_delIcon {
+	background-image: url(../image/ext/page_del.png) !important;
+}
+
+.page_refreshIcon {
+	background-image: url(../image/ext/page_refresh.png) !important;
+}
+
+.comment_addIcon {
+	background-image: url(../image/ext/comment_add.png) !important;
+}
+
+.acceptIcon {
+	background-image: url(../image/ext/accept.png) !important;
+}
+
+.deleteIcon {
+	background-image: url(../image/ext/delete.png) !important;
+}
+
+.status_awayIcon {
+	background-image: url(../image/ext/status_away.png) !important;
+}
+
+.status_busyIcon {
+	background-image: url(../image/ext/status_busy.png) !important;
+}
+
+.arrow_refreshIcon {
+	background-image: url(../image/ext/arrow_refresh.png) !important;
+}
+
+.lockIcon {
+	background-image: url(../image/ext/lock.png) !important;
+}
+
+.wrenchIcon {
+	background-image: url(../image/ext/wrench.png) !important;
+}
+
+.book_previousIcon {
+	background-image: url(../image/ext/book_previous.png) !important;
+}
+
+.window_caise_listIcon {
+	background-image: url(../image/ext/window_caise_list.png) !important;
+}
+
+.imageIcon {
+	background-image: url(../image/ext/image.png) !important;
+}
+
+.application_view_listIcon {
+	background-image: url(../image/ext/application_view_list.png) !important;
+}
+
+.keyIcon {
+	background-image: url(../image/ext/key.png) !important;
+}
+
+.page_findIcon {
+	background-image: url(../image/ext/page_find.png) !important;
+}
+
+.layout_contentIcon {
+	background-image: url(../image/ext/layout_content.png) !important;
+}
+
+.chart_organisationIcon {
+	background-image: url(../image/ext/chart_organisation.png) !important;
+}
+
+.buildingIcon {
+	background-image: url(../image/ext/building.png) !important;
+}
+
+.user_femaleIcon {
+	background-image: url(../image/ext/user_female.png) !important;
+}
+
+.status_onlineIcon {
+	background-image: url(../image/ext/status_online.png) !important;
+}
+
+.expand-allIcon {
+	background-image: url(../image/ext/expand-all.gif) !important;
+}
+
+.collapse-allIcon {
+	background-image: url(../image/ext/collapse-all.gif) !important;
+}
+
+.drinkIcon {
+	background-image: url(../image/ext/drink.png) !important;
+}
+
+.userIcon {
+	background-image: url(../image/ext/user.png) !important;
+}
+
+.group_linkIcon {
+	background-image: url(../image/ext/group_link.png) !important;
+}
+
+.award_star_silver_3Icon {
+	background-image: url(../image/ext/award_star_silver_3.png) !important;
+}
+
+.medal_silver_3Icon {
+	background-image: url(../image/ext/medal_silver_3.png) !important;
+}
+
+.medal_gold_1Icon {
+	background-image: url(../image/ext/medal_gold_1.png) !important;
+}
+
+.cancel_48Icon {
+	background-image: url(../image/ext/cancel_48.png) !important;
+}
+
+.themeIcon {
+	background-image: url(../image/ext/theme.png) !important;
+}
+
+.config2Icon {
+	background-image: url(../image/ext/config2.png) !important;
+}
+
+.imIcon {
+	background-image: url(../image/ext/im.png) !important;
+}
+
+.theme2Icon {
+	background-image: url(../image/ext/theme2.png) !important;
+}
+
+.checkIcon {
+	background-image: url(../image/ext/check.png) !important;
+}
+
+.printerIcon {
+	background-image: url(../image/ext/printer.png) !important;
+}
+
+.previewIcon {
+	background-image: url(../image/ext/preview.png) !important;
+}
+
+.page_excelIcon {
+	background-image: url(../image/ext/page_excel.png) !important;
+}
+
+.pluginIcon {
+	background-image: url(../image/ext/plugin.png) !important;
+}
+
+.addIcon {
+	background-image: url(../image/ext/add.png) !important;
+}
+
+.edit1Icon {
+	background-image: url(../image/ext/edit1.png) !important;
+}
+
+.disconnectIcon {
+	background-image: url(../image/ext/disconnect.png) !important;
+}
+
+.tableIcon {
+	background-image: url(../image/ext/table.png) !important;
+}
+
+.database_connectIcon {
+	background-image: url(../image/ext/database_connect.png) !important;
+}
+
+.exclamationIcon {
+	background-image: url(../image/ext/exclamation.png) !important;
+}
+
+.bugIcon {
+	background-image: url(../image/ext/bug.png) !important;
+}
+
+.configIcon {
+	background-image: url(../image/ext/config.png) !important;
+}
+
+.server_connectIcon {
+	background-image: url(../image/ext/server_connect.png) !important;
+}
+
+.database_refreshIcon {
+	background-image: url(../image/ext/database_refresh.png) !important;
+}
+
+.user_commentIcon {
+	background-image: url(../image/ext/user_comment.png) !important;
+}
+
+.imagesIcon {
+	background-image: url(../image/ext/images.png) !important;
+}
+
+.docsIcon {
+	background-image: url(../image/ext/docs.gif) !important;
+}
+
+.group_addIcon {
+	background-image: url(../image/ext/group_add.png) !important;
+}
+
+.message_editIcon {
+	background-image: url(../image/ext/message_edit.png) !important;
+}
+
+.uploadIcon {
+	background-image: url(../image/ext/upload.png) !important;
+}
+
+.downloadIcon {
+	background-image: url(../image/ext/download.png) !important;
+}
+
+.app_boxesIcon {
+	background-image: url(../image/ext/app_boxes.png) !important;
+}
+
+.app_leftIcon {
+	background-image: url(../image/ext/app_left.png) !important;
+}
+
+.app_rightIcon {
+	background-image: url(../image/ext/app_right.png) !important;
+}
+
+.arrow_switchIcon {
+	background-image: url(../image/ext/arrow_switch.png) !important;
+}
+
+.wenjianguanli {
+	background-image: url(../image/sysimage/s_wjgl.png) !important;
+}
+
+.yinzhangguanli {
+	background-image: url(../image/sysimage/s_yzgl.png) !important;
+}
+
+.gongzliugl {
+	background-image: url(../image/sysimage/s_gzlgl.png) !important;
+}
+
+.gongzgl {
+	background-image: url(../image/sysimage/s_gzgl.png) !important;
+}
+
+.xinwengl {
+	background-image: url(../image/sysimage/s_xwgl.png) !important;
+}
+
+.xinwengl {
+	background-image: url(../image/sysimage/s_xwgl.png) !important;
+}
+
+.zhanneixx {
+	background-image: url(../image/sysimage/s_znxx.png) !important;
+}
+
+.yuangongzl {
+	background-image: url(../image/sysimage/s_ygzl.png) !important;
+}
+
+.report {
+	background-image: url(../image/sysimage/s_report.png) !important;
+}
+
+.gwtzsq {
+	background-image: url(../image/sysimage/s_gwddsp.png) !important;
+}
+
+.jjsq {
+	background-image: url(../image/sysimage/s_jjsq.png) !important;
+}
+
+.s_xygsq {
+	background-image: url(../image/sysimage/s_xygsq.png) !important;
+}
+
+.s_lzsq {
+	background-image: url(../image/sysimage/s_lzsq.png) !important;
+}
+
+.s_xctdsq {
+	background-image: url(../image/sysimage/s_xctdsq.png) !important;
+}
+
+.s_dept {
+	background-image: url(../image/sysimage/s_dept.png) !important;
+}
+
+.s_zjjg {
+	background-image: url(../image/sysimage/s_zjjg.png) !important;
+}
+
+.s_rate {
+	background-image: url(../image/sysimage/s_rate.png) !important;
+}
+
+.s_area {
+	background-image: url(../image/sysimage/s_area.png) !important;
+}
+
+.s_customer {
+	background-image: url(../image/sysimage/s_customer.png) !important;
+}
+
+.s_chengyunshang {
+	background-image: url(../image/sysimage/s_chengyunshang.png) !important;
+}
+
+.s_gongys {
+	background-image: url(../image/sysimage/s_gongys.png) !important;
+}
+
+.s_shop {
+	background-image: url(../image/sysimage/s_shop.png) !important;
+}
+
+.s_zhizaos {
+	background-image: url(../image/sysimage/s_zhizaos.png) !important;
+}
+
+.s_cangku {
+	background-image: url(../image/sysimage/s_cangku.png) !important;
+}
+
+.s_shenpshezhi {
+	background-image: url(../image/sysimage/s_shenpshezhi.png) !important;
+}
+
+.s_shangp {
+	background-image: url(../image/sysimage/s_shangp.png) !important;
+}
+
+.s_wdfjx {
+	background-image: url(../image/sysimage/s_wdfjx.png) !important;
+}
+
+.s_wdgz {
+	background-image: url(../image/sysimage/s_wdgz.png) !important;
+}
+
+.s_wdsjx {
+	background-image: url(../image/sysimage/s_wdsjx.png) !important;
+}
+
+.s_xxgl {
+	background-image: url(../image/sysimage/s_xxgl.png) !important;
+}
+
+.s_wdyz {
+	background-image: url(../image/sysimage/s_wdyz.png) !important;
+}
+
+.s_yzgl1 {
+	background-image: url(../image/sysimage/s_yzgl1.png) !important;
+}
+
+.s_barcode {
+	background-image: url(../image/ext/barcode.png) !important;
+}
+
+.cart {
+	background-image: url(/resources/images/cart.png)
+}
+
+.newicon_apinfo {
+	background-image: url(../image/icons/apinfo.png) !important;
+}
+
+.newicon_Apinvmas {
+	background-image: url(../image/icons/Apinvmas.png) !important;
+}
+
+.newicon_AppAccount {
+	background-image: url(../image/icons/AppAccount.png) !important;
+}
+
+.newicon_Appaymas {
+	background-image: url(../image/icons/Appaymas.png) !important;
+}
+
+.newicon_Apqtfymas {
+	background-image: url(../image/icons/Apqtfymas.png) !important;
+}
+
+.newicon_Aprtnmas {
+	background-image: url(../image/icons/Aprtnmas.png) !important;
+}
+
+.newicon_arinfo {
+	background-image: url(../image/icons/arinfo.png) !important;
+}
+
+.newicon_Arinvmas {
+	background-image: url(../image/icons/Arinvmas.png) !important;
+}
+
+.newicon_Arrcpmas {
+	background-image: url(../image/icons/Arrcpmas.png) !important;
+}
+
+.newicon_Arrtnmas {
+	background-image: url(../image/icons/Arrtnmas.png) !important;
+}
+
+.newicon_Baseinfo {
+	background-image: url(../image/icons/Baseinfo.png) !important;
+}
+
+.newicon_baseinfosmng_Fdc {
+	background-image: url(../image/icons/baseinfosmng_Fdc.png) !important;
+}
+
+.newicon_Buy360 {
+	background-image: url(../image/icons/Buy360.png) !important;
+}
+
+.newicon_CgSituation {
+	background-image: url(../image/icons/CgSituation.png) !important;
+}
+
+.newicon_Check {
+	background-image: url(../image/icons/Check.png) !important;
+}
+
+.newicon_DaySellSituation_mng {
+	background-image: url(../image/icons/DaySellSituation_mng.png)
+		!important;
+}
+
+.newicon_file {
+	background-image: url(../image/icons/file.png) !important;
+}
+
+.newicon_InnerControl {
+	background-image: url(../image/icons/InnerControl.png) !important;
+}
+
+.newicon_Ipbommas {
+	background-image: url(../image/icons/Ipbommas.png) !important;
+}
+
+.newicon_ipinfo {
+	background-image: url(../image/icons/ipinfo.png) !important;
+}
+
+.newicon_Ipnetordmas {
+	background-image: url(../image/icons/Ipnetordmas.png) !important;
+}
+
+.newicon_Ipordmas {
+	background-image: url(../image/icons/Ipordmas.png) !important;
+}
+
+.newicon_Ippnmas {
+	background-image: url(../image/icons/Ippnmas.png) !important;
+}
+
+.newicon_ivinfo {
+	background-image: url(../image/icons/ivinfo.png) !important;
+}
+
+.newicon_ivinfo_dhgl {
+	background-image: url(../image/icons/ivinfo_dhgl.png) !important;
+}
+
+.newicon_Ivinvmas {
+	background-image: url(../image/icons/Ivinvmas.png) !important;
+}
+
+.newicon_Ivitemocmas {
+	background-image: url(../image/icons/Ivitemocmas.png) !important;
+}
+
+.newicon_Ivpurimas {
+	background-image: url(../image/icons/Ivpurimas.png) !important;
+}
+
+.newicon_Ivreqmas {
+	background-image: url(../image/icons/Ivreqmas.png) !important;
+}
+
+.newicon_Ivsalemas {
+	background-image: url(../image/icons/Ivsalemas.png) !important;
+}
+
+.newicon_Ivtfmas {
+	background-image: url(../image/icons/Ivtfmas.png) !important;
+}
+
+.newicon_Ivtzdmas {
+	background-image: url(../image/icons/Ivtzdmas.png) !important;
+}
+
+.newicon_mng_Apinvmas {
+	background-image: url(../image/icons/mng_Apinvmas.png) !important;
+}
+
+.newicon_mng_Apinvmas_check {
+	background-image: url(../image/icons/mng_Apinvmas_check.png) !important;
+}
+
+.newicon_mng_Appaymas {
+	background-image: url(../image/icons/mng_Appaymas.png) !important;
+}
+
+.newicon_mng_Appaymas_check {
+	background-image: url(../image/icons/mng_Appaymas_check.png) !important;
+}
+
+.newicon_mng_Apqtfymas {
+	background-image: url(../image/icons/mng_Apqtfymas.png) !important;
+}
+
+.newicon_mng_Apqtfymas_check {
+	background-image: url(../image/icons/mng_Apqtfymas_check.png) !important;
+}
+
+.newicon_mng_Aprtnmas {
+	background-image: url(../image/icons/mng_Aprtnmas.png) !important;
+}
+
+.newicon_mng_Aprtnmas_check {
+	background-image: url(../image/icons/mng_Aprtnmas_check.png) !important;
+}
+
+.newicon_mng_Arinvmas {
+	background-image: url(../image/icons/mng_Arinvmas.png) !important;
+}
+
+.newicon_mng_Arinvmas_check {
+	background-image: url(../image/icons/mng_Arinvmas_check.png) !important;
+}
+
+.newicon_mng_Arrcpmas {
+	background-image: url(../image/icons/mng_Arrcpmas.png) !important;
+}
+
+.newicon_mng_Arrcpmas_check {
+	background-image: url(../image/icons/mng_Arrcpmas_check.png) !important;
+}
+
+.newicon_mng_Arrtnmas {
+	background-image: url(../image/icons/mng_Arrtnmas.png) !important;
+}
+
+.newicon_mng_Arrtnmas_check {
+	background-image: url(../image/icons/mng_Arrtnmas_check.png) !important;
+}
+
+.newicon_mng_BarcodeBill {
+	background-image: url(../image/icons/mng_BarcodeBill.png) !important;
+}
+
+.newicon_mng_Biz {
+	background-image: url(../image/icons/mng_Biz.png) !important;
+}
+
+.newicon_mng_Buy360AddressResult {
+	background-image: url(../image/icons/mng_Buy360AddressResult.png)
+		!important;
+}
+
+.newicon_mng_Buy360Item {
+	background-image: url(../image/icons/mng_Buy360Item.png) !important;
+}
+
+.newicon_mng_Buy360ItemCategory {
+	background-image: url(../image/icons/mng_Buy360ItemCategory.png)
+		!important;
+}
+
+.newicon_mng_Buy360Trade {
+	background-image: url(../image/icons/mng_Buy360Trade.png) !important;
+}
+
+.newicon_mng_Buy360Trade_check {
+	background-image: url(../image/icons/mng_Buy360Trade_check.png)
+		!important;
+}
+
+.newicon_mng_Check {
+	background-image: url(../image/icons/mng_Check.png) !important;
+}
+
+.newicon_mng_Complaint {
+	background-image: url(../image/icons/mng_Complaint.png) !important;
+}
+
+.newicon_mng_Cust {
+	background-image: url(../image/icons/mng_Cust.png) !important;
+}
+
+.newicon_mng_CustRank {
+	background-image: url(../image/icons/mng_CustRank.png) !important;
+}
+
+.newicon_mng_DefPrice {
+	background-image: url(../image/icons/mng_DefPrice.png) !important;
+}
+
+.newicon_mng_Duty {
+	background-image: url(../image/icons/mng_Duty.png) !important;
+}
+
+.newicon_mng_Employ {
+	background-image: url(../image/icons/mng_Employ.png) !important;
+}
+
+.newicon_mng_Employ_check {
+	background-image: url(../image/icons/mng_Employ_check.png) !important;
+}
+
+.newicon_mng_Fcc {
+	background-image: url(../image/icons/mng_Fcc.png) !important;
+}
+
+.newicon_mng_Fic {
+	background-image: url(../image/icons/mng_Fic.png) !important;
+}
+
+.newicon_mng_File {
+	background-image: url(../image/icons/mng_File.png) !important;
+}
+
+.newicon_mng_Form {
+	background-image: url(../image/icons/mng_Form.png) !important;
+}
+
+.newicon_mng_FormType {
+	background-image: url(../image/icons/mng_FormType.png) !important;
+}
+
+.newicon_mng_Fuc {
+	background-image: url(../image/icons/mng_Fuc.png) !important;
+}
+
+.newicon_mng_Function {
+	background-image: url(../image/icons/mng_Function.png) !important;
+}
+
+.newicon_mng_Fvc {
+	background-image: url(../image/icons/mng_Fvc.png) !important;
+}
+
+.newicon_mng_Fytype {
+	background-image: url(../image/icons/mng_Fytype.png) !important;
+}
+
+.newicon_mng_Ipbommas_check {
+	background-image: url(../image/icons/mng_Ipbommas_check.png) !important;
+}
+
+.newicon_mng_IpnetOrdmas {
+	background-image: url(../image/icons/mng_IpnetOrdmas.png) !important;
+}
+
+.newicon_mng_IpnetOrdmas_check {
+	background-image: url(../image/icons/mng_IpnetOrdmas_check.png)
+		!important;
+}
+
+.newicon_mng_IpOrdmas {
+	background-image: url(../image/icons/mng_IpOrdmas.png) !important;
+}
+
+.newicon_mng_IpOrdmas_check {
+	background-image: url(../image/icons/mng_IpOrdmas_check.png) !important;
+}
+
+.newicon_mng_Ippnmas {
+	background-image: url(../image/icons/mng_Ippnmas.png) !important;
+}
+
+.newicon_mng_IpPnmas_check {
+	background-image: url(../image/icons/mng_IpPnmas_check.png) !important;
+}
+
+.newicon_mng_Item {
+	background-image: url(../image/icons/mng_Item.png) !important;
+}
+
+.newicon_mng_ItemNature {
+	background-image: url(../image/icons/mng_ItemNature.png) !important;
+}
+
+.newicon_mng_Ivinimas {
+	background-image: url(../image/icons/mng_Ivinimas.png) !important;
+}
+
+.newicon_mng_Ivinvmas {
+	background-image: url(../image/icons/mng_Ivinvmas.png) !important;
+}
+
+.newicon_mng_Ivinvmas_check {
+	background-image: url(../image/icons/mng_Ivinvmas_check.png) !important;
+}
+
+.newicon_mng_Ivitemormas {
+	background-image: url(../image/icons/mng_Ivitemormas.png) !important;
+}
+
+.newicon_mng_Ivitemormas_check {
+	background-image: url(../image/icons/mng_Ivitemormas_check.png)
+		!important;
+}
+
+.newicon_mng_Ivpurmas {
+	background-image: url(../image/icons/mng_Ivpurmas.png) !important;
+}
+
+.newicon_mng_Ivpurmas_check {
+	background-image: url(../image/icons/mng_Ivpurmas_check.png) !important;
+}
+
+.newicon_mng_Ivreqmas_check {
+	background-image: url(../image/icons/mng_Ivreqmas_check.png) !important;
+}
+
+.newicon_mng_Ivsalemas {
+	background-image: url(../image/icons/mng_Ivsalemas.png) !important;
+}
+
+.newicon_mng_Ivsalemas_check {
+	background-image: url(../image/icons/mng_Ivsalemas_check.png) !important;
+}
+
+.newicon_mng_Ivsomas {
+	background-image: url(../image/icons/mng_Ivsomas.png) !important;
+}
+
+.newicon_mng_Ivsomas_check {
+	background-image: url(../image/icons/mng_Ivsomas_check.png) !important;
+}
+
+.newicon_mng_Ivtfmas {
+	background-image: url(../image/icons/mng_Ivtfmas.png) !important;
+}
+
+.newicon_mng_Ivtfmas_check {
+	background-image: url(../image/icons/mng_Ivtfmas_check.png) !important;
+}
+
+.newicon_mng_Ivtzdmas {
+	background-image: url(../image/icons/mng_Ivtzdmas.png) !important;
+}
+
+.newicon_mng_Ivtzdmas_check {
+	background-image: url(../image/icons/mng_Ivtzdmas_check.png) !important;
+}
+
+.newicon_mng_KuaidiCompany {
+	background-image: url(../image/icons/mng_KuaidiCompany.png) !important;
+}
+
+.newicon_mng_Lgapbal {
+	background-image: url(../image/icons/mng_Lgapbal.png) !important;
+}
+
+.newicon_mng_Lgarbal {
+	background-image: url(../image/icons/mng_Lgarbal.png) !important;
+}
+
+.newicon_mng_Lgipbal {
+	background-image: url(../image/icons/mng_Lgipbal.png) !important;
+}
+
+.newicon_mng_Menu {
+	background-image: url(../image/icons/mng_Menu.png) !important;
+}
+
+.newicon_mng_News {
+	background-image: url(../image/icons/mng_News.png) !important;
+}
+
+.newicon_mng_NewsType {
+	background-image: url(../image/icons/mng_NewsType.png) !important;
+}
+
+.newicon_mng_PaEmpLevel {
+	background-image: url(../image/icons/mng_PaEmpLevel.png) !important;
+}
+
+.newicon_mng_PaEmpZc {
+	background-image: url(../image/icons/mng_PaEmpZc.png) !important;
+}
+
+.newicon_mng_PaGwdd {
+	background-image: url(../image/icons/mng_PaGwdd.png) !important;
+}
+
+.newicon_mng_PaGwdd_check {
+	background-image: url(../image/icons/mng_PaGwdd_check.png) !important;
+}
+
+.newicon_mng_PaipaiAddressResult {
+	background-image: url(../image/icons/mng_PaipaiAddressResult.png)
+		!important;
+}
+
+.newicon_mng_PaipaiItem {
+	background-image: url(../image/icons/mng_PaipaiItem.png) !important;
+}
+
+.newicon_mng_PaipaiTrade {
+	background-image: url(../image/icons/mng_PaipaiTrade.png) !important;
+}
+
+.newicon_mng_PaipaiTrade_check {
+	background-image: url(../image/icons/mng_PaipaiTrade_check.png)
+		!important;
+}
+
+.newicon_mng_PaJjSq {
+	background-image: url(../image/icons/mng_PaJjSq.png) !important;
+}
+
+.newicon_mng_PaJjSq_check {
+	background-image: url(../image/icons/mng_PaJjSq_check.png) !important;
+}
+
+.newicon_mng_PaLzSq {
+	background-image: url(../image/icons/mng_PaLzSq.png) !important;
+}
+
+.newicon_mng_PaLzSq_check {
+	background-image: url(../image/icons/mng_PaLzSq_check.png) !important;
+}
+
+.newicon_mng_PaQj {
+	background-image: url(../image/icons/mng_PaQj.png) !important;
+}
+
+.newicon_mng_PaQj_check {
+	background-image: url(../image/icons/mng_PaQj_check.png) !important;
+}
+
+.newicon_mng_PaRlxq {
+	background-image: url(../image/icons/mng_PaRlxq.png) !important;
+}
+
+.newicon_mng_PaRlxq_check {
+	background-image: url(../image/icons/mng_PaRlxq_check.png) !important;
+}
+
+.newicon_mng_PaXctzSq {
+	background-image: url(../image/icons/mng_PaXctzSq.png) !important;
+}
+
+.newicon_mng_PaXctzSq_check {
+	background-image: url(../image/icons/mng_PaXctzSq_check.png) !important;
+}
+
+.newicon_mng_QqbuyItem {
+	background-image: url(../image/icons/mng_QqbuyItem.png) !important;
+}
+
+.newicon_mng_QqbuyItemCat {
+	background-image: url(../image/icons/mng_QqbuyItemCat.png) !important;
+}
+
+.newicon_mng_QqbuyTrade {
+	background-image: url(../image/icons/mng_QqbuyTrade.png) !important;
+}
+
+.newicon_mng_QqbuyTrade_check {
+	background-image: url(../image/icons/mng_QqbuyTrade_check.png)
+		!important;
+}
+
+.newicon_mng_Rate {
+	background-image: url(../image/icons/mng_Rate.png) !important;
+}
+
+.newicon_mng_RateDetail {
+	background-image: url(../image/icons/mng_RateDetail.png) !important;
+}
+
+.newicon_mng_ReceiveIpPn {
+	background-image: url(../image/icons/mng_ReceiveIpPn.png) !important;
+}
+
+.newicon_mng_Role {
+	background-image: url(../image/icons/mng_Role.png) !important;
+}
+
+.newicon_mng_RoleTemplate {
+	background-image: url(../image/icons/mng_RoleTemplate.png) !important;
+}
+
+.newicon_mng_Rpcode {
+	background-image: url(../image/icons/mng_Rpcode.png) !important;
+}
+
+.newicon_mng_RpItemCodedtl {
+	background-image: url(../image/icons/mng_RpItemCodedtl.png) !important;
+}
+
+.newicon_mng_RpItemCodemas {
+	background-image: url(../image/icons/mng_RpItemCodemas.png) !important;
+}
+
+.newicon_mng_RpitemType {
+	background-image: url(../image/icons/mng_RpitemType.png) !important;
+}
+
+.newicon_mng_SysBillPrefix {
+	background-image: url(../image/icons/mng_SysBillPrefix.png) !important;
+}
+
+.newicon_mng_SysModel {
+	background-image: url(../image/icons/mng_SysModel.png) !important;
+}
+
+.newicon_mng_SystemLog {
+	background-image: url(../image/icons/mng_SystemLog.png) !important;
+}
+
+.newicon_mng_SysUnionParam {
+	background-image: url(../image/icons/mng_SysUnionParam.png) !important;
+}
+
+.newicon_mng_Sysuser {
+	background-image: url(../image/icons/mng_Sysuser.png) !important;
+}
+
+.newicon_mng_TaobaoAddressResult {
+	background-image: url(../image/icons/mng_TaobaoAddressResult.png)
+		!important;
+}
+
+.newicon_mng_TaobaoItem {
+	background-image: url(../image/icons/mng_TaobaoItem.png) !important;
+}
+
+.newicon_mng_TaobaoItemCat {
+	background-image: url(../image/icons/mng_TaobaoItemCat.png) !important;
+}
+
+.newicon_mng_TaobaoRefund {
+	background-image: url(../image/icons/mng_TaobaoRefund.png) !important;
+}
+
+.newicon_mng_TaobaoTrade {
+	background-image: url(../image/icons/mng_TaobaoTrade.png) !important;
+}
+
+.newicon_mng_TaobaoTrade_check {
+	background-image: url(../image/icons/mng_TaobaoTrade_check.png)
+		!important;
+}
+
+.newicon_mng_Union {
+	background-image: url(../image/icons/mng_Union.png) !important;
+}
+
+.newicon_mng_Vendor {
+	background-image: url(../image/icons/mng_Vendor.png) !important;
+}
+
+.newicon_mng_Work {
+	background-image: url(../image/icons/mng_Work.png) !important;
+}
+
+.newicon_monitor_Work {
+	background-image: url(../image/icons/monitor_Work.png) !important;
+}
+
+.newicon_netshop {
+	background-image: url(../image/icons/netshop.png) !important;
+}
+
+.newicon_OtherParamSellSituation_mng {
+	background-image: url(../image/icons/OtherParamSellSituation_mng.png)
+		!important;
+}
+
+.newicon_PaEmpHtTerm_mng {
+	background-image: url(../image/icons/PaEmpHtTerm_mng.png) !important;
+}
+
+.newicon_PaEmpInfo_mng {
+	background-image: url(../image/icons/PaEmpInfo_mng.png) !important;
+}
+
+.newicon_PaEmpMonthFx_mng {
+	background-image: url(../image/icons/PaEmpMonthFx_mng.png) !important;
+}
+
+.newicon_painfo {
+	background-image: url(../image/icons/painfo.png) !important;
+}
+
+.newicon_Paipai {
+	background-image: url(../image/icons/Paipai.png) !important;
+}
+
+.newicon_paleave {
+	background-image: url(../image/icons/paleave.png) !important;
+}
+
+.newicon_ParamSellSituation_mng {
+	background-image: url(../image/icons/ParamSellSituation_mng.png)
+		!important;
+}
+
+.newicon_perm_Role {
+	background-image: url(../image/icons/perm_Role.png) !important;
+}
+
+.newicon_PriceSystem {
+	background-image: url(../image/icons/PriceSystem.png) !important;
+}
+
+.newicon_print_Buy360Trade {
+	background-image: url(../image/icons/print_Buy360Trade.png) !important;
+}
+
+.newicon_print_PaipaiTrade {
+	background-image: url(../image/icons/print_PaipaiTrade.png) !important;
+}
+
+.newicon_print_QqbuyTrade {
+	background-image: url(../image/icons/print_QqbuyTrade.png) !important;
+}
+
+.newicon_print_TaobaoTrade {
+	background-image: url(../image/icons/print_TaobaoTrade.png) !important;
+}
+
+.newicon_qqbuy {
+	background-image: url(../image/icons/qqbuy.png) !important;
+}
+
+.newicon_report {
+	background-image: url(../image/icons/report.png) !important;
+}
+
+.newicon_reportinfo {
+	background-image: url(../image/icons/reportinfo.png) !important;
+}
+
+.newicon_SaleSituation {
+	background-image: url(../image/icons/SaleSituation.png) !important;
+}
+
+.newicon_StockCgSituation {
+	background-image: url(../image/icons/StockCgSituation.png) !important;
+}
+
+.newicon_system {
+	background-image: url(../image/icons/system.png) !important;
+}
+
+.newicon_system_perm {
+	background-image: url(../image/icons/system_perm.png) !important;
+}
+
+.newicon_system_resource {
+	background-image: url(../image/icons/system_resource.png) !important;
+}
+
+.newicon_Taobao {
+	background-image: url(../image/icons/Taobao.png) !important;
+}
+
+.newicon_UnionIvSituation_mng {
+	background-image: url(../image/icons/UnionIvSituation_mng.png)
+		!important;
+}
+
+.newicon_UnionPaySituation_mng {
+	background-image: url(../image/icons/UnionPaySituation_mng.png)
+		!important;
+}
+
+.newicon_UnionRcpSituation_mng {
+	background-image: url(../image/icons/UnionRcpSituation_mng.png)
+		!important;
+}
+
+.newicon_UnionSellSituation_mng {
+	background-image: url(../image/icons/UnionSellSituation_mng.png)
+		!important;
+}
+
+.newicon_Vendor {
+	background-image: url(../image/icons/Vendor.png) !important;
+}
+
+.newicon_waits_Work {
+	background-image: url(../image/icons/waits_Work.png) !important;
+}
+
+.newicon_Work {
+	background-image: url(../image/icons/Work.png) !important;
+}
+
+.newicon_Workflow {
+	background-image: url(../image/icons/Workflow.png) !important;
+}
+
+.newicon_bom {
+	background-image: url(../image/icons/bom.png) !important;
+}
+
+.newicon_mng_Dept {
+	background-image: url(../image/icons/mng_Dept.png) !important;
+}
+
+.newicon_mng_Fdc {
+	background-image: url(../image/icons/mng_Fdc.png) !important;
+}
+/* 门店结算大按钮 */
+.big_cashier {
+	background-image: url(../image/ext/现金收银_32.png) !important;
+}
+
+.big_cashier_group {
+	background-image: url(../image/ext/组合收银_32.png) !important;
+}
+
+.big_cashier_rtn {
+	background-image: url(../image/ext/退货换货_32.png) !important;
+}
+
+.big_change_qty {
+	background-image: url(../image/ext/单品数量_32.png) !important;
+}
+
+.big_change_price {
+	background-image: url(../image/ext/单品价格_32.png) !important;
+}
+
+.big_change_famt {
+	background-image: url(../image/ext/单品金额_32.png) !important;
+}
+
+.big_change_dis {
+	background-image: url(../image/ext/单品折扣_32.png) !important;
+}
+
+.big_change_remark {
+	background-image: url(../image/ext/单品备注_32.png) !important;
+}
+
+.big_change_dis_all {
+	background-image: url(../image/ext/全品折扣_32.png) !important;
+}
+
+.big_change_clerk {
+	background-image: url(../image/ext/更换导购_32.png) !important;
+}
+
+.big_change_member {
+	background-image: url(../image/ext/会员优惠_32.png) !important;
+}
+
+.big_change_stock_query {
+	background-image: url(../image/ext/库存查询_32.png) !important;
+}
+
+.big_change_other_query {
+	background-image: url(../image/ext/其它查询_small.png) !important;
+}
+
+.big_change_hold {
+	background-image: url(../image/ext/挂单_32.png) !important;
+}
+
+.big_change_rehold {
+	background-image: url(../image/ext/取单_32.png) !important;
+}
+
+.big_cancel {
+	background-image: url(../image/ext/取消交易_32.png) !important;
+}
+
+.big_print {
+	background-image: url(../image/ext/32/printer32.png) !important;
+}
+/* 门店结算中按钮24 */
+.med_cashier {
+	background-image: url(../image/ext/24GX/现金收银_24.png) !important;
+}
+
+.med_cashier_group {
+	background-image: url(../image/ext/24GX/组合收银_24.png) !important;
+}
+
+.med_cashier_rtn {
+	background-image: url(../image/ext/24GX/退货换货_24.png) !important;
+}
+
+.med_change_qty {
+	background-image: url(../image/ext/24GX/单品数量_24.png) !important;
+}
+
+.med_change_price {
+	background-image: url(../image/ext/24GX/单品价格_24.png) !important;
+}
+
+.med_change_famt {
+	background-image: url(../image/ext/24GX/单品金额_24.png) !important;
+}
+
+.med_change_dis {
+	background-image: url(../image/ext/24GX/单品折扣_24.png) !important;
+}
+
+.med_change_remark {
+	background-image: url(../image/ext/24GX/单品备注_24.png) !important;
+}
+
+.med_change_dis_all {
+	background-image: url(../image/ext/24GX/全品折扣_24.png) !important;
+}
+
+.med_change_clerk {
+	background-image: url(../image/ext/24GX/更换导购_24.png) !important;
+}
+
+.med_change_member {
+	background-image: url(../image/ext/24GX/会员优惠_24.png) !important;
+}
+
+.med_change_stock_query {
+	background-image: url(../image/ext/24GX/库存查询_24.png) !important;
+}
+
+.med_change_other_query {
+	background-image: url(../image/ext/24GX/其它查询_24.png) !important;
+}
+
+.med_change_hold {
+	background-image: url(../image/ext/24GX/挂单_24.png) !important;
+}
+
+.med_change_rehold {
+	background-image: url(../image/ext/24GX/取单_24.png) !important;
+}
+
+.med_cancel {
+	background-image: url(../image/ext/24GX/取消交易_24.png) !important;
+}
+
+.med_print {
+	background-image: url(../image/ext/24GX/小票打印_24.png) !important;
+}
+
+/* 门店结算小按钮16 */
+.sml_cashier {
+	background-image: url(../image/ext/16GX/现金收银_16.png) !important;
+}
+
+.sml_cashier_group {
+	background-image: url(../image/ext/16GX/组合收银_16.png) !important;
+}
+
+.sml_cashier_rtn {
+	background-image: url(../image/ext/16GX/退货换货_16.png) !important;
+}
+
+.sml_change_qty {
+	background-image: url(../image/ext/16GX/单品数量_16.png) !important;
+}
+
+.sml_change_price {
+	background-image: url(../image/ext/16GX/单品价格_16.png) !important;
+}
+
+.sml_change_famt {
+	background-image: url(../image/ext/16GX/单品金额_16.png) !important;
+}
+
+.sml_change_dis {
+	background-image: url(../image/ext/16GX/单品折扣_16.png) !important;
+}
+
+.sml_change_remark {
+	background-image: url(../image/ext/16GX/单品备注_16.png) !important;
+}
+
+.sml_change_dis_all {
+	background-image: url(../image/ext/16GX/全品折扣_16.png) !important;
+}
+
+.sml_change_clerk {
+	background-image: url(../image/ext/16GX/更换导购_16.png) !important;
+}
+
+.sml_change_member {
+	background-image: url(../image/ext/16GX/会员优惠_16.png) !important;
+}
+
+.sml_change_stock_query {
+	background-image: url(../image/ext/16GX/库存查询_16.png) !important;
+}
+
+.sml_change_other_query {
+	background-image: url(../image/ext/16GX/其它查询_16.png) !important;
+}
+
+.sml_change_hold {
+	background-image: url(../image/ext/16GX/挂单_16.png) !important;
+}
+
+.sml_change_rehold {
+	background-image: url(../image/ext/16GX/取单_16.png) !important;
+}
+
+.sml_cancel {
+	background-image: url(../image/ext/16GX/取消交易_16.png) !important;
+}
+
+.sml_print {
+	background-image: url(../image/ext/16GX/小票打印_16.png) !important;
+}
+
+/*以上的图标是20130525日之前的图标
+	20130523下午开始进行的新图标的编写在本注释一下
+*/
+/*=====================OA模块=====================*/
+/*内控办公*/
+.icon_16_oa {
+	background-image: url(../image/icons/20130525/1_OA/small/内控办公_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*工作管理*/
+.icon_16_work_mas {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/工作管理/工作管理_small.png) !important;
+}
+/*待办工作*/
+.icon_16_wait_work {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/工作管理/待办工_small.png) !important;
+}
+/*我的工作*/
+.icon_16_my_work {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/工作管理/我的工作_small.png) !important;
+}
+/*所有工作*/
+.icon_16_all_work {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/工作管理/全部工作_small.png) !important;
+}
+/*工作监控*/
+.icon_16_check_work {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/工作管理/工作监控_small.png) !important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*工作流管理*/
+.icon_16_work_flow_mas {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/工作流管理/工作流管理_small.png)
+		!important;
+}
+/*表单分类*/
+.icon_16_form_type {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/工作流管理/表单分类_small.png)
+		!important;
+}
+/*表单管理*/
+.icon_16_form_mas {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/工作流管理/表单管理_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*文件柜*/
+.icon_16_file {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/文件柜/文件柜_small.png) !important;
+}
+/*文件分类*/
+.icon_16_file_type {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/文件柜/文件类型_small.png) !important;
+}
+/*文件管理*/
+.icon_16_file_mas {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/文件柜/文件管理_small.png) !important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*印章管理*/
+.icon_16_sign_mas {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/印章管理/印章管理_small.png) !important;
+}
+/*我的印章*/
+.icon_16_my_sign {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/印章管理/我的印章_small.png) !important;
+}
+/*印章维护*/
+.icon_16_sign {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/印章管理/印章维护_small.png) !important;
+}
+/*印章审核*/
+.icon_16_sign_check {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/印章管理/印章审核_small.png) !important;
+}
+
+/*办公用品管理*/
+.icon_16_supplies_mas {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/办公用品管理_small.png) !important;
+}
+/*办公用品类型*/
+.icon_16_supplies_type {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/办公用品类型_small.png) !important;
+}
+/*办公用品申请*/
+.icon_16_supplies_req {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/办公用品申请_small.png) !important;
+}
+/*办公用品审核*/
+.icon_16_supplies_check {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/办公用品审核_small.png) !important;
+}
+/*办公用维护*/
+.icon_16_supplies_wh {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/办公用品维护_small.png) !important;
+}
+
+/*档案管理*/
+.icon_16_dossier_mas {
+	background-image: url(../image/icons/20130525/1_OA/small/档案管理_small.png)
+		!important;
+}
+/*档案回收站_*/
+.icon_16_dossier_room {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/档案回收站_small.png) !important;
+}
+/*档案文书_*/
+.icon_16_dossier_book {
+	background-image: url(../image/icons/20130525/1_OA/small/档案文书_small.png)
+		!important;
+}
+
+/*卷库文书_*/
+.icon_16_wh_mas {
+	background-image: url(../image/icons/20130525/1_OA/small/卷库管理_small.png)
+		!important;
+}
+/*培训管理*/
+.icon_16_train_mas {
+	background-image: url(../image/icons/20130525/1_OA/small/培训管理_small.png)
+		!important;
+}
+/*培训审核*/
+.icon_16_train_check {
+	background-image: url(../image/icons/20130525/1_OA/small/培训审核_small.png)
+		!important;
+}
+
+/*=====================PA模块=====================*/
+/*人力资源报表*/
+.icon_16_pa_report {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/报表/报表_small.png) !important;
+}
+/*员工合同期*/
+.icon_16_pa_ht_report {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/报表/员工合同期报表_small.png)
+		!important;
+}
+/*月度分析*/
+.icon_16_pa_month_report {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/报表/员工月度报表分析报表_small.png)
+		!important;
+}
+/*人力资源报表*/
+.icon_16_pa_query_report {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/报表/员工资料查询报表_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*员工管理*/
+.icon_16_pa_emp_mas {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/员工管理_small.png) !important;
+}
+/*岗位调动申请*/
+.icon_16_pa_emp_gwdd_mas {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/岗位调动申请_small.png)
+		!important;
+}
+/*岗位需求申请*/
+.icon_16_pa_emp_gwxq_mas {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/岗位需求申请_small.png)
+		!important;
+}
+/*岗位需求审批*/
+.icon_16_pa_emp_gwxq_check {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/岗位需求审批_small.png)
+		!important;
+}
+/*请假申请*/
+.icon_16_pa_emp_qj_mas {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/请假申请_small.png) !important;
+}
+/*请假审批*/
+.icon_16_pa_emp_qj_check {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/请假审批_small.png) !important;
+}
+/*入职申请*/
+.icon_16_pa_emp_in_mas {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/入职申请审批_small.png)
+		!important;
+}
+/*入职审批*/
+.icon_16_pa_emp_in_check {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/入职审批_small.png) !important;
+}
+/*薪酬调整申请*/
+.icon_16_pa_emp_xctz_mas {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/薪酬调整申请_small.png)
+		!important;
+}
+/*薪资调整审批*/
+.icon_16_pa_emp_xctz_check {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/薪资调整审批_small.png)
+		!important;
+}
+/*员工资料*/
+.icon_16_pa_emp_list {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工管理/员工资料_small.png) !important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*员工离职*/
+.icon_16_pa_emp_lz {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工离职/员工离职_small.png) !important;
+}
+/*交接申请*/
+.icon_16_pa_emp_jj_mas {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工离职/交接申请_small.png) !important;
+}
+/*交接审批*/
+.icon_16_pa_emp_jj_check {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工离职/交接审批_small.png) !important;
+}
+/*交接申请*/
+.icon_16_pa_emp_lz_mas {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工离职/离职申请_small.png) !important;
+}
+/*交接审批*/
+.icon_16_pa_emp_lz_check {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工离职/离职申请审批_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*人力资源*/
+.icon_16_pa_mas {
+	background-image: url(../image/icons/20130525/2_PA/small/人力资源_small.png)
+		!important;
+}
+/*假期类型*/
+.icon_16_pa_vacation {
+	background-image: url(../image/icons/20130525/2_PA/small/假期类型_small.png)
+		!important;
+}
+/*员工等级*/
+.icon_16_pa_emp_level {
+	background-image: url(../image/icons/20130525/2_PA/small/员工等级_small.png)
+		!important;
+}
+/*员工级别*/
+.icon_16_pa_emp_zz {
+	background-image: url(../image/icons/20130525/2_PA/small/员工级别_small.png)
+		!important;
+}
+
+/*=====================PRICE模块=====================*/
+/*价格体系*/
+.icon_16_price {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/价格体系_small.png) !important;
+}
+/*客户价格体系*/
+.icon_16_price_cust {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/客户价格体系_small.png) !important;
+}
+/*默认零售价设置*/
+.icon_16_price_nomal {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/默认零售价设置_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*采购价格一览表*/
+.icon_16_price_pur_report {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/报表/采购价格一览表_small.png)
+		!important;
+}
+/*促销价格一览表*/
+.icon_16_price_prom_report {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/报表/促销价格一览表_small.png)
+		!important;
+}
+/*特价格一览表*/
+.icon_16_price_spec_report {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/报表/特价一览表_small.png)
+		!important;
+}
+/*促销价格一览表*/
+.icon_16_price_sale_report {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/报表/销售价格一览表_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*采购价格方案*/
+.icon_16_price_pur {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/采购价格方案/采购价格方案_small.png)
+		!important;
+}
+/*采购价格方案变动*/
+.icon_16_price_pur_change {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/采购价格方案/采购价格方案变动_small.png)
+		!important;
+}
+/*采购价格变动审核*/
+.icon_16_price_pur_change_check {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/采购价格方案/采购价格变动审核_small.png)
+		!important;
+}
+/*采购价格方案设置*/
+.icon_16_price_pur_mas {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/采购价格方案/采购价格一览表_small.png)
+		!important;
+}
+/*采购价格方案审核*/
+.icon_16_price_pur_check {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/采购价格方案/采购价格方案审核_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*促销价格方案*/
+.icon_16_price_prom {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/促销价格方案/促销价格方案_small.png)
+		!important;
+}
+/*促销价格方案变动*/
+.icon_16_price_prom_mas {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/促销价格方案/促销价格方案设置_small.png)
+		!important;
+}
+/*促销价格变动审核*/
+.icon_16_price_prom_check {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/促销价格方案/促销价格方案审核_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*基本价格方案*/
+.icon_16_price_base {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/基本价格方案/基本价格方案_small.png)
+		!important;
+}
+/*基本价格方案变动*/
+.icon_16_price_base_change {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/基本价格方案/基本价格变动_small.png)
+		!important;
+}
+/*基本价格变动审核*/
+.icon_16_price_base_change_check {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/基本价格方案/基本价格变动审核_small.png)
+		!important;
+}
+/*基本价格方案设置*/
+.icon_16_price_base_mas {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/基本价格方案/基本价格方案设置_small.png)
+		!important;
+}
+/*基本价格方案审核*/
+.icon_16_price_base_check {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/基本价格方案/基本价格方案审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*特价促销方案*/
+.icon_16_price_spec {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/特价促销方案/特价促销方案_small.png)
+		!important;
+}
+/*特价促销方案变动*/
+.icon_16_price_spec_mas {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/特价促销方案/特价促销方案设置_small.png)
+		!important;
+}
+/*特价促销方案审核*/
+.icon_16_price_spec_check {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/特价促销方案/特价促销方案审核_small.png)
+		!important;
+}
+
+/*=====================SALE模块=====================*/
+/*订货管理*/
+.icon_16_so_pur {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/订货管理_small.png) !important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 报表 */
+.icon_16_so_report {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/报表/报表_small.png) !important;
+}
+/* 采购订单一览表 */
+.icon_16_pur_report {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/报表/采购订单一览表_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 采购订单 */
+.icon_16_pur {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/采购管理/采购管理_small.png)
+		!important;
+}
+/* 采购订单管理 */
+.icon_16_pur_mas {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/采购管理/采购订单管理_small.png)
+		!important;
+}
+/* 采购订单审核 */
+.icon_16_pur_check {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/采购管理/采购订单审核_small.png)
+		!important;
+}
+/* 采购申请单管理 */
+.icon_16_req_mas {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/采购管理/采购申请单管理_small.png)
+		!important;
+}
+/* 采购申请单审核 */
+.icon_16_req_check {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/采购管理/采购申请单审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 销售订单 */
+.icon_16_so {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/销售订单/销售订单_small.png)
+		!important;
+}
+/* 销售订单管理 */
+.icon_16_so_mas {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/销售订单/销售订单管理_small.png)
+		!important;
+}
+/* 销售订单审核 */
+.icon_16_so_check {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/销售订单/销售订单审核_small.png)
+		!important;
+}
+/* 订货单管理 */
+.icon_16_so_list {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/销售订单/订货单管理_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 仓储管理 */
+.icon_16_iv_mas {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/仓储管理_small.png) !important;
+}
+/* 货品条码 */
+.icon_16_iv_barcode {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/货品条码_small.png) !important;
+}
+/* 商品初入库 */
+.icon_16_iv_ini {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/商品初入库_small.png) !important;
+}
+
+/* 报表 */
+.icon_16_iv_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/报表_small.png) !important;
+}
+/* 采购退货一览表 */
+.icon_16_ivoc_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/采购退货一览表_small.png)
+		!important;
+}
+/* 产品收发存明细 */
+.icon_16_lgip_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/产品收发存明细_small.png)
+		!important;
+}
+/* 调拨单一览表 */
+.icon_16_ivtf_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/调拨单一览表_small.png)
+		!important;
+}
+/* 调整单一览表 */
+.icon_16_ivtz_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/调整单一览表_small.png)
+		!important;
+}
+/* 发货单一览表 */
+.icon_16_ivsale_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/发货单一览表_small.png)
+		!important;
+}
+/* 库存结余查询 */
+.icon_16_ivstock_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/库存结余查询_small.png)
+		!important;
+}
+/* 库存收发明细表 */
+.icon_16_lgip_detail_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/库存收发明细表_small.png)
+		!important;
+}
+/* 盘点单一览表 */
+.icon_16_ivinv_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/盘点单一览表_small.png)
+		!important;
+}
+/* 盘点单一览表 */
+.icon_16_ivpuri_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/入库单一览表_small.png)
+		!important;
+}
+/* 销售退货一览表 */
+.icon_16_ivor_report {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/报表/销售退货一览表_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 调拨单管理 */
+.icon_16_ivtf_mas {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/调拨单管理/调拨单管理_small.png)
+		!important;
+}
+/* 调拨单审核 */
+.icon_16_ivtf_check {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/调拨单管理/调拨单审核_small.png)
+		!important;
+}
+/* 调拨单管理 */
+.icon_16_ivtz_mas {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/调整单管理/调整单管理_small.png)
+		!important;
+}
+/* 调拨单审核 */
+.icon_16_ivtz_check {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/调整单管理/调整单审核_small.png)
+		!important;
+}
+/* 入库单 */
+.icon_16_ivpuri {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/入库单/入库单_small.png) !important;
+}
+/* 入库单管理 */
+.icon_16_ivpuri_mas {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/入库单/入库单管理_small.png)
+		!important;
+}
+/* 入库单管理审核 */
+.icon_16_ivpuri_check {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/入库单/入库单管理审核_small.png)
+		!important;
+}
+/* 商品盘点单 */
+.icon_16_ivpuri {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/商品盘点单/商品盘点单_small.png)
+		!important;
+}
+/* 商品盘点单管理 */
+.icon_16_ivpuri_mas {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/商品盘点单/盘点单管理_small.png)
+		!important;
+}
+/* 商品盘点单管理审核 */
+.icon_16_ivpuri_check {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/商品盘点单/商品盘点单_small.png)
+		!important;
+}
+
+/* 退货管理 */
+.icon_16_ivrtn {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/退货管理/退货管理_small.png)
+		!important;
+}
+/* 采购退货单管理 */
+.icon_16_ivoc_mas {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/退货管理/采购订货单管理_small.png)
+		!important;
+}
+/* 采购退货单审核 */
+.icon_16_ivoc_check {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/退货管理/采购退货单审核_small.png)
+		!important;
+}
+/* 销售退货单管理 */
+.icon_16_ivor_mas {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/退货管理/销售退货单管理_small.png)
+		!important;
+}
+/* 销售退货单审核 */
+.icon_16_ivor_check {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/退货管理/销售退货单审核_small.png)
+		!important;
+}
+
+/* 销售发货单 */
+.icon_16_ivrtn {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/销售发货单/销售发货单_small.png)
+		!important;
+}
+/* 发货单管理 */
+.icon_16_ivoc_mas {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/销售发货单/发货单管理_small.png)
+		!important;
+}
+/* 发货单审核 */
+.icon_16_ivoc_check {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/销售发货单/发货单审核_small.png)
+		!important;
+}
+/*=====================ar模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 销售应收 */
+.icon_16_ar {
+	background-image: url(../image/icons/20130525/6_AR/small/销售应收_small.png)
+		!important;
+}
+/* 应收款初始 */
+.icon_16_ar_ini {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/应收款初始_small.png) !important;
+}
+/* 应收款启用与月结 */
+.icon_16_ar_mon {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/应收款启用与月结_small.png) !important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 销售收款 */
+.icon_16_ar_rcp {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售收款/销售收款_small.png) !important;
+}
+/* 销售收款单管理 */
+.icon_16_ar_rcp_mas {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售收款/销售收款单管理_small.png)
+		!important;
+}
+/* 销售收款单审核 */
+.icon_16_ar_rcp_check {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售收款/销售收款单审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 销售发票 */
+.icon_16_ar_inv {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售发票/销售发票_small.png) !important;
+}
+/* 销售发票管理 */
+.icon_16_ar_inv_mas {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售发票/销售发票管理_small.png)
+		!important;
+}
+/* 销售发票审核 */
+.icon_16_ar_inv_check {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售发票/销售发票审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 销售其它费用 */
+.icon_16_ar_qtfy {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售其它费用/销售其它费用_small.png)
+		!important;
+}
+/* 销售其他费用管理 */
+.icon_16_ar_qtfy_mas {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售其它费用/销售其他费用管理_small.png)
+		!important;
+}
+/* 销售其它费用审核 */
+.icon_16_ar_qtfy_check {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售其它费用/销售其它费用审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 销售脱货发票 */
+.icon_16_ar_rtn {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售退货发票/销售脱货发票_small.png)
+		!important;
+}
+/* 销售其他费用管理 */
+.icon_16_ar_rtn_mas {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售退货发票/销售退货发票管理_small.png)
+		!important;
+}
+/* 销售其它费用审核 */
+.icon_16_ar_rtn_check {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售退货发票/销售退货发票审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 销售报表 */
+.icon_16_ar_report {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/报表/报表_small.png) !important;
+}
+/* 客户对账单 */
+.icon_16_ar_cust_chk {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/报表/客户对账单_small.png) !important;
+}
+/* 其他应收单汇总表 */
+.icon_16_ar_qtfy_report {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/报表/其他应收单汇总表_small.png)
+		!important;
+}
+/* 收款单汇总表 */
+.icon_16_ar_rcp_report {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/报表/收款单汇总表_small.png) !important;
+}
+/* 销售发票一览表 */
+.icon_16_ar_inv_report {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/报表/销售发票一览表_small.png)
+		!important;
+}
+/* 销售退货单汇总表 */
+.icon_16_ar_rtn_report {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/报表/销售退货单汇总表_small.png)
+		!important;
+}
+/* 应收款汇总 */
+.icon_16_ar_lgar_bal {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/报表/应收款汇总_small.png) !important;
+}
+/* 应收款总分类账 */
+.icon_16_ar_lgar_report {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/报表/应收款总分类账_small.png)
+		!important;
+}
+/*=====================ap模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 采购应付 */
+.icon_16_ap {
+	background-image: url(../image/icons/20130525/7_AP/small/采购应付_small.png)
+		!important;
+}
+/* 应付款初始 */
+.icon_16_ap_ini {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/应付款初始_small.png) !important;
+}
+
+/* 应付款启用与月结 */
+.icon_16_ap_mon {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/应付款启用与月结_small.png) !important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 采购付款 */
+.icon_16_ap_rcp {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购付款/采购付款_small.png) !important;
+}
+/* 采购付款单管理 */
+.icon_16_ap_rcp_mas {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购付款/采购付款单管理_small.png)
+		!important;
+}
+/* 采购付款单审核 */
+.icon_16_ap_rcp_check {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购付款/采购付款审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 采购发票 */
+.icon_16_ap_inv {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购发票/采购发票_small.png) !important;
+}
+/* 采购发票管理 */
+.icon_16_ap_inv_mas {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购发票/采购发票管理_small.png)
+		!important;
+}
+/* 采购发票审核 */
+.icon_16_ap_inv_check {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购发票/采购发票审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 采购其它费用 */
+.icon_16_ap_qtfy {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购其它费用管理/采购其它费用_small.png)
+		!important;
+}
+/* 采购其他费用管理 */
+.icon_16_ap_qtfy_mas {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购其它费用管理/采购其他费用管理_small.png)
+		!important;
+}
+/* 采购其它费用审核 */
+.icon_16_ap_qtfy_check {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购其它费用管理/采购其它费用审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 采购脱货发票 */
+.icon_16_ap_rtn {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购退发票/采购退货发票_small.png)
+		!important;
+}
+/* 采购退货发票管理 */
+.icon_16_ap_rtn_mas {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购退发票/采购退货发票管理_small.png)
+		!important;
+}
+/* 采购其它费用审核 */
+.icon_16_ap_rtn_check {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购退发票/采购脱货发票审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 采购报表 */
+.icon_16_ap_report {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/报表/报表_small.png) !important;
+}
+/* 供应商对账单 */
+.icon_16_ap_ven_chk {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/报表/供应商对账单_small.png) !important;
+}
+/* 其他应付单汇总表 */
+.icon_16_ap_qtfy_report {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/报表/其他应付单汇总表_small.png)
+		!important;
+}
+
+/* 采购发票汇总表 */
+.icon_16_ap_inv_report {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/报表/采购发票汇总表_small.png)
+		!important;
+}
+/* 采购退货汇总表 */
+.icon_16_ap_rtn_report {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/报表/采购退货汇总表_small.png)
+		!important;
+}
+/* 应付款汇总 */
+.icon_16_ap_lgap_bal {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/报表/应付款汇总_small.png) !important;
+}
+/* 应付款总分类账 */
+.icon_16_ap_lgap_report {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/报表/应付款总分类账_small.png)
+		!important;
+}
+
+/*=====================IP模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 生产管理 */
+.icon_16_ip {
+	background-image: url(../image/icons/20130525/8_IP/small/生产管理_small.png)
+		!important;
+}
+
+/* 生产基础资料设定 */
+.icon_16_ip_base {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产基础资料设定/生产基础资料设定_small.png)
+		!important;
+}
+
+/* 生产基础资料设定 */
+.icon_16_ip_gxfn {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产基础资料设定/工序方案管理_small.png)
+		!important;
+}
+/* 工序流程设定 */
+.icon_16_ip_gxlc {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产基础资料设定/工序流程设定_small.png)
+		!important;
+}
+/* 工种资料维护 */
+.icon_16_ip_gzzl {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产基础资料设定/工种资料维护_small.png)
+		!important;
+}
+/* 工资类型管理 */
+.icon_16_ip_gzlx {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产基础资料设定/工资类型管理_small.png)
+		!important;
+}
+/* 生产要素管理 */
+.icon_16_ip_sclx {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产基础资料设定/生产要素管理_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 生产订单 */
+.icon_16_ip_ord {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产订单/生产订单_small.png) !important;
+}
+/* 生产订单管理 */
+.icon_16_ip_ord_mas {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产订单/生产订单管理_small.png)
+		!important;
+}
+/* 生产订单审核 */
+.icon_16_ip_ord_check {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产订单/生产订单审核_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 生产任务单 */
+.icon_16_ip_pn {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产任务单/生产任务单_small.png)
+		!important;
+}
+/* 生产订单管理 */
+.icon_16_ip_pn_mas {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产任务单/生产任务单管理_small.png)
+		!important;
+}
+/* 生产订单审核 */
+.icon_16_ip_pn_check {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产任务单/生产任务单审核_small.png)
+		!important;
+}
+/* 生产任务单签收 */
+.icon_16_ip_pn_mark {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产任务单/生产任务单签收_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 网点订单 */
+.icon_16_ip_net {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/网点订单/网点订单_small.png) !important;
+}
+/* 网点订单管理 */
+.icon_16_ip_pn_mas {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/网点订单/网点订单管理_small.png)
+		!important;
+}
+/* 网点订单审核 */
+.icon_16_ip_pn_check {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/网点订单/网点订单审核_small.png)
+		!important;
+}
+
+/*=====================9_REPORT模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 商业智能分析 */
+.icon_16_report {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/商业智能分析_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 采购智能分析 */
+.icon_16_report_ap {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/采购智能分析/采购智能分析_small.png)
+		!important;
+}
+/* 付款汇总表 */
+.icon_16_report_ap_pay {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/采购智能分析/付款汇总表-small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 库存智能分析 */
+.icon_16_report_iv {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/库存智能分析/库存智能分析_small.png)
+		!important;
+}
+/* 库存汇总表 */
+.icon_16_report_iv_stock {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/库存智能分析/库存汇总表_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 销售智能分析 */
+.icon_16_report_ar {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/销售智能分析/销售智能分析_small.png)
+		!important;
+}
+/* 其他属性汇总分析 */
+.icon_16_report_ar_qtparam {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/销售智能分析/其他属性汇总分析_small.png)
+		!important;
+}
+/* 日销售额分析 */
+.icon_16_report_ar_day {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/销售智能分析/日销售额分析_small.png)
+		!important;
+}
+/* 收款汇总表 */
+.icon_16_report_ar_rcp {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/销售智能分析/收款汇总表_small.png)
+		!important;
+}
+/* 销售汇总表 */
+.icon_16_report_ar_group {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/销售智能分析/销售汇总表_small.png)
+		!important;
+}
+/* 销售属性汇总分析 */
+.icon_16_report_ar_param {
+	background-image:
+		url(../image/icons/20130525/9_REPORT/small/销售智能分析/销售属性汇总分析_small.png)
+		!important;
+}
+/*=====================10_VENDOR模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 供应商平台 */
+.icon_16_vendor {
+	background-image:
+		url(../image/icons/20130525/10_VENDOR/small/供应商平台_small.png)
+		!important;
+}
+/* 供应商平台 */
+.icon_16_vendor_barcode {
+	background-image:
+		url(../image/icons/20130525/10_VENDOR/small/供应商条码单_small.png)
+		!important;
+}
+/* 供应商投诉 */
+.icon_16_vendor_tousu {
+	background-image:
+		url(../image/icons/20130525/10_VENDOR/small/供应商投诉_small.png)
+		!important;
+}
+/* 条码单报表 */
+.icon_16_vendor_barcode_report {
+	background-image:
+		url(../image/icons/20130525/10_VENDOR/small/条码单报表_small.png)
+		!important;
+}
+/*=====================11_NETSHOP模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 网络商城接口 */
+.icon_16_net {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/网络商城接口_small.png)
+		!important;
+}
+/* 接口应用管理 */
+.icon_16_net_api {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/接口应用管理_small.png)
+		!important;
+}
+/* 快递公司管理 */
+.icon_16_net_kd {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/快递公司管理_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* QQ网购 */
+.icon_16_qq {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/QQ网购/QQ网购_small.png)
+		!important;
+}
+/* QQ网购分类 */
+.icon_16_qq_type {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/QQ网购/QQ网购分类_small.png)
+		!important;
+}
+/* 网购产品列表 */
+.icon_16_qq_prolist {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/QQ网购/网购产品列表_small.png)
+		!important;
+}
+/* 网购打印机 */
+.icon_16_qq_printer {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/QQ网购/网购打印机_small.png)
+		!important;
+}
+/* 网购交易管理 */
+.icon_16_qq_trade_mas {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/QQ网购/网购交易管理_small.png)
+		!important;
+}
+/* 网购交易审核 */
+.icon_16_qq_trade_check {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/QQ网购/网购交易审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 京东商城 */
+.icon_16_jd {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/东京商城/京东商城_small.png)
+		!important;
+}
+/* 订单打印审核 */
+.icon_16_jd_trade_print_check {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/东京商城/订单打印审核_small.png)
+		!important;
+}
+/* 京东订单打印SOP */
+.icon_16_jd_trade_print_sop {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/东京商城/京东订单打印SOP_small.png)
+		!important;
+}
+/* 京东订单管理SOP */
+.icon_16_jd_trade_mas_sop {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/东京商城/京东订单管理SOP_small.png)
+		!important;
+}
+/* 京东卖家地址库 */
+.icon_16_jd_seller_adds {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/东京商城/京东卖家地址库_small.png)
+		!important;
+}
+/* 商城产品管理 */
+.icon_16_jd_pro_mas {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/东京商城/商城产品管理_small.png)
+		!important;
+}
+/* 商城分类管理 */
+.icon_16_jd_type {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/东京商城/商城分类管理_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 拍拍 */
+.icon_16_paipai {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/拍拍/拍拍_small.png)
+		!important;
+}
+/* 拍拍产品列表 */
+.icon_16_paipai_prolist {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/拍拍/拍拍产品列表_small.png)
+		!important;
+}
+/* 拍拍订单打印 */
+.icon_16_paipai_trade_print {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/拍拍/拍拍订单打印_small.png)
+		!important;
+}
+/* 拍拍交易管理 */
+.icon_16_paipai_trade_mas {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/拍拍/拍拍交易管理_small.png)
+		!important;
+}
+/* 拍拍交易审核 */
+.icon_16_paipai_trade_check {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/拍拍/拍拍交易审核_small.png)
+		!important;
+}
+/* 拍拍卖家地址库 */
+.icon_16_paipai_seller_adds {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/拍拍/拍拍卖家地址库_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 淘宝 */
+.icon_16_taobao {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/淘宝/淘宝_small.png)
+		!important;
+}
+/* 淘宝产品分类 */
+.icon_16_taobao_pro_type {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/淘宝/淘宝产品分类_small.png)
+		!important;
+}
+/* 淘宝产品列表 */
+.icon_16_taobao_prolist {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/淘宝/淘宝产品列表_small.png)
+		!important;
+}
+/* 淘宝订单打印 */
+.icon_16_taobao_trade_print {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/淘宝/淘宝订单打印_small.png)
+		!important;
+}
+/* 淘宝交易管理 */
+.icon_16_taobao_trade_mas {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/淘宝/淘宝交易管理_small.png)
+		!important;
+}
+/* 淘宝交易审核 */
+.icon_16_taobao_trade_check {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/淘宝/淘宝交易审核_small.png)
+		!important;
+}
+/* 淘宝卖家地址库 */
+.icon_16_taobao_seller_adds {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/淘宝/淘宝卖家地址库_small.png)
+		!important;
+}
+/* 淘宝退款管理 */
+.icon_16_taobao_trade_rtn {
+	background-image:
+		url(../image/icons/20130525/11_NETSHOP/small/淘宝/淘宝退款管理_small.png)
+		!important;
+}
+
+/*=====================12_BASEINFO模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 基础资料 */
+.icon_16_base {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/基础资料_small.png)
+		!important;
+}
+/* 承运商管理 */
+.icon_16_base_cyun {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/承运商管理_small.png)
+		!important;
+}
+/* 地区维护 */
+.icon_16_base_area {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/地区维护_small.png)
+		!important;
+}
+/* 费用类型 */
+.icon_16_base_fytype {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/费用类型_small.png)
+		!important;
+}
+/* 岗位管理 */
+.icon_16_base_gw {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/岗位管理_small.png)
+		!important;
+}
+/* 其它基础资料 */
+.icon_16_base_qt {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/其它基础资料_small.png)
+		!important;
+}
+/* 销售类型管理 */
+.icon_16_base_saletype {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/销售类型管理_small.png)
+		!important;
+}
+/* 支付方式 */
+.icon_16_base_payment {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/支付方式_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 币种汇率 */
+.icon_16_rate {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/币种汇率/币种汇率_small.png)
+		!important;
+}
+/* 汇率历史 */
+.icon_16_rate_his {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/币种汇率/汇率历史_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 部门管理 */
+.icon_16_dept_mas {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/部门管理/部门管理_small.png)
+		!important;
+}
+/* 部门类型 */
+.icon_16_dept_type {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/部门管理/部门类型_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 部门管理 */
+.icon_16_wh {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/仓库与库位/仓库与库位_small.png)
+		!important;
+}
+/* 仓库管理 */
+.icon_16_wh_mas {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/仓库与库位/仓库管理_small.png)
+		!important;
+}
+/* 库位管理 */
+.icon_16_whseat_mas {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/仓库与库位/库位管理_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 供应商信息维护 */
+.icon_16_base_vendor {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/供应商信息维护/供应商信息维护_small.png)
+		!important;
+}
+/* 供应商管理 */
+.icon_16_base_vendor_mas {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/供应商信息维护/供应商管理_small.png)
+		!important;
+}
+/* 供应商类型 */
+.icon_16_base_vendor_type {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/供应商信息维护/供应商类型_small.png)
+		!important;
+}
+/* 加工类别设置 */
+.icon_16_base_vendor_wset {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/供应商信息维护/加工类别设置_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 货号编码字典设置 */
+.icon_16_item_code {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/货号编码字典设置/货号编码字典设置_small.png)
+		!important;
+}
+/* 编码字典分类 */
+.icon_16_item_code_type {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/货号编码字典设置/编码字典分类_small.png)
+		!important;
+}
+/* 编码字典设置 */
+.icon_16_item_code_set {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/货号编码字典设置/编码字典设置_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 货品管理 */
+.icon_16_item {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/货品管理/货品管理_small.png)
+		!important;
+}
+/* 货品分类维护 */
+.icon_16_item_type {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/货品管理/货品分类维护_small.png)
+		!important;
+}
+/* 货品附加属性 */
+.icon_16_item_qtparam {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/货品管理/货品附加属性_small.png)
+		!important;
+}
+/* 货品类型维护 */
+.icon_16_item_type {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/货品管理/货品类型维护_small.png)
+		!important;
+}
+/* 货品属性维护 */
+.icon_16_item_param {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/货品管理/货品属性维护_small.png)
+		!important;
+}
+/* 货品资料维护 */
+.icon_16_item_list {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/货品管理/货品资料维护_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 客户信息维护 */
+.icon_16_cust {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/客户信息维护/客户信息维护_small.png)
+		!important;
+}
+/* 客户等级 */
+.icon_16_cust_type {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/客户信息维护/客户等级_small.png)
+		!important;
+}
+/* 客户管理 */
+.icon_16_cust_mas {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/客户信息维护/客户管理_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 审批流程设置 */
+.icon_16_check_set {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/审批流程设置/审批流程设置_small.png)
+		!important;
+}
+/* 审批流程 */
+.icon_16_check_lc {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/审批流程设置/审批流程_small.png)
+		!important;
+}
+/* 审批业务 */
+.icon_16_check_yw {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/审批流程设置/审批业务_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 组织与机构 */
+.icon_16_union_and {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/组织与机构/组织与机构_small.png)
+		!important;
+}
+/* 组织机构 */
+.icon_16_union {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/组织与机构/组织机构_small.png)
+		!important;
+}
+/* 组织机构管理 */
+.icon_16_union_mas {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/组织与机构/组织机构管理_small.png)
+		!important;
+}
+/* 组织机构类型 */
+.icon_16_union_type {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/组织与机构/组织机构类型_small.png)
+		!important;
+}
+
+/*=====================13_SYS模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 系统公共模块 */
+.icon_16_sys {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统公共模块_small.png) !important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 系统授权管理 */
+.icon_16_sys_role {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统授权管理/系统授权管理_small.png)
+		!important;
+}
+/* 角色管理 */
+.icon_16_sys_role_mas {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统授权管理/角色管理_small.png)
+		!important;
+}
+/* 角色授权 */
+.icon_16_sys_role_give {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统授权管理/角色授权_small.png)
+		!important;
+}
+/* 权限模板 */
+.icon_16_sys_role_temp {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统授权管理/权限模板_small.png)
+		!important;
+}
+/* 系统用户管理 */
+.icon_16_sys_user {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统授权管理/系统用户管理_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 系统资源管理 */
+.icon_16_sys_res {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统资源管理/系统资源管理_small.png)
+		!important;
+}
+/* ERP数据库设置 */
+.icon_16_sys_erp {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统资源管理/ERP数据库设置_small.png)
+		!important;
+}
+/* 单据前缀设置 */
+.icon_16_sys_prefix {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统资源管理/单据前缀设置_small.png)
+		!important;
+}
+/* 菜单管理 */
+.icon_16_sys_menu {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统资源管理/菜单管理_small.png)
+		!important;
+}
+/* 功能与按钮 */
+.icon_16_sys_function {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统资源管理/功能与按钮_small.png)
+		!important;
+}
+/* 系统参数设置 */
+.icon_16_sys_param {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统资源管理/系统参数设置_small.png)
+		!important;
+}
+/* 系统登录日志 */
+.icon_16_sys_login {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统资源管理/系统登录日志_small.png)
+		!important;
+}
+/* 系统模块设置 */
+.icon_16_sys_temp {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统资源管理/系统模块设置_small.png)
+		!important;
+}
+/* 系统日志 */
+.icon_16_sys_log {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/系统资源管理/系统日志_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 新闻管理 */
+.icon_16_sys_new {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/新闻管理/新闻管理_small.png)
+		!important;
+}
+/* 新闻类型 */
+.icon_16_sys_new_type {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/新闻管理/新闻类型_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 站内消息 */
+.icon_16_sys_mes {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/站内消息/站内消息_small.png)
+		!important;
+}
+/* 我的发件箱 */
+.icon_16_sys_mes_send {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/站内消息/我的发件箱_small.png)
+		!important;
+}
+/* 我的收件箱 */
+.icon_16_sys_mes_rec {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/站内消息/我的收件箱_small.png)
+		!important;
+}
+/* 消息管理 */
+.icon_16_sys_mes_mas {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/站内消息/消息管理_small.png)
+		!important;
+}
+
+/*=====================14_SEAT模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 库位管理 */
+.icon_16_seat {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位管理_small.png) !important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 库位出库 */
+.icon_16_seat_out {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位出库/库位出库_small.png)
+		!important;
+}
+/* 库位出库管理 */
+.icon_16_seat_out_mas {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位出库/库位出库管理_small.png)
+		!important;
+}
+/* 库位出库审核 */
+.icon_16_seat_out_check {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位出库/库位出库审核_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 库位调整 */
+.icon_16_seat_change {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位调整/库位调整_small.png)
+		!important;
+}
+/* 库位调整管理 */
+.icon_16_seat_change_mas {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位调整/库位调整管理_small.png)
+		!important;
+}
+/* 库位调整审核 */
+.icon_16_seat_change_check {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位调整/库位调整审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 库位入库 */
+.icon_16_seat_in {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位入库/库位入库_small.png)
+		!important;
+}
+/* 库位入库管理 */
+.icon_16_seat_in_mas {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位入库/库位出库管理_small.png)
+		!important;
+}
+/* 库位入库审核 */
+.icon_16_seat_in_check {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位入库/库位入库审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 库位入库 */
+.icon_16_seat_report {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/报表/报表_small.png) !important;
+}
+/* 库位出入库报表 */
+.icon_16_seat_in_out {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/报表/库位出入库报表_small.png)
+		!important;
+}
+/*=====================15_RESOURCE=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 资源管理 */
+.icon_16_res {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/资源管理_small.png)
+		!important;
+}
+/* 办事指南 */
+.icon_16_res_sourth {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/办事指南_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 广告法务管理 */
+.icon_16_res_gg {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/广告法务管理/广告法务管理_small.png)
+		!important;
+}
+/* 广告法务类别 */
+.icon_16_res_gg_type {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/广告法务管理/广告法务类别_small.png)
+		!important;
+}
+/* 广告法务类别设置 */
+.icon_16_res_gg_type_set {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/广告法务管理/广告法务类别设置_small.png)
+		!important;
+}
+/* 广告法务内容 */
+.icon_16_res_gg_content {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/广告法务管理/广告法务内容_small.png)
+		!important;
+}
+/* 广告法务资料维护 */
+.icon_16_res_gg_list {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/广告法务管理/广告法务资料维护_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 广告法务管理 */
+.icon_16_res_tx {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/事物提醒设置/事物提醒设置_small.png)
+		!important;
+}
+/* 事务提醒管理 */
+.icon_16_res_tx_mas {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/事物提醒设置/事务提醒管理_small.png)
+		!important;
+}
+/* 事务提醒分类管理 */
+.icon_16_res_tx_type {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/事物提醒设置/事务提醒分类管理_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 报表 */
+.icon_16_res_report {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/报表/报表_small.png)
+		!important;
+}
+/* 日常项一览表 */
+.icon_16_res_day_rpt {
+	background-image:
+		url(../image/icons/20130525/15_RESOURCE/small/报表/日常项一览表_small.png)
+		!important;
+}
+
+/*=====================17_ORD模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 系统公共模块 */
+.icon_16_ord {
+	background-image:
+		url(../image/icons/20130525/17_ORD/small/报货系统_small.png) !important;
+}
+/* 二维码管理 */
+.icon_16_ord_qrcode {
+	background-image:
+		url(../image/icons/20130525/17_ORD/small/二维码管理_small.png) !important;
+}
+/* 广告视频 */
+.icon_16_ord_vcr {
+	background-image:
+		url(../image/icons/20130525/17_ORD/small/广告视频_small.png) !important;
+}
+/* 客服管理 */
+.icon_16_ord_server {
+	background-image:
+		url(../image/icons/20130525/17_ORD/small/客服管理_small.png) !important;
+}
+/* 系统设置 */
+.icon_16_ord_sys {
+	background-image:
+		url(../image/icons/20130525/17_ORD/small/系统设置_small.png) !important;
+}
+/* 销售类型与品牌 */
+.icon_16_ord_brand {
+	background-image:
+		url(../image/icons/20130525/17_ORD/small/销售类型与品牌_small.png) !important;
+}
+
+/*=====================19BOM模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* Bom维护 */
+.icon_16_bom {
+	background-image:
+		url(../image/icons/20130525/19_BOM/small/Bom维护_small.png) !important;
+}
+/* 物料清单 */
+.icon_16_bom_qd {
+	background-image:
+		url(../image/icons/20130525/19_BOM/small/物料清单/物料清单_small.png)
+		!important;
+}
+/* 物料清单管理 */
+.icon_16_bom_mas {
+	background-image:
+		url(../image/icons/20130525/19_BOM/small/物料清单/物料清单管理_small.png)
+		!important;
+}
+/* 物料清单 */
+.icon_16_bom_check {
+	background-image:
+		url(../image/icons/20130525/19_BOM/small/物料清单/物料清单审核_small.png)
+		!important;
+}
+
+/*=====================20_ROOM模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 宿舍管理 */
+.icon_16_room {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/宿舍管理_small.png) !important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 基础设置 */
+.icon_16_room_base {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/基础维护/基础设置_small.png)
+		!important;
+}
+/* 床位安排方案 */
+.icon_16_room_bed {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/基础维护/床位安排方案_small.png)
+		!important;
+}
+/* 宿舍费用类型 */
+.icon_16_room_type {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/基础维护/宿舍费用类型_small.png)
+		!important;
+}
+/* 宿舍楼维护 */
+.icon_16_room_block {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/基础维护/宿舍楼维护_small.png)
+		!important;
+}
+/* 住宿费用标准 */
+.icon_16_room_fee {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/基础维护/住宿费用标准_small.png)
+		!important;
+}
+/* 房间管理 */
+.icon_16_room_dorm {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/基础维护/房间管理/房间管理_small.png)
+		!important;
+}
+/* 房间信息维护 */
+.icon_16_room_dorm_list {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/基础维护/房间管理/房间信息维护_small.png)
+		!important;
+}
+/* 房间财产登记 */
+.icon_16_room_dorm_cc {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/基础维护/房间管理/房间财产登记_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 住宿管理 */
+.icon_16_room_mas {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/住宿管理/住宿管理_small.png)
+		!important;
+}
+/* 住宿管理 */
+.icon_16_room_empin {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/住宿管理/入住管理/入住管理_small.png)
+		!important;
+}
+/* 员工入住管理单 */
+.icon_16_room_empin_mas {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/住宿管理/入住管理/员工入住管理单_small.png)
+		!important;
+}
+/* 员工入住审核单 */
+.icon_16_room_empin_check {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/住宿管理/入住管理/员工入住审核单_small.png)
+		!important;
+}
+/* 迁出管理 */
+.icon_16_room_empout {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/住宿管理/迁出管理/迁出管理_small.png)
+		!important;
+}
+/* 员工迁出管理 */
+.icon_16_room_empout_mas {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/住宿管理/迁出管理/员工迁出管理_small.png)
+		!important;
+}
+/* 员工迁出审核单 */
+.icon_16_room_empout_check {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/住宿管理/迁出管理/员工迁出审核单_small.png)
+		!important;
+}
+/* 换房管理 */
+.icon_16_room_change {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/住宿管理/换房管理/换房管理_small.png)
+		!important;
+}
+/* 员工换房管理 */
+.icon_16_room_change_mas {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/住宿管理/换房管理/员工换房管理_small.png)
+		!important;
+}
+/* 员工换房审核单 */
+.icon_16_room_change_check {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/住宿管理/换房管理/员工换房审核单_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 住宿管理 */
+.icon_16_room_mas {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/日常管理/日常管理_small.png)
+		!important;
+}
+/* 收费管理 */
+.icon_16_room_blockfee {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/日常管理/收费管理/收费管理_small.png)
+		!important;
+}
+/* 宿舍耗能管理单 */
+.icon_16_room_blockfee_mas {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/日常管理/收费管理/宿舍收费管理单_small.png)
+		!important;
+}
+/* 宿舍耗能审核单 */
+.icon_16_room_blockfee_check {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/日常管理/收费管理/宿舍收费审核单_small.png)
+		!important;
+}
+/* 违纪管理 */
+.icon_16_room_breachmas {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/日常管理/违纪管理/违纪管理_small.png)
+		!important;
+}
+/* 宿舍违纪管理单 */
+.icon_16_room_breachmas_mas {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/日常管理/违纪管理/宿舍违纪管理单_small.png)
+		!important;
+}
+/* 宿舍违纪审核单 */
+.icon_16_room_breachmas_check {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/日常管理/违纪管理/宿舍违纪审核单_small.png)
+		!important;
+}
+
+/* 维修管理 */
+.icon_16_room_maintainmas {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/日常管理/维修管理/维修管理_small.png)
+		!important;
+}
+/* 财产管理维修单 */
+.icon_16_room_maintainmas_mas {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/日常管理/维修管理/财产管理维修单_small.png)
+		!important;
+}
+/* 财产维护审核单 */
+.icon_16_room_maintainmas_check {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/日常管理/维修管理/财产维护审核单_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 报表 */
+.icon_16_room_report {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/报表/报表_small.png) !important;
+}
+/* 床位状态信息表 */
+.icon_16_room_report_bunkstatu {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/报表/床位状态信息表_small.png)
+		!important;
+}
+/* 房态表 */
+.icon_16_room_report_dorm {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/报表/房态表_small.png) !important;
+}
+/* 耗费一览表(水电等) */
+.icon_16_room_report_blockfee {
+	background-image: url(../ image/ icons/ 20130525/ 20_ROOM/ small/ 报表/ 耗费一览表(水电等)
+		_small.png) !important;
+}
+/* 可入住一览表 */
+.icon_16_room_report_canin {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/报表/可入住一览表_small.png)
+		!important;
+}
+/* 入住人数统计 */
+.icon_16_room_report_in_sum {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/报表/入住人数统计_small.png)
+		!important;
+}
+/* 入住人员信息一览表 */
+.icon_16_room_report_in_detail {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/报表/入住人员信息一览表_small.png)
+		!important;
+}
+
+/*=====================21_LBR模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*委外加工 */
+.icon_16_lbr {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外加工_small.png) !important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 报表 */
+.icon_16_lbr_report {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/报表/报表_small.png) !important;
+}
+/* 工价一览表 */
+.icon_16_lbr_report_price {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/报表/工价一览表_small.png)
+		!important;
+}
+/* 计划核查一览表 */
+.icon_16_lbr_report_plan {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/报表/计划核查一览表_small.png)
+		!important;
+}
+/* 委外收货单报表 */
+.icon_16_lbr_report_receive {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/报表/委外收货单报表_small.png)
+		!important;
+}
+/* 委外送料单报表 */
+.icon_16_lbr_report_send {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/报表/委外送料单报表_small.png)
+		!important;
+}
+/* 验收单一览表 */
+.icon_16_lbr_report_check {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/报表/验收单一览表_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 委外工价 */
+.icon_16_lbr_price {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外工价/委外工价_small.png)
+		!important;
+}
+/* 工价管理 */
+.icon_16_lbr_price_mas {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外工价/工价管理_small.png)
+		!important;
+}
+/* 工价审核 */
+.icon_16_lbr_price_check {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外工价/工价审核_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 委外计划 */
+.icon_16_lbr_plan {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外计划/委外计划_small.png)
+		!important;
+}
+/* 计划单管理 */
+.icon_16_lbr_plan_mas {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外计划/计划单管理_small.png)
+		!important;
+}
+/* 计划单审核 */
+.icon_16_lbr_plan_check {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外计划/计划单审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 委外收货 */
+.icon_16_lbr_receive {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外收获/委外收货_small.png)
+		!important;
+}
+/* 委外收货单管理 */
+.icon_16_lbr_receive_mas {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外收获/委外收货单管理_small.png)
+		!important;
+}
+/* 委外收获单审核 */
+.icon_16_lbr_receive_check {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外收获/委外收获单审核_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 委外送料 */
+.icon_16_lbr_send {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外送料/委外送料_small.png)
+		!important;
+}
+/* 委外收货单管理 */
+.icon_16_lbr_send_mas {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外送料/委外送料单管理_small.png)
+		!important;
+}
+/* 委外收获单审核 */
+.icon_16_lbr_send_check {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外送料/委外送料审核_small.png)
+		!important;
+}
+
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 委外验收 */
+.icon_16_lbr_check {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外验收/委外验收_small.png)
+		!important;
+}
+/* 委外收货单管理 */
+.icon_16_lbr_check_mas {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外验收/委外验收单管理_small.png)
+		!important;
+}
+/* 委外收获单审核 */
+.icon_16_lbr_check_check {
+	background-image:
+		url(../image/icons/20130525/21_LBR/small/委外验收/委外验货单审核_small.png)
+		!important;
+}
+
+/*=====================18 shop模块=====================*/
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/* 门店管理 */
+.icon_16_shop {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店管理_small.png) !important;
+}
+
+.icon_16_shop_rpt {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/报表_small.png) !important;
+}
+
+.icon_16_shop_pre_charge {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡充值_small.png) !important;
+}
+
+.icon_16_shop_pre_back {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡回收_small.png) !important;
+}
+
+.icon_16_shop_pre_type {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡类型_small.png) !important;
+}
+
+.icon_16_shop_pre_send {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡投放_small.png) !important;
+}
+
+.icon_16_shop_pre_sell {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡销售_small.png) !important;
+}
+
+.icon_16_shop_pre_make {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡制卡_small.png) !important;
+}
+
+.icon_16_shop_mem {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员管理_small.png) !important;
+}
+
+.icon_16_shop_mem_charge {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡充值_small.png) !important;
+}
+
+.icon_16_shop_mem_sell {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡发放_small.png) !important;
+}
+
+.icon_16_shop_mem_change {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡换卡_small.png) !important;
+}
+
+.icon_16_shop_mem_back {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡回收_small.png) !important;
+}
+
+.icon_16_shop_mem_send {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡投放_small.png) !important;
+}
+
+.icon_16_shop_mem_point {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/积分额调整_small.png) !important;
+}
+
+.icon_16_shop_mem_date {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/卡期限调整_small.png) !important;
+}
+
+.icon_16_shop_mem_amt {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/卡余额调整_small.png) !important;
+}
+
+.icon_16_shop_base {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料_small.png) !important;
+}
+
+.icon_16_shop_front {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店前台_small.png) !important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+.icon_16_shop_rpt_sale {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/报表/店面销售一览表_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+.icon_16_shop_pre_back_mas {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡回收/储值卡回收管理_small.png)
+		!important;
+}
+
+.icon_16_shop_pre_back_chk {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡回收/储值卡回收审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+.icon_16_shop_pre_send_mas {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡投放/储值卡投放管理_small.png)
+		!important;
+}
+
+.icon_16_shop_pre_send_sign {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡投放/储值卡投放签收_small.png)
+		!important;
+}
+
+.icon_16_shop_pre_send_chk {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡回收/储值卡回收审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+.icon_16_shop_pre_make_mas {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡制卡/储值卡制卡管理_small.png)
+		!important;
+}
+
+.icon_16_shop_pre_make_sign {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡制卡/储值卡制卡审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+.icon_16_shop_mem_list {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员管理/会员资料_small.png)
+		!important;
+}
+
+.icon_16_shop_mem_card {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员管理/会员卡一览_small.png)
+		!important;
+}
+
+.icon_16_shop_mem_type {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员管理/会员卡类别_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+.icon_16_shop_mem_change_mas {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡换卡/换卡管理_small.png)
+		!important;
+}
+
+.icon_16_shop_mem_change_chk {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡换卡/换卡审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+.icon_16_shop_mem_back_mas {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡回收/回收管理_small.png)
+		!important;
+}
+
+.icon_16_shop_mem_back_chk {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡回收/回收审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+.icon_16_shop_mem_send_mas {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡投放/投放管理_small.png)
+		!important;
+}
+
+.icon_16_shop_mem_send_chk {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡投放/投放审核_small.png)
+		!important;
+}
+
+.icon_16_shop_mem_send_sign {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡投放/投放签收_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+.icon_16_shop_base_charge_type {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料/充值类型_small.png)
+		!important;
+}
+
+.icon_16_shop_base_clerk {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料/店员维护_small.png)
+		!important;
+}
+
+.icon_16_shop_base_payment {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料/结算方式_small.png)
+		!important;
+}
+
+.icon_16_shop_base_payment {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料/结算方式_small.png)
+		!important;
+}
+
+.icon_16_shop_base_type {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料/门店类型_small.png)
+		!important;
+}
+
+.icon_16_shop_base_shop {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料/门店维护_small.png)
+		!important;
+}
+
+.icon_16_shop_base_set {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料/收银默认设置_small.png)
+		!important;
+}
+
+.icon_16_shop_base_checkouter {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料/收银台维护_small.png)
+		!important;
+}
+
+.icon_16_shop_base_temp {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料/小票打印模版_small.png)
+		!important;
+}
+
+.icon_16_shop_base_charge {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店基础资料/支付方式_small.png)
+		!important;
+}
+
+.icon_16_shop_front_over {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店前台/交办结账_small.png)
+		!important;
+}
+
+.icon_16_shop_front_poslist {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店前台/结算一览_small.png)
+		!important;
+}
+
+.icon_16_shop_front_pos {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/门店前台/门店结算_small.png)
+		!important;
+}
+
+.icon_16_shop_pre_mas {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡管理_small.png) !important;
+}
+
+.icon_16_shop_pre_card {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/储值卡资料_small.png) !important;
+}
+
+.icon_16_shop_mem_make {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡制卡/会员卡制卡_small.png)
+		!important;
+}
+
+.icon_16_shop_mem_make_mas {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡制卡/制卡管理_small.png)
+		!important;
+}
+
+.icon_16_shop_mem_make_chk {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员卡制卡/制卡审核_small.png)
+		!important;
+}
+/*-----------------------我是模块内各个菜单的分割线---------------------*/
+/*-----------------------ENTERPRISE---------------------*/
+/* 产品管理 */
+.icon_16_ent_product_mas {
+	background-image:
+		url(../image/icons/20130525/20_ep/small/产品管理_small.png) !important;
+}
+
+/* 导航管理 */
+.icon_16_ent_nav_mas {
+	background-image:
+		url(../image/icons/20130525/20_ep/small/导航管理_small.png) !important;
+}
+
+/* 广告管理 */
+.icon_16_ent_adv_mas {
+	background-image:
+		url(../image/icons/20130525/20_ep/small/广告管理_small.png) !important;
+}
+
+/* 会员等级管理 */
+.icon_16_ent_member_level_mas {
+	background-image:
+		url(../image/icons/20130525/20_ep/small/会员等级管理_small.png) !important;
+}
+
+/* 会员管理 */
+.icon_16_ent_member_mas {
+	background-image:
+		url(../image/icons/20130525/20_ep/small/会员管理_small.png) !important;
+}
+
+/* 客服管理 */
+.icon_16_ent_server_mas {
+	background-image:
+		url(../image/icons/20130525/20_ep/small/客服管理_small.png) !important;
+}
+
+/* 企业门户 */
+.icon_16_ent_mas {
+	background-image:
+		url(../image/icons/20130525/20_ep/small/企业门户_small.png) !important;
+}
+
+/* 文章管理 */
+.icon_16_ent_article_mas {
+	background-image:
+		url(../image/icons/20130525/20_ep/small/文章管理_small.png) !important;
+}
+
+/* 文章类型 */
+.icon_16_ent_article_type {
+	background-image:
+		url(../image/icons/20130525/20_ep/small/文章类型_small.png) !important;
+}
+
+/* 友情链接 */
+.icon_16_ent_link {
+	background-image:
+		url(../image/icons/20130525/20_ep/small/友情连接_small.png) !important;
+}
+
+/*------------------------------------------wj修改小图标------------------------------------*/
+/**----------- OA -----------**/
+/*厂牌型号管理*/
+.icon_16_room_report_chanpai {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/厂牌型号管理_small.png) !important;
+}
+/*车辆信息*/
+.icon_16_oa_car {
+	background-image: url(../image/icons/20130525/1_OA/small/车辆信息_small.png)
+		!important;
+}
+/*车辆使用审核*/
+.icon_16_oa_carreq {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/车辆使用审核_small.png) !important;
+}
+/*车辆维护申请*/
+.icon_16_oa_carreqgx {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/车辆维护申请_small.png) !important;
+}
+/*车辆使用申请*/
+.icon_16_oa_carrepair {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/车辆使用申请_small.png) !important;
+}
+/*车辆维护审核*/
+.icon_16_oa_carrepairgx {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/车辆维护审核_small.png) !important;
+}
+/*办公用品申请一览表*/
+.icon_16_oa_oaofficewupplyrpt {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/办公用品申请一览表_small.png) !important;
+}
+/*车辆类型管理*/
+.icon_16_oa_cartype {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/车辆类型管理_small.png) !important;
+}
+/*文件分类管理*/
+.icon_16_oa_filegroup {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/文件分类管理_small.png) !important;
+}
+/*燃料类型管理*/
+.icon_16_oa_fueltype {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/燃料类型管理_small.png) !important;
+}
+
+/*个人文件夹*/
+.icon_16_oa_grfiles {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/个人文件夹_small.png) !important;
+}
+/*个人文件管理*/
+.icon_16_oa_grfilegl {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/个人文件管理_small.png) !important;
+}
+/*个人文件回收站*/
+.icon_16_oa_grhs {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/个人文件回收站_small.png) !important;
+}
+/*公司文件夹*/
+.icon_16_oa_gsfiles {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/公司文件夹_small.png) !important;
+}
+/*公司文件回收站*/
+.icon_16_oa_gsfilehs {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/公司文件回收站_small.png) !important;
+}
+/*邮件管理*/
+.icon_16_oa_emailgl {
+	background-image: url(../image/icons/20130525/1_OA/small/邮件管理_small.png)
+		!important;
+}
+/*车辆管理*/
+.icon_16_oa_cargl {
+	background-image: url(../image/icons/20130525/1_OA/small/车辆管理_small.png)
+		!important;
+}
+/*车辆使用管理*/
+.icon_16_oa_carsygl {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/车辆使用管理_small.png) !important;
+}
+/*车辆维护管理*/
+.icon_16_oa_carwhgl {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/车辆维护管理_small.png) !important;
+}
+/*报表*/
+.icon_16_oa_smaill {
+	background-image: url(../image/icons/20130525/1_OA/small/报表_small.png)
+		!important;
+}
+/*我办理的工作*/
+.icon_16_oa_blwork {
+	background-image:
+		url(../image/icons/20130525/1_OA/small/我办理的工作_small.png) !important;
+}
+/*印章维护*/
+.icon_16_oa_yz {
+	background-image: url(../image/icons/20130525/1_OA/small/印章维护_small.png)
+		!important;
+}
+/*印章审核*/
+.icon_16_yz_check {
+	background-image: url(../image/icons/20130525/1_OA/small/印章审核_small.png)
+		!important;
+}
+
+/**----------- 人力资源 -----------**/
+/*员工实时报表*/
+.icon_16_pa_paemplivedayrpt {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/员工实时报表_small.png) !important;
+}
+/*学历管理*/
+.icon_16_pa_degree {
+	background-image: url(../image/icons/20130525/2_PA/small/学历管理_small.png)
+		!important;
+}
+/*调动性质管理*/
+.icon_16_pa_transfertype {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/调动性质管理_small.png) !important;
+}
+/*工资类型管理*/
+.icon_16_pa_salarytype {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/工资类型管理_small.png) !important;
+}
+/*计生类型管理*/
+.icon_16_pa_familyplantype {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/计生类型管理_small.png) !important;
+}
+/*迁出原因管理*/
+.icon_16_pa_leavetype {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/迁出原因管理_small.png) !important;
+}
+/*离职类型管理*/
+.icon_16_pa_quittype {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/离职类型管理_small.png) !important;
+}
+/*政治面貌管理*/
+.icon_16_pa_politicsstatus {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/政治面貌管理_small.png) !important;
+}
+/*请假类型管理*/
+.icon_16_pa_vacationtype {
+	background-image:
+		url(../image/icons/20130525/2_PA/small/请假类型管理_small.png) !important;
+}
+/*调薪类型*/
+.icon_16_pa_raisestype {
+	background-image: url(../image/icons/20130525/2_PA/small/调薪类型_small.png)
+		!important;
+}
+
+/**----------- 价格体系 -----------**/
+/*销售价格一览表*/
+.icon_16_price_salespecial {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/销售价格一览表_small.png)
+		!important;
+}
+/*特价价格方案设置*/
+.icon_16_price_base_salepricerpt {
+	background-image:
+		url(../image/icons/20130525/3_PRICE/small/特价价格方案设置_small.png)
+		!important;
+}
+
+/**----------- 订货管理 ----------**/
+/*客户合同单审核*/
+.icon_16_so_ivpactchk {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/客户合同单审核_small.png) !important;
+}
+/*客户合同单管理*/
+.icon_16_so_ivpact {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/客户合同单管理_small.png) !important;
+}
+/*订单欠货报表*/
+.icon_16_so_ivordrpt {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/订单欠货报表_small.png) !important;
+}
+/*采购订单修改单审核*/
+.icon_16_so_ivuppurchk {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/采购订单修改单审核_small.png)
+		!important;
+}
+/*采购订单修改单管理*/
+.icon_16_so_ivuppur {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/采购订单修改单管理_small.png)
+		!important;
+}
+/*采购订单入库对比表*/
+.icon_16_so_ivpurpurirpt {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/采购订单入库对比表_small.png)
+		!important;
+}
+/*销售订单修改审核*/
+.icon_16_so_ivupsorpt {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/销售订单修改审核_small.png)
+		!important;
+}
+/*销售订单修改管理*/
+.icon_16_so_ivupso {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/销售订单修改管理_small.png)
+		!important;
+}
+/*销售订单发货对比表*/
+.icon_16_so_ivsoale {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/销售订单发货对比表_small.png)
+		!important;
+}
+/*销售订单一览表*/
+.icon_16_so_purreport {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/销售订单一览表_small.png) !important;
+}
+/*客户合同单*/
+.icon_16_so_cusht {
+	background-image:
+		url(../image/icons/20130525/4_SALE/small/客户合同单_small.png) !important;
+}
+
+/*------------仓储管理--------------*/
+/* 库存启用与月结 */
+.icon_16_ivsale_lgipbal {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/库存启用与月结_small.png) !important;
+}
+/* 仓库库存查询 */
+.icon_16_ivsale_ivstockrpt {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/仓库库存查询_small.png) !important;
+}
+/* 采购退货一览表 */
+.icon_16_ivsale_ivitemocrpt {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/采购退货一览表_small.png) !important;
+}
+/* 调拨单一览表 */
+.icon_16_ivsale_ivtfrpt {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/调拨单一览表_small.png) !important;
+}
+/* 发货单一览表 */
+.icon_16_ivsale_ivsalerpt {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/发货单一览表_small.png) !important;
+}
+/* 盘点单一览表 */
+.icon_16_ivsale_ivinvrpt {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/盘点单一览表_small.png) !important;
+}
+/* 入库单一览表 */
+.icon_16_ivsale_ivpurirpt {
+	background-image:
+		url(../image/icons/20130525/5_SALE/small/入库单一览表_small.png) !important;
+}
+
+/*------------ 销售应收 --------------*/
+/* 销售发票与收款对账报表 */
+.icon_16_ar_tcheckrcprp {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售发票与收款对账报表_small.png)
+		!important;
+}
+/* 销售收款汇总表 */
+.icon_16_ar_arrcpsumrpt {
+	background-image:
+		url(../image/icons/20130525/6_AR/small/销售收款汇总表_small.png) !important;
+}
+
+/*----------- 采购应付 -------------*/
+
+/* 采购付款汇总表 */
+.icon_16_ap_arrpaysumrpt {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购付款汇总表_small.png) !important;
+}
+/* 采购发票与付款对账报表 */
+.icon_16_ap_appaysumrpt {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购发票与付款对账报表_small.png)
+		!important;
+}
+/* 采购发票一览表 */
+.icon_16_ap_apinvcheckpayrpt {
+	background-image:
+		url(../image/icons/20130525/7_AP/small/采购发票一览表_small.png) !important;
+}
+
+/*--------- 生产管理 --------*/
+/* 产成品入库单审核 */
+.icon_16_ip_ipsubchk {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/产成品入库单审核_small.png) !important;
+}
+/* 产成品入库单管理 */
+.icon_16_ip_ipsub {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/产成品入库单管理_small.png) !important;
+}
+/* 生产订单修改审核 */
+.icon_16_ip_ipupordchk {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产订单修改审核_small.png) !important;
+}
+/* 生产订单修改管理 */
+.icon_16_ip_ipupord {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/生产订单修改管理_small.png) !important;
+}
+/* 组别资料维护 */
+.icon_16_ip_rpgroup {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/组别资料维护_small.png) !important;
+}
+/* 转换类型 */
+.icon_16_ip_rpchngetype {
+	background-image: url(../image/icons/20130525/8_IP/small/转换类型_small.png)
+		!important;
+}
+/* 部门与转换类型 */
+.icon_16_ip_rpdeptchangetype {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/部门与转换类型_small.png) !important;
+}
+/* 产成品入库 */
+.icon_16_ip_itemwh {
+	background-image:
+		url(../image/icons/20130525/8_IP/small/产成品入库_small.png) !important;
+}
+/* 计件工资 */
+.icon_16_ip_salary {
+	background-image: url(../image/icons/20130525/8_IP/small/计件工资_small.png)
+		!important;
+}
+/*--------- Bom管理 --------*/
+/* 物料清单 */
+.icon_16_qd {
+	background-image:
+		url(../image/icons/20130525/19_BOM/small/物料清单_small.png) !important;
+}
+/* 物料清单管理 */
+.icon_16_ipmi {
+	background-image:
+		url(../image/icons/20130525/19_BOM/small/物料清单管理_small.png) !important;
+}
+/* 物料清单审核 */
+.icon_16_ipmichk {
+	background-image:
+		url(../image/icons/20130525/19_BOM/small/物料清单审核_small.png) !important;
+}
+
+/*--------- 基础资料 --------*/
+/* 仓库类型管理 */
+.icon_16_base_storetype {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/仓库类型管理_small.png)
+		!important;
+}
+/* 发票类型管理 */
+.icon_16_base_rpinvoicetype {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/发票类型管理_small.png)
+		!important;
+}
+/* 货品资料回收站 */
+.icon_16_base_itemhs {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/货品资料回收站_small.png)
+		!important;
+}
+/* 采购类型管理 */
+.icon_16_base_purchasetype {
+	background-image:
+		url(../image/icons/20130525/12_BASEINFO/small/采购类型管理_small.png)
+		!important;
+}
+
+/*--------- 系统公共模块 --------*/
+/* 倍数添加模板 */
+.icon_16_sys_ratio {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/倍数添加模板_small.png) !important;
+}
+/* 报表模板管理 */
+.icon_16_sys_rpreporttemplate {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/报表模板管理_small.png) !important;
+}
+/* 横排录入模板 */
+.icon_16_sys_reitemcross {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/横排录入模板_small.png) !important;
+}
+/* 登录页图片设置 */
+.icon_16_sys_indeximage {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/登录页图片设置_small.png) !important;
+}
+/* 工作台事项设置 */
+.icon_16_sys_gztsxset {
+	background-image:
+		url(../image/icons/20130525/13_SYS/small/工作台事项设置_small.png) !important;
+}
+
+/*--------- 库位管理 --------*/
+/* 库位入库 */
+.icon_16_seat_seatpuri {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位入库_small.png) !important;
+}
+/* 库位出库 */
+.icon_16_seat_seatsale {
+	background-image:
+		url(../image/icons/20130525/14_SEAT/small/库位出库_small.png) !important;
+}
+
+/*--------- 宿舍管理 --------*/
+/* 房间类型管理 */
+.icon_16_room_roomtype {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/房间类型管理_small.png) !important;
+}
+/* 财产管理 */
+.icon_16_room_asset {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/财产管理_small.png) !important;
+}
+/* 财产类型管理 */
+.icon_16_room_assettype {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/财产类型管理_small.png) !important;
+}
+/* 耗费一览表(水电等) */
+.icon_16_room_reportblockfee {
+	background-image:
+		url(../image/icons/20130525/20_ROOM/small/耗费一览表_small.png) !important;
+}
+
+/*--------- 门店管理 --------*/
+/*不打折货品审核*/
+.icon_16_shop_membernodischk {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/不打折货品审核_small.png)
+		!important;
+}
+/*不打折货品管理*/
+.icon_16_shop_membernodis {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/不打折货品管理_small.png)
+		!important;
+}
+/*仓库库存流水账报表*/
+.icon_16_shop_whchkctrpt {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/仓库库存流水账报表_small.png)
+		!important;
+}
+/*仓库销存对比报表*/
+.icon_16_shop_salestorecontrasrpt {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/仓库销存对比报表_small.png)
+		!important;
+}
+/*发货入库对照表*/
+.icon_16_shop_saletopurirpt {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/发货入库对照表_small.png)
+		!important;
+}
+/*日常费用一览*/
+.icon_16_shop_daycostrpt {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/日常费用一览_small.png) !important;
+}
+/*日常费用单审核*/
+.icon_16_shop_daycostchk {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/日常费用单审核_small.png)
+		!important;
+}
+/*日常费用单管理*/
+.icon_16_shop_daycost {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/日常费用单管理_small.png)
+		!important;
+}
+/*日常费用类型*/
+.icon_16_shop_daycosttype {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/日常费用类型_small.png) !important;
+}
+/*月销售分析报表*/
+.icon_16_shop_monthslerpt {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/月销售分析报表_small.png)
+		!important;
+}
+/*结算汇总一览表*/
+.icon_16_shop_salepaytyperpt {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/结算汇总一览表_small.png)
+		!important;
+}
+/*零售查询*/
+.icon_16_shop_saleposdtlrpt {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/零售查询_small.png) !important;
+}
+/*会员不打折货品*/
+.icon_16_shop_vipitembdz {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/会员不打折货品_small.png)
+		!important;
+}
+/*日常费用单*/
+.icon_16_shop_dayfy {
+	background-image:
+		url(../image/icons/20130525/18_SHOP/small/日常费用单_small.png) !important;
+}
+
+
+
+
+
+
+
+
+/*短信发送历史*/
+.icon_16_20140822_new27 {
+	background-image: url(../image/icons/20140822/短信发送历史_small.png)
+		!important
+}
+/*自定义预警*/
+.icon_16_20140822_new28 {
+	background-image: url(../image/icons/20140822/自定义预警_small.png)
+		!important
+}
+/*其他功能*/
+.icon_16_20140822_new19 {
+	background-image: url(../image/icons/20140822/其他功能_small.png) !important
+}
+/*库存存量*/
+.icon_16_20140822_new25 {
+	background-image: url(../image/icons/20140822/库存存量_small.png) !important
+}
+/*OA工作流*/
+.icon_16_20140822_new16 {
+	background-image: url(../image/icons/20140822/OA工作流_small.png)
+		!important
+}
+/*交期预警*/
+.icon_16_20140822_new17 {
+	background-image: url(../image/icons/20140822/交期预警_small.png) !important
+}
+/*功能预警*/
+.icon_16_20140822_new20 {
+	background-image: url(../image/icons/20140822/功能预警_small.png) !important
+}
+/*模板设置*/
+.icon_16_20140822_new26 {
+	background-image: url(../image/icons/20140822/模板设置_small.png) !important
+}
+
+/*节点设置*/
+.icon_16_20140822_new29 {
+	background-image: url(../image/icons/20140822/节点设置_small.png) !important
+}
+
+/*RFID产量修改*/
+.icon_16_20140418_new1 {
+	background-image: url(../image/icons/20140418/RFID产量修改_small.png)
+		!important
+}
+/*RFID卡*/
+.icon_16_20140418_new2 {
+	background-image: url(../image/icons/20140418/RFID卡_small.png)
+		!important
+}
+/*RFID卡发放*/
+.icon_16_20140418_new3 {
+	background-image: url(../image/icons/20140418/RFID卡发放_small.png)
+		!important
+}
+/*RFID员工卡*/
+.icon_16_20140418_new4 {
+	background-image: url(../image/icons/20140418/RFID员工卡_small.png)
+		!important
+}
+/*RFID消卡*/
+.icon_16_20140418_new5 {
+	background-image: url(../image/icons/20140418/RFID消卡_small.png)
+		!important
+}
+/*RFID班组卡*/
+.icon_16_20140418_new6 {
+	background-image: url(../image/icons/20140418/RFID班组卡_small.png)
+		!important
+}
+/*工序卡设置*/
+.icon_16_20140418_new25 {
+	background-image: url(../image/icons/20140418/工序卡设置_small.png)
+		!important
+}
+/*工位机设置*/
+.icon_16_20140418_new24 {
+	background-image: url(../image/icons/20140418/工位机设置_small.png)
+		!important
+}
+.icon_16_20141101_001 {
+	background-image: url(../image/icons/20141101/001.png)
+		!important
+}
+.icon_16_20141101_002 {
+	background-image: url(../image/icons/20141101/002.png)
+		!important
+}
+.icon_16_20141101_003 {
+	background-image: url(../image/icons/20141101/003.png)
+		!important
+}
+.icon_16_20141101_004 {
+	background-image: url(../image/icons/20141101/004.png)
+		!important
+}
+.icon_16_20141101_005 {
+	background-image: url(../image/icons/20141101/005.png)
+		!important
+}
+.icon_16_20141101_006 {
+	background-image: url(../image/icons/20141101/006.png)
+		!important
+}
+.icon_16_20141101_007 {
+	background-image: url(../image/icons/20141101/007.png)
+		!important
+}
+.icon_16_20141101_008 {
+	background-image: url(../image/icons/20141101/008.png)
+		!important
+}
+.icon_16_20141101_009 {
+	background-image: url(../image/icons/20141101/009.png)
+		!important
+}
+.icon_16_20141101_010 {
+	background-image: url(../image/icons/20141101/010.png)
+		!important
+}
+.icon_16_20141101_011 {
+	background-image: url(../image/icons/20141101/011.png)
+		!important
+}
+.icon_16_20141101_012 {
+	background-image: url(../image/icons/20141101/012.png)
+		!important
+}
+.icon_16_20141101_013 {
+	background-image: url(../image/icons/20141101/013.png)
+		!important
+}
+.icon_16_20141101_014 {
+	background-image: url(../image/icons/20141101/014.png)
+		!important
+}
+.icon_16_20141101_015 {
+	background-image: url(../image/icons/20141101/015.png)
+		!important
+}
+.icon_16_20141101_016 {
+	background-image: url(../image/icons/20141101/016.png)
+		!important
+}
+.icon_16_20141101_017 {
+	background-image: url(../image/icons/20141101/017.png)
+		!important
+}
+.icon_16_20141101_018 {
+	background-image: url(../image/icons/20141101/018.png)
+		!important
+}
+.icon_16_20141101_019 {
+	background-image: url(../image/icons/20141101/019.png)
+		!important
+}
+.icon_16_20141101_020 {
+	background-image: url(../image/icons/20141101/020.png)
+		!important
+}
+.icon_16_20141101_021 {
+	background-image: url(../image/icons/20141101/021.png)
+		!important
+}
+.icon_16_20141101_022 {
+	background-image: url(../image/icons/20141101/022.png)
+		!important
+}
+.icon_16_20141101_023 {
+	background-image: url(../image/icons/20141101/023.png)
+		!important
+}
+.icon_16_20141101_024 {
+	background-image: url(../image/icons/20141101/024.png)
+		!important
+}
+.icon_16_20141101_025 {
+	background-image: url(../image/icons/20141101/025.png)
+		!important
+}
+.icon_16_20141101_026 {
+	background-image: url(../image/icons/20141101/026.png)
+		!important
+}
+.icon_16_20141101_027 {
+	background-image: url(../image/icons/20141101/027.png)
+		!important
+}
+.icon_16_20141101_028 {
+	background-image: url(../image/icons/20141101/028.png)
+		!important
+}
+.icon_16_20141101_029 {
+	background-image: url(../image/icons/20141101/029.png)
+		!important
+}
+.icon_16_20141101_030 {
+	background-image: url(../image/icons/20141101/030.png)
+		!important
+}
+.icon_16_20141101_031 {
+	background-image: url(../image/icons/20141101/031.png)
+		!important
+}
+.icon_16_20141101_032 {
+	background-image: url(../image/icons/20141101/032.png)
+		!important
+}
+.icon_16_20141101_033 {
+	background-image: url(../image/icons/20141101/033.png)
+		!important
+}
+.icon_16_20141101_034 {
+	background-image: url(../image/icons/20141101/034.png)
+		!important
+}
+.icon_16_20141101_035 {
+	background-image: url(../image/icons/20141101/035.png)
+		!important
+}
+.icon_16_20141101_036 {
+	background-image: url(../image/icons/20141101/036.png)
+		!important
+}
+.icon_16_20141101_037 {
+	background-image: url(../image/icons/20141101/037.png)
+		!important
+}
+.icon_16_20141101_038 {
+	background-image: url(../image/icons/20141101/038.png)
+		!important
+}
+.icon_16_20141101_039 {
+	background-image: url(../image/icons/20141101/039.png)
+		!important
+}
+.icon_16_20141101_040 {
+	background-image: url(../image/icons/20141101/040.png)
+		!important
+}
+.icon_16_20141101_041 {
+	background-image: url(../image/icons/20141101/041.png)
+		!important
+}
+.icon_16_20141101_042 {
+	background-image: url(../image/icons/20141101/042.png)
+		!important
+}
+.icon_16_20141101_043 {
+	background-image: url(../image/icons/20141101/043.png)
+		!important
+}
+.icon_16_20141101_044 {
+	background-image: url(../image/icons/20141101/044.png)
+		!important
+}
+.icon_16_20141101_045 {
+	background-image: url(../image/icons/20141101/045.png)
+		!important
+}
+.icon_16_20141101_046 {
+	background-image: url(../image/icons/20141101/046.png)
+		!important
+}
+.icon_16_20141101_047 {
+	background-image: url(../image/icons/20141101/047.png)
+		!important
+}
+.icon_16_20141101_048 {
+	background-image: url(../image/icons/20141101/048.png)
+		!important
+}
+.icon_16_20141101_049 {
+	background-image: url(../image/icons/20141101/049.png)
+		!important
+}
+.icon_16_20141101_050 {
+	background-image: url(../image/icons/20141101/050.png)
+		!important
+}
+.icon_16_20141101_051 {
+	background-image: url(../image/icons/20141101/051.png)
+		!important
+}
+.icon_16_20141101_052 {
+	background-image: url(../image/icons/20141101/052.png)
+		!important
+}
+.icon_16_20141101_053 {
+	background-image: url(../image/icons/20141101/053.png)
+		!important
+}
+.icon_16_20141101_054 {
+	background-image: url(../image/icons/20141101/054.png)
+		!important
+}
+.icon_16_20141101_055 {
+	background-image: url(../image/icons/20141101/055.png)
+		!important
+}
+.icon_16_20141101_056 {
+	background-image: url(../image/icons/20141101/056.png)
+		!important
+}
+.icon_16_20141101_057 {
+	background-image: url(../image/icons/20141101/057.png)
+		!important
+}
+.icon_16_20141101_058 {
+	background-image: url(../image/icons/20141101/058.png)
+		!important
+}
+.icon_16_20141101_059 {
+	background-image: url(../image/icons/20141101/059.png)
+		!important
+}
+.icon_16_20141101_060 {
+	background-image: url(../image/icons/20141101/060.png)
+		!important
+}
+.icon_16_20141101_061 {
+	background-image: url(../image/icons/20141101/061.png)
+		!important
+}
+.icon_16_20141101_062 {
+	background-image: url(../image/icons/20141101/062.png)
+		!important
+}
+.icon_16_20141101_063 {
+	background-image: url(../image/icons/20141101/063.png)
+		!important
+}
+.icon_16_20141101_064 {
+	background-image: url(../image/icons/20141101/064.png)
+		!important
+}
+.icon_16_20141101_065 {
+	background-image: url(../image/icons/20141101/065.png)
+		!important
+}
+.icon_16_20141101_066 {
+	background-image: url(../image/icons/20141101/066.png)
+		!important
+}
+.icon_16_20141101_067 {
+	background-image: url(../image/icons/20141101/067.png)
+		!important
+}
+.icon_16_20141101_068 {
+	background-image: url(../image/icons/20141101/068.png)
+		!important
+}
+.icon_16_20141101_069 {
+	background-image: url(../image/icons/20141101/069.png)
+		!important
+}
+.icon_16_20141101_070 {
+	background-image: url(../image/icons/20141101/070.png)
+		!important
+}
+.icon_16_20141101_071 {
+	background-image: url(../image/icons/20141101/071.png)
+		!important
+}
+.icon_16_20141101_072 {
+	background-image: url(../image/icons/20141101/072.png)
+		!important
+}
+.icon_16_20141101_073 {
+	background-image: url(../image/icons/20141101/073.png)
+		!important
+}
+.icon_16_20141101_074 {
+	background-image: url(../image/icons/20141101/074.png)
+		!important
+}
+.icon_16_20141101_075 {
+	background-image: url(../image/icons/20141101/075.png)
+		!important
+}
+.icon_16_20141101_076 {
+	background-image: url(../image/icons/20141101/076.png)
+		!important
+}
+.icon_16_20141101_077 {
+	background-image: url(../image/icons/20141101/077.png)
+		!important
+}
+.icon_16_20141101_078 {
+	background-image: url(../image/icons/20141101/078.png)
+		!important
+}
+.icon_16_20141101_079 {
+	background-image: url(../image/icons/20141101/079.png)
+		!important
+}
+.icon_16_20141101_080 {
+	background-image: url(../image/icons/20141101/080.png)
+		!important
+}
+.icon_16_20141101_081 {
+	background-image: url(../image/icons/20141101/081.png)
+		!important
+}
+.icon_16_20141101_082 {
+	background-image: url(../image/icons/20141101/082.png)
+		!important
+}
+.icon_16_20141101_083 {
+	background-image: url(../image/icons/20141101/083.png)
+		!important
+}
+.exclamation24 {
+	background-image: url(../image/ext/24/exclamation24.png)
+		!important
+}

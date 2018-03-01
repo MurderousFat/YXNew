@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.his.HisSettleMasDaoImpl">
+
+    <sql id="table"> his_settle_mas</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.aac044, t.aac057, t.aka130, t.akc050, t.ckz564, t.aaa138, t.ckc803, t.yzz016, t.aac005, t.cab053, t.ake007, t.aae013, t.akc090, t.akc220, t.aab014, t.akc264, t.akc190, t.jbrmc, t.ckz543, t.aae011, t.sessionid, t.jmc, t.his_bill_state,t.merchant_id,m.mer_name as merchant_name,t.aaz217,t.ykc675,t.ykc618,t.aac004,t.person_name,t.settle_type_flag,t.self_pay,t.xyb_order_no </sql>
+
+    <resultMap id="beanMap" type="HisSettleMas">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="aac044" property="aac044" />
+                <result column="aac057" property="aac057" />
+                <result column="aka130" property="aka130" />
+                <result column="akc050" property="akc050" />
+                <result column="ckz564" property="ckz564" />
+                <result column="aaa138" property="aaa138" />
+                <result column="ckc803" property="ckc803" />
+                <result column="yzz016" property="yzz016" />
+                <result column="aac005" property="aac005" />
+                <result column="cab053" property="cab053" />
+                <result column="ake007" property="ake007" />
+                <result column="aae013" property="aae013" />
+                <result column="akc090" property="akc090" />
+                <result column="akc220" property="akc220" />
+                <result column="aab014" property="aab014" />
+                <result column="akc264" property="akc264" />
+                <result column="akc190" property="akc190" />
+                <result column="jbrmc" property="jbrmc" />
+                <result column="ckz543" property="ckz543" />
+                <result column="aae011" property="aae011" />
+                <result column="sessionid" property="sessionid" />
+                <result column="jmc" property="jmc" />
+                <result column="his_bill_state" property="hisBillState" />
+                <result column="merchant_id" property="merchantId" />
+                <result column="merchant_name" property="merchantName" />
+                <result column="aaz217" property="aaz217" />
+                <result column="ykc675" property="ykc675" />
+                <result column="ykc618" property="ykc618" />
+                <result column="aac004" property="aac004" />
+                <result column="person_name" property="personName" />
+                <result column="settle_type_flag" property="settleTypeFlag" />
+                <result column="self_pay" property="selfPay" />
+                <result column="xyb_order_no" property="xybOrderNo" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, aac044, aac057, aka130, akc050, ckz564, aaa138, ckc803, yzz016, aac005, cab053, ake007, aae013, akc090, akc220, aab014, akc264, akc190, jbrmc, ckz543, aae011, sessionid, jmc, his_bill_state,merchant_id,aaz217,ykc675,ykc618,aac004,person_name,settle_type_flag,self_pay,xyb_order_no)
+        values 
+                (#{id}, 0,now(),now(),0, #{aac044}, #{aac057}, #{aka130}, #{akc050}, #{ckz564}, #{aaa138}, #{ckc803}, #{yzz016}, #{aac005}, #{cab053}, #{ake007}, #{aae013}, #{akc090}, #{akc220}, #{aab014}, #{akc264}, #{akc190}, #{jbrmc}, #{ckz543}, #{aae011}, #{sessionid}, #{jmc}, #{hisBillState},#{merchantId},#{aaz217},#{ykc675},#{ykc618},#{aac004},#{personName},#{settleTypeFlag},#{selfPay},#{xybOrderNo})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+            VERSION = #{version}+1 ,
+            updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            aac044=#{aac044},
+            aac057=#{aac057},
+            aka130=#{aka130},
+            akc050=#{akc050},
+            ckz564=#{ckz564},
+            aaa138=#{aaa138},
+            ckc803=#{ckc803},
+            yzz016=#{yzz016},
+            aac005=#{aac005},
+            cab053=#{cab053},
+            ake007=#{ake007},
+            aae013=#{aae013},
+            akc090=#{akc090},
+            akc220=#{akc220},
+            aab014=#{aab014},
+            akc264=#{akc264},
+            akc190=#{akc190},
+            jbrmc=#{jbrmc},
+            ckz543=#{ckz543},
+            aae011=#{aae011},
+            sessionid=#{sessionid},
+            jmc=#{jmc},
+            his_bill_state=#{hisBillState},
+            merchant_id=#{merchantId},
+            aaz217=#{aaz217},
+            ykc675=#{ykc675},
+            ykc618=#{ykc618},
+            aac004=#{aac004},
+            person_name=#{personName},
+            settle_type_flag=#{settleTypeFlag},
+            self_pay=#{selfPay},
+            xyb_order_no=#{xybOrderNo},
+            </set>
+        <where>
+            ID = #{id} 
+        </where>
+    </update>
+    
+    <sql id="leftjoin_sql">
+   	left join bi_merchant as m on m.id=t.merchant_id 
+    </sql>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+            <!--<if test="username!= null and username!=''">and t.jbrmc=#{username} </if>-->
+             <if test="merchantId!= null and merchantId!=''">and t.merchant_id=#{merchantId} </if>
+             <if test="aac044!= null and aac044!=''">and t.aac044=#{aac044}</if>
+             <if test="aac057!= null and aac057!=''">and t.aac057=#{aac057}</if>
+             <if test="aka130!= null and aka130!=''">and t.aka130=#{aka130}</if>
+             <if test="akc050!= null and akc050!=''">and t.akc050=#{akc050}</if>
+             <if test="ckz564!= null and ckz564!=''">and t.ckz564=#{ckz564}</if>
+             <if test="aaa138!= null and aaa138!=''">and t.aaa138=#{aaa138}</if>
+             <if test="ckc803!= null and ckc803!=''">and t.ckc803=#{ckc803}</if>
+             <if test="yzz016!= null and yzz016!=''">and t.yzz016=#{yzz016}</if>
+             <if test="aac005!= null and aac005!=''">and t.aac005=#{aac005}</if>
+             <if test="cab053!= null and cab053!=''">and t.cab053=#{cab053}</if>
+             <if test="ake007!= null and ake007!=''">and t.ake007=#{ake007}</if>
+             <if test="aae013!= null and aae013!=''">and t.aae013=#{aae013}</if>
+             <if test="akc090!= null and akc090!=''">and t.akc090=#{akc090}</if>
+             <if test="akc220!= null and akc220!=''">and t.akc220=#{akc220}</if>
+             <if test="aab014!= null and aab014!=''">and t.aab014=#{aab014}</if>
+             <if test="akc264!= null and akc264!=''">and t.akc264=#{akc264}</if>
+             <if test="akc190!= null and akc190!=''">and t.akc190=#{akc190}</if>
+             <if test="jbrmc!= null and jbrmc!=''">and t.jbrmc=#{jbrmc}</if>
+             <if test="ckz543!= null and ckz543!=''">and t.ckz543=#{ckz543}</if>
+             <if test="aae011!= null and aae011!=''">and t.aae011=#{aae011}</if>
+             <if test="sessionid!= null and sessionid!=''">and t.sessionid=#{sessionid}</if>
+             <if test="jmc!= null and jmc!=''">and t.jmc=#{jmc}</if>
+             <if test="hisBillState!= null and hisBillState!=''">and t.his_bill_state=#{hisBillState}</if>
+             <if test="aaz217!=null and aaz217!=''">and t.aaz217=#{aaz217}</if>
+             <if test="ykc675!=null and ykc675!=''">and t.ykc675=#{ykc675}</if>
+             <if test="ykc618!=null and ykc618!=''">and t.ykc618=#{ykc618}</if>
+             <if test="aac004!=null and aac004!=''">and t.aac004=#{aac004}</if>
+             <if test="personName!=null and personName!=''">and t.person_name=#{personName}</if>
+             <!--<if test="user_in_session!=null">-->
+            		<!--<if test="user_in_session.merchantId!=null and user_in_session.merchantId!=0 ">-->
+						<!--and m.id = #{user_in_session.merchantId}            		-->
+            		<!--</if> -->
+             <!--</if>-->
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+    
+    <update id="updateHisStatus" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+        	his_bill_state=#{hisBillState}
+        </set>
+        <where>
+        	id = #{id}
+        </where>
+    </update>
+    
+    <update id="updateFeeSettleMent" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+        	his_bill_state=#{hisBillState},
+        	ykc618=#{ykc618},
+        	self_pay=#{selfPay},
+        </set>
+        <where>
+        	id = #{id}
+        </where>
+    </update>
+
+</mapper>

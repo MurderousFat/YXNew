@@ -1,0 +1,569 @@
+/* CSS Document */
+.lv_system {
+	margin: auto;
+	width: 980px;
+	height: 290px;
+}
+
+.lv_system_search {
+	margin: auto;
+	width: 980px;
+	height: 280px;
+	background: url(/resources/images/lvfeng/zs_02.png) repeat-x;
+	overflow: hidden;
+}
+
+.lv_left_img {
+	float: left;
+	width: 10px;
+	height: 280px;
+}
+
+.lv_right_img {
+	float: right;
+	width: 10px;
+	height: 280px;
+}
+
+.lv_search {
+	float: left;
+	width: 960px;
+	height: 250px;
+	margin: 15px 0px;
+	display: inline;
+}
+
+.lv_search_ma {
+	float: left;
+	width: 340px;
+	height: 250px;
+}
+
+.lv_search_sr {
+	float: right;
+	width: 590px;
+	height: 250px;
+	margin-right: 5px;
+	display: inline;
+}
+
+.lv_search_01 {
+	width: 590px;
+	height: 50px;
+}
+
+.lv_search_01 li {
+	float: left;
+}
+
+.lv_search_key {
+	float: left;
+	width: 440px;
+	height: 40px;
+	padding: 5px 10px;
+	line-height: 40px;
+	color: #ADADAD;
+	font-size: 12px;
+	background: url(/resources/images/lvfeng/zs_05.png) no-repeat;
+	border: none;
+}
+
+.lv_search_button {
+	float: left;
+	width: 100px;
+	height: 50px;
+	margin-left: 20px;
+	background: url(/resources/images/lvfeng/zs_search.png) no-repeat;
+	border: none;
+}
+
+.lv_search_02 {
+	width: 590px;
+	height: 170px;
+	margin-top: 10px;
+	background: #FCFDFD;
+}
+
+.lv02_left_img {
+	float: left;
+	width: 10px;
+	height: 170px;
+}
+
+.lv02_right_img {
+	float: right;
+	width: 10px;
+	height: 170px;
+}
+
+.lv_search_num {
+	float: left;
+	width: 550px;
+	height: 130px;
+	margin: 20px 10px;
+	display: inline;
+}
+
+.lv_search_num_01 {
+	float: left;
+	width: 390px;
+	height: 125px;
+	padding-top: 5px;
+}
+
+.lv_search_num_01 li {
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin: 5px 6px;
+}
+
+.lv_search_num_01 li a {
+	float: left;
+	width: 50px;
+	height: 50px;
+	background: url(/resources/images/lvfeng/zs_button_z.png) no-repeat;
+	display: inline;
+}
+
+.lv_search_num_01 li a:hover {
+	background: url(/resources/images/lvfeng/zs_button_f.png) no-repeat;
+	cursor: pointer;
+}
+
+.lv_search_num_02 {
+	float: right;
+	width: 140px;
+	height: 130px;
+}
+
+.lv_search_num_02 li {
+	float: left;
+	width: 140px;
+	height: 37px;
+	line-height: 37px;
+	margin: 4px 0px;
+	background: url(/resources/images/lvfeng/zs_08.png) no-repeat;
+}
+
+.lv_search_num_02 li span {
+	float: left;
+	width: 15px;
+	height: 15px;
+	/*
+	margin: 12px 5px 12px 12px;
+	*/
+	margin: 5px 5px 12px 12px;
+	display: inline;
+}
+
+.lv_search_num_02 li h1 {
+	float: left;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #666666;
+	font-weight: lighter;
+	letter-spacing: 0px;
+}
+
+.lv_messages {
+	margin: auto;
+	width: 960px;
+	height: 310px;
+	padding: 10px;
+	display: block;
+	background: #FFFFFF;
+}
+
+.lv_news {
+	float: left;
+	width: 600px;
+	height: 310px;
+	overflow: hidden;
+}
+
+.lv_news_title {
+	float: left;
+	width: 600px;
+	height: 31px;
+	background: url(/resources/images/lvfeng/zs_13.png) repeat-x;
+	padding-top: 1px;
+	display: inline;
+}
+
+.lv_news_title li {
+	float: left;
+	width: 105px;
+	height: 30px;
+	margin-right: 10px;
+	background: url(/resources/images/lvfeng/zs_12.png) top no-repeat;
+}
+
+.lv_news_title li.selectTag {
+	width: 105px;
+	color: #FFFFFF;
+	display: block;
+	background: url(/resources/images/lvfeng/zs_11.png) top no-repeat;
+}
+
+.lv_news_title li.selectTag h1 {
+	color: #FFFFFF;
+	font-weight: lighter;
+}
+
+.lv_news_title li h1 {
+	font-family: "微软雅黑";
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.lv_news_title li a {
+	color: #7C7C7C;
+	text-decoration: none;
+}
+
+.lv_news_list {
+	float: left;
+	width: 600px;
+	padding: 10px 0px;
+	display: inline;
+}
+
+.lv_news_list li {
+	float: left;
+	width: 600px;
+	line-height: 35px;
+	border-bottom: 1px dashed #CBCBCA;
+}
+
+.lv_news_list li span {
+	float: right;
+	font-family: "宋体";
+	font-size: 12px;
+	color: #C7C7C7;
+	padding-right: 10px;
+}
+
+.lv_news_list li h1 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: lighter;
+	line-height: 35px;
+	background: url(/resources/images/lvfeng/ny_18.png) left no-repeat;
+	padding-left: 20px;
+	margin-left: 10px;
+}
+
+.lv_news_list a {
+	color: #767676;
+	text-decoration: none;
+	display: block;
+	width: 500px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	-moz-binding: url('ellipsis.xml#ellipsis');
+}
+
+.lv_news_list a:hover {
+	color: #3EA822;
+	text-decoration: underline;
+}
+
+.lv_down {
+	float: right;
+	width: 300px;
+	height: 310px;
+}
+
+.lv_down_word {
+	width: 300px;
+	letter-spacing: 0px;
+	padding: 10px 0px;
+	color: #888888;
+}
+
+.lv_page {
+	margin: auto;
+	width: 960px;
+	padding: 10px;
+	background: #FFFFFF;
+}
+
+.lv_platform {
+	width: 960px;
+}
+
+.lv_platform_title {
+	width: 960px;
+	height: 40px;
+}
+
+.lv_platform_title li {
+	float: left;
+	width: 105px;
+	height: 40px;
+	margin: 0px 5px;
+	background: #F5F9FA;
+}
+
+.lv_platform_title li.selectTag {
+	width: 105px;
+	color: #FFFFFF;
+	display: block;
+	background: #70CA10;
+}
+
+.lv_platform_title li.selectTag h1 {
+	color: #FFFFFF;
+	font-weight: lighter;
+}
+
+.lv_platform_title li h1 {
+	font-family: "微软雅黑";
+	font-size: 16px;
+	font-weight: lighter;
+	line-height: 40px;
+	text-align: center;
+}
+
+.lv_platform_title li a {
+	color: #7C7C7C;
+	text-decoration: none;
+}
+
+.lv_platform_table {
+	width: 930px;
+	border: 10px solid #70CA10;
+	padding: 5px;
+}
+
+.lv_table {
+	width: 930px;
+}
+
+.lv_table h1 {
+	font-family: "微软雅黑";
+	font-size: 14px;
+	font-weight: lighter;
+	line-height: 30px;
+	color: #808080;
+}
+
+.lv_01 {
+	background: #F5F9FA;
+	padding: 5px 10px;
+	text-align: right;
+	border-bottom: 1px solid #FFFFFF;
+}
+
+.lv_02 {
+	padding: 5px 10px;
+	text-align: left;
+	border-bottom: 1px dashed #D6D6D6;
+	color: #9C9E9D;
+}
+
+.lv_03 {
+	height: 52px;
+	background: url(/resources/images/lvfeng/zs_17.png) repeat-x;
+}
+
+.lv_04 {
+	width: 100%;
+	height: 52px;
+	background: url(/resources/images/lvfeng/zs_18.png) right no-repeat;
+}
+
+.lv_04 h2 {
+	font-family: "微软雅黑";
+	font-size: 14px;
+	font-weight: lighter;
+	line-height: 50px;
+	text-align: center;
+	color: #808080;
+}
+
+.lv_05 {
+	height: 40px;
+	background: #B7E487;
+}
+
+.lv_06 {
+	height: 40px;
+}
+
+.lv_07 {
+	padding: 5px 10px;
+	text-align: center;
+	color: #737373;
+}
+
+.lv_device {
+	width: 100%;
+	height: 430px;
+	background: url(/resources/images/lvfeng/pic_zs06.png) top center
+		no-repeat;
+}
+
+.lv_device_nav {
+	margin: auto;
+	width: 980px;
+}
+
+.lv_device_nav li {
+	float: right;
+	line-height: 40px;
+	margin: 10px 5px 5px 5px;
+}
+
+.lv_device_nav li a {
+	padding: 15px 20px 5px 20px;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+.lv_device_nav li a:hover {
+	border-bottom: 2px solid #70CA10;
+	color: #70CA10;
+}
+
+.lv_bottom {
+	border-bottom: 2px solid #70CA10;
+}
+
+.lv_ipad {
+	margin: auto;
+	width: 980px;
+	height: 100px;
+	clear: both;
+	position: relative;
+}
+
+.lv_ipad_01 {
+	position: absolute;
+	width: 480px;
+	height: 380px;
+	top: 20px;
+	left: 0px;
+}
+
+.lv_ipad_02 {
+	position: absolute;
+	width: 390px;
+	height: 180px;
+	top: 170px;
+	right: 80px;
+}
+
+.lv_iphone {
+	margin: auto;
+	width: 980px;
+	height: 100px;
+	clear: both;
+	position: relative;
+}
+
+.lv_iphone_01 {
+	position: absolute;
+	width: 260px;
+	height: 410px;
+	top: -20px;
+	left: 40px;
+}
+
+.lv_iphone_02 {
+	position: absolute;
+	width: 400px;
+	height: 180px;
+	top: 170px;
+	right: 80px;
+}
+
+.lv_android {
+	margin: auto;
+	width: 980px;
+	height: 100px;
+	clear: both;
+	position: relative;
+}
+
+.lv_android_01 {
+	position: absolute;
+	width: 260px;
+	height: 410px;
+	top: -20px;
+	left: 40px;
+}
+
+.lv_android_02 {
+	position: absolute;
+	width: 400px;
+	height: 180px;
+	top: 170px;
+	right: 80px;
+}
+
+.lv_show {
+	margin: auto;
+	width: 980px;
+	height: 385px;
+}
+
+/*******hdp********/
+#imgPlay {
+	WIDTH: 980px;
+	height: 290px;
+	ZOOM: 1;
+	POSITION: relative;
+	overflow: hidden;
+}
+
+#imgPlay .imgs IMG {
+	WIDTH: 980px;
+	height: 290px;
+}
+
+#imgPlay .imgs LI {
+	FLOAT: left;
+	POSITION: relative
+}
+
+#imgPlay .num {
+	DISPLAY: inline;
+	LEFT: 200px;
+	POSITION: absolute;
+	TOP: 260px;
+	HEIGHT: 19px
+}
+
+#imgPlay .num SPAN {
+	DISPLAY: inline-block;
+	BACKGROUND: url(/resources/images/lvfeng/imgPlayer.png) no-repeat -10px
+		0;
+	MARGIN: 0px 4px;
+	OVERFLOW: hidden;
+	WIDTH: 10px;
+	CURSOR: pointer;
+	LINE-HEIGHT: 0;
+	HEIGHT: 10px
+}
+
+#imgPlay .num SPAN.on {
+	BACKGROUND-POSITION: 0 0
+}
+
+#imgPlay #numInner {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	BACKGROUND: none transparent scroll repeat 0% 0%;
+	PADDING-BOTTOM: 0px;
+	PADDING-TOP: 3px;
+	POSITION: absolute;
+	TOP: 260px;
+	TEXT-ALIGN: center
+}

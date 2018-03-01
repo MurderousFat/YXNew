@@ -1,0 +1,24 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.bi.BiRegionDto',
+        {
+            table:Ext_UiTable({
+                beanId:'biRegionId',
+                beanName:'biRegionName',
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'id',text:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'version',text:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'createtime',text:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'updatetime',text:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fdelFlag',text:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'rgnNo',text:'区域编码',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true,readOnly:true}),
+                 Ext_UiField({type:'string',name:'rgnName',text:'区域名称',xtype:'textfield',hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'rgnFull',text:'区域全称',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'parentNo',text:'parentNo',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'parentName',text:'上级区域',xtype:'btnfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'expandedFlag',text:'展开',xtype:'hidden',datadic:'UNFOLDING',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'leafFlag',text:'leafFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+            ]
+    }        
+);

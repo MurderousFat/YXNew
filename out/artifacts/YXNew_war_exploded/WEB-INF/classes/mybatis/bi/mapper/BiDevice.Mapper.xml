@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.bi.BiDeviceDaoImpl">
+
+    <sql id="table"> bi_device</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.device_no, t.mer_no_id, mo.no_name as mer_no, t.access_type, t.key_system, t.key_index, t.vender_name, t.serial_no, t.mount_time, t.mount_addr, t.mount_person,m.mer_name </sql>
+
+    <resultMap id="beanMap" type="BiDevice">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="device_no" property="deviceNo" />
+                <result column="mer_no_id" property="merNoId" />
+                <result column="mer_no" property="merNo" />
+                <result column="mer_name" property="merName" />
+                <result column="access_type" property="accessType" />
+                <result column="key_system" property="keySystem" />
+                <result column="key_index" property="keyIndex" />
+                <result column="vender_name" property="venderName" />
+                <result column="serial_no" property="serialNo" />
+                <result column="mount_time" property="mountTime" />
+                <result column="mount_addr" property="mountAddr" />
+                <result column="mount_person" property="mountPerson" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, device_no, mer_no_id, mer_no, access_type, key_system, key_index, vender_name, serial_no, mount_time, mount_addr, mount_person)
+        values 
+                (#{id}, 0,now(),now(),0, #{deviceNo}, #{merNoId}, #{merNo}, #{accessType}, #{keySystem}, #{keyIndex}, #{venderName}, #{serialNo}, #{mountTime}, #{mountAddr}, #{mountPerson})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            device_no=#{deviceNo},
+            mer_no_id=#{merNoId},
+            mer_no=#{merNo},
+            access_type=#{accessType},
+            key_system=#{keySystem},
+            key_index=#{keyIndex},
+            vender_name=#{venderName},
+            serial_no=#{serialNo},
+            mount_time=#{mountTime},
+            mount_addr=#{mountAddr},
+            mount_person=#{mountPerson},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+    
+    <sql id="leftjoin_sql">
+   	left join bi_merchant_no as mo on mo.id=t.mer_no_id 
+   	left join bi_merchant as m on m.id=mo.mer_id
+    </sql>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        <include refid="leftjoin_sql"/>
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="deviceNo!= null and deviceNo!=''">and t.device_no=#{deviceNo}</if>
+             <if test="merNoId!= null and merNoId!=''">and t.mer_no_id=#{merNoId}</if>
+             <if test="merNo!= null and merNo!=''">and t.mer_no=#{merNo}</if>
+             <if test="accessType!= null and accessType!=''">and t.access_type=#{accessType}</if>
+             <if test="keySystem!= null and keySystem!=''">and t.key_system=#{keySystem}</if>
+             <if test="keyIndex!= null and keyIndex!=''">and t.key_index=#{keyIndex}</if>
+             <if test="venderName!= null and venderName!=''">and t.vender_name=#{venderName}</if>
+             <if test="serialNo!= null and serialNo!=''">and t.serial_no=#{serialNo}</if>
+             <if test="mountTime!= null and mountTime!=''">and t.mount_time=#{mountTime}</if>
+             <if test="mountAddr!= null and mountAddr!=''">and t.mount_addr=#{mountAddr}</if>
+             <if test="mountPerson!= null and mountPerson!=''">and t.mount_person=#{mountPerson}</if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql"/>
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql"/>
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+</mapper>

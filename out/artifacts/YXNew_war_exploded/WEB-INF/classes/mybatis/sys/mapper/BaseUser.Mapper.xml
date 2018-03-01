@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.sys.BaseUserDaoImpl">
+
+	<sql id="table"> TBL_BASE_USER</sql>
+	
+	<sql id="selectCols"> t.id,t.version,t.createtime,t.faccount,t.fusername,t.flast_login,t.fenabled </sql>
+
+	<resultMap id="beanMap" type="BaseUser">
+		<id column="ID" property="id" />
+		<result column="VERSION" property="version" />
+		<result column="FDEL_FLAG" property="fdelFlag" />
+		<result column="UPDATETIME" property="updateTime" />
+		<result column="CREATETIME" property="createTime" />
+		<result column="FACCOUNT" property="faccount"/>
+		<result column="FUSERNAME" property="fusername"/>
+		<result column="FPASSWORD" property="fpassword"/>
+		<result column="FLAST_LOGIN" property="flastLogin"/>
+		<result column="FENABLED" property="fenabled"/>
+	</resultMap>
+
+	<insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+		insert into
+		<include refid="table" />
+		(ID,VERSION, CREATETIME, FDEL_FLAG
+		,FACCOUNT,FUSERNAME,FPASSWORD,FENABLED
+		)
+		values (#{id}, 0, now(),0, #{faccount}, #{fusername}, #{fpassword}, 1
+		)
+	</insert>
+
+	<!-- 更新:version+1 实现乐观锁 -->
+	<update id="update" parameterType="java.util.Map">
+		update
+		<include refid="table" />
+		<set>
+			VERSION = #{version}+1 ,
+			FACCOUNT = #{faccount},
+			FUSERNAME= #{fusername},
+			<if test="fpassword!=null and fpassword!=''">
+				FPASSWORD = #{fpassword},
+			</if>
+			FENABLED = #{fenabled},
+		</set>
+		<where>
+			ID = #{id} and VERSION = #{version}
+		</where>
+	</update>
+
+	<select id="getById" parameterType="long" resultMap="beanMap">
+		select <include refid="selectCols"/> from 
+		<include refid="table" /> t
+		where ID = #{id}
+	</select>
+	
+	<select id="findByAccountPswd" parameterType="java.util.Map" resultMap="beanMap">
+		select <include refid="selectCols"/> from
+		<include refid="table" /> t
+		where t.faccount = #{faccount} and t.fpassword=#{fpassword}
+	</select>
+
+	<sql id="condition_sql">
+		and t.FDEL_FLAG = 0
+		and t.fenabled = 1
+		<if test="faccount!= null and faccount!=''"> and t.FACCOUNT = #{faccount} </if>
+		<if test="fusername!= null and fusername!= ''"> and t.FUSERNAME like CONCAT('%', #{fusername},'%') </if>
+	</sql>
+
+	<!-- 根据多参数进行查询数据 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+		select <include refid="selectCols"/> from
+		<include refid="table" /> t
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		<![CDATA[ order by t.ID desc]]>
+	</select>
+
+	<select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+		select <include refid="selectCols"/> from
+		<include refid="table" /> t
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+	
+	<update id="deleteByIds" parameterType="java.util.List">
+		update
+		<include refid="table" />
+		<set>
+			FDEL_FLAG=1,
+		</set>
+		<where>
+			ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+		</where>
+	</update>
+
+</mapper>

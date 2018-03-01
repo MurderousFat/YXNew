@@ -1,0 +1,26 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.sys.SysRoleDto',
+        {
+            table:Ext_UiTable({
+                beanId:'sysRoleId',
+                beanName:'sysRoleName',
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'id',text:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'version',text:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'createtime',text:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'updatetime',text:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fdelFlag',text:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'roleNo',text:'编号',xtype:'textfield',hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'roleName',text:'角色名称',xtype:'textfield',width:200,hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'roleType',text:'角色类型',xtype:'combobox',width:120,datadic:'ROLETYPE',hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'enabled',text:'商家可见',xtype:'combobox',datadic:'FLAGTYPE',hidden:false,allowBlank:false,queryFlag:true,defVal:_global_merchant?'1':'0',readOnly:_global_merchant}),
+                 Ext_UiField({type:'string',name:'unionId',text:'',xtype:'hidden',width:200,hidden:true,allowBlank:true,queryFlag:false}),
+                 Ext_UiField({type:'string',name:'unionName',text:'所属组织',xtype:'btnfield',readOnly:true,width:200,hidden:false,allowBlank:false,queryFlag:false}),
+                 Ext_UiField({type:'string',name:'merchantId',text:'',xtype:'hidden',width:200,hidden:true,allowBlank:true,queryFlag:false}),
+                 Ext_UiField({type:'string',name:'merchantName',text:'所属商家',xtype:'btnfield',readOnly:true,btns:['del','preview'],width:200,hidden:false,allowBlank:true,queryFlag:false}),
+
+            ]
+    }        
+);

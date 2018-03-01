@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<typeAliases>
+<typeAlias alias="BiRegion" type="com.tenze.pms.facade.dto.bi.BiRegionDto" />
+<typeAlias alias="BiMerchantType" type="com.tenze.pms.facade.dto.bi.BiMerchantTypeDto" />
+<typeAlias alias="BiPartType" type="com.tenze.pms.facade.dto.bi.BiPartTypeDto" />
+<typeAlias alias="BiPart" type="com.tenze.pms.facade.dto.bi.BiPartDto" />
+<typeAlias alias="BiOrgType" type="com.tenze.pms.facade.dto.bi.BiOrgTypeDto" />
+<typeAlias alias="BiOrg" type="com.tenze.pms.facade.dto.bi.BiOrgDto" />
+<typeAlias alias="BiMerchant" type="com.tenze.pms.facade.dto.bi.BiMerchantDto" />
+<typeAlias alias="BiUnion" type="com.tenze.pms.facade.dto.bi.BiUnionDto" />
+<typeAlias alias="BiMerchantNo" type="com.tenze.pms.facade.dto.bi.BiMerchantNoDto" />
+<typeAlias alias="BiDevice" type="com.tenze.pms.facade.dto.bi.BiDeviceDto" />
+</typeAliases>

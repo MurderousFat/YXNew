@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.bi.BiMerchantTypeDaoImpl">
+
+    <sql id="table"> bi_merchant_type</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.mer_no, t.mer_name, t.type, t.standard_fee, t.cap_amount </sql>
+
+    <resultMap id="beanMap" type="BiMerchantType">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="mer_no" property="merNo" />
+                <result column="mer_name" property="merName" />
+                <result column="type" property="type" />
+                <result column="standard_fee" property="standardFee" />
+                <result column="cap_amount" property="capAmount" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, mer_no, mer_name, type, standard_fee, cap_amount)
+        values 
+                (#{id}, 0,now(),now(),0, #{merNo}, #{merName}, #{type}, #{standardFee}, #{capAmount})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            mer_no=#{merNo},
+            mer_name=#{merName},
+            type=#{type},
+            standard_fee=#{standardFee},
+            cap_amount=#{capAmount},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="merNo!= null and merNo!=''">and t.mer_no=#{merNo}</if>
+             <if test="merName!= null and merName!=''">and t.mer_name=#{merName}</if>
+             <if test="type!= null and type!=''">and t.type=#{type}</if>
+             <if test="standardFee!= null and standardFee!=''">and t.standard_fee=#{standardFee}</if>
+             <if test="capAmount!= null and capAmount!=''">and t.cap_amount=#{capAmount}</if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+</mapper>

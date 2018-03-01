@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<typeAliases>
+<typeAlias alias="HisSettle" type="com.tenze.pms.facade.dto.his.HisSettleDto" />
+<typeAlias alias="HisConfig" type="com.tenze.pms.facade.dto.his.HisConfigDto" />
+<typeAlias alias="HisSettleMas" type="com.tenze.pms.facade.dto.his.HisSettleMasDto" />
+<typeAlias alias="HisSettleDtl" type="com.tenze.pms.facade.dto.his.HisSettleDtlDto" />
+<typeAlias alias="HisFeeSettle" type="com.tenze.pms.facade.dto.his.HisFeeSettleDto" />
+<typeAlias alias="HisInhospitalMas" type="com.tenze.pms.facade.dto.his.HisInhospitalMasDto" />
+<typeAlias alias="HisInhospitalDtl" type="com.tenze.pms.facade.dto.his.HisInhospitalDtlDto" />
+<typeAlias alias="HisBed" type="com.tenze.pms.facade.dto.his.HisBedDto" />
+<typeAlias alias="HisResult" type="com.tenze.pms.facade.dto.his.HisResultDto" />
+<typeAlias alias="HisSsLog" type="com.tenze.pms.facade.dto.his.HisSsLogDto" />
+</typeAliases>

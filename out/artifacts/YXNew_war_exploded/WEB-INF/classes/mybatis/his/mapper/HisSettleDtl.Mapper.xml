@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.his.HisSettleDtlDaoImpl">
+
+    <sql id="table"> his_settle_dtl</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.ykc610, t.yka111, t.yka112, t.akc222y, t.akc223y, t.akc226, t.akc225, t.akc264, t.akc221, t.aae011, t.mas_id, t.mas_no,t.aae311 </sql>
+
+    <resultMap id="beanMap" type="HisSettleDtl">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="ykc610" property="ykc610" />
+                <result column="yka111" property="yka111" />
+                <result column="yka112" property="yka112" />
+                <result column="akc222y" property="akc222y" />
+                <result column="akc223y" property="akc223y" />
+                <result column="akc226" property="akc226" />
+                <result column="akc225" property="akc225" />
+                <result column="akc264" property="akc264" />
+                <result column="akc221" property="akc221" />
+                <result column="aae011" property="aae011" />
+                <result column="mas_id" property="masId" />
+                <result column="mas_no" property="masNo" />
+                <result column="aae311" property="aae311" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, ykc610, yka111, yka112, akc222y, akc223y, akc226, akc225, akc264, akc221, aae011, mas_id, mas_no,aae311)
+        values 
+                (#{id}, 0,now(),now(),0, #{ykc610}, #{yka111}, #{yka112}, #{akc222y}, #{akc223y}, #{akc226}, #{akc225}, #{akc264}, #{akc221}, #{aae011}, #{masId}, #{masNo},#{aae311})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            ykc610=#{ykc610},
+            yka111=#{yka111},
+            yka112=#{yka112},
+            akc222y=#{akc222y},
+            akc223y=#{akc223y},
+            akc226=#{akc226},
+            akc225=#{akc225},
+            akc264=#{akc264},
+            akc221=#{akc221},
+            aae011=#{aae011},
+            mas_id=#{masId},
+            mas_no=#{masNo},
+            aae311=#{aae311},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="ykc610!= null and ykc610!=''">and t.ykc610=#{ykc610}</if>
+             <if test="yka111!= null and yka111!=''">and t.yka111=#{yka111}</if>
+             <if test="yka112!= null and yka112!=''">and t.yka112=#{yka112}</if>
+             <if test="akc222y!= null and akc222y!=''">and t.akc222y=#{akc222y}</if>
+             <if test="akc223y!= null and akc223y!=''">and t.akc223y=#{akc223y}</if>
+             <if test="akc226!= null and akc226!=''">and t.akc226=#{akc226}</if>
+             <if test="akc225!= null and akc225!=''">and t.akc225=#{akc225}</if>
+             <if test="akc264!= null and akc264!=''">and t.akc264=#{akc264}</if>
+             <if test="akc221!= null and akc221!=''">and t.akc221=#{akc221}</if>
+             <if test="aae011!= null and aae011!=''">and t.aae011=#{aae011}</if>
+             <if test="masId!= null and masId!=''">and t.mas_id=#{masId}</if>
+             <if test="masNo!= null and masNo!=''">and t.mas_no=#{masNo}</if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+</mapper>

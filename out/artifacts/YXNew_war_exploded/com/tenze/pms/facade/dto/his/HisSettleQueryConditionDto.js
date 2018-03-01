@@ -1,0 +1,16 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.his.HisSettleQueryConditionDto',
+        {
+            table:Ext_UiTable({
+                beanId:'hisHisSettleQueryIdCondition',
+                beanName:'hisHisSettleQueryNameCondition',
+                formLayout:'hbox',
+                hboxColumnCount:2
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'aaz217',text:'就诊记录号',xtype:'textfield',hidden:false,readOnly:false,allowBlank:false}),
+                 Ext_UiField({type:'string',name:'ykc618',text:'结算业务号',xtype:'textfield',hidden:false,allowBlank:false}),
+            ]
+    }        
+);

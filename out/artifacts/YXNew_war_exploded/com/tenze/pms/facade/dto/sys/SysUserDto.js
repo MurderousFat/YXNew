@@ -1,0 +1,45 @@
+
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.sys.SysUserDto',
+        {
+            table:Ext_UiTable({
+                beanId:'sysUserId',
+                beanName:'sysUserName',
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'id',text:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'version',text:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'createtime',text:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'updatetime',text:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fdelFlag',text:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'account',text:'账号',xtype:'textfield',width:200,hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'username',text:'用户名',xtype:'textfield',width:200,hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'password',text:'密码',xtype:'textfield',inputType:'password',hidden:true,allowBlank:true,queryFlag:false}),
+                 Ext_UiField({type:'string',name:'confirmPassword',text:'确认密码',xtype:'textfield',inputType:'password',hidden:true,allowBlank:true,queryFlag:false}),
+                 Ext_UiField({type:'string',name:'enabled',text:'状态',xtype:'combobox',datadic:'ENABLED',hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'roleId',text:'roleId',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'roleName',text:'角色',xtype:'btnfield',width:200,hidden:false,allowBlank:false,queryFlag:true,readOnly:true}),
+                 Ext_UiField({type:'string',name:'remark',text:'备注',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:false}),
+                 Ext_UiField({type:'string',name:'unionId',text:'',xtype:'hidden',width:200,hidden:true,allowBlank:true,queryFlag:false}),
+                 Ext_UiField({type:'string',name:'unionName',text:'所属组织',xtype:'btnfield',readOnly:true,width:200,hidden:false,allowBlank:false,queryFlag:false}),
+                 Ext_UiField({type:'string',name:'merchantId',text:'',xtype:'hidden',width:200,hidden:true,allowBlank:true,queryFlag:false}),
+                 Ext_UiField({type:'string',name:'merchantName',text:'所属商家',xtype:'btnfield',readOnly:true,btns:['del','preview'],width:200,hidden:false,allowBlank:true,queryFlag:false}),
+                  Ext_UiField({type:'string',name:'villTown',text:'乡镇名称',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'adminVill',text:'行政村名称',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'hisName',text:'村医名称',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'address',text:'地址',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'hisGender',text:'性别',xtype:'combobox',datadic:'USERGENDER',width:200,hidden:false,allowBlank:true,queryFlag:true,}),
+                  Ext_UiField({type:'string',name:'hisAge',text:'年龄',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'hisSfzh',text:'身份证号码',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'mphone',text:'手机号',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'edu',text:'学历',xtype:'combobox',datadic:'USEREDU',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'isHis',text:'是否医生',xtype:'combobox',datadic:'USERYESNO',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'hisCert',id:'hisCert',text:'医疗执业资格上传',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'hisStart',text:'正式从业日期',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'isminimerchant',text:'是否申请小薇商户',xtype:'combobox',datadic:'USERYESNO',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'isminimerchantCode',text:'小微商户号',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true}),
+                  Ext_UiField({type:'string',name:'isminimerchantCodePri',id:'isminimerchantCodePri', text:'小微商户收款图',xtype:'textfield',width:200,hidden:false,allowBlank:true,queryFlag:true,}),
+            ]
+        }
+);

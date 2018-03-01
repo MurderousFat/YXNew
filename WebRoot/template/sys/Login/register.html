@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>社保金融服务应用平台</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="/resources/layer/layer.css" />
+    <link rel="stylesheet" href="/resources/city/city.css" />
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="/resources/plug-in/ace/css/bootstrap.css" />
+    <link rel="stylesheet" href="/resources/plug-in/ace/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/plug-in/accordion/css/accordion.css">
+    <!-- text fonts -->
+    <link rel="stylesheet" href="/resources/plug-in/ace/css/ace-fonts.css" />
+
+    <link rel="stylesheet" href="/resources/plug-in/ace/css/jquery-ui.css" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/resources/plug-in/ace/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/resources/plug-in/ace/css/ace-part2.css" class="ace-main-stylesheet" />
+    <![endif]-->
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/resources/plug-in/ace/css/ace-ie.css" />
+    <![endif]-->
+    <!-- ace settings handler -->
+    <script src="/resources/plug-in/ace/js/ace-extra.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lte IE 8]>
+    <script src="/resources/plug-in/ace/js/html5shiv.js"></script>
+    <script src="/resources/plug-in/ace/js/respond.js"></script>
+    <![endif]-->
+
+
+</head>
+<body class="login-layout light-login">
+<div class="main-container">
+    <div class="main-content">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="login-container">
+                    <div class="center">
+                        <h1 id="id-text2" class="grey">
+                            <!--               <i class="ace-icon fa fa-leaf green"></i> -->
+                            <img src="/resources/plug-in/ace/images/yx.png" style="width:30px;height:22px;margin-bottom:5px;"/>
+
+                            社保金融服务应用平台
+                        </h1>
+                    </div>
+                    <div class="space-6"></div>
+                    <div class="position-relative">
+                        <div id="login-box" class="login-box visible widget-box no-border">
+                            <div class="widget-body">
+                                <form id="loinForm" class="form-horizontal" role="form" action="/regSave.tz"  method="post">
+                                    <div class="widget-main">
+                                        <div class="alert alert-warning alert-dismissible" role="alert" id="errMsgContiner" style="display: none">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <div id="showErrMsg"></div>
+                                        </div>
+                                        <h4 class="header blue lighter bigger">
+                                            <i class="ace-icon fa fa-coffee green"></i>
+                                            用户注册
+                                        </h4>
+                                        <div class="space-6"></div>
+                                        <!--label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="text"  name="account" id="account" class="form-control" placeholder="请输入登录账号" @blur="checkAcc" value=""/>
+                                <i class="ace-icon fa fa-user"></i>
+                            </span>
+                                        </label-->
+
+                                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="text" name="mphone" class="form-control" placeholder="请输入手机号码" id="mphone" value=""/>
+                                <i class="ace-icon fa fa-lock"></i>
+                            </span>
+                                        </label>
+                                        <!--城市-->
+                                        <label class="block clearfix">
+                                            <div class="infolist">
+                                                <div class="liststyle">
+
+                                    <span id="Province">
+                                           <i>请选择市</i>
+                                        <ul>
+                                            <li><a href="javascript:void(0)" alt="请选择市">请选择市</a></li>
+                                        </ul>
+                                        <input type="hidden" name="cho_Province" id="cho_Province" value="">
+                                    </span>
+
+                                                    <span id="City">
+                                         <i>请选择县</i>
+                                        <ul>
+                                            <li><a href="javascript:void(0)" alt="请选择县">请选择县</a></li>
+                                        </ul>
+                                        <input type="hidden" name="cho_City" id="cho_City" value="请选择县">
+                                    </span>
+
+                                                    <span id="Area">
+                                        <i>请选择镇</i>
+                                        <ul>
+                                            <li><a href="javascript:void(0)" alt="请选择镇">请选择镇</a></li>
+                                        </ul>
+                                        <input type="hidden" name="cho_Area" id="cho_Area" value="请选择镇">
+                                    </span>
+
+                                                    <span id="Insurer">
+                                         <i>请选择村</i>
+                                        <ul>
+                                            <li><a href="javascript:void(0)" alt="请选择村">请选择村</a></li>
+                                        </ul>
+                                        <input type="hidden" name="cho_Insurer" id="cho_Insurer" value="请选择村">
+                                    </span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="text"  name="username" class="form-control" placeholder="请输入用户名"  id="username" value=""/>
+                                <i class="ace-icon fa fa-user"></i>
+                            </span>
+                                        </label>
+                                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="password" name="password" class="form-control" placeholder="请输入密码" id="password" value=""/>
+                                <i class="ace-icon fa fa-lock"></i>
+                            </span>
+                                        </label>
+                                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="password" name="repassword" class="form-control" placeholder="请再次输入密码" id="repassword" value=""/>
+                                <i class="ace-icon fa fa-lock"></i>
+                            </span>
+                                        </label>
+
+                                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <!--<input type="text" name="merchantid"  id="merchantid" class="form-control" placeholder="归属医院"  value=""/>-->
+                                <select id="provice" style="width: 300px;margin-bottom: 10px;">
+                                  <option value="-1">请选择卫生院</option>
+                             </select>
+                             <select id="selectCity" style="width: 300px;margin-bottom: 10px;">
+                                  <option value="-1">请选择卫生站</option>
+                             </select>
+                            </span>
+                                        </label>
+                                        <div style="margin: 10px">
+                                            <input type="checkbox" name="flag" id="flag" placeholder="阅读并接收"  checked />
+                                            <span>阅读并同意<a  href="/userAgreePage.tz" target="_blank">《平台用户服务协议》</a></span>
+                                        </div>
+                                        <label class="block clearfix">
+                                            <div class="input-group">
+                                                <input type="text" style="width:150px" name="randCode" class="form-control" placeholder="请输入验证码"  id="randCode"/>
+                                                <span class="input-group-addon" style="padding: 0px;"><img id="randCodeImage" @click="reloadRandCodeImage" src="/randCodeImage"  /></span>
+                                            </div>
+                                        </label>
+                                        <div class="space"></div>
+                                        <div class="clearfix">
+                                            <button type="button" id="but_login"   @click="checkUser" class="width-35 pull-right btn btn-sm btn-primary">
+                                                <i class="ace-icon fa fa-key"></i>
+                                                <span class="bigger-110" >提交</span>
+                                            </button>
+                                        </div>
+                                        <div class="clearfix">
+                                            <a href='/loginPage.tz' class='index_font'>如果已有帐号,点击直接登录</a>
+                                        </div>
+                                        <div class="space-4"></div>
+                                    </div>
+                                    <div class="toolbar clearfix">
+                                        <div style="float: right">
+                                            <!--  <a href="#"  class="forgot-password-link">
+                                                  语言
+                                              <i class="ace-icon fa fa-arrow-right"></i>
+                                              <t:dictSelect id="langCode" field="langCode" typeGroupCode="lang" hasLabel="false" extendJson="{style:'padding:2px; width:80px;'}" defaultVal="zh-cn"></t:dictSelect>
+                                            </a>-->
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="center"><h4 class="blue" id="id-company-text">&copy; YxUnionPay 版权所有 V_1.0.1</h4></div>
+
+                        <!--
+                                  <div class="navbar-fixed-top align-right">
+                                     <br />
+                                     &nbsp;
+                                     <a id="btn-login-dark" class="blue" href="#" onclick="darkStyle()">Dark</a>
+                                     &nbsp;
+                                     <span class="blue">/</span>
+                                     &nbsp;
+                                     <a id="btn-login-blur" class="blue" href="#" onclick="blurStyle()">Blur</a>
+                                     &nbsp;
+                                     <span class="blue">/</span>
+                                     &nbsp;
+                                     <a id="btn-login-light" class="blue" href="#" onclick="lightStyle()">Light</a>
+                                     &nbsp; &nbsp; &nbsp;
+                                   </div>
+                         -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="/resources/plug-in/jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/resources/plug-in/jquery/jquery.cookie.js"></script>
+<script type="text/javascript" src="/resources/plug-in/mutiLang/en.js"></script>
+<script type="text/javascript" src="/resources/plug-in/mutiLang/zh-cn.js"></script>
+<script type="text/javascript" src="/resources/plug-in/login/js/jquery.tipsy.js"></script>
+<script type="text/javascript" src="/resources/plug-in/login/js/iphone.check.js"></script>
+<script type="text/javascript" src="/resources/h4/js/plugins/layer/layerv3/layer.js"></script>
+<script type="text/javascript" src="/resources/vue/vue.js"></script>
+<script type="text/javascript" src="/resources/layer/layer.js"></script>
+
+<script type="text/javascript" src="/resources/city/city4.city.js"></script>
+<script type="text/javascript" src="resources/city/city4.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        optErrMsg();
+    });
+    $("#errMsgContiner").hide();
+    function optErrMsg(){
+        $("#showErrMsg").html('');
+        $("#errMsgContiner").hide();
+    }
+
+    //输入验证码，回车登录
+    $(document).keydown(function(e){
+        if(e.keyCode == 13) {
+            $("#but_login").click();
+        }
+    });
+
+    //登录提示消息显示
+    function showErrorMsg(msg){
+        $("#errMsgContiner").show();
+        $("#showErrMsg").html(msg);
+        window.setTimeout(optErrMsg,3000);
+    }
+
+    function darkStyle(){
+        $('body').attr('class', 'login-layout');
+        $('#id-text2').attr('class', 'red');
+        $('#id-company-text').attr('class', 'blue');
+        e.preventDefault();
+    }
+    function lightStyle(){
+        $('body').attr('class', 'login-layout light-login');
+        $('#id-text2').attr('class', 'grey');
+        $('#id-company-text').attr('class', 'blue');
+
+        e.preventDefault();
+    }
+    function blurStyle(){
+        $('body').attr('class', 'login-layout blur-login');
+        $('#id-text2').attr('class', 'white');
+        $('#id-company-text').attr('class', 'light-blue');
+
+        e.preventDefault();
+    }
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        //生成菜单
+        var menuItem = Vue.extend({
+            name: 'menu-item',
+            props:{items:{}},
+            template:[
+                '<select class="form-control" placeholder="归属医院"  name="merchantid"  id="merchantid" >',
+                ' <option value="">请选择归属医院</option>',
+                '<option v-bind:value="item.merName" v-for="item in items">{{item.merName}}</option>'
+            ].join('')
+        });
+
+//注册菜单组件
+        Vue.component('menuItem',menuItem);
+
+
+        var vm = new Vue({
+            el:'#loinForm',
+            data:{
+                menuList:{}
+            },
+            methods: {
+                getMenuList: function (event) {
+                    $.getJSON("/getBiMerchant.tz?"+$.now(), function(r){
+                        vm.menuList =JSON.parse(r.selectList);
+                    });
+                },
+
+                reloadRandCodeImage:function(){
+                    var date = new Date();
+                    var img = document.getElementById("randCodeImage");
+                    img.src='/randCodeImage?a=' + date.getTime();
+                },
+                newReg:function () {
+                    var curLayerIndex = layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+                    var actionurl=$('form').attr('action');//提交路径
+                    var checkurl=$('form').attr('check');//验证路径
+                    var formData = new Object();
+                    var data=$(":input").each(function() {
+                        formData[this.name] =$("#"+this.name ).val();
+                    });
+                    var pselect=$("#provice option:selected").attr("id");
+                    if(pselect!=undefined | $.trim(pselect).length>0){
+                        formData["provice"] =pselect;
+                    }
+                    var pselectCity=$("#selectCity option:selected").attr("id");
+                    if(pselectCity!=undefined | $.trim(pselectCity).length>0){
+                        formData["selectCity"] =pselectCity;
+                    }
+                    $.ajax({
+                        async : false,
+                        cache : false,
+                        type : 'POST',
+                        url : actionurl,// 请求的action路径
+                        data : formData,
+                        dataType:'json',
+                        error : function() {// 请求失败处理函数
+                        },
+                        success : function(data) {
+                            layer.close(curLayerIndex);
+                            console.log(data);
+                            if(data.success){
+//                                console.log(data);
+                                alert("注册成功")
+                                window.location.href='/loginPage.tz'
+                            }else{
+                                showErrorMsg(data.failure);
+                            }
+                            //window.location.href = actionurl;
+                        }
+                    });
+                },
+                validForm:function (){
+                    /*************************************************
+                    if($.trim($("#account").val()).length==0){
+                        showErrorMsg("请输入登录帐号");
+                        return false;
+                    }
+                     ************************************************/
+                    if($.trim($("#mphone").val()).length==0){
+                        showErrorMsg("请输入手机号码");
+                        return false;
+                    }
+                    var phoneNumReg = /^1[3|4|5|7|8]\d{9}$/
+                    if($.trim($("#mphone").val()).length!=11){
+                        showErrorMsg("手机号码应为11位数");
+                        return false;
+                    }else {
+                        if(!phoneNumReg.test($("#mphone").val())){
+                            showErrorMsg("手机号码格式错误，请重新输入");
+                            return false;
+                        }
+                    }
+                    if($("#cho_Province").val()=="请选择市"){
+                        showErrorMsg("请输入选择市");
+                        return false;
+                    }
+
+                    if($.trim($("#cho_City").val()).length=="请选择区(县)"){
+                        showErrorMsg("请选择区(县)");
+                        return false;
+                    }
+                    if($.trim($("#cho_Area").val()).length=="请选择镇"){
+                        showErrorMsg("请选择镇");
+                        return false;
+                    }
+                    if($.trim($("#username").val()).length==0){
+                        showErrorMsg("请输入用户名");
+                        return false;
+                    }
+
+                    if($.trim($("#password").val()).length==0){
+                        showErrorMsg("请输入密码");
+                        return false;
+                    }
+                    if($.trim($("#repassword").val()).length==0){
+                        showErrorMsg("请再次输入密码");
+                        return false;
+                    }
+                    if($("#provice option:selected").attr("id")==undefined | $.trim($("#provice option:selected").attr("id")).length==0 ){
+                        showErrorMsg("请选择卫生院");
+                        return false;
+                    }
+                    if(!$("#flag").is(':checked')){
+                        showErrorMsg("请同意协议");
+                        return false;
+                    }
+                    if($.trim($("#randCode").val()).length==0){
+                        showErrorMsg("请输入验证码");
+                        return false;
+                    }
+
+
+                    return true;
+                },
+                //验证用户信息
+                checkUser:function (){
+                    if(!this.validForm()){
+                        return false;
+                    }
+                    this.newReg();
+                },
+                checkAcc:function (r){
+                    var s= $("#account").val();
+                    if ($.trim($("#account").val()).length!=0) {
+                        var url= '/checkAcc.tz?'+ encodeURI(encodeURI("account="+s));
+                        $.ajax({
+                            type : 'GET',
+                            url :url,
+                            dataType:'json',
+                            success : function(r) {
+                                var data=r.data;
+                                if(data=="1"){
+                                    $("#account").val("");
+                                    showErrorMsg("账户已存在,请重新输入");
+                                    return false;
+                                }else{
+                                    showErrorMsg(r.msg);
+                                }
+                            }
+                        });
+                    }
+                },
+            },
+            created: function(){
+                this.getMenuList();
+            },
+        });
+
+
+        $("#city_5").citySelect({
+            url:'citylist:[{"p":"惠州市"}]',
+            prov:"",
+            city:"",
+            dist:"",
+            nodata:""
+        });
+
+
+        function initPro() {
+            var option1 = '';
+            $.getJSON("/getBiMerchant2.tz",function(jsonData) {
+                var newjsonData=eval(jsonData.citylist);
+                $.each(newjsonData, function(index, indexItems) {
+                    option1 += "<option id=" + indexItems.id + ">"
+                        + indexItems.name + "</option>";
+                });
+                $("#provice").append(option1);
+                $("#provice").bind("change", function() {
+                    selectCity(newjsonData);
+                })
+            });
+            function selectCity(data) {
+                var option2 = '';
+                var selectedIndex = $("#provice :selected").text();
+                $("#selectCity").empty();
+                if($("#provice :selected").val() == -1){
+                    $("#selectCity").append("<option id=\"-1\">请选择卫生站</option>");
+                }
+                $.each(data, function(index, indexItems) {
+                    var proName = indexItems.name;
+                    $.each(indexItems.items, function(index, indexItems) {
+                        if (indexItems.parentNode != selectedIndex) {
+                            return;
+                        } else {
+                            option2 += "<option id=" + indexItems.id + ">"
+                                + indexItems.name + "</option>";
+                        }
+                    })
+                });
+                $("#selectCity").append(option2);
+            };
+        };
+        $(function() {
+            initPro();
+        });
+
+    });
+
+    //    layer.open({
+    //        type: 2 //Page层类型
+    //        ,area: ['900px', '600px']
+    //        ,title: '注册协议'
+    //        ,shade: 0.6 //遮罩透明度
+    //        ,closeBtn: 0  //不允许关闭
+    //        ,maxmin: false //允许全屏最小化
+    //        ,anim: -1 //0-6的动画形式，-1不开启
+    ////        ,content: '<iframe src="/userAgreePage.tz"  style="padding: 0px; width: 100%; height: 1000px;"></iframe>'
+    //       ,content: ['/userAgreePage.tz']
+    //        ,btn: ['同意协议','不同意']
+    //        ,yes: function(index, layero){
+    //            layer.closeAll();
+    //        },btn2: function(index, layero){
+    //            window.location.href='/loginPage.tz'
+    //        }
+    //    });
+
+
+
+</script>
+
+</body>
+</html>

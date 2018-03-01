@@ -1,0 +1,156 @@
+body, ul, ol, li, p, table, td, th, img, dl, dt, dd {
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, Tahoma, "SimSun", Geneva, sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Microsoft YaHei", "LiHei Pro Medium";
+}
+#header>h1, #header>h2 {
+  padding: 0;
+  margin: 0;
+}
+h3, h4 {
+  margin: 0.5em 0 0.4em 0;
+}
+textarea, input, select, body  {
+  font-size: 12px;
+}
+img {
+  vertical-align: top;
+}
+ul, ol  {
+  list-style: none;
+}
+a {
+  color: #2287b3;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+em {
+  font-style: normal;
+}
+.lab_page {
+  width: 793px;
+  margin: 0 auto;
+}
+#header {
+  height: 49px;
+  position: relative;
+  padding: 0 20px;
+}
+#header h1 {
+  color: #61aae2;
+  font-size: 30px;
+  font-weight: normal;
+  position:absolute;
+  right: 0;
+  top: 8px;
+  width: 315px;
+}
+h2#demo_title {
+  font-size: 1.5em;
+  font-weight: bold;
+  position: absolute;
+  left: 40px;
+  top: 20px;
+  width: 300px;
+}
+h3 {
+  font-size: 1.3em;
+}
+#main_area {
+  padding: 0 20px 30px;
+  min-height: 760px;
+  background: url("http://w.qhimg.com/images/v2/360se/2012/06/14/cbg.png") no-repeat;
+}
+#demo_description {
+  border-bottom: dashed #d6d6d6;
+  border-width: 1px 0;
+  font: 14px/1.32 "Microsoft YaHei", "LiHei Pro Medium";
+  padding: 10px 30px 0;
+}
+#demo_description section {
+  margin: 30px 0 20px 0;
+}
+.indent {
+  padding-left: 20px;
+}
+.small {
+  font-size: 85%;
+}
+#load_box{
+  margin-bottom:30px;
+}
+#load_box>span{
+  -webkit-transition-property: opacity;
+  -webkit-transition: 1s ease-in;
+}
+#load_box .error{
+	color:#f00;
+}
+#load_box .success{
+	color:#0f0;
+	font-weight: bold;
+	opacity:0;
+}
+.launch_button {
+  width: 156px;
+  height: 36px;
+  background: url("/resources/extjs4/resources/image/banner_background/lightGreen.png") repeat;
+  border: none;
+  cursor: pointer;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 1px #1f5739;
+  letter-spacing: 1px;
+  font: bold 16px "Microsoft YaHei", "LiHei Pro Medium";
+}
+.launch_button:hover {
+  background-image: url("/resources/extjs4/resources/image/banner_background/lightRed.png");
+  color: #ffffff;
+}
+.launch_button:active {
+  background-image: url("/resources/extjs4/resources/image/banner_background/default.png");
+}
+.launch_button.dis{
+  -webkit-opacity: 0.3;
+}
+.launch_button.dis:hover{
+}
+
+#error_msg {
+  border: 2px solid #e7d8a6;
+  background-color: #fff7dc;
+  color: #ba6a03;
+  display: none;
+  width: 600px;
+  margin: 40px auto;
+  padding: 20px 0;
+}
+#error_msg > table{
+  width: 450px;
+  margin: auto;
+  line-height: 1.6;
+}
+#msg_box {
+  border: 2px solid #e7d8a6;
+  background-color: #fff7dc;
+  color: #333;
+  width: 500px;
+  padding: 18px 0;
+  margin: 20px auto 10px;
+  display: none;
+}
+#demo_area {
+  margin-top: 20px;
+  text-align: center;
+}
+
+body {
+  color: #333;
+  background: #ebebeb;
+  font-family: "Microsoft YaHei", "LiHei Pro Medium";
+  font-size: 14px;
+}

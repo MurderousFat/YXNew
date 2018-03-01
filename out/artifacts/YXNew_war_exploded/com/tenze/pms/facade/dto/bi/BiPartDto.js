@@ -1,0 +1,21 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.bi.BiPartDto',
+        {
+            table:Ext_UiTable({
+                beanId:'biPartId',
+                beanName:'biPartName',
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'id',text:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'version',text:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'createtime',text:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'updatetime',text:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fdelFlag',text:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'serialNumber',text:'配件序列号',xtype:'textfield',width:250,hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'partName',text:'配件名称',xtype:'textfield',width:200,hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'partTypeId',text:'partTypeId',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'partTypeName',text:'配件类型',xtype:'btnfield',width:150,hidden:false,allowBlank:true,queryFlag:true}),
+            ]
+    }        
+);

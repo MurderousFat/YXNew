@@ -1,0 +1,71 @@
+@charset "utf-8";
+/*
+body,ul,ol,li,td {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 12px/1.5 "Lucida Grande", arial, helvetica, sans-serif;
+	color: #525252;
+}
+
+img {
+	border: none;
+}
+*/
+#online {
+	float: left;
+	left: 0;
+	top: 100px;
+	width: 167px;
+	margin: 0px;
+	z-index: 65535;
+	position: absolute;
+}
+#online #online_t {
+	float: left;
+	background: url(/resources/images/ordcss/online_t.png) no-repeat;
+	width: 167px;
+	height: 39px;
+}
+
+#online #online_c {
+	float: left;
+	background: url(/resources/images/ordcss/online_c.gif) repeat-y;
+	width: 167px;
+	height: auto;
+}
+
+#online #online_c .t_box {
+	margin: 8px 3px 8px 4px;
+	width: 160px;
+}
+
+#online #online_c .online_list {
+	height: 34px;
+	border-bottom: 1px dashed #d9d9d9;
+	padding-left: 8px;
+}
+
+#online #online_c .b {
+	font-weight: bold;
+	color: #b70610;
+}
+
+#online #online_d {
+	float: left;
+	background: url(/resources/images/ordcss/online_d.png) no-repeat;
+	width: 167px;
+	height: 25px;
+}
+
+#leftonline {
+	float: left;
+	left: 0;
+	top: 100px;
+	width: 26px;
+	height: 136px;
+	z-index: 65535;
+	position: absolute;
+}

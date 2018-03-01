@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.his.HisFeeSettleDaoImpl">
+
+    <sql id="table"> his_fee_settle</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.ykc675, t.aae040, t.akc264, t.akc253, t.akc254, t.yka319, t.ykc624, t.aka151, t.akb066, t.ykc631, t.akb068, t.ake039, t.ykc627, t.ckc504, t.ckc688, t.akc630, t.ykc629, t.akb063, t.ykc618, t.ykc666, t.yka430, t.yka431, t.yka402, t.ckc938, t.ckc939, t.ckc940, t.ckc941, t.ckc942, t.ckc943, t.ckc944, t.ckc945, t.aae013, t.ckeA0N, t.mer_id, m.mer_name, t.mer_no_id, t.mer_ins_name </sql>
+
+    <resultMap id="beanMap" type="HisFeeSettle">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="ykc675" property="ykc675" />
+                <result column="aae040" property="aae040" />
+                <result column="akc264" property="akc264" />
+                <result column="akc253" property="akc253" />
+                <result column="akc254" property="akc254" />
+                <result column="yka319" property="yka319" />
+                <result column="ykc624" property="ykc624" />
+                <result column="aka151" property="aka151" />
+                <result column="akb066" property="akb066" />
+                <result column="ykc631" property="ykc631" />
+                <result column="akb068" property="akb068" />
+                <result column="ake039" property="ake039" />
+                <result column="ykc627" property="ykc627" />
+                <result column="ckc504" property="ckc504" />
+                <result column="ckc688" property="ckc688" />
+                <result column="akc630" property="akc630" />
+                <result column="ykc629" property="ykc629" />
+                <result column="akb063" property="akb063" />
+                <result column="ykc618" property="ykc618" />
+                <result column="ykc666" property="ykc666" />
+                <result column="yka430" property="yka430" />
+                <result column="yka431" property="yka431" />
+                <result column="yka402" property="yka402" />
+                <result column="ckc938" property="ckc938" />
+                <result column="ckc939" property="ckc939" />
+                <result column="ckc940" property="ckc940" />
+                <result column="ckc941" property="ckc941" />
+                <result column="ckc942" property="ckc942" />
+                <result column="ckc943" property="ckc943" />
+                <result column="ckc944" property="ckc944" />
+                <result column="ckc945" property="ckc945" />
+                <result column="aae013" property="aae013" />
+                <result column="ckeA0N" property="ckeA0N" />
+                <result column="mer_id" property="merId" />
+                <result column="mer_name" property="merName" />
+                <result column="mer_no_id" property="merNoId" />
+                <result column="mer_ins_name" property="merInsName" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, ykc675, aae040, akc264, akc253, akc254, yka319, ykc624, aka151, akb066, ykc631, akb068, ake039, ykc627, ckc504, ckc688, akc630, ykc629, akb063, ykc618, ykc666, yka430, yka431, yka402, ckc938, ckc939, ckc940, ckc941, ckc942, ckc943, ckc944, ckc945, aae013, ckeA0N, mer_id, mer_name, mer_no_id, mer_ins_name)
+        values 
+                (#{id}, 0,now(),now(),0, #{ykc675}, #{aae040}, #{akc264}, #{akc253}, #{akc254}, #{yka319}, #{ykc624}, #{aka151}, #{akb066}, #{ykc631}, #{akb068}, #{ake039}, #{ykc627}, #{ckc504}, #{ckc688}, #{akc630}, #{ykc629}, #{akb063}, #{ykc618}, #{ykc666}, #{yka430}, #{yka431}, #{yka402}, #{ckc938}, #{ckc939}, #{ckc940}, #{ckc941}, #{ckc942}, #{ckc943}, #{ckc944}, #{ckc945}, #{aae013}, #{ckeA0N}, #{merId}, #{merName}, #{merNoId}, #{merInsName})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            ykc675=#{ykc675},
+            aae040=#{aae040},
+            akc264=#{akc264},
+            akc253=#{akc253},
+            akc254=#{akc254},
+            yka319=#{yka319},
+            ykc624=#{ykc624},
+            aka151=#{aka151},
+            akb066=#{akb066},
+            ykc631=#{ykc631},
+            akb068=#{akb068},
+            ake039=#{ake039},
+            ykc627=#{ykc627},
+            ckc504=#{ckc504},
+            ckc688=#{ckc688},
+            akc630=#{akc630},
+            ykc629=#{ykc629},
+            akb063=#{akb063},
+            ykc618=#{ykc618},
+            ykc666=#{ykc666},
+            yka430=#{yka430},
+            yka431=#{yka431},
+            yka402=#{yka402},
+            ckc938=#{ckc938},
+            ckc939=#{ckc939},
+            ckc940=#{ckc940},
+            ckc941=#{ckc941},
+            ckc942=#{ckc942},
+            ckc943=#{ckc943},
+            ckc944=#{ckc944},
+            ckc945=#{ckc945},
+            aae013=#{aae013},
+            ckeA0N=#{ckeA0N},
+            mer_id=#{merId},
+            mer_name=#{merName},
+            mer_no_id=#{merNoId},
+            mer_ins_name=#{merInsName},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+    
+    <sql id="leftjoin_sql">
+    	left join bi_merchant m on m.id=t.mer_id
+    </sql>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+         <include refid="leftjoin_sql" />
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="ykc675!= null and ykc675!=''">and t.ykc675=#{ykc675}</if>
+             <if test="aae040!= null and aae040!=''">and t.aae040=#{aae040}</if>
+             <if test="akc264!= null and akc264!=''">and t.akc264=#{akc264}</if>
+             <if test="akc253!= null and akc253!=''">and t.akc253=#{akc253}</if>
+             <if test="akc254!= null and akc254!=''">and t.akc254=#{akc254}</if>
+             <if test="yka319!= null and yka319!=''">and t.yka319=#{yka319}</if>
+             <if test="ykc624!= null and ykc624!=''">and t.ykc624=#{ykc624}</if>
+             <if test="aka151!= null and aka151!=''">and t.aka151=#{aka151}</if>
+             <if test="akb066!= null and akb066!=''">and t.akb066=#{akb066}</if>
+             <if test="ykc631!= null and ykc631!=''">and t.ykc631=#{ykc631}</if>
+             <if test="akb068!= null and akb068!=''">and t.akb068=#{akb068}</if>
+             <if test="ake039!= null and ake039!=''">and t.ake039=#{ake039}</if>
+             <if test="ykc627!= null and ykc627!=''">and t.ykc627=#{ykc627}</if>
+             <if test="ckc504!= null and ckc504!=''">and t.ckc504=#{ckc504}</if>
+             <if test="ckc688!= null and ckc688!=''">and t.ckc688=#{ckc688}</if>
+             <if test="akc630!= null and akc630!=''">and t.akc630=#{akc630}</if>
+             <if test="ykc629!= null and ykc629!=''">and t.ykc629=#{ykc629}</if>
+             <if test="akb063!= null and akb063!=''">and t.akb063=#{akb063}</if>
+             <if test="ykc618!= null and ykc618!=''">and t.ykc618=#{ykc618}</if>
+             <if test="ykc666!= null and ykc666!=''">and t.ykc666=#{ykc666}</if>
+             <if test="yka430!= null and yka430!=''">and t.yka430=#{yka430}</if>
+             <if test="yka431!= null and yka431!=''">and t.yka431=#{yka431}</if>
+             <if test="yka402!= null and yka402!=''">and t.yka402=#{yka402}</if>
+             <if test="ckc938!= null and ckc938!=''">and t.ckc938=#{ckc938}</if>
+             <if test="ckc939!= null and ckc939!=''">and t.ckc939=#{ckc939}</if>
+             <if test="ckc940!= null and ckc940!=''">and t.ckc940=#{ckc940}</if>
+             <if test="ckc941!= null and ckc941!=''">and t.ckc941=#{ckc941}</if>
+             <if test="ckc942!= null and ckc942!=''">and t.ckc942=#{ckc942}</if>
+             <if test="ckc943!= null and ckc943!=''">and t.ckc943=#{ckc943}</if>
+             <if test="ckc944!= null and ckc944!=''">and t.ckc944=#{ckc944}</if>
+             <if test="ckc945!= null and ckc945!=''">and t.ckc945=#{ckc945}</if>
+             <if test="aae013!= null and aae013!=''">and t.aae013=#{aae013}</if>
+             <if test="ckeA0N!= null and ckeA0N!=''">and t.ckeA0N=#{ckeA0N}</if>
+             <if test="merId!= null and merId!=''">and t.mer_id=#{merId}</if>
+             <if test="merName!= null and merName!=''">and t.mer_name=#{merName}</if>
+             <if test="merNoId!= null and merNoId!=''">and t.mer_no_id=#{merNoId}</if>
+             <if test="merInsName!= null and merInsName!=''">and t.mer_ins_name=#{merInsName}</if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+         <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+         <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+</mapper>

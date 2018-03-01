@@ -1,0 +1,32 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"struts-2.1.dtd">
+<struts>
+	<package name="bi" extends="sys-default" namespace="/bi">
+		<!-- 页面菜单权限拦截 -->
+		<action name="mng_*" class="{1}Action" method="mng">
+			<result name="input_result" type="freemarker">
+				/template/bi/{1}/mng.html
+			</result>
+		</action>
+		<!-- ajax权限拦截 -->
+		<action name="*By*" class="{2}Action" method="{1}">
+		</action>
+		<!-- 页面菜单权限拦截 -->
+		<action name="*_*" class="{2}Action" method="{1}">
+			<result name="input_result" type="freemarker">
+				/template/bi/{2}/{1}.html
+			</result>
+		</action>
+		<!-- 登录权限拦截 -->
+		<action name="*With*" class="{2}Action" method="{1}">
+			<result name="input_result" type="freemarker">
+				/template/bi/{2}/{1}.html
+			</result>
+		</action>
+		<!-- APP接口TOKEN拦截 -->
+		<action name="*Api*" class="{2}Action" method="{1}">
+		</action>
+
+	</package>
+</struts>

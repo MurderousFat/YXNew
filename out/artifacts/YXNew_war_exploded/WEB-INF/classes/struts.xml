@@ -1,0 +1,42 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<package name="sys-default"
+		extends="struts-default,json-default" namespace="/">
+		<interceptors>
+		<interceptor name="LoginInterceptor" class="com.tenze.pms.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="ExceptionInterceptor"
+				class="com.tenze.intercepter.ExceptionInterceptor"></interceptor>
+			<!-- 修改权限end -->
+			<interceptor-stack name="exceptions">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="ExceptionInterceptor"></interceptor-ref>
+			</interceptor-stack>
+			<interceptor-stack name="login">
+				<interceptor-ref name="exceptions"></interceptor-ref>
+				<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-action-ref name="exceptions"></default-action-ref>
+		<global-results>
+			<result type="freemarker" name="success">/include/success.ftl
+			</result>
+			<result type="freemarker" name="null_success">/include/null_success.ftl
+			</result>
+			<result type="freemarker" name="noperm">/include/noperm.ftl
+			</result>
+			<result type="freemarker" name="noperm_page">/include/noperm_page.ftl
+			</result>
+			<result type="freemarker" name="unlogin_page">/include/unlogin_page.ftl
+			</result>
+		</global-results>
+	</package>
+	<!-- 基础资料管理 -->
+	<include file="struts/root.xml" />
+	<include file="struts/sys.xml"/>
+	<include file="struts/bi.xml"/>
+	<include file="struts/mer.xml"/>
+	<include file="struts/his.xml"/>
+</struts>

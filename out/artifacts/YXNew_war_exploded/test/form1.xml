@@ -1,0 +1,88 @@
+<FreeForm>
+	<Properties bgColor="#D9E7F8" />
+	<Fonts>
+		<Font />
+		<Font faceName="微软雅黑" bold="true" size="-20" />
+	</Fonts>
+	<Objects>
+		<TableLayout width="100%">
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<tr>
+				<td>
+					<Input dataType="string" isLastInput="false" align="left"
+						type="Edit" visible="true" width="3" editSize="2" height="1"
+						editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="客户号"
+						id="customerid" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input dataType="string" isLastInput="false" align="left"
+						type="Edit" visible="true" width="3" editSize="2" height="1"
+						editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="客户名"
+						id="companyname" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input dataType="string" isLastInput="false" align="left"
+						type="Edit" visible="true" width="3" editSize="2" height="1"
+						editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="联系人"
+						id="contactname" />
+				</td>
+				<td />
+				<td />
+			</tr>
+			<tr>
+				<td>
+					<Input dataType="string" isLastInput="false" align="left"
+						type="Edit" visible="true" width="3" editSize="2" height="1"
+						editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="国家"
+						id="country" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input dataType="string" isLastInput="false" align="left"
+						type="Edit" visible="true" width="3" editSize="2" height="1"
+						editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="城市" id="city" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input dataType="string" isLastInput="false" align="left"
+						type="Edit" visible="true" width="3" editSize="2" height="1"
+						editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="地址"
+						id="address" />
+				</td>
+				<td />
+				<td />
+			</tr>
+			<tr>
+				<td>
+					<Input dataType="string" isLastInput="false" align="left"
+						type="Edit" visible="true" width="3" editSize="2" height="1"
+						editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="电话" id="phone" />
+				</td>
+				<td />
+				<td />
+			</tr>
+		</TableLayout>
+	</Objects>
+	<DropList />
+</FreeForm>

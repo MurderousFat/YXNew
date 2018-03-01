@@ -1,0 +1,58 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.mer.MerMchntTradeDto',
+        {
+            table:Ext_UiTable({
+                beanId:'merMchntTradeId',
+                beanName:'merMchntTradeName',
+                formLayout:'hbox',
+                hboxColumnCount:2
+            })
+            ,
+            fields:[
+                    Ext_UiField({type:'string',name:'id',text:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                    Ext_UiField({type:'string',name:'version',text:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                    Ext_UiField({type:'string',name:'createtime',text:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                    Ext_UiField({type:'string',name:'updatetime',text:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                    Ext_UiField({type:'string',name:'fdelFlag',text:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'settleDt',text:'清算日期',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'tid',text:'交易类型',xtype:'combobox',datadic:'YX_TID',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'ttm',text:'交易时间',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'rcvIns',text:'发卡机构',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'acqIns',text:'收单机构',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fwdIns',text:'转发机构',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'xtck',text:'系统参考号',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'jyLs',text:'流水号',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'merId',text:'商户编号',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'merMn',text:'商户名称',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'terId',text:'终端编码',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'pno',text:'交易卡号',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'transAt',text:'交易金额',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'discAt',text:'商户手续费',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'evalAt',text:'医保卡奖金',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'recoAt',text:'商户入账金额',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+            ]
+    }        
+);
+
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.mer.MerMchntTradeDtoSearch',
+        {
+            table:Ext_UiTable({
+                beanId:'merMchntTradeId',
+                beanName:'merMchntTradeName',
+                formLayout:'hbox',
+                hboxColumnCount:2
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'merIds',text:'商户编号',xtype:'btnfield',readOnly:true,hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'terIds',text:'终端编码',xtype:'btnfield',readOnly:true,hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'tno',text:'交易流水号',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'tid',text:'交易类型',xtype:'combobox',datadic:'YX_TID',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'sdt',text:'交易时间.起',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'edt',text:'交易时间.止',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'ptp',text:'卡类型',xtype:'combobox',datadic:'YX_PTP',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'pno',text:'交易卡号',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+            ]
+    }        
+);

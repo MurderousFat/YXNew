@@ -1,0 +1,27 @@
+_fillInDataModel(
+		'com.tenze.test.Test2',
+		{
+			table:Ext_UiTable({
+				beanId:'testBeanId',
+				beanName:'testBeanName',
+				formLayout:'hbox',
+				hboxColumnCount:2
+			})
+			,
+			fields:[
+			     Ext_UiField({type:'string',name:'fdelFlag',hidden:true,xtype:'hidden'})
+			     ,Ext_UiField({type:'string',name:'fwhname',text:'仓库名称',width:200})
+			     ,Ext_UiField({type:'string',name:'fnegative',text:'负数出库',datadic:'ENABLED',xtype:"combobox"})
+			     ,Ext_UiField({type:'string',name:'frefectoryName',text:'经营点',width:200})
+			     ,Ext_UiField({type:'string',name:'fprod',text:'成品仓',datadic:'FLAGTYPE',xtype:"combobox"})
+			     ,Ext_UiField({type:'string',name:'fsysApprove',text:'审核状态'})
+			     ,Ext_UiField({type:'string',name:'fdeptName',text:'组织',width:200})
+			     ,Ext_UiField({type:'string',name:'fdeptNo',text:'组织编码'})
+			     ,Ext_UiField({type:'string',name:'fschoolName',text:'学校名称',width:200})
+			     ,Ext_UiField({type:'string',name:'frefectoryId',text:'经营点编码'})
+			     ,Ext_UiField({type:'string',name:'fschoolId',text:'学校编码'})
+			     ,Ext_UiField({type:'string',name:'fwhno',text:'global.test',allowBlank:false})
+			     ,Ext_UiField({type:'string',name:'ffindcode',text:'查找码',btns:['preview','add','del','close','refresh'],xtype:'btnfield',readOnly:true,allowBlank:false})
+			]
+	}		
+);

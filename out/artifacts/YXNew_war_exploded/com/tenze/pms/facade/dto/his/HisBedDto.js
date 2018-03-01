@@ -1,0 +1,38 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.his.HisBedDto',
+        {
+            table:Ext_UiTable({
+                beanId:'hisBedId',
+                beanName:'hisBedName',
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'id',text:'',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'version',text:'',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'createtime',text:'',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'updatetime',text:'',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fdelFlag',text:'',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'bedNo',text:'床位编号',xtype:'textfield',hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'bedName',text:'床位名称',xtype:'textfield',hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'building',text:'所属建筑',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'storey',text:'所属楼层',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'remark',text:'备注',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'merchantId',text:'',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true,defVal:_global_merchant?(_global_merchant.merchantId||''):''}),
+                 Ext_UiField({type:'string',name:'merchantName',text:'商家名称',readOnly:true,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+            ]
+        ,Supcan:{
+        	TreeList:{
+        		Properties:{
+        			
+        		},
+        		Cols:[
+        		      {'#':'床位编号','@name':'bedNo'}
+        		      ,{'#':'床位名称','@name':'bedName'}
+        		      ,{'#':'所属建筑','@name':'building'}
+        		      ,{'#':'所属楼层','@name':'storey'}
+        		      ,{'#':'备注','@name':'remark'}
+        		]
+        	}
+        }
+    }        
+);

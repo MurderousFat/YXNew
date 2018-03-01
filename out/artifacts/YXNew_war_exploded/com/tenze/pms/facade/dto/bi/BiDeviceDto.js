@@ -1,0 +1,29 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.bi.BiDeviceDto',
+        {
+            table:Ext_UiTable({
+                beanId:'biDeviceId',
+                beanName:'biDeviceName',
+            })
+            ,
+            fields:[
+                Ext_UiField({type:'string',name:'id',text:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                Ext_UiField({type:'string',name:'version',text:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                Ext_UiField({type:'string',name:'createtime',text:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                Ext_UiField({type:'string',name:'updatetime',text:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                Ext_UiField({type:'string',name:'fdelFlag',text:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'deviceNo',text:'设备编号',xtype:'textfield',hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'merNoId',text:'merNoId',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'merName',text:'商家名称',xtype:'textfield',readOnly:true,hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'merNo',text:'商户编号',xtype:'btnfield',readOnly:true,hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'accessType',text:'接入类型',xtype:'combobox',datadic:'YX_ACESS_TYPE',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'keySystem',text:'秘钥体系',xtype:'combobox',datadic:'YX_KEY_SYSTEM',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'keyIndex',text:'秘钥索引',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'venderName',text:'所属厂商',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'serialNo',text:'终端序列号',xtype:'textfield',hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'mountTime',text:'安装时间',xtype:'datefield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'mountAddr',text:'安装地址',xtype:'textfield',width:250,hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'mountPerson',text:'安装人员',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+            ]
+    }        
+);

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.sys.SysRoleDaoImpl">
+
+    <sql id="table"> sys_role</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.role_no, t.role_name, t.role_type, t.enabled,t.union_id,u.union_name,t.merchant_id,m.mer_name as merchant_name </sql>
+
+    <resultMap id="beanMap" type="SysRole">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="role_no" property="roleNo" />
+                <result column="role_name" property="roleName" />
+                <result column="role_type" property="roleType" />
+                <result column="enabled" property="enabled" />
+                <result column="union_id" property="unionId" />
+                <result column="union_name" property="unionName" />
+                <result column="merchant_id" property="merchantId" />
+                <result column="merchant_name" property="merchantName" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, role_no, role_name, role_type, enabled,union_id,merchant_id)
+        values 
+                (#{id}, 0,now(),now(),0, #{roleNo}, #{roleName}, #{roleType}, #{enabled},#{unionId},#{merchantId})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            role_no=#{roleNo},
+            role_name=#{roleName},
+            role_type=#{roleType},
+            enabled=#{enabled},
+            union_id=#{unionId},
+            merchant_id=#{merchantId}
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+    
+   	<sql id="leftjoin_sql">
+		left join bi_union as u on t.union_id=u.id
+		left join bi_merchant as m on t.merchant_id=m.id
+	</sql>
+
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        where t.ID = #{id}
+    </select>
+
+    <select id="getByMid"  parameterType="java.util.Map" resultMap="beanMap">
+        SELECT * FROM sys_role
+        <where>
+            merchant_id=#{merchantId}
+        </where>
+    </select>
+
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="roleNo!= null and roleNo!=''">and t.role_no=#{roleNo}</if>
+             <if test="roleName!= null and roleName!=''">and t.role_name=#{roleName}</if>
+             <if test="roleType!= null and roleType!=''">and t.role_type=#{roleType}</if>
+             <if test="user_in_session!=null">
+            	<if test="user_in_session.unionNo!= null and user_in_session.unionNo!=0">
+					and u.union_no like concat(#{user_in_session.unionNo},'%')
+				</if>
+				<if test="user_in_session.merchantId != null and user_in_session.merchantId!=0">
+					and m.id = #{user_in_session.merchantId}
+				</if>
+             </if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+</mapper>

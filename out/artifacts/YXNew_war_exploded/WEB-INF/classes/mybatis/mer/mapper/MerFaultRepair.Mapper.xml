@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.mer.MerFaultRepairDaoImpl">
+
+    <sql id="table"> mer_fault_repair</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, m.mer_name, mo.no_name as mer_no, t.device_id, t.device_no, t.fault_type, t.fault_desc, t.contact_person, t.contact_phone, t.contact_addr, t.accept_state, t.accept_time, t.accept_person </sql>
+
+    <resultMap id="beanMap" type="MerFaultRepair">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="mer_name" property="merName" />
+                <result column="mer_no" property="merNo" />
+                <result column="device_id" property="deviceId" />
+                <result column="device_no" property="deviceNo" />
+                <result column="fault_type" property="faultType" />
+                <result column="fault_desc" property="faultDesc" />
+                <result column="contact_person" property="contactPerson" />
+                <result column="contact_phone" property="contactPhone" />
+                <result column="contact_addr" property="contactAddr" />
+                <result column="accept_state" property="acceptState" />
+                <result column="accept_time" property="acceptTime" />
+                <result column="accept_person" property="acceptPerson" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, mer_name, mer_no, device_id, device_no, fault_type, fault_desc, contact_person, contact_phone, contact_addr, accept_state, accept_time, accept_person)
+        values 
+                (#{id}, 0,now(),now(),0, #{merName}, #{merNo}, #{deviceId}, #{deviceNo}, #{faultType}, #{faultDesc}, #{contactPerson}, #{contactPhone}, #{contactAddr}, #{acceptState}, #{acceptTime}, #{acceptPerson})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            mer_name=#{merName},
+            mer_no=#{merNo},
+            device_id=#{deviceId},
+            device_no=#{deviceNo},
+            fault_type=#{faultType},
+            fault_desc=#{faultDesc},
+            contact_person=#{contactPerson},
+            contact_phone=#{contactPhone},
+            contact_addr=#{contactAddr},
+            accept_state=#{acceptState},
+            accept_time=#{acceptTime},
+            accept_person=#{acceptPerson},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+    
+    <sql id="leftjoin_sql">
+   		left join bi_device as d on d.id=t.device_id
+   		left join bi_merchant_no as mo  on mo.id=d.mer_no_id
+   		left join bi_merchant as m on m.id=mo.mer_id
+    </sql>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="merName!= null and merName!=''">and t.mer_name=#{merName}</if>
+             <if test="merNo!= null and merNo!=''">and t.mer_no=#{merNo}</if>
+             <if test="deviceId!= null and deviceId!=''">and t.device_id=#{deviceId}</if>
+             <if test="deviceNo!= null and deviceNo!=''">and t.device_no=#{deviceNo}</if>
+             <if test="faultType!= null and faultType!=''">and t.fault_type=#{faultType}</if>
+             <if test="faultDesc!= null and faultDesc!=''">and t.fault_desc=#{faultDesc}</if>
+             <if test="contactPerson!= null and contactPerson!=''">and t.contact_person=#{contactPerson}</if>
+             <if test="contactPhone!= null and contactPhone!=''">and t.contact_phone=#{contactPhone}</if>
+             <if test="contactAddr!= null and contactAddr!=''">and t.contact_addr=#{contactAddr}</if>
+             <if test="acceptState!= null and acceptState!=''">and t.accept_state=#{acceptState}</if>
+             <if test="acceptTime!= null and acceptTime!=''">and t.accept_time=#{acceptTime}</if>
+             <if test="acceptPerson!= null and acceptPerson!=''">and t.accept_person=#{acceptPerson}</if>
+             <if test="user_in_session!= null">
+             	<if test="user_in_session.merchantId!=null and user_in_session.merchantId!=0">
+		             and m.id=#{user_in_session.merchantId}
+             	</if>
+             </if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+    
+    <update id="updateSeize" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            accept_state='1',
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+    
+    <update id="updateReject" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            accept_state='2',
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+</mapper>

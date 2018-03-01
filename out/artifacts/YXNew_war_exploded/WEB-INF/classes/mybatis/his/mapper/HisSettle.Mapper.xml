@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.his.HisSettleDaoImpl">
+
+    <sql id="table"> his_settle</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.mer_id, m.mer_name, m.his_no, t.settle_type, t.settle_no, t.cn_name, t.en_name, t.common_name, t.preparation, t.his_catetory_id, t.his_category_name, t.price, t.unit_id, t.unit_name, t.international_code, t.mnemonic_code, t.effect_time, t.remark, t.social_security_project_code </sql>
+
+    <resultMap id="beanMap" type="HisSettle">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="mer_id" property="merId" />
+                <result column="mer_name" property="merName" />
+                <result column="his_no" property="hisNo" />
+                <result column="settle_type" property="settleType" />
+                <result column="settle_no" property="settleNo" />
+                <result column="cn_name" property="cnName" />
+                <result column="en_name" property="enName" />
+                <result column="common_name" property="commonName" />
+                <result column="preparation" property="preparation" />
+                <result column="his_catetory_id" property="hisCatetoryId" />
+                <result column="his_category_name" property="hisCategoryName" />
+                <result column="price" property="price" />
+                <result column="unit_id" property="unitId" />
+                <result column="unit_name" property="unitName" />
+                <result column="international_code" property="internationalCode" />
+                <result column="mnemonic_code" property="mnemonicCode" />
+                <result column="effect_time" property="effectTime" />
+                <result column="remark" property="remark" />
+                <result column="social_security_project_code" property="socialSecurityProjectCode" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, mer_id, mer_name, his_no, settle_type, settle_no, cn_name, en_name, common_name, preparation, his_catetory_id, his_category_name, price, unit_id, unit_name, international_code, mnemonic_code, effect_time, remark, social_security_project_code)
+        values 
+                (#{id}, 0,now(),now(),0, #{merId}, #{merName}, #{hisNo}, #{settleType}, #{settleNo}, #{cnName}, #{enName}, #{commonName}, #{preparation}, #{hisCatetoryId}, #{hisCategoryName}, #{price}, #{unitId}, #{unitName}, #{internationalCode}, #{mnemonicCode}, #{effectTime}, #{remark}, #{socialSecurityProjectCode})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            mer_id=#{merId},
+            mer_name=#{merName},
+            his_no=#{hisNo},
+            settle_type=#{settleType},
+            settle_no=#{settleNo},
+            cn_name=#{cnName},
+            en_name=#{enName},
+            common_name=#{commonName},
+            preparation=#{preparation},
+            his_catetory_id=#{hisCatetoryId},
+            his_category_name=#{hisCategoryName},
+            price=#{price},
+            unit_id=#{unitId},
+            unit_name=#{unitName},
+            international_code=#{internationalCode},
+            mnemonic_code=#{mnemonicCode},
+            effect_time=#{effectTime},
+            remark=#{remark},
+            social_security_project_code=#{socialSecurityProjectCode},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+    
+    <sql id="leftjoin_sql">
+    	left join bi_merchant m on m.id=t.mer_id
+    </sql>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+         <include refid="leftjoin_sql" />
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="merchantid!= null and merchantid!=''">and t.mer_id=#{merchantid} </if>
+             <if test="merId!= null and merId!=''">and t.mer_id=#{merId}</if>
+             <if test="merName!= null and merName!=''">and t.mer_name=#{merName}</if>
+             <if test="hisNo!= null and hisNo!=''">and t.his_no=#{hisNo}</if>
+             <if test="settleType!= null and settleType!=''">and t.settle_type=#{settleType}</if>
+             <if test="settleNo!= null and settleNo!=''">and t.settle_no=#{settleNo}</if>
+             <if test="cnName!= null and cnName!=''">and t.cn_name=#{cnName}</if>
+             <if test="enName!= null and enName!=''">and t.en_name=#{enName}</if>
+             <if test="commonName!= null and commonName!=''">and t.common_name=#{commonName}</if>
+             <if test="preparation!= null and preparation!=''">and t.preparation=#{preparation}</if>
+             <if test="hisCatetoryId!= null and hisCatetoryId!=''">and t.his_catetory_id=#{hisCatetoryId}</if>
+             <if test="hisCategoryName!= null and hisCategoryName!=''">and t.his_category_name=#{hisCategoryName}</if>
+             <if test="price!= null and price!=''">and t.price=#{price}</if>
+             <if test="unitId!= null and unitId!=''">and t.unit_id=#{unitId}</if>
+             <if test="unitName!= null and unitName!=''">and t.unit_name=#{unitName}</if>
+             <if test="internationalCode!= null and internationalCode!=''">and t.international_code=#{internationalCode}</if>
+             <if test="mnemonicCode!= null and mnemonicCode!=''">and t.mnemonic_code=#{mnemonicCode}</if>
+             <if test="effectTime!= null and effectTime!=''">and t.effect_time=#{effectTime}</if>
+             <if test="remark!= null and remark!=''">and t.remark=#{remark}</if>
+             <if test="socialSecurityProjectCode!= null and socialSecurityProjectCode!=''">and t.social_security_project_code=#{socialSecurityProjectCode}</if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+</mapper>

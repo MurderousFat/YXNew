@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.bi.BiMerchantNoDaoImpl">
+
+    <sql id="table"> bi_merchant_no</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.mer_id, m.mer_name, t.no_name,t.mer_tenant_name </sql>
+
+    <resultMap id="beanMap" type="BiMerchantNo">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="mer_id" property="merId" />
+                <result column="mer_name" property="merName" />
+                <result column="no_name" property="noName" />
+                <result column="mer_tenant_name" property="merTenantName" />
+     </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, mer_id, mer_name, no_name,mer_tenant_name)
+        values 
+                (#{id}, 0,now(),now(),0, #{merId}, #{merName}, #{noName}, #{merTenantName})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            mer_id=#{merId},
+            mer_name=#{merName},
+            no_name=#{noName},
+            mer_tenant_name=#{merTenantName},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+    
+   	<sql id="leftjoin_sql">
+   		left join bi_merchant as m on m.id=t.mer_id	
+   	</sql> 
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        <include refid="leftjoin_sql"></include>
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="merId!= null and merId!=''">and t.mer_id=#{merId}</if>
+             <if test="merName!= null and merName!=''">and m.mer_name like concat(#{merName},'%')</if>
+             <if test="noName!= null and noName!=''">and t.no_name=#{noName}</if>
+             <if test="merTenantName!=null and merTenantName!=''">and t.mer_tenant_name like concat(#{merTenantName},'%')</if>
+   </sql>
+
+    <!--查询所有-->
+    <select id="listAll"  resultMap="beanMap">
+        select *  from  bi_merchant
+    </select>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql"></include>
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql"></include>
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+
+
+
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+
+</mapper>

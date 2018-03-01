@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.sys.SysUserDaoImpl">
+
+    <sql id="table"> sys_user</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.account, t.username, t.password, t.enabled, t.role_id, t.remark ,t.role_name,t.union_id,t.merchant_id,t.villTown,t.adminVill,t.hisName,t.hisGender,t.hisAge,t.hisSfzh,t.mphone,t.edu,t.isHis,t.hisCert,t.hisStart,t.isminimerchant,t.isminimerchantCode,t.isminimerchantCodePri,t.address,u.union_name,m.mer_name,u.union_no</sql>
+
+    <resultMap id="beanMap" type="SysUser">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="account" property="account" />
+                <result column="username" property="username" />
+                <result column="password" property="password" />
+                <result column="enabled" property="enabled" />
+                <result column="role_id" property="roleId" />
+                <result column="role_name" property="roleName" />
+                <result column="remark" property="remark" />
+                <result column="union_id" property="unionId" />
+                <result column="union_name" property="unionName" />
+                <result column="merchant_id" property="merchantId" />
+                <result column="mer_name" property="merchantName" />
+                <result column="union_no" property="unionNo" />
+
+                <result column="villTown" property="villTown" />
+                <result column="adminVill" property="adminVill" />
+                <result column="hisGender" property="hisGender" />
+                <result column="hisAge" property="hisAge" />
+                <result column="hisSfzh" property="hisSfzh" />
+                <result column="mphone" property="mphone" />
+                <result column="edu" property="edu" />
+                <result column="isHis" property="isHis" />
+                <result column="hisCert" property="hisCert" />
+                <result column="hisStart" property="hisStart" />
+                <result column="isminimerchant" property="isminimerchant" />
+                <result column="isminimerchantCode" property="isminimerchantCode" />
+                <result column="isminimerchantCodePri" property="isminimerchantCodePri" />
+                <result column="address" property="address"/>
+    </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, account, username, password, enabled, role_id, remark,role_name,union_id,merchant_id,villTown,adminVill,hisName,hisGender,hisAge,hisSfzh,mphone,edu,isHis,hisCert,hisStart,isminimerchant,isminimerchantCode,isminimerchantCodePri,address)
+        values 
+                (#{id}, 0,now(),now(),0, #{account}, #{username}, #{password}, #{enabled}, #{roleId}, #{remark},#{roleName},#{unionId},#{merchantId},#{villTown},#{adminVill},#{hisName},#{hisGender},#{hisAge},#{hisSfzh},#{mphone},#{edu},#{isHis},#{hisCert},#{hisStart},#{isminimerchant},#{isminimerchantCode},#{isminimerchantCodePri},#{address})
+    </insert>
+    
+    <sql id="leftjoin_sql">
+		left join bi_union as u on t.union_id=u.id
+		left join bi_merchant as m on t.merchant_id=m.id
+	</sql>
+	
+	<sql id="session_condition">
+		<if test="user_in_session.unionNo!= null and user_in_session.unionNo!=0">
+			and u.union_no like concat(#{user_in_session.unionNo},'%')
+		</if>
+		<if test="user_in_session.merchantId != null and user_in_session.merchantId!=0">
+			and m.id = #{user_in_session.merchantId}
+		</if>
+	</sql>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+            updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            account=#{account},
+            username=#{username},
+
+            villTown=#{villTown},
+            adminVill=#{adminVill},
+            hisName=#{hisName},
+            hisGender=#{hisGender},
+            hisAge=#{hisAge},
+            hisSfzh=#{hisSfzh},
+            mphone=#{mphone},
+            edu=#{edu},
+            isHis=#{isHis},
+            hisCert=#{hisCert},
+            hisStart=#{hisStart},
+            isminimerchant=#{isminimerchant},
+            isminimerchantCode=#{isminimerchantCode},
+            isminimerchantCodePri=#{isminimerchantCodePri},
+            address=#{address},
+
+            <if test="password!= null and password!=''">
+            password=#{password},
+            </if>
+            enabled=#{enabled},
+            role_id=#{roleId},
+            role_name=#{roleName},
+            remark=#{remark},
+            union_id=#{unionId},
+            merchant_id=#{merchantId},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="account!= null and account!=''">and t.account=#{account}</if>
+             <if test="username!= null and username!=''">and t.username=#{username}</if>
+             <if test="enabled!= null and enabled!=''">and t.enabled=#{enabled}</if>
+             <if test="roleId!= null and roleId!=''">and t.role_id=#{roleId}</if>
+             <if test="user_in_session!=null">
+             	<include refid="session_condition"/>
+             </if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+    
+    
+    <select id="checkAccountExists" parameterType="java.util.Map" resultType="long">
+        select count(*) from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+			t.account=#{account}        
+        </where>
+    </select>
+
+</mapper>

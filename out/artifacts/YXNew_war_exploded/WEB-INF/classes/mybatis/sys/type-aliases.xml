@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<typeAliases>
+	<typeAlias alias="BaseUser" type="com.tenze.pms.facade.dto.sys.BaseUserDto" />
+	<typeAlias alias="SysMenu" type="com.tenze.pms.facade.dto.sys.SysMenuDto" />
+	<typeAlias alias="SysUser" type="com.tenze.pms.facade.dto.sys.SysUserDto" />
+	<typeAlias alias="SysRole" type="com.tenze.pms.facade.dto.sys.SysRoleDto" />
+	<typeAlias alias="SysMenuRole" type="com.tenze.pms.facade.dto.sys.SysMenuRoleDto" />
+	<typeAlias alias="SysFunction" type="com.tenze.pms.facade.dto.sys.SysFunctionDto" />
+	<typeAlias alias="SysFunctionRole" type="com.tenze.pms.facade.dto.sys.SysFunctionRoleDto" />
+</typeAliases>

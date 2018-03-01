@@ -1,0 +1,24 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.bi.BiOrgDto',
+        {
+            table:Ext_UiTable({
+                beanId:'biOrgId',
+                beanName:'biOrgName',
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'id',text:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'version',text:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'createtime',text:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'updatetime',text:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fdelFlag',text:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'orgNo',text:'机构编码',xtype:'textfield',width:150,hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'orgName',text:'机构名称',xtype:'textfield',width:250,hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'acqPerm',text:'收单权限',xtype:'combobox',datadic:'FLAGTYPE',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'issuePerm',text:'发卡权限',xtype:'combobox',datadic:'FLAGTYPE',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'forwardPerm',text:'转发权限',xtype:'combobox',datadic:'FLAGTYPE',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'orgTypeId',text:'orgTypeId',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'orgTypeName',text:'机构类型',xtype:'btnfield',width:150,hidden:false,allowBlank:true,queryFlag:true}),
+            ]
+    }        
+);

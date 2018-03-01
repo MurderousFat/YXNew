@@ -1,0 +1,54 @@
+_fillInDataModel(
+        'com.tenze.test.Custom',
+        {
+          Supcan:{
+        	TreeList:{
+        		Properties:{
+        			
+        		},
+        		Cols:[
+        		      {'#':'医疗费用序列号','@name':'ykc610',DropList:{DropListId:'customer12',type:'EditAbleDropTreeList',DataCol:'settleNo',DisplayCol:'merName'}}
+        		      ,{'#':'大类代码(结算项目分类)','@name':'yka111','@editAble':false}
+        		      ,{'#':'大类名称','@name':'yka112'}
+        		      ,{'#':'项目代码','@name':'akc222y'}
+        		      ,{'#':'项目名称','@name':'akc223y'}
+        		      ,{'#':'药监局药品编码','@name':'akc224'}
+        		      ,{'#':'数量','@name':'yke230'}
+        		      ,{'#':'单价','@name':'yke20'}
+        		      ,{'#':'医疗费总额','@name':'ye230'}
+        		      ,{'#':'规格','@name':'yke23'}
+        		      ,{'#':'药品剂量单位','@name':'ke230'}
+        		      ,{'#':'剂型(中文)','@name':'ye23'}
+        		]
+        	}
+    		,
+    		FreeForm:{
+    			Properties:{
+    				
+    			},
+    			Items:[
+    			   //{'@id':'aka130','@leftText':'客户号',DropList:{DropListId:'customer12',type:'EditAbleDropTreeList',DataCol:'settleNo',DisplayCol:'merName'}}
+    			   {'@id':'aac044','@leftText':'证件号码',DropList:{DropListId:'customer12',type:'EditAbleDropTreeList',DataCol:'settleNo',DisplayCol:'merName'}}
+    			   ,{'@id':'aac057','@leftText':'离退休证号'}
+    			   ,{'@id':'aka130','@leftText':'就诊类别','@defaultValue':'B24',DropList:{DropListId:'DropList_ak130',type:'DropList',datadic:'ak130'}}
+    			   ,{'@id':'akc050','@leftText':'入院疾病诊断'}
+    			   ,{'@id':'ckz564','@leftText':'生育备案审批号'}
+    			   ,{'@id':'aaa138','@leftText':'一般诊疗费标志','@defaultValue':'B01',DropList:{DropListId:'DropList_aaa138',type:'DropList',datadic:'aaa138'}}
+    			   ,{'@id':'ckc803','@leftText':'产前检查标志','@defaultValue':'0',DropList:{DropListId:'DropList_ckc803',type:'DropList',datadic:'ckc803'}}
+    			   ,{'@id':'yzz016','@leftText':'转诊备案号'}
+    			   ,{'@id':'aae005','@leftText':'联系电话'}
+    			   ,{'@id':'cab053','@leftText':'手机'}
+    			   ,{'@id':'ake007','@leftText':'就诊日期','@dataType':'date','@editmask':'YYYY年MM月DD日','@defaultValue':'=now()'}
+    			   ,{'@id':'aae013','@leftText':'备注'}
+    			   ,{'@id':'akc090','@leftText':'住院次数'}
+    			   ,{'@id':'akc220','@leftText':'处方号'}
+    			   ,{'@id':'aab014','@leftText':'医护人员公民身份证'}
+    			   ,{'@id':'akc264','@leftText':'医疗费总额'}
+    			   ,{'@id':'akc190','@leftText':'门诊号'}
+    			   ,{'@id':'jbrmc','@leftText':'经办人','@defaultValue':_global_username}
+    			]
+    		}
+        }
+    }        
+    
+);

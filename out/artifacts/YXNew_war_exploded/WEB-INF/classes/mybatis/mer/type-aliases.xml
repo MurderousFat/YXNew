@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<typeAliases>
+<typeAlias alias="MerFaultRepair" type="com.tenze.pms.facade.dto.mer.MerFaultRepairDto" />
+</typeAliases>

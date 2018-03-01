@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.his.HisConfigDaoImpl">
+
+	<sql id="table">HIS_HISCONFIG</sql>
+	
+	<sql id="selectCols"> t.id,t.createtime,t.fdel_flag,t.version,m.mer_name as fhospital_name,m.his_no as fkey,t.fusername,t.fpassword,t.merchant_id,t.county,t.fullName,m.phone AS hisPhone</sql>
+
+	<resultMap id="beanMap" type="HisConfig">
+		<id column="ID" property="id" />
+		<result column="VERSION" property="version" />
+		<result column="FDEL_FLAG" property="fdelFlag" />
+		<result column="UPDATETIME" property="updateTime" />
+		<result column="CREATETIME" property="createTime" />
+		<result column="FHOSPITAL_NAME" property="fhospitalName"/>
+		<result column="FKEY" property="fkey"/>
+		<result column="FUSERNAME" property="fusername"/>
+		<result column="FPASSWORD" property="fpassword"/>
+		<result column="merchant_id" property="merchantId"/>
+		<result column="county" property="fcounty"/>
+		<result column="fullName" property="ffullName"/>
+		<result column="hisPhone" property="hisPhone"/>
+
+	</resultMap>
+
+	<insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+		insert into
+		<include refid="table" />
+		(ID,VERSION, CREATETIME, UPDATETIME,FDEL_FLAG
+		,FHOSPITAL_NAME,FKEY,FUSERNAME,FPASSWORD,merchant_id,county,fullName
+		)
+		values (#{id}, 0, now(), now(), 0, 
+		#{fhospitalName},#{fkey}, #{fusername},#{fpassword},#{merchantId},#{fcounty},#{ffullName}
+		)
+	</insert>
+
+	<!-- 更新:version+1 实现乐观锁 -->
+	<update id="update" parameterType="java.util.Map">
+		update
+		<include refid="table" />
+		<set>
+			VERSION = #{version}+1 ,
+			FHOSPITAL_NAME= #{fhospitalName},
+			FKEY = #{fkey},
+			FUSERNAME = #{fusername},
+			FPASSWORD = #{fpassword},
+			merchant_id= #{merchantId},
+			county= #{fcounty},
+			fullName= #{ffullName},
+		</set>
+		<where>
+			ID = #{id} and VERSION = #{version}
+		</where>
+	</update>
+	
+	<sql id="leftjoin_sql">
+		left join bi_merchant as m on t.merchant_id=m.id
+		left join bi_union as u on m.union_id=u.id
+	</sql>
+
+	<select id="getById" parameterType="long" resultMap="beanMap">
+		select <include refid="selectCols"/> from 
+		<include refid="table" /> t
+		<include refid="leftjoin_sql" /> 
+		where t.ID = #{id}
+	</select>
+
+	<sql id="condition_sql">
+		and t.FDEL_FLAG = 0
+		<if test="fhospitalName!=null and fhospitalName!=''"> and t.fhospital_name like concat('%', #{fhospitalName},'%') </if>
+		<if test="id!=null and id!=''"> and t.id= #{id} </if>
+		<if test="fkey!=null and fkey!=''"> and t.fkey= #{fkey} </if>
+		<if test="fusername!=null and fusername!=''"> and t.fusername= #{fusername} </if>
+		<if test="fpassword!=null and fpassword!=''"> and t.fpassword= #{fpassword} </if>
+		 <if test="user_in_session!=null">
+            	<if test="user_in_session.unionNo!= null and user_in_session.unionNo!=0">
+					and u.union_no like concat(#{user_in_session.unionNo},'%')
+				</if>
+				<if test="user_in_session.merchantId != null and user_in_session.merchantId!=0">
+					and m.id = #{user_in_session.merchantId}
+				</if>
+             </if>
+	</sql>
+
+	<!-- 根据多参数进行查询数据 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+		select <include refid="selectCols"/> from
+		<include refid="table" /> t
+		<include refid="leftjoin_sql" /> 
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		<![CDATA[ order by t.ID desc]]>
+	</select>
+
+	<select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+		select <include refid="selectCols"/> from
+		<include refid="table" /> t
+		<include refid="leftjoin_sql" /> 
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+	
+	<update id="deleteByIds" parameterType="java.util.List">
+		update
+		<include refid="table" />
+		<set>
+			FDEL_FLAG=1,
+		</set>
+		<where>
+			ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+		</where>
+	</update>
+
+</mapper>

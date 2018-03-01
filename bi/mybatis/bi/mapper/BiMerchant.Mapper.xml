@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.bi.BiMerchantDaoImpl">
+
+    <sql id="table"> bi_merchant</sql>
+
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.rgn_no, t.mer_name, t.rgn_full, t.parent_no, t.parent_name, t.expanded_flag, t.leaf_flag ,t.org_id, t.org_name, t.rgn_id, t.rgn_name, t.mer_type_id, t.mer_type_name, t.mer_addr, t.mer_cert_no, t.mer_cert_image, t.mer_deposit_bank, t.mer_deposit_account, t.standard_fee, t.cap_amount, t.mer_contact_person, t.mer_contact_phone, t.mer_contact_duty, t.lawer,t.union_id,t.union_name,t.his_no,t.phone  </sql>
+
+    <resultMap id="beanMap" type="com.tenze.pms.facade.dto.bi.BiMerchantDto">
+        <id column="ID" property="id" />
+        <result column="version" property="version" />
+        <result column="createtime" property="createtime" />
+        <result column="updatetime" property="updatetime" />
+        <result column="fdel_flag" property="fdelFlag" />
+        <result column="rgn_no" property="rgnNo" />
+        <result column="mer_name" property="merName" />
+        <result column="rgn_full" property="rgnFull" />
+        <result column="parent_no" property="parentNo" />
+        <result column="parent_name" property="parentName" />
+        <result column="expanded_flag" property="expandedFlag" />
+        <result column="leaf_flag" property="leafFlag" />
+        <result column="org_id" property="orgId" />
+        <result column="org_name" property="orgName" />
+        <result column="rgn_id" property="rgnId" />
+        <result column="rgn_name" property="rgnName" />
+        <result column="mer_type_id" property="merTypeId" />
+        <result column="mer_type_name" property="merTypeName" />
+        <result column="mer_addr" property="merAddr" />
+        <result column="mer_cert_no" property="merCertNo" />
+        <result column="mer_cert_image" property="merCertImage" />
+        <result column="mer_deposit_bank" property="merDepositBank" />
+        <result column="mer_deposit_account" property="merDepositAccount" />
+        <result column="standard_fee" property="standardFee" />
+        <result column="cap_amount" property="capAmount" />
+        <result column="mer_contact_person" property="merContactPerson" />
+        <result column="mer_contact_phone" property="merContactPhone" />
+        <result column="mer_contact_duty" property="merContactDuty" />
+        <result column="lawer" property="lawer" />
+        <result column="union_id" property="unionId" />
+        <result column="union_name" property="unionName" />
+        <result column="his_no" property="hisNo" />
+        <result column="phone" property="phone" />
+
+    </resultMap>
+
+
+    <!--根据上级id查询-->
+    <select id="getByRgnNo"  resultMap="beanMap" >
+        SELECT * FROM bi_merchant WHERE rgn_no=#{rgnNo}
+    </select>
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, rgn_no, mer_name, rgn_full, parent_no, parent_name, expanded_flag, leaf_flag,org_id, org_name, rgn_id, rgn_name, mer_type_id, mer_type_name, mer_addr, mer_cert_no, mer_cert_image, mer_deposit_bank, mer_deposit_account, standard_fee, cap_amount, mer_contact_person, mer_contact_phone, mer_contact_duty, lawer,union_id,union_name,his_no,phone )
+        values
+        (#{id}, 0,now(),now(),0, #{rgnNo}, #{merNames}, #{rgnFull}, #{parentNo}, #{parentName}, #{expandedFlag}, #{leafFlag} ,#{orgId}, #{orgName}, #{rgnId}, #{rgnName}, #{merTypeId}, #{merTypeName}, #{merAddr}, #{merCertNo}, #{merCertImage}, #{merDepositBank}, #{merDepositAccount}, #{standardFee}, #{capAmount}, #{merContactPerson}, #{merContactPhone}, #{merContactDuty}, #{lawer},#{unionId},#{unionName},#{hisNo},#{phone})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+            VERSION = #{version}+1 ,
+            updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            rgn_no=#{rgnNo},
+            mer_name=#{merName},
+            rgn_full=#{rgnFull},
+            parent_no=#{parentNo},
+            parent_name=#{parentName},
+            expanded_flag=#{expandedFlag},
+            leaf_flag=#{leafFlag},
+        </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        where t.ID = #{id}
+    </select>
+
+
+    <sql id="condition_sql">
+        and t.FDEL_FLAG = 0
+        <if test="queryKey!= null and queryKey!=''">and t.mer_name like  concat('%',#{queryKey},'%') </if>
+        <if test="root==null or root=='' "> and t.rgn_no!='0' </if>
+        <if test="rgnNo!= null and rgnNo!=''">and t.rgn_no like concat(#{rgnNo},'%')</if>
+        <if test="singleRgnNo!= null and singleRgnNo!=''">and t.rgn_no=#{singleRgnNo}</if>
+        <if test="merName!= null and merName!=''">and t.mer_name=#{merName}</if>
+        <if test="rgnFull!= null and rgnFull!=''">and t.rgn_full=#{rgnFull}</if>
+        <if test="singleParentNo!= null and singleParentNo!=''">and t.parent_no=#{singleParentNo}</if>
+        <if test="parentNo!= null and parentNo!=''">and t.parent_no=#{parentNo}</if>
+        <if test="parentName!= null and parentName!=''">and t.parent_name=#{parentName}</if>
+        <if test="expandedFlag!= null and expandedFlag!=''">and t.expanded_flag=#{expandedFlag}</if>
+        <if test="leafFlag!= null and leafFlag!=''">and t.leaf_flag=#{leafFlag}</if>
+        <if test="hisNo!= null and hisNo!=''">and t.his_no=#{hisNo}</if>
+    </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.rgn_no asc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            rgn_no in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+    <select id="maxSeq" parameterType="java.util.Map" resultType="string">
+        select max(t.rgn_no) from <include refid="table" /> t where t.parent_no=#{parentNo}
+    </select>
+
+    <update id="updateSubMenu" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+            rgn_no= concat(#{curMenuNo},TRIM(LEADING #{preMenuNo} FROM rgn_no)),
+            parent_no = concat(#{curMenuNo},TRIM(LEADING #{preMenuNo} FROM parent_no)),
+        </set>
+        <where>
+            parent_no like  concat(#{preMenuNo},'%')
+        </where>
+    </update>
+</mapper>

@@ -1,0 +1,87 @@
+table{
+	border-left: 1px solid #AFD9F5;
+	border-top: 1px solid #AFD9F5;
+	border-right: 1px solid #AFD9F5;
+	border-bottom: 1px solid #AFD9F5;
+	border-collapse:collapse;
+}
+
+th {
+	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #fff;
+	border-left: 1px solid #AFD9F5;
+	border-right: 1px solid #AFD9F5;
+	border-bottom: 1px solid #AFD9F5;
+	border-top: 1px solid #AFD9F5;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #3498DB ;
+}
+
+td {
+	border-right: 1px solid #AFD9F5;
+	border-bottom: 1px solid #AFD9F5;
+	border-left: 1px solid #AFD9F5;
+	border-top: 1px solid #AFD9F5;
+	background: #fff;
+	font-size:12px;
+	padding: 6px 6px 6px 12px;
+	color: #4f6b72;
+}
+
+.tab-selected{
+	background-color:#fff !important;
+	color:#000000 !important;
+}
+
+.tab{
+	font: bold 13px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	float:left;
+	width:33%;
+	border:1px solid #C1DAD7;
+	height:30px;
+	text-align:center;
+	line-height:30px;
+	background-color:RGB(121,181,236);
+	color:#fff;
+	cursor:pointer;
+}
+
+a.tenze, button.tenze {
+    margin-left: 0px;
+    padding: 6px 8px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: 2px;
+    font-family: Tahoma, Arial/9!important;
+    width: auto;
+    overflow: visible;
+    color: #333;
+    border: solid 1px #999;
+    border-radius: 5px;
+    background: #DDD;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#DDDDDD');
+    background: linear-gradient(top, #FFF, #DDD);
+    background: -moz-linear-gradient(top, #FFF, #DDD);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF), to(#DDD));
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 1);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0 -1px 0 rgba(0, 0, 0, .09);
+    -moz-transition: -moz-box-shadow linear .2s;
+    -webkit-transition: -webkit-box-shadow linear .2s;
+    transition: box-shadow linear .2s;
+}
+
+a.tenze_green, button.tenze_green {
+    color: #FFF;
+    border: solid 1px #3399dd;
+    background: #2288cc;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2ECC71', endColorstr='#27AE60');
+    background: linear-gradient(top, #2ECC71, #27AE60);
+    background: -moz-linear-gradient(top, #2ECC71, #27AE60);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2ECC71), to(#27AE60));
+    text-shadow: -1px -1px 1px #1c6a9e;
+}

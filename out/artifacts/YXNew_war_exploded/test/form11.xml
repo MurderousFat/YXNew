@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FreeForm>
+	<Properties bgColor="#D9E7F8" editAble="true" />
+	<Fonts>
+		<Font />
+		<Font faceName="微软雅黑" bold="true" size="-22" />
+	</Fonts>
+	<Objects>
+		<TableLayout width="100%">
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<col width="11%" />
+			<tr height="24">
+				<td>
+					<input id="cust2" lefttext="客户:" width="3" type="editableDroptreelist"
+						RefreshChars="2" dropdownWidth="700" droplistID="customer" value="lon" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fpjBillNo" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="true" width="3" editSize="2"
+						height="1" editAble="true" nullAble="false" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" maxChars="20"
+						leftText="票据号:&nbsp;" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fenterWhAt" dataType="datetime" isLastInput="false"
+						align="left" type="Edit" visible="true" width="3" editSize="2"
+						height="1" editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="入库日期:" />
+				</td>
+				<td />
+				<td />
+			</tr>
+			<tr height="1" />
+			<tr height="24">
+				<td>
+					<Input id="fwhname" dataType="string" isLastInput="false"
+						align="left" dropdownWidth="500" RefreshChars="2"
+						type="EditAbleDropTreelist" visible="true" width="3" editSize="2"
+						height="1" editAble="true" nullAble="false" isSelectEditWhenFocus="true"
+						droplistId="DropList_fwhname" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="仓库:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fgmo" dataType="string" isLastInput="false" align="left"
+						droplistId="datadic_GMO" type="dropList" visible="true" width="3"
+						editSize="2" height="1" editAble="true" nullAble="true"
+						isSelectEditWhenFocus="true" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="转基因:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fdeptName" dataType="string" isLastInput="false"
+						align="left" dropdownWidth="500" RefreshChars="2"
+						type="EditAbleDropTreelist" visible="true" width="3" editSize="2"
+						height="1" editAble="true" nullAble="false" isSelectEditWhenFocus="true"
+						droplistId="DropList_fdeptName" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="组织:" />
+				</td>
+				<td />
+				<td />
+			</tr>
+			<tr height="1" />
+			<tr height="24">
+				<td>
+					<Input id="fschoolName" dataType="string" isLastInput="false"
+						align="left" dropdownWidth="500" RefreshChars="2"
+						type="EditAbleDropTreelist" visible="true" width="3" editSize="2"
+						height="1" editAble="true" nullAble="false" isSelectEditWhenFocus="true"
+						droplistId="DropList_fschoolName" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="学校:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="frefectoryName" dataType="string" isLastInput="false"
+						align="left" dropdownWidth="500" RefreshChars="2"
+						type="EditAbleDropTreelist" visible="true" width="3" editSize="2"
+						height="1" editAble="true" nullAble="false" isSelectEditWhenFocus="true"
+						droplistId="DropList_frefectoryName" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="经营点:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fwanglaiName" dataType="string" isLastInput="true"
+						align="left" dropdownWidth="500" RefreshChars="2"
+						type="EditAbleDropTreelist" visible="true" width="3" editSize="2"
+						height="1" editAble="true" nullAble="false" isSelectEditWhenFocus="true"
+						droplistId="DropList_fwanglaiName" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="供应商:" />
+				</td>
+				<td />
+				<td />
+			</tr>
+			<tr height="1" />
+			<tr height="24">
+				<td>
+					<Input id="fysEmpName" dataType="string" isLastInput="true"
+						align="left" dropdownWidth="500" RefreshChars="2"
+						type="EditAbleDropTreelist" visible="true" width="3" editSize="2"
+						height="1" editAble="true" nullAble="false" isSelectEditWhenFocus="true"
+						droplistId="DropList_fysEmpName" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="验收人:" />
+				</td>
+				<td />
+				<td />
+			</tr>
+			<tr visible="false">
+				<td>
+					<Input id="fwhno" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="true" nullAble="false" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="仓库编号:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fcheckResultStatu" dataType="string" isLastInput="false"
+						align="left" droplistId="datadic_RESULTSTATU" type="dropList"
+						visible="false" width="3" editSize="2" height="1" editAble="false"
+						nullAble="true" isSelectEditWhenFocus="true" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="检验结果:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fsourceNo" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="采购订单:" />
+				</td>
+				<td />
+				<td />
+			</tr>
+			<tr visible="false">
+				<td>
+					<Input id="imageUrl" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="扫描票据:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fdeptNo" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="false" nullAble="false"
+						isSelectEditWhenFocus="true" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="组织编号:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fschoolId" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="false" nullAble="false"
+						isSelectEditWhenFocus="true" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="学校编号:" />
+				</td>
+				<td />
+				<td />
+			</tr>
+			<tr visible="false">
+				<td>
+					<Input id="frefectoryId" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="false" nullAble="false"
+						isSelectEditWhenFocus="true" freeInputAble="false"
+						isDropDownWhenFocus="true" leftText="经营点ID:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fwanglaiNo" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="true" nullAble="false" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="编号:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="ysSysuserid" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="ysSysuserid:" />
+				</td>
+				<td />
+				<td />
+			</tr>
+			<tr visible="false">
+				<td>
+					<Input id="fisCheck" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="已监察:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="curChkName" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="当前审批步骤:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="fchkNo" dataType="int" isLastInput="false" align="left"
+						type="Edit" visible="false" width="3" editSize="2" height="1"
+						editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="审批编号:" />
+				</td>
+				<td />
+				<td />
+			</tr>
+			<tr visible="false">
+				<td>
+					<Input id="nextChkName" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="nextChkName:" />
+				</td>
+				<td />
+				<td />
+				<td>
+					<Input id="detailDatas" dataType="string" isLastInput="false"
+						align="left" type="Edit" visible="false" width="3" editSize="2"
+						height="1" editAble="true" nullAble="true" isSelectEditWhenFocus="true"
+						freeInputAble="false" isDropDownWhenFocus="true" leftText="detailDatas:" />
+				</td>
+				<td />
+				<td />
+			</tr>
+		</TableLayout>
+	</Objects>
+	<DropLists>
+		<DropList id="customer" treelist="" DataCol="customerid"
+			DisplayCol="companyname" />
+		<DropList id="datadic_GMO">
+			<item key="0">非转基因</item>
+			<item key="1">转基因</item>
+		</DropList>
+	</DropLists>
+</FreeForm>

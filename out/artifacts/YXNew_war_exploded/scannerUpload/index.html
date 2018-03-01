@@ -1,0 +1,395 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	  <title>拍照并上传图片</title>
+	  <link rel="stylesheet" type="text/css" href="styles.css">
+	  <style>
+		#video_stream {
+		  width: 680px;
+		  height: 480px;
+
+		}
+		#video_box {
+		  display: none;
+		  margin-top: 30px;
+		}
+		#msg_box {
+		 text-align: left;
+		 padding: 18px;
+		 line-height: 1.6;
+		}
+        .pop-box {   
+            z-index: 9999; /*这个数值要足够大，才能够显示在最上层*/  
+            margin-bottom: 3px;   
+            display: none;   
+            position: fixed;   
+            background: #ebebeb;   
+        }   
+        .pop-box-body {   
+            clear: both;      
+            padding: 2px; 
+			margin-top: 15px;			
+        } 
+        .mask {   
+            color:#ebebeb;
+            background-color:#ebebeb;
+            position:absolute;
+            top:0px;
+            left:0px;
+            filter: Alpha(Opacity=60);
+        } 
+        .over {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f5f5f5;
+            opacity:0.5;
+            z-index: 10000;
+        }
+
+        .layout {
+            display: none;
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            width: 20%;
+            height: 20%;
+            z-index: 10001;
+            text-align:center;
+        }
+    </style>
+   <script type="text/javascript" src="jquery.js" ></script>
+   <script language=javascript type="text/javascript">
+    var angle=10;
+	var angle_now = 0;
+	var tmpImg; 
+    function popupDiv(div_id) {   
+        var div_obj = $("#"+div_id);  
+        var windowWidth = document.body.clientWidth;       
+        var windowHeight = document.body.clientHeight;  
+        var popupHeight = div_obj.height();       
+        var popupWidth = div_obj.width();    
+        //添加并显示遮罩层   
+        $("<div id='mask'></div>").addClass("mask")   
+                                  .width(windowWidth + document.body.scrollWidth)   
+                                  .height(windowHeight + document.body.scrollHeight)   
+                                  .click(function() {hideDiv(div_id); })   
+                                  .appendTo("body")   
+                                  .fadeIn(200);   
+        div_obj.css({"position": "absolute"})   
+               .animate({left: windowWidth/2-popupWidth/2,    
+                         top: windowHeight/2-popupHeight/2, opacity: "show" }, "none");   
+                        
+    }   
+      
+    function hideDiv(div_id) {   
+        $("#mask").remove();
+		$("#upload_image").remove();
+		$("#pic_upload_image").remove();
+        $("#" + div_id).animate({left: 0, top: 0, opacity: "hide" }, "none");   
+    }  
+    function showLoading(msgType)
+    {
+    	var msg = '';
+    	if(msgType=='1'){
+    		msg = '上传中， 请稍后...';
+    	}else if(msgType=='2'){
+    		msg = '正在开启摄像设备...';
+    	}
+    	$('#loading_text').html(msg);
+        document.getElementById("over").style.display = "block";
+        document.getElementById("layout").style.display = "block";
+    }
+    function hideLoading()
+    {
+        document.getElementById("over").style.display = "none";
+        document.getElementById("layout").style.display = "none";
+    }
+   </script>
+    
+</head>
+
+<body>
+  <div class="lab_page">
+    <div id="main_area">
+      <div id="error_msg">
+        <table border="0">
+          <tr>
+            <td width="70"><img src="error_mark.png" /></td>
+            <td>您的浏览器<span id="error_details"></span>，请下载支持此特性的 <a id="download_link" href="http://down.360safe.com/se/360se7.1.1.800.exe">360浏览器</a> 进行操作。</td>
+          </tr>
+        </table>
+      </div>
+      <div id="demo_area">
+		<button id="taken_photo" class="launch_button" style="display:none;">拍照</button>
+        <button id="launch_button" class="launch_button" >打开摄像设备</button>
+        <div id="msg_box"><b>请点击“允许”按钮，授权网页访问您的摄像头！</b><br>若您并未看到任何授权提示，则表示您的浏览器不支持Media Capture或您的机器没有连接摄像头设备。</div>
+        <div id="video_box"><video id="video_stream" autoplay></video></div>
+		<canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+      </div>
+    </div>
+  </div>
+
+    <form id="form1">
+        <div id='pop-div' style="width: 800px; height:600px;" class="pop-box">  
+            <div  class="pop-box-body" style="text-align: center;">  
+				<div>
+					<input type=button onclick="rotateImg('upload_image', 'left');" value="向左旋转" class="launch_button"/>
+					<input type=button onclick="rotateImg('upload_image', 'right');" value="向右旋转" class="launch_button"/>
+					<input id=btnConfirm type=button onclick="javascrit:;" value="确定" class="launch_button"/>
+					<input id=btnClose type=button onclick="hideDiv('pop-div');" value="返回" class="launch_button"/>
+				</div>
+				<br/>
+				<div id="pop-box-body">
+				</div>
+            </div>  
+        </div>
+    </form>
+	<div style="display:none;">
+		<form id="upload_form">
+			<input id="file_upload_input" name="file_upload_input" type="hidden" value="" />
+			<input id="file_upload_image" name="file_upload_image" type="hidden" value="" />
+			<input id="allowExt" name="allowExt" type="hidden" value="jpg|jpeg|png" />
+			<input id="directory" name="directory" type="hidden" value="scanner_img" />
+			<input id="file_upload_is_resize" name="file_upload_is_resize" type="hidden" value="0" />
+		</form>
+	
+	</div>
+	<div id="over" class="over"></div>
+    <div id="layout" class="layout">
+    <strong id="loading_text">上传中， 请稍后...</strong>
+    <img src="o_31.gif" /></div>
+<script>
+	var fopener = window.opener;
+	var parent_setting = fopener.getImageOnlineUploadSetting();
+	$('#file_upload_input').val(parent_setting.file_upload_input);
+	$('#file_upload_image').val(parent_setting.file_upload_image);
+	$('#allowExt').val(parent_setting.allowExt);
+	$('#directory').val(parent_setting.directory);
+	$('#file_upload_is_resize').val(parent_setting.file_upload_is_resize);
+    // Normalizes window.URL
+    window.URL = window.URL || window.webkitURL || window.msURL || window.oURL;
+
+    // Normalizes navigator.getUserMedia
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia
+                           || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+    function isChromiumVersionLower() {
+      var ua = navigator.userAgent;
+      var testChromium = ua.match(/AppleWebKit\/.* Chrome\/([\d.]+).* Safari\//);
+      if (!testChromium) return false;
+
+      var rltArray = testChromium[1].split('.');
+      return ((parseInt(rltArray[0]) < 18) || ((parseInt(rltArray[0]) == 18) && (parseInt(rltArray[1]) == 0) && (parseInt(rltArray[2]) < 966)));
+    }
+
+    function showErrorMsg(error_details) {
+      document.getElementById('error_details').innerHTML = error_details;
+      document.getElementById('error_msg').style.display = 'block';
+      document.getElementById('demo_area').style.display = 'none';
+    }
+
+    function successsCallback(stream) {
+      hideLoading();
+      document.getElementById('msg_box').style.display = 'none';
+      document.getElementById('video_box').style.display = 'block';
+	  $('#taken_photo').show();
+	  $('#launch_button').hide();
+      document.getElementById('video_stream').src = (window.URL && window.URL.createObjectURL) ? window.URL.createObjectURL(stream) : stream;
+    }
+
+    function errorCallback(err) {
+      hideLoading();
+      alert('连接设备失败， 请检测设备是否连接正常.');
+      console.log(err);
+    }
+
+	// 从 canvas 提取图片 image 
+	function convertCanvasToImage(canvas) { 
+		//新Image对象，可以理解为DOM 
+		var image = new Image(); 
+		// canvas.toDataURL 返回的是一串Base64编码的URL，当然,浏览器自己肯定支持 
+		// 指定格式 PNG 
+		image.src = canvas.toDataURL("image/png"); 
+		return image; 
+	} 
+
+	// 把image 转换为 canvas对象 
+	function convertImageToCanvas(image) { 
+		// 创建canvas DOM元素，并设置其宽高和图片一样 
+		var canvas = document.createElement("canvas"); 
+		canvas.width = image.width; 
+		canvas.height = image.height; 
+		// 坐标(0,0) 表示从此处开始绘制，相当于偏移。 
+		canvas.getContext("2d").drawImage(image, 0, 0); 
+		return canvas; 
+	} 
+		
+    function accessLocalWebCam() {
+      showLoading('2');
+      document.getElementById('video_box').style.display = 'none';
+      document.getElementById('msg_box').style.display = 'block';
+      try {
+        // Tries it with spec syntax
+        navigator.getUserMedia({ video: true }, successsCallback, errorCallback);
+      } catch (err) {
+        console.log(err);
+        hideLoading();
+        // Tries it with old spec of string syntax
+        navigator.getUserMedia('video', successsCallback, errorCallback);
+      }
+    }
+
+    if (isChromiumVersionLower()) {
+      showErrorMsg('内核版本较低，可能无法支持 getUserMedia 接口');
+    } else if (!navigator.getUserMedia) {
+      showErrorMsg('不支持 getUserMedia 接口');
+    } else {
+		document.getElementById('launch_button').addEventListener('click', accessLocalWebCam, false);
+		document.getElementById('taken_photo').addEventListener('click', function () {
+			$('#upload_image').remove();
+			$('#pic_upload_image').remove();
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+			var video  = document.getElementById('video_stream');
+			context.drawImage(video, 0, 0, 640, 480);
+			tmpImg = convertCanvasToImage(canvas);
+			tmpImg.setAttribute('id','upload_image');
+			var demoArea = document.getElementById('pop-box-body');
+			demoArea.appendChild(tmpImg );
+			popupDiv('pop-div');
+		});
+    }
+var isCanvasFlag = false;
+function rotateImg(pid, direction) {  
+		isCanvasFlag = true;
+        //最小与最大旋转方向，图片旋转4次后回到原方向  
+        var min_step = 0;  
+        var max_step = 3;  
+        var img = document.getElementById(pid);  
+        if (img == null)return;  
+        //img的高度和宽度不能在img元素隐藏后获取，否则会出错  
+        var height = img.height;  
+        var width = img.width;  
+        var step = img.getAttribute('step');  
+        if (step == null) {  
+            step = min_step;  
+        }  
+        if (direction == 'right') {  
+            step++;  
+            //旋转到原位置，即超过最大值  
+            step > max_step && (step = min_step);  
+        } else {  
+            step--;  
+            step < min_step && (step = max_step);  
+        }  
+        img.setAttribute('step', step);  
+        var canvas = document.getElementById('pic_' + pid);  
+        if (canvas == null) {  
+            img.style.display = 'none';  
+            canvas = document.createElement('canvas');  
+            canvas.setAttribute('id', 'pic_' + pid);  
+            img.parentNode.appendChild(canvas);  
+        }  
+        //旋转角度以弧度值为参数  
+        var degree = step * 90 * Math.PI / 180;  
+        var ctx = canvas.getContext('2d');  
+        switch (step) {  
+            case 0:  
+                canvas.width = width;  
+                canvas.height = height;  
+                ctx.drawImage(img, 0, 0);				
+                break;  
+            case 1:  
+                canvas.width = height;  
+                canvas.height = width;  
+                ctx.rotate(degree);  
+                ctx.drawImage(img, 0, -height);
+                break;  
+            case 2:  
+                canvas.width = width;  
+                canvas.height = height;  
+                ctx.rotate(degree);  
+                ctx.drawImage(img, -width, -height);  
+                break;  
+            case 3:  
+                canvas.width = height;  
+                canvas.height = width;  
+                ctx.rotate(degree);  
+                ctx.drawImage(img, -width, 0);  
+                break;  
+        }  
+    }  
+	
+	
+	
+	
+	$(function(){
+		$('#btnConfirm').click(function(){
+			var opener = window.opener;
+			if(opener){
+				try{
+					showLoading('1');
+					var uploadCanvas;
+					if(isCanvasFlag){
+						uploadCanvas = document.getElementById('pic_upload_image');	
+					}else{
+						var uploadImage = document.getElementById('upload_image');
+						uploadCanvas = convertImageToCanvas(uploadImage);
+					}
+				
+					var data = uploadCanvas.toDataURL("image/png");
+					data = data.split(',')[1];
+					data = window.atob(data);
+					var ia = new Uint8Array(data.length);
+					for(var i=0; i< data.length;i++){
+						ia[i] = data.charCodeAt(i);
+					}
+					var blob = new Blob([ia],{type:'image/png'});
+		
+					var fd = new FormData($('#upload_form')[0]);
+					fd.append('file',blob, (new Date().getTime())+'.png');
+					$.ajax({
+						url:'/extJsUpload.gx',
+						type:'post',
+						data:fd,
+						/**   
+		                 * 必须false才会避开jQuery对 formdata 的默认处理   
+		                 * XMLHttpRequest会对 formdata 进行正确的处理   
+		                 */  
+		                processData : false,  
+		                /**   
+		                 *必须false才会自动加上正确的Content-Type   
+		                 */  
+		                contentType : false,  
+					    success: function(data, status) {  
+					    	hideLoading();
+							var json = eval('('+data+')');
+							if(!json.success){
+								alert('上传图片失败!');
+								console.log(json);
+							}else{
+								opener.finishAfterScannerFileUpload(null,json);
+								window.close();
+							}
+		                },  
+		                error: function(data, status, e) {	
+		                	hideLoading();
+							alert('上传图片失败!');				
+		                	console.log(data);
+		                }  
+					});
+				}catch(e){
+					alert('页面出现错误， 请关闭本页面后重新打开页面.');
+				}
+			}else{
+				alert('父窗口已关闭, 请关闭此窗口.');
+			}
+		});
+	});
+  </script>   
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE struts PUBLIC
+		"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+		"struts-2.1.dtd">
+<struts>
+	<package name="_root" extends="sys-default" namespace="/">
+		<action name="loginPage" class="LoginAction" method="loginPage">
+			<result name="success" type="freemarker">
+				/template/sys/Login/login.html
+			</result>
+		</action>
+		<!--前往注册页面-->
+		<action name="registerPage" class="RegAction" method="RegisterPage">
+			<result name="success" type="dispatcher">
+				/template/sys/Login/register.html
+			</result>
+		</action>
+		<!--注册保存-->
+		<action name="regSave" class="RegAction" method="RegSave">
+			<result name="success" type="json" >
+			</result>
+		</action>
+		<!--获取医院-->
+		<action name="getBiMerchant2" class="RegAction" method="getBiMerchant2">
+			<result name="success" type="json" >
+			</result>
+		</action>
+		<!--获取地区-->
+		<action name="getBiRegion" class="RegAction" method="getBiRegion">
+			<result name="success" type="json" >
+			</result>
+		</action>
+		<!--前往协议页面-->
+		<action name="userAgreePage" class="RegAction" method="userAgreePage">
+			<result name="success" type="dispatcher">
+				/template/sys/Login/userAgree.html
+			</result>
+		</action>
+		<!--文件上传路径-->
+		<action name="Upload" class="FileAction" method="handleFileUpload">
+			<result name="success" type="json" >
+			</result>
+		</action>
+		<!--检查登录帐号地址-->
+		<action name="checkAcc" class="RegAction" method="checkAcc">
+		</action>
+		<action name="loginCheck" class="LoginAction" method="loginCheck">
+		</action>
+		<action name="logout" class="LoginAction" method="logout">
+			<result type="redirect" name="success_result">/loginPage.tz</result>
+		</action>
+		<action name="upimg" class="UploadAction" method="upimg">
+		</action>
+		<action name="index" class="HomeAction" method="index">
+			<interceptor-ref name="login"></interceptor-ref>
+			<result  name="input_result" type="freemarker">
+				/template/sys/Home/mng.html
+			</result>
+		</action>
+	</package>
+</struts>

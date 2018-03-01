@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.sys.SysFunctionDaoImpl">
+
+    <sql id="table"> sys_function</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.function_name, t.function_btn, t.function_url, t.sort_no, t.menu_id, t.enabled </sql>
+
+    <resultMap id="beanMap" type="SysFunction">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="function_name" property="functionName" />
+                <result column="function_btn" property="functionBtn" />
+                <result column="function_url" property="functionUrl" />
+                <result column="sort_no" property="sortNo" />
+                <result column="menu_id" property="menuId" />
+                <result column="enabled" property="enabled" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, function_name, function_btn, function_url, sort_no, menu_id, enabled)
+        values 
+                (#{id}, 0,now(),now(),0, #{functionName}, #{functionBtn}, #{functionUrl}, #{sortNo}, #{menuId}, #{enabled})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            function_name=#{functionName},
+            function_btn=#{functionBtn},
+            function_url=#{functionUrl},
+            sort_no=#{sortNo},
+            menu_id=#{menuId},
+            enabled=#{enabled},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="functionName!= null and functionName!=''">and t.function_name=#{functionName}</if>
+             <if test="functionBtn!= null and functionBtn!=''">and t.function_btn=#{functionBtn}</if>
+             <if test="functionUrl!= null and functionUrl!=''">and t.function_url=#{functionUrl}</if>
+             <if test="sortNo!= null and sortNo!=''">and t.sort_no=#{sortNo}</if>
+             <if test="menuId!= null and menuId!=''">and t.menu_id=#{menuId}</if>
+             <if test="enabled!= null and enabled!=''">and t.enabled=#{enabled}</if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <select id="listRoleMenuFuncs" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        left join sys_function_role fr on fr.function_id=t.id
+        where t.FDEL_FLAG = 0
+        and fr.role_id=#{roleId}
+        and t.menu_id=#{menuId}
+        
+        UNION ALL 
+        
+         select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        where t.FDEL_FLAG = 0
+        and t.menu_id=#{menuId}
+        and t.function_url='#'
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+	<delete id="deleteByMenu" parameterType="java.util.Map">
+       	delete from  
+        <include refid="table" />
+        <where>
+            menu_id = #{menuId}
+        </where>
+    </delete>
+</mapper>

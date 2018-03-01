@@ -1,0 +1,22 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.bi.BiMerchantTypeDto',
+        {
+            table:Ext_UiTable({
+                beanId:'biMerchantTypeId',
+                beanName:'biMerchantTypeName',
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'id',text:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'version',text:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'createtime',text:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'updatetime',text:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fdelFlag',text:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'merNo',text:'类别编码',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'merName',text:'类别名称',xtype:'textfield',hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'type',text:'所属大类',xtype:'combobox',datadic:'MERTYPE',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'standardFee',text:'标准扣率',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'capAmount',text:'封顶金额',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+            ]
+    }        
+);

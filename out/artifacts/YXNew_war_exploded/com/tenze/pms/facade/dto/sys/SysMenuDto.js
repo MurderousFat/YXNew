@@ -1,0 +1,29 @@
+_fillInDataModel(
+        'com.tenze.pms.facade.dto.sys.SysMenuDto',
+        {
+            table:Ext_UiTable({
+                beanId:'sysMenuId',
+                beanName:'sysMenuName'
+            })
+            ,
+            fields:[
+                 Ext_UiField({type:'string',name:'id',text:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'version',text:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'createtime',text:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'updatetime',text:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'fdelFlag',text:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'menuNo',text:'菜单编号',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true,readOnly:true}),
+                 Ext_UiField({type:'string',name:'menuName',text:'菜单名称',xtype:'textfield',hidden:false,allowBlank:false,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'iconCls',text:'图标',xtype:'btnfield',hidden:false,allowBlank:true,queryFlag:false}),
+                 Ext_UiField({type:'string',name:'expandedFlag',text:'展开',xtype:'combobox',datadic:'UNFOLDING',defVal:'1',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'leafFlag',text:'leafFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'menuState',text:'状态',xtype:'combobox',datadic:'ENABLED',defVal:'1',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'menuType',text:'类型',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'parentNo',text:'parentNo',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'parentName',text:'上级',xtype:'btnfield',hidden:false,allowBlank:true,queryFlag:true,readOnly:true}),
+                 Ext_UiField({type:'string',name:'request',text:'请求',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'sortNo',text:'排序',xtype:'numberfield',hidden:false,allowBlank:true,queryFlag:true}),
+                 Ext_UiField({type:'string',name:'remark',text:'备注',xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true}),
+            ]
+    }        
+);

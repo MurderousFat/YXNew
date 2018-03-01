@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.his.HisBedDaoImpl">
+
+    <sql id="table"> his_bed</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.merchant_id, m.mer_name as merchant_name, t.bed_no, t.bed_name, t.building, t.storey, t.remark </sql>
+
+    <resultMap id="beanMap" type="HisBed">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="merchant_id" property="merchantId" />
+                <result column="merchant_name" property="merchantName" />
+                <result column="bed_no" property="bedNo" />
+                <result column="bed_name" property="bedName" />
+                <result column="building" property="building" />
+                <result column="storey" property="storey" />
+                <result column="remark" property="remark" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, merchant_id, merchant_name, bed_no, bed_name, building, storey, remark)
+        values 
+                (#{id}, 0,now(),now(),0, #{merchantId}, #{merchantName}, #{bedNo}, #{bedName}, #{building}, #{storey}, #{remark})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            merchant_id=#{merchantId},
+            merchant_name=#{merchantName},
+            bed_no=#{bedNo},
+            bed_name=#{bedName},
+            building=#{building},
+            storey=#{storey},
+            remark=#{remark},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+    
+    <sql id="leftjoin_sql">
+   	left join bi_merchant as m on m.id=t.merchant_id 
+    </sql>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="merchantId!= null and merchantId!=''">and t.merchant_id=#{merchantId}</if>
+             <if test="merchantName!= null and merchantName!=''">and t.merchant_name=#{merchantName}</if>
+             <if test="bedNo!= null and bedNo!=''">and t.bed_no=#{bedNo}</if>
+             <if test="bedName!= null and bedName!=''">and t.bed_name=#{bedName}</if>
+             <if test="building!= null and building!=''">and t.building=#{building}</if>
+             <if test="storey!= null and storey!=''">and t.storey=#{storey}</if>
+             <if test="remark!= null and remark!=''">and t.remark=#{remark}</if>
+             <if test="user_in_session!=null">
+            		<if test="user_in_session.merchantId!=null and user_in_session.merchantId!=0 ">
+						and m.id = #{user_in_session.merchantId}            		
+            		</if> 
+             </if>
+             <if test="query_key!=null and query_key!=''">
+             	and t.bed_no like concat('%',#{bedNo},'%')
+             	and t.bed_name like concat('%',#{bedName},'%')
+             </if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <include refid="leftjoin_sql" />
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+</mapper>

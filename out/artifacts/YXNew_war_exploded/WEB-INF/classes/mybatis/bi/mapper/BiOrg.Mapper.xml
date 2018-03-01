@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenze.pms.dao.impl.bi.BiOrgDaoImpl">
+
+    <sql id="table"> bi_org</sql>
+    
+    <sql id="selectCols"> t.id, t.version, t.createtime, t.updatetime, t.fdel_flag, t.org_no, t.org_name, t.acq_perm, t.issue_perm, t.forward_perm, t.org_type_id, t.org_type_name </sql>
+
+    <resultMap id="beanMap" type="BiOrg">
+            <id column="ID" property="id" />
+                <result column="version" property="version" />
+                <result column="createtime" property="createtime" />
+                <result column="updatetime" property="updatetime" />
+                <result column="fdel_flag" property="fdelFlag" />
+                <result column="org_no" property="orgNo" />
+                <result column="org_name" property="orgName" />
+                <result column="acq_perm" property="acqPerm" />
+                <result column="issue_perm" property="issuePerm" />
+                <result column="forward_perm" property="forwardPerm" />
+                <result column="org_type_id" property="orgTypeId" />
+                <result column="org_type_name" property="orgTypeName" />
+        </resultMap>
+
+
+    <insert id="insert" parameterType="java.util.Map" keyProperty="id" >
+        insert into
+        <include refid="table" />
+        (id, version, createtime, updatetime, fdel_flag, org_no, org_name, acq_perm, issue_perm, forward_perm, org_type_id, org_type_name)
+        values 
+                (#{id}, 0,now(),now(),0, #{orgNo}, #{orgName}, #{acqPerm}, #{issuePerm}, #{forwardPerm}, #{orgTypeId}, #{orgTypeName})
+    </insert>
+
+    <!-- 更新:version+1 实现乐观锁 -->
+    <update id="update" parameterType="java.util.Map">
+        update
+        <include refid="table" />
+        <set>
+                VERSION = #{version}+1 ,
+                    updatetime=now(),
+            fdel_flag=#{fdelFlag},
+            org_no=#{orgNo},
+            org_name=#{orgName},
+            acq_perm=#{acqPerm},
+            issue_perm=#{issuePerm},
+            forward_perm=#{forwardPerm},
+            org_type_id=#{orgTypeId},
+            org_type_name=#{orgTypeName},
+            </set>
+        <where>
+            ID = #{id} and VERSION = #{version}
+        </where>
+    </update>
+
+    <select id="getById" parameterType="long" resultMap="beanMap">
+        select <include refid="selectCols"/> from 
+        <include refid="table" /> t
+        where t.ID = #{id}
+    </select>
+    
+
+    <sql id="condition_sql">
+          <if test="id!= null and id!=''">and t.id=#{id}</if>
+                               and t.FDEL_FLAG = 0
+             <if test="orgNo!= null and orgNo!=''">and t.org_no=#{orgNo}</if>
+             <if test="orgName!= null and orgName!=''">and t.org_name=#{orgName}</if>
+             <if test="acqPerm!= null and acqPerm!=''">and t.acq_perm=#{acqPerm}</if>
+             <if test="issuePerm!= null and issuePerm!=''">and t.issue_perm=#{issuePerm}</if>
+             <if test="forwardPerm!= null and forwardPerm!=''">and t.forward_perm=#{forwardPerm}</if>
+             <if test="orgTypeId!= null and orgTypeId!=''">and t.org_type_id=#{orgTypeId}</if>
+             <if test="orgTypeName!= null and orgTypeName!=''">and t.org_type_name=#{orgTypeName}</if>
+       </sql>
+
+
+    <!-- 根据多参数进行查询数据 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+        <![CDATA[ order by t.ID desc]]>
+    </select>
+
+    <select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+        select <include refid="selectCols"/> from
+        <include refid="table" /> t
+        <where>
+            <include refid="condition_sql" />
+        </where>
+    </select>
+    
+    <update id="deleteByIds" parameterType="java.util.List">
+        update
+        <include refid="table" />
+        <set>
+            FDEL_FLAG=1,
+        </set>
+        <where>
+            ID in (<foreach collection="list" item="item" index="index" separator=",">${item}</foreach>)
+        </where>
+    </update>
+
+</mapper>
