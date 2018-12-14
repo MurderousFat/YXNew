@@ -1,0 +1,590 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="住院登记" enableSupcan="true">
+<iframe id="print" width="0" height="0" style="display:none;"></iframe>
+<script type="text/javascript">
+var ckz543 = '${ckz543?default('')}'; 
+var aae011 = '${aae011?default('')}';
+var sessionid = '${sessionid?default('')}';
+var nextStep = '${nextStep?default('')}';
+var hisBillState = '0';
+var masId;
+<#if mas.id?exists && mas.id!=0>
+	hisBillState = '${mas.hisBillState?default('0')}';
+	masId = '${id?default('')}';
+</#if>
+var allEditAble = (hisBillState=='0' || hisBillState=='1');
+Ext.onReady(function() {
+	
+	var btns_cfg = {
+			'0':['save','close','send','reset'],
+			'1':['close','settle','back'],
+			'2':['close'],
+			'3':['close','preview','back1','print'],
+			'4':['close'],
+	};
+	
+	var toolbar = Ext.create('Ext.toolbar.Toolbar', 
+			{id:'form_toolbar',layout: {overflowHandler: 'Menu'},
+		items: Ext_BuildToolbarBtns(btns_cfg[hisBillState])
+	});
+	if(hisBillState=='0')$('bt_send').setText('传送处方');
+	if(hisBillState=='1')$('bt_back').setText('回退处方');
+	if(hisBillState=='3'){
+		$('bt_preview').setText('查看统筹结果');
+		$('bt_back1').setText('回退结算');
+	}
+	
+	window.bt_reset_OnClick = function(){
+		masTop.func('load','{}');
+	}
+	
+	window.bt_send_OnClick = function(){
+		if(parent.hisBillState=='0'){
+			showErrorMsg('请先传送住院登记');
+			return;
+		}
+		return;
+		var id = topfreeform.getValue(masTop, "id");
+		if(!id || id==''){
+			nextStep = '1';
+			bt_save_OnClick();
+		}else{
+			var gridJson = treelist.getChangedJSON(dtl);
+			if(gridJson == "0"){
+				return false;
+			}
+			var topJson = topfreeform.getChangedJSON(masTop);
+			if(topJson == "0"){
+				return false;
+			}
+			var _mas =  jQuery.parseJSON(topJson);
+			var t_dtl = jQuery.parseJSON(gridJson);
+			var _dtl =  jQuery.isArray(t_dtl)?t_dtl:[t_dtl];
+			sendPrescription(_mas.form.row,_dtl,[
+        			  'hisBillState',
+         			  'merchantName',
+         			  'aaz217',
+         			  'ykc675',
+         			  'ykc618',
+         			  'id',
+         			  'version',
+         			  'merchantId'
+         			  ,'fdelFlag'
+         			],[
+			   'masId',
+			   'id',
+			   'version',
+			   'fdelFlag'
+			],function(resp){
+				jQuery.ajax({
+					method:'post',
+					url:'${base}/his/updateSendPrescriptionByHisInhospitalDtl.tz',
+					data:{
+						id:id,
+						aaz217:resp.aaz217
+					},
+					dataType:'json'
+				}).done(function(_resp){
+					if(_resp.success){
+						window.location.href = "${base}/his/supcan_HisInhospitalDtl.tz?id="+id;	
+					}else{
+						showErrorMsg('保存就诊记录号失败');
+					}
+				});
+			});
+		}
+		
+	};
+	window.bt_settle_OnClick = function(){
+		var id = topfreeform.getValue(masTop, "id");
+		var aac044 = topfreeform.getValue(masTop, "aac044");
+		var ykc675 = topfreeform.getValue(masTop, "ykc675");
+		var aaz217 = topfreeform.getValue(masTop, "aaz217");
+		var akc264 = topfreeform.getValue(masTop, "akc264");
+		var jbrmc = topfreeform.getValue(masTop, "jbrmc");
+		var aae013 = topfreeform.getValue(masTop, "aae013");
+		var _params = {
+			aac044:aac044,
+			ykc675:ykc675,//结算类型
+			aaz217:aaz217,//就诊记录号
+			akc264:akc264,
+			jbrmc:jbrmc,
+			aae013:aae013,
+		};
+		feeSettlement(_params,function(){
+			jQuery.ajax({
+				method:'post',
+				url:'${base}/his/updateBackPrescriptionByHisInhospitalDtl.tz',
+				data:{
+					id:id
+				},
+				dataType:'json'
+			}).done(function(_resp){
+				if(_resp.success){
+					window.location.href = "${base}/his/dtl_HisInhospitalDtl.tz?id="+id;	
+				}else{
+					showErrorMsg('更新状态失败');
+				}
+			});
+		});
+	};
+	window.bt_back_OnClick = function(){
+		var id = topfreeform.getValue(masTop, "id");
+		var aac044 = topfreeform.getValue(masTop, "aac044");
+		var aaz217 = topfreeform.getValue(masTop, "aaz217");
+		backPrescription(aac044,aaz217,function(){
+			jQuery.ajax({
+				method:'post',
+				url:'${base}/his/updateBackPrescriptionByHisInhospitalDtl.tz',
+				data:{
+					id:id
+				},
+				dataType:'json'
+			}).done(function(_resp){
+				if(_resp.success){
+					window.location.href = "${base}/his/supcan_HisInhospitalDtl.tz?id="+id;	
+				}else{
+					showErrorMsg('更新状态失败');
+				}
+			});
+		});
+	};
+	window.bt_preview_OnClick = function(){
+		
+	};
+	window.bt_back1_OnClick = function(){
+		var id = topfreeform.getValue(masTop, "id");
+		var aac044 = topfreeform.getValue(masTop, "aac044");
+		var aaz217 = topfreeform.getValue(masTop, "aaz217");
+		var ykc618 = topfreeform.getValue(masTop, "ykc618");
+		backFeeSettlement(aac044,aaz217,ykc618,function(){
+			jQuery.ajax({
+				method:'post',
+				url:'${base}/his/updateBackFeeSettleMentByHisInhospitalDtl.tz',
+				data:{
+					id:id,
+				},
+				dataType:'json'
+			}).done(function(_resp){
+				if(_resp.success){
+					window.location.href = "${base}/his/supcan_HisInhospitalDtl.tz?id="+id;	
+				}else{
+					showErrorMsg('更新状态失败');
+				}
+			});
+		});
+	};
+	window.bt_print_OnClick = function(){
+		
+	};
+	
+	var billForm = Ext.create('Ext.form.Panel', {
+	    layout: {
+	        type: 'vbox',
+	        align: 'stretch'
+	    },
+	    border: false,
+	    autoScroll:false,
+	    tbar : toolbar,
+	    id:'billForm',
+	    items: [{
+	    	height:80,
+	        xtype: 'container',
+	        layout:'fit',
+	        border:false,
+	        contentEl : 'supcan_form_top_div'
+	    },{
+	    	flex:1,
+	    	xtype:'container',
+	    	layout:'fit',
+	    	border:false,
+	    	contentEl : 'supcan_treelist_div'
+	    }]
+	});
+	
+	var viewport = new Ext.Viewport({
+		layout : 'fit',
+		id:'viewport',
+		items : [billForm]
+	});
+	
+	
+	
+	window.bt_close_OnClick = function(){
+		parent.parent.closeWin();
+	}
+
+	 window.bt_save_OnClick =function(){
+		var gridJson = treelist.getChangedJSON(dtl);
+		if(gridJson == "0"){
+			return false;
+		}
+		var t_dtl = jQuery.parseJSON(gridJson);
+		var _dtl =  jQuery.isArray(t_dtl)?t_dtl:[t_dtl];
+		var payload = _dtl;
+		
+		jQuery.ajax({
+				type:'post',
+				url:'${base}/his/updateByHisInhospitalDtl.tz?id=${id?default('')}',
+				contentType:'application/json; charset=utf-8',
+				dataType:'json',
+				data:jQuery.toJSON(payload)
+			}).done(function(result){
+				if(result.success){
+   				showTitMsg('保存成功',function(){
+   					window.location.href = '${base}/his/dtl_HisInhospitalMas.tz?id=${id?default('')}';
+   				});
+				}else{
+					showErrorMsg(result.failure);
+				}
+			});
+	}
+	 
+	function getBillChanged(){
+		var tophandle = topfreeform.getHandle(masTop);
+		var bottomhandle = bottomfreeform.getHandle(masBottom);
+		var param = "include="+tophandle+","+bottomhandle;
+		var rtn = topfreeform.getChanged(masTop, param);
+		if(rtn == "1"){
+			return rtn;
+		}else{
+			var treelistrtn = treelist.getRowChanged(dtl);
+			if(treelistrtn == ""){
+				return "0";
+			} 
+			return "1";
+		}
+	}
+
+	if(nextStep=='1'){
+		nextStep = '';
+		setTimeout(function(){
+			bt_send_OnClick();
+		},800);
+	}
+});
+</script>
+<script type="text/javascript">
+var treelist;
+var topfreeform;
+var topRead = false;
+var dtlRead = false;
+function OnReady(id){
+	if(id == "masTop"){
+		topfreeform = Ext.create("Ext.supcan.FreeForm", {freeFormObj : masTop});
+		masTopReady(id);
+		topfreeform.setObjectProp(masTop, "fmlNo", "visible", "false");
+		topRead = true;
+	}
+	if(topRead){
+		treelist = Ext.create("Ext.supcan.TreeList", {treeListObj : dtl});
+		dtlReady("dtl");
+		dtlRead = true;
+	} 
+	if(topRead && dtlRead){
+		//hideWaitMsg();
+		return;
+			//window.parent.$("billwin").setTitle("编辑索证索票登记");
+		//topfreeform.setObjectProp(masTop, "fcreateAt", "editAble", false);
+		//topfreeform.setValue(masTop, "fgmo", "0");
+		//var fenterWhAt = topfreeform.getValue(masTop,'fenterWhAt');
+		//if(isEmpty(fenterWhAt))
+		//	topfreeform.setValue(masTop,'fenterWhAt','2017-05-02 00:01:49');
+		
+		
+		hideWaitMsg();
+	}
+}
+function dtlAfterBuild(){
+	return;
+}
+function masTopAfterBuild(){
+	return;
+	masTop.func("SetFiles","imageUrl\r\n1");
+	topfreeform.setObjectProp(masTop, "frefectoryName", "editAble", false);
+	topfreeform.setObjectProp(masTop, "fdeptName", "editAble", false);
+	topfreeform.setObjectProp(masTop, "fschoolName", "editAble", false);
+}
+function dtlLoad(id, Event, p1, p2, p3, p4){
+	return;
+	treelist.deleteRows(dtl, "fitemNo = '' or fitemNo = null");
+}
+
+var dtlDropdownSelChanged = {
+		akc222y:function(id, Event, p1, p2, p3, p4){
+			var h = treelist.getDropListHandle(dtl, "akc222y");
+			var row = treelist.getDropListCurRow(dtl, h);
+			var settleNo = treelist.getDropListCellData(dtl, h, row, "settleNo");
+			var cnName = treelist.getDropListCellData(dtl, h, row, "cnName");
+			var settleType = treelist.getDropListCellData(dtl, h, row, "settleType");
+			var price = treelist.getDropListCellData(dtl, h, row, "price");
+			treelist.setCellData(dtl, p1, "akc222y", settleNo);
+			treelist.setCellData(dtl, p1, "akc223y", cnName);
+			treelist.setCellData(dtl, p1, "yka111", settleType);
+			treelist.setCellData(dtl, p1, "yka112", _getDatadicText('ak130',settleType));
+			treelist.setCellData(dtl, p1, "akc226", 1);
+			treelist.setCellData(dtl, p1, "akc225", price);
+			treelist.setCellData(dtl, p1, "akc264", price);
+			treelist.setCellData(dtl, p1, "aae011", price);
+		}
+}
+var dtlEditChanged = {
+		akc226:function(id, Event, p1, p2, p3, p4){
+//			var _qty = treelist.getCellData(dtl, p1, "akc226");
+//			var _price = treelist.getCellData(dtl, p1, "akc225");
+//			var _amount = Number(_qty||'1')*Number(_price||'0');
+//			treelist.setCellData(dtl, p1, "akc264", Math.round(_amount*100/100));
+            var _qty = treelist.getCellData(dtl, p1, "akc226");
+            var _price = treelist.getCellData(dtl, p1, "akc225");
+            if(Number(_qty)<0){
+                _qty=null;
+                treelist.setCellData(dtl, p1, "akc226", _qty);
+                alert("格式有误,请重新输入");
+            }
+            if(Number(_price)<0){
+                _price=null;
+                treelist.setCellData(dtl, p1, "akc225", _price);
+                alert("格式有误,请重新输入");
+            }
+            var _amount=(Number(_qty)*Number(_price)).toFixed(2);
+            treelist.setCellData(dtl, p1, "akc264", _amount);
+		}
+		,akc225:function(id, Event, p1, p2, p3, p4){
+//			var _qty = treelist.getCellData(dtl, p1, "akc226");
+//			var _price = treelist.getCellData(dtl, p1, "akc225");
+//			var _amount = Number(_qty||'1')*Number(_price||'0');
+//			treelist.setCellData(dtl, p1, "akc264",  Math.round(_amount*100/100));
+            var _qty = treelist.getCellData(dtl, p1, "akc226");
+            var _price = treelist.getCellData(dtl, p1, "akc225");
+            if(Number(_qty)<0){
+                _qty=null;
+                treelist.setCellData(dtl, p1, "akc226", _qty);
+                alert("格式有误,请重新输入");
+            }
+            if(Number(_price)<0){
+                _price=null
+                treelist.setCellData(dtl, p1, "akc225", _price);
+                alert("格式有误,请重新输入");
+            }
+            var _amount=(Number(_qty)*Number(_price)).toFixed(2);
+            treelist.setCellData(dtl, p1, "akc264", _amount);
+		}
+}
+
+var masDropdownSelChanged = {
+		akc222y:function(id, Event, p1, p2, p3, p4){
+			var h = topfreeform.getDropListHandle(masTop, "akc222y");
+			var row = topfreeform.getDropListCurRow(masTop, h);
+			var settleNo = topfreeform.getDropListCellData(masTop, h, row, "settleNo");
+			var cnName = topfreeform.getDropListCellData(masTop, h, row, "cnName");
+			var settleType = topfreeform.getDropListCellData(masTop, h, row, "settleType");
+			var price = topfreeform.getDropListCellData(masTop, h, row, "price");
+			topfreeform.setValue(masTop, "akc222y", settleNo);
+			topfreeform.setValue(masTop, "akc223y", cnName);
+			topfreeform.setValue(masTop, "yka111", settleType);
+			topfreeform.setValue(masTop, "yka112", _getDatadicText('aka130',settleType));
+			topfreeform.setValue(masTop, "akc226", 1);
+			topfreeform.setValue(masTop, "akc225", price);
+			topfreeform.setValue(masTop, "aka185", 0);
+			var myDate = new Date();
+			topfreeform.setValue(masTop, "akc221", myDate.getFullYear()+'.'+(myDate.getMonth()+1)+'.'+myDate.getDate());
+			topfreeform.selectCell(masTop,"akc226");
+		}
+}
+
+function addRecord(){
+
+    var settleNo = topfreeform.getValue(masTop, "akc222y");
+	if(!isEmpty(settleNo)){
+		var cnName = topfreeform.getValue(masTop, "akc223y");
+		var settleType = topfreeform.getValue(masTop, "yka111");
+		var settleTypeName = topfreeform.getValue(masTop, "yka112");
+		var qty = topfreeform.getValue(masTop, "akc226");
+		var price = topfreeform.getValue(masTop, "akc225");
+		var date = topfreeform.getValue(masTop, "akc221");
+		
+		var flag = topfreeform.getValue(masTop, "aka185");
+		
+		if(isEmpty(qty))qty=1;	
+		var rowNum = treelist.getRows(dtl);
+		var curRow = Number(rowNum);
+		treelist.insertRows(dtl, curRow);
+		
+		treelist.setCellData(dtl, curRow, "akc222y", settleNo);
+		treelist.setCellData(dtl, curRow, "akc223y", cnName);
+		treelist.setCellData(dtl, curRow, "yka111", settleType);
+		treelist.setCellData(dtl, curRow, "yka112", settleTypeName);
+		treelist.setCellData(dtl, curRow, "akc226", qty);
+		treelist.setCellData(dtl, curRow, "akc225", price); 
+		treelist.setCellData(dtl, curRow, "akc264", Number(qty) * Number( price || 0));
+		treelist.setCellData(dtl, curRow, "akc221", date); 
+		treelist.setCellData(dtl, curRow, "aka185", flag); 
+		treelist.setCellData(dtl, curRow, "sendFlag", 0); 
+		
+		masTop.func('load','{}');
+		topfreeform.selectCell(masTop,"akc222y");
+	}
+}
+
+var masTopEditKeyDown = {
+		akc226:{
+			13:function(id, Event, p1, p2, p3, p4){
+				setTimeout(function(){
+					addRecord();
+				},50);
+			}
+		}
+		,aka185:{
+			13:function(id, Event, p1, p2, p3, p4){
+				setTimeout(function(){
+					addRecord();
+				},50);
+			}
+		}
+		,akc221:{
+			13:function(id, Event, p1, p2, p3, p4){
+				setTimeout(function(){
+					addRecord();
+				},50);
+			}
+		}
+}
+
+var EventCfg = {
+		dtl:{
+			Load:function(id, Event, p1, p2, p3, p4){
+			},
+			DropdownSelChanged:function(id, Event, p1, p2, p3, p4){
+				if(dtlDropdownSelChanged[p2])dtlDropdownSelChanged[p2](id, Event, p1, p2, p3, p4);
+			},
+			BeforeDropdown:function(id, Event, p1, p2, p3, p4){
+			},
+			SelChanged:function(id, Event, p1, p2, p3, p4){
+			},
+			EditChanged:function(id, Event, p1, p2, p3, p4){
+				if(dtlEditChanged[p2])dtlEditChanged[p2](id, Event, p1, p2, p3, p4);
+			},
+			MenuBeforePopup:function(id, Event, p1, p2, p3, p4){
+			},
+			LooseFocus:function(id, Event, p1, p2, p3, p4){
+			},
+			EditKeydown:function(id, Event, p1, p2, p3, p4){
+			},
+			EditChar:function(id, Event, p1, p2, p3, p4){
+			}
+		},
+		masTop:{
+			EditChanged:function(id, Event, p1, p2, p3, p4){
+			}
+			,EditKeydown:function(id, Event, p1, p2, p3, p4){
+				if(masTopEditKeyDown[p1] && masTopEditKeyDown[p1][p2])masTopEditKeyDown[p1][p2](id, Event, p1, p2, p3, p4);
+			}
+			,EditChar:function(id, Event, p1, p2, p3, p4){
+			}
+			,LooseFocus:function(id, Event, p1, p2, p3, p4){
+			}
+			,BeforeDropdown:function(id, Event, p1, p2, p3, p4){
+			}
+			,DropdownSelChanged:function(id, Event, p1, p2, p3, p4){
+				if(masDropdownSelChanged[p1])masDropdownSelChanged[p1](id, Event, p1, p2, p3, p4)
+			}
+			,ButtonClicked:function(id, Event, p1, p2, p3, p4){
+			}
+			,HyperLink:function(id, Event, p1, p2, p3, p4){
+			}
+			,MenuClicked:function(id, Event, p1, p2, p3, p4){
+			}
+			,MenuBeforePopup:function(id, Event, p1, p2, p3, p4){
+			}
+		}
+};
+
+function OnEvent(id, Event, p1, p2, p3, p4) {
+	if(EventCfg[id][Event])EventCfg[id][Event](id, Event, p1, p2, p3, p4);
+}
+</script>
+
+<div id="supcan_treelist_div" style="width:100%;height:100%;display:none"><script>insertTreeList('dtl', 'Hue=Lilian');</script></div>
+<script>
+function dtlReady(id){
+	TenzePreLoad(['com.tenze.pms.facade.dto.his.HisInhospitalDtlDto'],function(){
+		var xml = Supcan_BuildTreeList('com.tenze.pms.facade.dto.his.HisInhospitalDtlDto',{
+			Properties:{
+				'@editAble':allEditAble
+				,'@isTree':false
+				,'@treeFormat':'normal'
+			}
+		});
+		dtl.func("Build", xml);
+		dtl.func("DisableMenu","selectCol \r\n false");
+		try{dtlAfterBuild(id);}catch(e){}
+		var xml1 = Supcan_BuildTreeList('com.tenze.pms.facade.dto.his.HisSettleDto',{
+		});
+		treelist.setDroplistProp(dtl,'customer12','treelistUrl',xml1);
+		treelist.setDroplistProp(dtl,'customer12','dataUrl','="'+_global_context+'/his/listByHisSettle.tz?query_key="+encodeURIComponent(data)');
+		treelist.load(dtl, "${base}/his/listByHisInhospitalDtl.tz?masId=${id?default('')}");
+	});
+}
+Ext.onReady(function(){
+	document.getElementById("supcan_treelist_div").style.display="block";
+});
+function dtlDisabledSomeMenu(){
+	dtl.func("DisableMenu", "copy \r\n true");
+	dtl.func("DisableMenu", "pasteNewRow \r\n true");
+	dtl.func("DisableMenu", "paste \r\n true");
+	dtl.func("DisableMenu", "print \r\n true");
+	dtl.func("DisableMenu", "import \r\n true");
+}
+</script>
+
+<div id="supcan_form_top_div" style="width:100%;height:100%;display:none;"><script>insertFreeForm('masTop', 'Border=none;');</script></div>
+<script>
+	function isCreateBill(formId){
+		var isCreate =  true;
+			var fbillNo = masTop.func("GetValue", "fbillNo");
+			if(isEmpty(fbillNo)){
+				isCreate = true;
+			}else{
+				isCreate = false;
+			}
+		if(isEmpty($("isCreate"))){
+			$(formId).add({
+				xtype:'hiddenfield',
+				name:'isCreate',
+				id:'isCreate',
+			});
+		}
+		$("isCreate").setValue(isCreate);
+		if(isCreate){
+			return "create";
+		}else{
+			return "update";
+		}
+		
+	}
+function masTopReady(id){
+	TenzePreLoad(['com.tenze.pms.facade.dto.his.HisInhospitalDtlDto','com.tenze.pms.facade.dto.his.HisSettleDto'],function(){
+		var xml = Supcan_BuildFreeForm('com.tenze.pms.facade.dto.his.HisInhospitalDtlDto',{
+			Properties:{
+				'@editAble':allEditAble
+			}
+		});
+		masTop.func("Build", xml);
+		try{masTopAfterBuild(id);}catch(e){}
+		var xml1 = Supcan_BuildTreeList('com.tenze.pms.facade.dto.his.HisSettleDto',{
+			Properties:{
+				'@dataUrl':_global_context+'/his/listByHisSettle.tz',
+			}
+		});
+		topfreeform.setDroplistProp(masTop,'customer12','treelistUrl',xml1);
+		<#if mas.id?exists && mas.id!=0>
+			topfreeform.load(masTop, "${base}/his/getSingleByHisInhospitalDtl.tz?id=${mas.id}");
+		</#if>
+	});
+}
+Ext.onReady(function(){
+	document.getElementById("supcan_form_top_div").style.display="block";
+});
+</script>
+
+</@CommonMacro.page>

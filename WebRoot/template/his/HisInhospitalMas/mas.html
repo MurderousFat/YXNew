@@ -1,0 +1,464 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="住院登记" enableSupcan="true">
+<iframe id="print" width="0" height="0" style="display:none;"></iframe>
+<object id="embed1" type="application/x-delphi-demo-plugin" width=0 height=0>
+  <param name="param1" value="1" />
+  <param name="param2" value="2" />
+</object>
+<script type="text/javascript" src="${base}/resources/commonjs/template.js"></script>
+<script id="dy-template" type="text/html">
+	<span>社会保障号</span>:<span>{{result.cac002}}</span><br/>
+	<span>姓名</span>:<span>{{result.aac003}}</span><br/>
+	<span>性别</span>:<span>{{result.aac004}}</span><br/>
+	<span>出生日期</span>:<span>{{result.aac006}}</span><br/>
+	<span>险种类型 </span>:<span>{{result.aae140}}</span><br/>
+	<span>职工类别</span>:<span>{{result.cac089}}</span><br/>
+	<span>公务员类别</span>:<span>{{result.cac007}}</span><br/>
+	<span>首诊定点医疗机构</span>:<span>{{result.ckc866}}</span><br/>
+	<span>基本医疗参保日期</span>:<span>{{result.ckc619}}</span><br/>
+	<span>基本医疗参保状态</span>:<span>{{result.ckc555}}</span><br/>
+	<span>基本医疗报销比例</span>:<span>{{result.aae185}}</span><br/>
+	<span>基本医疗可保金额</span>:<span>{{result.ckc800}}</span><br/>
+	<span>补充医疗可保金额</span>:<span>{{result.bcylkbje}}</span><br/>
+	<span>门诊支付比例</span>:<span>{{result.ckc799}}</span><br/>
+	<span>参保档次</span>:<span>{{result.caa013}}</span><br/>
+	<span>结算方式</span>:<span>{{result.cke611}}</span><br/>
+	<span>门诊年度余额</span>:<span>{{result.ckc574}}</span><br/>
+	<span>联系电话</span>:<span>{{result.aae005}}</span><br/>
+	<span>本年可报金额</span>:<span>{{result.ckc606}}</span><br/>
+	<span>本年已报金额</span>:<span>{{result.ckc516}}</span><br/>
+	<span>本月累计可消费金额</span>:<span>{{result.eka527}}</span><br/>
+</script>
+
+<script id="jzcx-template" type="text/html">
+		{{each result as r}}
+		<span>医保编号:</span><span>{{r.aac001}}</span>,
+		<span>就诊记录号:</span><span>{{r.aaz217}}</span>,
+		<span>姓名:</span><span>{{r.aac003}}</span>,
+		<span>就诊医院名称:</span><span>{{r.aab004}}</span>
+		<br/>
+		{{/each}}
+</script>
+
+<script type="text/javascript">
+var ckz543 = '${ckz543?default('')}'; 
+var aae011 = '${aae011?default('')}';
+var sessionid = '${sessionid?default('')}';
+var nextStep = '${nextStep?default('')}';
+var hisBillState = '0';
+var masId;
+<#if mas.id?exists && mas.id!=0>
+	hisBillState = '${mas.hisBillState?default('0')}';
+	masId = '${id?default('')}';
+</#if>
+
+var allEditAble = hisBillState=='0';
+
+var jmc,jyc;
+var my = '${my?default('')}';
+Ext.onReady(function() {
+	parent.hisBillState = hisBillState;
+	if(masId){
+		parent.masId = masId;
+		parent.enableSettle();
+	}
+	var btns_cfg = {
+			'0':['save','close','seize','send','read'],
+			'1':['close','settle','back','search','seize'],
+			'2':['close','seize'],
+			'3':['close','preview','back1','print','seize'],
+			'4':['close','seize'],
+	};
+	
+	var toolbar = Ext.create('Ext.toolbar.Toolbar', 
+			{id:'form_toolbar',layout: {overflowHandler: 'Menu'},
+		items: Ext_BuildToolbarBtns(btns_cfg[hisBillState])
+	});
+	$('bt_seize').setText('待遇享受判断');
+	if(hisBillState=='0'){
+		$('bt_send').setText('登记传送');
+	}
+	if(hisBillState=='1'){
+		$('bt_back').setText('取消登记');
+		$('bt_search').setText('就诊信息查询');
+	}
+	if(hisBillState=='3'){
+		$('bt_preview').setText('查看统筹结果');
+		$('bt_back1').setText('回退结算');
+	}
+	
+	window.bt_search_OnClick = function(){
+		var aac044 = topfreeform.getValue(masTop, "aac044");
+		queryJzzlcx({
+			aac044:aac044,
+		},function(result){
+			console.log(result.sqldata.row);
+			var _html = template('jzcx-template',{result:result.sqldata.row});
+			showTitMsg(_html,function(){});
+		});	
+	};
+	
+	window.bt_read_OnClick = function(){
+		var result = embed1.ReadCard(my);
+		console.log(result);
+		var arr = result.split(',');
+		var _my = arr[0];
+		var _idCard = arr[1];
+		var _jyc = arr[2];
+		var _jmc = arr[3];
+		if(!_idCard || _idCard==''){
+			showErrorMsg('读取卡失败');
+			return;
+		}else{
+			showTitMsg('读取卡成功');
+			//topfreeform.setValue(masTop, "aac044", _idCard);
+		}
+		console.log(my);
+		console.log(_idCard);
+		console.log(_jmc);
+		console.log(_jyc);
+		var result1 = embed1.ReadCardOriginal('1002'); 
+		console.log(result1);
+		var obj = jQuery.xml2json(result1.replace('<1002>','<ROOT>').replace('</1002>','</ROOT>'));
+		console.log(obj);	
+		topfreeform.setValue(masTop, "aac044", obj.idCard);
+		topfreeform.setValue(masTop, "personName", obj.name);
+	}
+
+	
+	window.bt_seize_OnClick = function(){
+		var aac044 = topfreeform.getValue(masTop, "aac044");
+		var ykc701 = topfreeform.getValue(masTop, "ykc701");
+		treatmentJudgment({
+			aac044:aac044,
+			bbd068:'1',//业务类别
+			ake007:ykc701.replace(/-/g,'').replace(/\./g,'')//就诊日期
+		},function(result){
+			console.log(result);
+			var _html = template('dy-template',{result:result});
+			showTitMsg(_html,function(){});
+		});	
+	}
+	
+	window.bt_send_OnClick = function(){
+		 saveCallback(function(id){
+			 var topJson = topfreeform.getChangedJSON(masTop);
+				if(topJson == "0"){
+					return false;
+				}
+				var _mas =  jQuery.parseJSON(topJson);
+				sendInpatientRegistration(_mas.form.row,[
+	        			  'hisBillState',
+	         			  'merchantName',
+	         			  'aaz217',
+	         			  'ykc675',
+	         			  'ykc618',
+	         			  'id',
+	         			  'version',
+	         			  'merchantId'
+	         			  ,'fdelFlag'
+	         			  ,'personName'
+	         			  ,'yka115'
+	         			],function(resp){
+					var masId = topfreeform.getValue(masTop, "fid");
+					var masType = 'BDGR01';
+					var content = resp;
+					fillSsLog(masId,masType,content,function(){
+						jQuery.ajax({
+							method:'post',
+							url:'${base}/his/updateInpatientRegistrationByHisInhospitalMas.tz',
+							data:{
+								id:id,
+								aaz217:resp.aaz217
+							},
+							dataType:'json'
+						}).done(function(_resp){
+							if(_resp.success){
+								showTitMsg('住院登记传送成功',function(){
+									window.location.href = "${base}/his/mas_HisInhospitalMas.tz?id="+id;	
+								});
+							}else{
+								showErrorMsg('保存就诊记录号失败');
+							}
+						});
+					});
+					
+				});
+		 });
+	};
+	window.bt_back_OnClick = function(){
+		
+			var id = topfreeform.getValue(masTop, "id");
+			var aac044 = topfreeform.getValue(masTop, "aac044");
+			var aaz217 = topfreeform.getValue(masTop, "aaz217");
+			backInpatientRegistration(aac044,aaz217,function(){
+				jQuery.ajax({
+					method:'post',
+					url:'${base}/his/updateBackInpatientRegistrationByHisInhospitalMas.tz',
+					data:{
+						id:id
+					},
+					dataType:'json'
+				}).done(function(_resp){
+					if(_resp.success){
+						showTitMsg('回退住院登记成功!',function(){
+							window.location.href = "${base}/his/mas_HisInhospitalMas.tz?id="+id;	
+						});
+					}else{
+						showErrorMsg('更新状态失败');
+					}
+				});
+			});	
+	};
+	
+	window.bt_settle_OnClick = function(){
+		saveCallback(function(_id){
+			var result = embed1.ReadCard(my);
+			var arr = result.split(',');
+			var _my = arr[0];
+			var _idCard = arr[1];
+			jyc = arr[2];
+			jmc = arr[3];
+			if(!_idCard || _idCard==''){
+				showErrorMsg('读取卡失败');
+				return;
+			}
+			var id = topfreeform.getValue(masTop, "id");
+			var aac044 = topfreeform.getValue(masTop, "aac044");
+			var ykc675 = topfreeform.getValue(masTop, "ykc675");
+			var aaz217 = topfreeform.getValue(masTop, "aaz217");
+			var akc264 = topfreeform.getValue(masTop, "akc264");
+			var jbrmc = topfreeform.getValue(masTop, "jbrmc");
+		
+			var aae013 = topfreeform.getValue(masTop, "aae013");
+			var _params = {
+				aac044:aac044,
+				ykc675:ykc675,//结算类型
+				aaz217:aaz217,//就诊记录号
+				akc264:akc264||1,
+				jbrmc:jbrmc,
+				aae013:aae013,
+			}
+			feeSettlement(_params,function(){
+				var masId = topfreeform.getValue(masTop, "id");
+				var masType = 'BDGR05';
+				var content = _r;
+				fillSsLog(masId,masType,content,function(){
+					jQuery.ajax({
+						method:'post',
+						url:'${base}/his/updateFeeSettleMentByHisInhospitalMas.tz',
+						data:{
+							id:id
+							,ykc618:resp.ykc618
+						},
+						dataType:'json'
+					}).done(function(_resp){
+						if(_resp.success){
+							showTitMsg('结算成功!',function(){
+								window.location.href = "${base}/his/mas_HisSettleMas.tz?id="+id;	
+							});
+						}else{
+							showErrorMsg('结算更新状态失败');
+						}
+					});
+					
+				});
+			});
+		});
+	};
+	
+	window.bt_back1_OnClick = function(){
+		var id = topfreeform.getValue(masTop, "id");
+		var aac044 = topfreeform.getValue(masTop, "aac044");
+		var aaz217 = topfreeform.getValue(masTop, "aaz217");
+		var ykc618 = topfreeform.getValue(masTop, "ykc618");
+		backFeeSettlement(aac044,aaz217,ykc618,function(){
+			jQuery.ajax({
+				method:'post',
+				url:'${base}/his/updateBackFeeSettleMentByHisSettleMas.tz',
+				data:{
+					id:id,
+				},
+				dataType:'json'
+			}).done(function(_resp){
+				if(_resp.success){
+					showTitMsg('结算回退成功!',function(){
+						window.location.href = "${base}/his/supcan_HisSettleMas.tz?id="+id;	
+					});
+				}else{
+					showErrorMsg('结算回退更新状态失败');
+				}
+			});
+		});
+	};
+	
+	window.bt_preview_OnClick = function(){
+	};
+	window.bt_print_OnClick = function(){
+	};
+	
+	
+	var viewport = new Ext.Viewport({
+		layout : 'fit',
+		id:'viewport',
+		items : [Ext.create('Ext.panel.Panel', {
+       	    layout: 'fit',
+       	    border: false,
+       	    autoScroll:false,
+       	    tbar : toolbar,
+       	    items: [{
+       	        xtype: 'container',
+       	        layout:'fit',
+       	        border:false,
+       	        contentEl : 'supcan_form_top_div'
+       	    },]
+       	}) ]
+	});
+	
+	
+	
+	window.bt_close_OnClick = function(){
+		parent.parent.closeWin();
+	}
+
+	function saveCallback(func){
+		var topJson = topfreeform.getChangedJSON(masTop);
+		if(topJson == "0"){
+			return false;
+		}
+		var _mas =  jQuery.parseJSON(topJson);
+		var payload = {
+				mas:_mas.form.row
+		};
+		
+		jQuery.ajax({
+			type:'post',
+			url:'${base}/his/updateByHisInhospitalMas.tz',
+			dataType:'json',
+			data:_mas.form.row
+		}).done(function(result){
+			if(result.success){
+				var version = topfreeform.getValue(masTop,'version');
+				topfreeform.setValue(masTop,'version',Number(version||0)+1);
+				if(func){
+					func(result.id);
+				}
+			}else{
+				showErrorMsg(result.failure);
+			}
+		});
+	}
+	
+	 window.bt_save_OnClick =function(){
+		 saveCallback(function(id){
+			showTitMsg('保存成功',function(){
+					window.location.href = '${base}/his/mas_HisInhospitalMas.tz?id='+id;
+			});
+		 });
+	}
+	 
+	if(nextStep=='1'){
+		nextStep = '';
+		setTimeout(function(){
+			bt_send_OnClick();
+		},800);
+	}
+});
+</script>
+<script type="text/javascript">
+var treelist;
+var topfreeform;
+var topRead = false;
+var dtlRead = false;
+function OnReady(id){
+	if(id == "masTop"){
+		topfreeform = Ext.create("Ext.supcan.FreeForm", {freeFormObj : masTop});
+		masTopReady(id);
+		topRead = true;
+	}
+	if(topRead ){
+		//hideWaitMsg();
+		return;
+	}
+}
+
+function masTopAfterBuild(){
+	return;
+}
+
+var masDropdownSelChanged = {
+		ykc012:function(id, Event, p1, p2, p3, p4){
+			var h = topfreeform.getDropListHandle(masTop, "ykc012");
+			var row = topfreeform.getDropListCurRow(masTop, h);
+			var bedName= topfreeform.getDropListCellData(masTop, h, row, "bedName");
+			topfreeform.setValue(masTop, "ykc012", bedName);
+		}
+}
+
+/** supcan event begin */
+var EventCfg = {
+		masTop:{
+			EditChanged:function(id, Event, p1, p2, p3, p4){
+			}
+			,EditKeydown:function(id, Event, p1, p2, p3, p4){
+			}
+			,EditChar:function(id, Event, p1, p2, p3, p4){
+			}
+			,LooseFocus:function(id, Event, p1, p2, p3, p4){
+			}
+			,BeforeDropdown:function(id, Event, p1, p2, p3, p4){
+			}
+			,DropdownSelChanged:function(id, Event, p1, p2, p3, p4){
+				if(masDropdownSelChanged[p1])masDropdownSelChanged[p1](id, Event, p1, p2, p3, p4)
+			}
+			,ButtonClicked:function(id, Event, p1, p2, p3, p4){
+			}
+			,HyperLink:function(id, Event, p1, p2, p3, p4){
+			}
+			,MenuClicked:function(id, Event, p1, p2, p3, p4){
+			}
+			,MenuBeforePopup:function(id, Event, p1, p2, p3, p4){
+			}
+		}
+};
+
+function OnEvent(id, Event, p1, p2, p3, p4) {
+	if(EventCfg[id][Event])EventCfg[id][Event](id, Event, p1, p2, p3, p4);
+}
+/** supcan event end */
+</script>
+
+<div id="supcan_form_top_div" style="width:100%;height:100%;display:none;"><script>insertFreeForm('masTop', 'Border=none;');</script></div>
+<script>
+function masTopReady(id){
+	TenzePreLoad(['com.tenze.pms.facade.dto.his.HisInhospitalMasDto','com.tenze.pms.facade.dto.his.HisBedDto'],function(){
+		var xml = Supcan_BuildFreeForm('com.tenze.pms.facade.dto.his.HisInhospitalMasDto',{
+			Properties:{
+				'@editAble':allEditAble
+			}
+		});
+		masTop.func("Build", xml);
+		try{masTopAfterBuild(id);}catch(e){}
+		try{
+			var xml1 = Supcan_BuildTreeList('com.tenze.pms.facade.dto.his.HisBedDto',{
+				Properties:{
+					'@dataUrl':_global_context+'/his/listByHisBed.tz',
+				}
+			});
+			topfreeform.setDroplistProp(masTop,'DropList_bedName','treelistUrl',xml1);
+			
+		}catch(e){
+			console.log(e);
+		}
+		<#if mas.id?exists && mas.id!=0>
+			topfreeform.load(masTop, "${base}/his/getSingleByHisInhospitalMas.tz?id=${mas.id}");
+		</#if>
+	});
+}
+Ext.onReady(function(){
+	document.getElementById("supcan_form_top_div").style.display="block";
+});
+<#include 'mas_business.js'/>
+</script>
+
+</@CommonMacro.page>

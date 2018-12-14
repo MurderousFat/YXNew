@@ -1,107 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="EclipseModuleManager">
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/agile_zip_cn.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/ant-1.6.5.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/aopalliance-1.0.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/asm-3.3.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/asm-commons-3.3.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/asm-tree-3.3.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/aspectjweaver-1.8.4.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/bcmail-jdk14-1.38.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/bcmail-jdk14-138.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/bcprov-jdk14-1.38.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/bcprov-jdk14-138.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/bctsp-jdk14-1.38.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/castor-1.2.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/cglib-nodep-2.2.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/commons-beanutils-1.8.3.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/commons-codec-1.3.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/commons-collections-3.2.2.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/commons-digester-2.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/commons-fileupload-1.3.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/commons-httpclient-3.0.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/commons-io-2.0.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/commons-lang-2.6.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/commons-lang3-3.3.2.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/commons-logging-1.1.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/dom4j-1.6.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/druid-1.0.9.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/dubbo-2.5.3.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/ezmorph-1.0.6.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/fastjson-1.1.41.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/freemarker-2.3.16.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/geronimo-j2ee-management_1.1_spec-1.0.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/geronimo-jms_1.1_spec-1.1.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/geronimo-jta_1.0.1B_spec-1.0.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/geronimo-stax-api_1.0_spec-1.0.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/hamcrest-core-1.3.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/hawtbuf-1.9.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/hawtdispatch-1.18.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/hawtdispatch-scala-1.18.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/hawtdispatch-transport-1.18.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/hawtjni-runtime-1.8.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/httpclient-4.5.2.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/httpclient-cache-4.5.2.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/httpclient-win-4.5.2.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/httpcore-4.4.4.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/itext-2.1.7.js2.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jackson-annotations-2.1.4.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jackson-core-2.1.4.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jackson-databind-2.4.2.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jackson-dataformat-xml-2.8.5.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jasperreports-5.5.0.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/javassist-3.15.0-GA.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/javax.servlet-api-3.1.0.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jcommon-1.0.15.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jdom.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jdtcore-3.1.0.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jfreechart-1.0.12.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jline-0.9.94.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jodconverter-core-1.0.5.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/json-lib-2.4-jdk15.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/juh-3.2.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/junit-4.12.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jurt-3.2.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/jxl-2.6.12.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/log4j-1.2.16.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/mybatis-3.2.8.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/mybatis-spring-1.2.0.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/mysql-connector-java-5.1.32.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/netty-3.7.0.Final.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/ognl-3.0.5.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/opencsv-2.3.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/pinyin4j-2.5.0.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/poi-3.6.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/poi-ooxml-3.6.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/poi-ooxml-schemas-3.6.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/ridl-3.2.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/slf4j-api-1.6.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/slf4j-log4j12-1.6.4.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/spring-aop-4.1.3.RELEASE.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/spring-aspects-4.1.3.RELEASE.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/spring-beans-4.1.3.RELEASE.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/spring-context-4.1.3.RELEASE.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/spring-core-4.1.3.RELEASE.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/spring-expression-4.1.3.RELEASE.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/spring-jdbc-4.1.3.RELEASE.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/spring-orm-4.1.3.RELEASE.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/spring-tx-4.1.3.RELEASE.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/spring-web-4.1.3.RELEASE.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/stax-api-1.0.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/struts2-convention-plugin-2.3.4.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/struts2-core-2.3.4.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/struts2-jasperreports-plugin-2.3.16.3.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/struts2-json-plugin-2.3.4.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/struts2-spring-plugin-2.3.4.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/unoil-3.2.1.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/xml-apis-1.3.02.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/xmlbeans-2.3.0.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/xstream-1.4.8.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/xwork-core-2.3.4.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/zkclient-0.3.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/zookeeper-3.4.6.jar" />
-    <libelement value="file://D:/WorkSpace/YXNew/WebRoot/WEB-INF/lib/ueditor-1.1.3.jar" />
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/agile_zip_cn.jar!/" />
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/ant-1.6.5.jar!/" />
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/aopalliance-1.0.jar!/" />
@@ -168,7 +67,6 @@
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/log4j-1.2.16.jar!/" />
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/mybatis-3.2.8.jar!/" />
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/mybatis-spring-1.2.0.jar!/" />
-    <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/mysql-connector-java-5.1.32.jar!/" />
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/netty-3.7.0.Final.jar!/" />
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/ognl-3.0.5.jar!/" />
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/opencsv-2.3.jar!/" />
@@ -203,11 +101,7 @@
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/xwork-core-2.3.4.jar!/" />
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/zkclient-0.3.jar!/" />
     <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/zookeeper-3.4.6.jar!/" />
-    <conelement value="org.eclipse.jst.j2ee.internal.module.container" />
-    <conelement value="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_6_CONTAINER" />
-    <conelement value="com.genuitec.runtime.library/com.genuitec.generic_5.0" />
-    <conelement value="com.genuitec.runtime.library/com.genuitec.jstl_1.2" />
-    <conelement value="com.genuitec.runtime.library/com.genuitec.generic_6.0" />
+    <libelement value="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/mysql-connector-java-6.0.6.jar!/" />
     <src_description expected_position="0">
       <src_folder value="file://$MODULE_DIR$/common" expected_position="0" />
       <src_folder value="file://$MODULE_DIR$/web" expected_position="1" />
@@ -226,10 +120,9 @@
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WebRoot/WEB-INF/web.xml" />
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/web" relative="/" />
           <root url="file://$MODULE_DIR$/WebRoot" relative="/" />
         </webroots>
       </configuration>
@@ -237,6 +130,7 @@
   </component>
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/WebRoot/WEB-INF/classes" />
+    <output-test url="file://$MODULE_DIR$/WebRoot/WEB-INF/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/common" isTestSource="false" />
@@ -254,7 +148,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/agile_zip_cn.jar">
+      <library name="agile_zip_cn.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/agile_zip_cn.jar!/" />
         </CLASSES>
@@ -263,7 +157,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/ant-1.6.5.jar">
+      <library name="ant-1.6.5.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/ant-1.6.5.jar!/" />
         </CLASSES>
@@ -272,7 +166,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/aopalliance-1.0.jar">
+      <library name="aopalliance-1.0.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/aopalliance-1.0.jar!/" />
         </CLASSES>
@@ -281,7 +175,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/asm-3.3.jar">
+      <library name="asm-3.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/asm-3.3.jar!/" />
         </CLASSES>
@@ -290,7 +184,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/asm-commons-3.3.jar">
+      <library name="asm-commons-3.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/asm-commons-3.3.jar!/" />
         </CLASSES>
@@ -299,7 +193,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/asm-tree-3.3.jar">
+      <library name="asm-tree-3.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/asm-tree-3.3.jar!/" />
         </CLASSES>
@@ -308,7 +202,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/aspectjweaver-1.8.4.jar">
+      <library name="aspectjweaver-1.8.4.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/aspectjweaver-1.8.4.jar!/" />
         </CLASSES>
@@ -317,7 +211,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/bcmail-jdk14-1.38.jar">
+      <library name="bcmail-jdk14-1.38.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/bcmail-jdk14-1.38.jar!/" />
         </CLASSES>
@@ -326,7 +220,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/bcmail-jdk14-138.jar">
+      <library name="bcmail-jdk14-138.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/bcmail-jdk14-138.jar!/" />
         </CLASSES>
@@ -335,7 +229,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/bcprov-jdk14-1.38.jar">
+      <library name="bcprov-jdk14-1.38.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/bcprov-jdk14-1.38.jar!/" />
         </CLASSES>
@@ -344,7 +238,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/bcprov-jdk14-138.jar">
+      <library name="bcprov-jdk14-138.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/bcprov-jdk14-138.jar!/" />
         </CLASSES>
@@ -353,7 +247,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/bctsp-jdk14-1.38.jar">
+      <library name="bctsp-jdk14-1.38.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/bctsp-jdk14-1.38.jar!/" />
         </CLASSES>
@@ -362,7 +256,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/castor-1.2.jar">
+      <library name="castor-1.2.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/castor-1.2.jar!/" />
         </CLASSES>
@@ -371,7 +265,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/cglib-nodep-2.2.jar">
+      <library name="cglib-nodep-2.2.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/cglib-nodep-2.2.jar!/" />
         </CLASSES>
@@ -380,7 +274,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/commons-beanutils-1.8.3.jar">
+      <library name="commons-beanutils-1.8.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/commons-beanutils-1.8.3.jar!/" />
         </CLASSES>
@@ -389,7 +283,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/commons-codec-1.3.jar">
+      <library name="commons-codec-1.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/commons-codec-1.3.jar!/" />
         </CLASSES>
@@ -398,7 +292,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/commons-collections-3.2.2.jar">
+      <library name="commons-collections-3.2.2.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/commons-collections-3.2.2.jar!/" />
         </CLASSES>
@@ -407,7 +301,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/commons-digester-2.1.jar">
+      <library name="commons-digester-2.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/commons-digester-2.1.jar!/" />
         </CLASSES>
@@ -416,7 +310,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/commons-fileupload-1.3.1.jar">
+      <library name="commons-fileupload-1.3.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/commons-fileupload-1.3.1.jar!/" />
         </CLASSES>
@@ -425,7 +319,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/commons-httpclient-3.0.1.jar">
+      <library name="commons-httpclient-3.0.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/commons-httpclient-3.0.1.jar!/" />
         </CLASSES>
@@ -434,7 +328,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/commons-io-2.0.1.jar">
+      <library name="commons-io-2.0.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/commons-io-2.0.1.jar!/" />
         </CLASSES>
@@ -443,7 +337,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/commons-lang-2.6.jar">
+      <library name="commons-lang-2.6.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/commons-lang-2.6.jar!/" />
         </CLASSES>
@@ -452,7 +346,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/commons-lang3-3.3.2.jar">
+      <library name="commons-lang3-3.3.2.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/commons-lang3-3.3.2.jar!/" />
         </CLASSES>
@@ -461,7 +355,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/commons-logging-1.1.1.jar">
+      <library name="commons-logging-1.1.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/commons-logging-1.1.1.jar!/" />
         </CLASSES>
@@ -470,7 +364,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/dom4j-1.6.1.jar">
+      <library name="dom4j-1.6.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/dom4j-1.6.1.jar!/" />
         </CLASSES>
@@ -479,7 +373,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/druid-1.0.9.jar">
+      <library name="druid-1.0.9.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/druid-1.0.9.jar!/" />
         </CLASSES>
@@ -488,7 +382,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/dubbo-2.5.3.jar">
+      <library name="dubbo-2.5.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/dubbo-2.5.3.jar!/" />
         </CLASSES>
@@ -497,7 +391,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/ezmorph-1.0.6.jar">
+      <library name="ezmorph-1.0.6.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/ezmorph-1.0.6.jar!/" />
         </CLASSES>
@@ -506,7 +400,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/fastjson-1.1.41.jar">
+      <library name="fastjson-1.1.41.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/fastjson-1.1.41.jar!/" />
         </CLASSES>
@@ -515,7 +409,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/freemarker-2.3.16.jar">
+      <library name="freemarker-2.3.16.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/freemarker-2.3.16.jar!/" />
         </CLASSES>
@@ -524,7 +418,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/geronimo-j2ee-management_1.1_spec-1.0.1.jar">
+      <library name="geronimo-j2ee-management_1.1_spec-1.0.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/geronimo-j2ee-management_1.1_spec-1.0.1.jar!/" />
         </CLASSES>
@@ -533,7 +427,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/geronimo-jms_1.1_spec-1.1.1.jar">
+      <library name="geronimo-jms_1.1_spec-1.1.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/geronimo-jms_1.1_spec-1.1.1.jar!/" />
         </CLASSES>
@@ -542,7 +436,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/geronimo-jta_1.0.1B_spec-1.0.1.jar">
+      <library name="geronimo-jta_1.0.1B_spec-1.0.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/geronimo-jta_1.0.1B_spec-1.0.1.jar!/" />
         </CLASSES>
@@ -551,7 +445,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/geronimo-stax-api_1.0_spec-1.0.jar">
+      <library name="geronimo-stax-api_1.0_spec-1.0.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/geronimo-stax-api_1.0_spec-1.0.jar!/" />
         </CLASSES>
@@ -560,7 +454,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/hamcrest-core-1.3.jar">
+      <library name="hamcrest-core-1.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/hamcrest-core-1.3.jar!/" />
         </CLASSES>
@@ -569,7 +463,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/hawtbuf-1.9.jar">
+      <library name="hawtbuf-1.9.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/hawtbuf-1.9.jar!/" />
         </CLASSES>
@@ -578,7 +472,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/hawtdispatch-1.18.jar">
+      <library name="hawtdispatch-1.18.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/hawtdispatch-1.18.jar!/" />
         </CLASSES>
@@ -587,7 +481,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/hawtdispatch-scala-1.18.jar">
+      <library name="hawtdispatch-scala-1.18.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/hawtdispatch-scala-1.18.jar!/" />
         </CLASSES>
@@ -596,7 +490,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/hawtdispatch-transport-1.18.jar">
+      <library name="hawtdispatch-transport-1.18.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/hawtdispatch-transport-1.18.jar!/" />
         </CLASSES>
@@ -605,7 +499,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/hawtjni-runtime-1.8.jar">
+      <library name="hawtjni-runtime-1.8.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/hawtjni-runtime-1.8.jar!/" />
         </CLASSES>
@@ -614,7 +508,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/httpclient-4.5.2.jar">
+      <library name="httpclient-4.5.2.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/httpclient-4.5.2.jar!/" />
         </CLASSES>
@@ -623,7 +517,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/httpclient-cache-4.5.2.jar">
+      <library name="httpclient-cache-4.5.2.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/httpclient-cache-4.5.2.jar!/" />
         </CLASSES>
@@ -632,7 +526,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/httpclient-win-4.5.2.jar">
+      <library name="httpclient-win-4.5.2.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/httpclient-win-4.5.2.jar!/" />
         </CLASSES>
@@ -641,7 +535,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/httpcore-4.4.4.jar">
+      <library name="httpcore-4.4.4.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/httpcore-4.4.4.jar!/" />
         </CLASSES>
@@ -650,7 +544,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/itext-2.1.7.js2.jar">
+      <library name="itext-2.1.7.js2.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/itext-2.1.7.js2.jar!/" />
         </CLASSES>
@@ -659,7 +553,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jackson-annotations-2.1.4.jar">
+      <library name="jackson-annotations-2.1.4.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jackson-annotations-2.1.4.jar!/" />
         </CLASSES>
@@ -668,7 +562,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jackson-core-2.1.4.jar">
+      <library name="jackson-core-2.1.4.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jackson-core-2.1.4.jar!/" />
         </CLASSES>
@@ -677,7 +571,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jackson-databind-2.4.2.jar">
+      <library name="jackson-databind-2.4.2.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jackson-databind-2.4.2.jar!/" />
         </CLASSES>
@@ -686,7 +580,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jackson-dataformat-xml-2.8.5.jar">
+      <library name="jackson-dataformat-xml-2.8.5.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jackson-dataformat-xml-2.8.5.jar!/" />
         </CLASSES>
@@ -695,7 +589,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jasperreports-5.5.0.jar">
+      <library name="jasperreports-5.5.0.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jasperreports-5.5.0.jar!/" />
         </CLASSES>
@@ -704,7 +598,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/javassist-3.15.0-GA.jar">
+      <library name="javassist-3.15.0-GA.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/javassist-3.15.0-GA.jar!/" />
         </CLASSES>
@@ -713,7 +607,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/javax.servlet-api-3.1.0.jar">
+      <library name="javax.servlet-api-3.1.0.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/javax.servlet-api-3.1.0.jar!/" />
         </CLASSES>
@@ -722,7 +616,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jcommon-1.0.15.jar">
+      <library name="jcommon-1.0.15.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jcommon-1.0.15.jar!/" />
         </CLASSES>
@@ -731,7 +625,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jdom.jar">
+      <library name="jdom.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jdom.jar!/" />
         </CLASSES>
@@ -740,7 +634,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jdtcore-3.1.0.jar">
+      <library name="jdtcore-3.1.0.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jdtcore-3.1.0.jar!/" />
         </CLASSES>
@@ -749,7 +643,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jfreechart-1.0.12.jar">
+      <library name="jfreechart-1.0.12.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jfreechart-1.0.12.jar!/" />
         </CLASSES>
@@ -758,7 +652,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jline-0.9.94.jar">
+      <library name="jline-0.9.94.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jline-0.9.94.jar!/" />
         </CLASSES>
@@ -767,7 +661,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jodconverter-core-1.0.5.jar">
+      <library name="jodconverter-core-1.0.5.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jodconverter-core-1.0.5.jar!/" />
         </CLASSES>
@@ -776,7 +670,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/json-lib-2.4-jdk15.jar">
+      <library name="json-lib-2.4-jdk15.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/json-lib-2.4-jdk15.jar!/" />
         </CLASSES>
@@ -785,7 +679,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/juh-3.2.1.jar">
+      <library name="juh-3.2.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/juh-3.2.1.jar!/" />
         </CLASSES>
@@ -794,7 +688,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/junit-4.12.jar">
+      <library name="junit-4.12.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/junit-4.12.jar!/" />
         </CLASSES>
@@ -803,7 +697,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jurt-3.2.1.jar">
+      <library name="jurt-3.2.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jurt-3.2.1.jar!/" />
         </CLASSES>
@@ -812,7 +706,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/jxl-2.6.12.jar">
+      <library name="jxl-2.6.12.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/jxl-2.6.12.jar!/" />
         </CLASSES>
@@ -821,7 +715,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/log4j-1.2.16.jar">
+      <library name="log4j-1.2.16.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/log4j-1.2.16.jar!/" />
         </CLASSES>
@@ -830,7 +724,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/mybatis-3.2.8.jar">
+      <library name="mybatis-3.2.8.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/mybatis-3.2.8.jar!/" />
         </CLASSES>
@@ -839,7 +733,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/mybatis-spring-1.2.0.jar">
+      <library name="mybatis-spring-1.2.0.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/mybatis-spring-1.2.0.jar!/" />
         </CLASSES>
@@ -848,16 +742,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.32.jar">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/mysql-connector-java-5.1.32.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/netty-3.7.0.Final.jar">
+      <library name="netty-3.7.0.Final.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/netty-3.7.0.Final.jar!/" />
         </CLASSES>
@@ -866,7 +751,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/ognl-3.0.5.jar">
+      <library name="ognl-3.0.5.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/ognl-3.0.5.jar!/" />
         </CLASSES>
@@ -875,7 +760,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/opencsv-2.3.jar">
+      <library name="opencsv-2.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/opencsv-2.3.jar!/" />
         </CLASSES>
@@ -884,7 +769,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/pinyin4j-2.5.0.jar">
+      <library name="pinyin4j-2.5.0.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/pinyin4j-2.5.0.jar!/" />
         </CLASSES>
@@ -893,7 +778,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/poi-3.6.jar">
+      <library name="poi-3.6.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/poi-3.6.jar!/" />
         </CLASSES>
@@ -902,7 +787,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/poi-ooxml-3.6.jar">
+      <library name="poi-ooxml-3.6.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/poi-ooxml-3.6.jar!/" />
         </CLASSES>
@@ -911,7 +796,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/poi-ooxml-schemas-3.6.jar">
+      <library name="poi-ooxml-schemas-3.6.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/poi-ooxml-schemas-3.6.jar!/" />
         </CLASSES>
@@ -920,7 +805,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/ridl-3.2.1.jar">
+      <library name="ridl-3.2.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/ridl-3.2.1.jar!/" />
         </CLASSES>
@@ -929,7 +814,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/slf4j-api-1.6.1.jar">
+      <library name="slf4j-api-1.6.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/slf4j-api-1.6.1.jar!/" />
         </CLASSES>
@@ -938,7 +823,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/slf4j-log4j12-1.6.4.jar">
+      <library name="slf4j-log4j12-1.6.4.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/slf4j-log4j12-1.6.4.jar!/" />
         </CLASSES>
@@ -947,7 +832,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/spring-aop-4.1.3.RELEASE.jar">
+      <library name="spring-aop-4.1.3.RELEASE.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/spring-aop-4.1.3.RELEASE.jar!/" />
         </CLASSES>
@@ -956,7 +841,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/spring-aspects-4.1.3.RELEASE.jar">
+      <library name="spring-aspects-4.1.3.RELEASE.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/spring-aspects-4.1.3.RELEASE.jar!/" />
         </CLASSES>
@@ -965,7 +850,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/spring-beans-4.1.3.RELEASE.jar">
+      <library name="spring-beans-4.1.3.RELEASE.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/spring-beans-4.1.3.RELEASE.jar!/" />
         </CLASSES>
@@ -974,7 +859,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/spring-context-4.1.3.RELEASE.jar">
+      <library name="spring-context-4.1.3.RELEASE.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/spring-context-4.1.3.RELEASE.jar!/" />
         </CLASSES>
@@ -983,7 +868,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/spring-core-4.1.3.RELEASE.jar">
+      <library name="spring-core-4.1.3.RELEASE.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/spring-core-4.1.3.RELEASE.jar!/" />
         </CLASSES>
@@ -992,7 +877,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/spring-expression-4.1.3.RELEASE.jar">
+      <library name="spring-expression-4.1.3.RELEASE.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/spring-expression-4.1.3.RELEASE.jar!/" />
         </CLASSES>
@@ -1001,7 +886,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/spring-jdbc-4.1.3.RELEASE.jar">
+      <library name="spring-jdbc-4.1.3.RELEASE.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/spring-jdbc-4.1.3.RELEASE.jar!/" />
         </CLASSES>
@@ -1010,7 +895,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/spring-orm-4.1.3.RELEASE.jar">
+      <library name="spring-orm-4.1.3.RELEASE.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/spring-orm-4.1.3.RELEASE.jar!/" />
         </CLASSES>
@@ -1019,7 +904,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/spring-tx-4.1.3.RELEASE.jar">
+      <library name="spring-tx-4.1.3.RELEASE.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/spring-tx-4.1.3.RELEASE.jar!/" />
         </CLASSES>
@@ -1028,7 +913,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/spring-web-4.1.3.RELEASE.jar">
+      <library name="spring-web-4.1.3.RELEASE.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/spring-web-4.1.3.RELEASE.jar!/" />
         </CLASSES>
@@ -1037,7 +922,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/stax-api-1.0.1.jar">
+      <library name="stax-api-1.0.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/stax-api-1.0.1.jar!/" />
         </CLASSES>
@@ -1046,7 +931,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/struts2-convention-plugin-2.3.4.jar">
+      <library name="struts2-convention-plugin-2.3.4.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/struts2-convention-plugin-2.3.4.jar!/" />
         </CLASSES>
@@ -1055,7 +940,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/struts2-core-2.3.4.jar">
+      <library name="struts2-core-2.3.4.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/struts2-core-2.3.4.jar!/" />
         </CLASSES>
@@ -1064,7 +949,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/struts2-jasperreports-plugin-2.3.16.3.jar">
+      <library name="struts2-jasperreports-plugin-2.3.16.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/struts2-jasperreports-plugin-2.3.16.3.jar!/" />
         </CLASSES>
@@ -1073,7 +958,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/struts2-json-plugin-2.3.4.jar">
+      <library name="struts2-json-plugin-2.3.4.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/struts2-json-plugin-2.3.4.jar!/" />
         </CLASSES>
@@ -1082,7 +967,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/struts2-spring-plugin-2.3.4.jar">
+      <library name="struts2-spring-plugin-2.3.4.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/struts2-spring-plugin-2.3.4.jar!/" />
         </CLASSES>
@@ -1091,7 +976,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/ueditor-1.1.3.jar">
+      <library name="ueditor-1.1.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/ueditor-1.1.3.jar!/" />
         </CLASSES>
@@ -1100,7 +985,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/unoil-3.2.1.jar">
+      <library name="unoil-3.2.1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/unoil-3.2.1.jar!/" />
         </CLASSES>
@@ -1109,7 +994,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/xml-apis-1.3.02.jar">
+      <library name="xml-apis-1.3.02.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/xml-apis-1.3.02.jar!/" />
         </CLASSES>
@@ -1118,7 +1003,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/xmlbeans-2.3.0.jar">
+      <library name="xmlbeans-2.3.0.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/xmlbeans-2.3.0.jar!/" />
         </CLASSES>
@@ -1127,7 +1012,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/xstream-1.4.8.jar">
+      <library name="xstream-1.4.8.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/xstream-1.4.8.jar!/" />
         </CLASSES>
@@ -1136,7 +1021,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/xwork-core-2.3.4.jar">
+      <library name="xwork-core-2.3.4.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/xwork-core-2.3.4.jar!/" />
         </CLASSES>
@@ -1145,7 +1030,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/zkclient-0.3.jar">
+      <library name="zkclient-0.3.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/zkclient-0.3.jar!/" />
         </CLASSES>
@@ -1154,7 +1039,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="WebRoot/WEB-INF/lib/zookeeper-3.4.6.jar">
+      <library name="zookeeper-3.4.6.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/zookeeper-3.4.6.jar!/" />
         </CLASSES>
@@ -1163,13 +1048,14 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library>
+      <library name="mysql-connector-java-6.0.6.jar">
         <CLASSES>
-          <root url="jar://F:/poi-3.9-20121203.jar!/" />
+          <root url="jar://$MODULE_DIR$/WebRoot/WEB-INF/lib/mysql-connector-java-6.0.6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

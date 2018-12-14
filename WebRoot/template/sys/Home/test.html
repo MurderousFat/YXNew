@@ -1,0 +1,93 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="" >
+<script type="text/javascript">
+var testGridItemdbclick;
+var form_bt_close_OnClick;
+Ext.onReady(function() {
+	var curLayerIndex = layer.load(1, {
+	  shade: [0.1,'#fff'] //0.1透明度的白色背景
+	});
+	
+	var toolbar_promise = jQuery.ajax({
+		type:'get',
+		url:'${base}/toolbar.json?xxxx',
+		dataType:'json'
+	}).done(function(resp){
+		var arr = [];
+		for(var i in resp){
+			arr.push(resp[i].name);
+		}
+		TenzeExt.testGridToolbar = Ext_BuildToolbarBtns(arr);
+	});
+	
+	
+	 TenzePreLoad(['com.tenze.test.Test2',toolbar_promise],function(){
+		 Ext_BuildGrid('com.tenze.test.Test2','test',{
+			url:'${base}/data.json',
+			tbar:TenzeExt.testGridToolbar
+		 })
+		 
+		 Ext_BuildForm('com.tenze.test.Test2','test',{
+			 
+		 });
+		 
+	     var win = Ext.create('Ext.Window', {
+	        title: '边际',
+	        width: 700,
+	        border : false,
+	        x: 20,
+	        y: document.documentElement.clientWidth / 15,
+	        resizable : true,
+			draggable : true,
+			closeAction : 'close',
+	        plain: true,
+	        layout: 'fit',
+	        items : [ TenzeExt.testForm],
+	        tbar : Ext_BuildToolbarBtns(['save','close'],{preffix:'form_'})
+	    });
+	     
+	     testGridItemdbclick = function(){
+	    	 showWin();
+	     }
+	     
+	     function showWin(){
+	         var record =TenzeExt.testGrid.getSelectionModel().getLastSelected();
+		  	   if (isEmpty(record)) {			
+		  			showErrorMsg('请选择行记录');
+		  			return false;
+		  	   }
+	         TenzeExt.testForm.getForm().loadRecord(record);
+	         win.show();	
+	      }
+	     
+	     win.on("hide", function(){
+	    	 TenzeExt.testForm.form.reset();
+	 	});
+		     
+		 var viewport = new Ext.Viewport({
+				layout : 'border',
+				items : [{
+					region : 'center',
+					layout : 'fit',
+					border : false,
+					items : [ TenzeExt.testGrid ]
+				} ]
+		});
+		 layer.close(curLayerIndex);
+		 
+		 form_bt_close_OnClick = function(){
+			 win.hide();
+		 }
+		 
+	 },function(){
+		 alert('fail');
+	 });
+	
+	/**
+	 * 布局
+	 */
+	
+    
+});
+</script>
+</@CommonMacro.page>

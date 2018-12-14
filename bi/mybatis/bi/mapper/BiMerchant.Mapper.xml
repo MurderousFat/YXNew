@@ -62,6 +62,7 @@
         update
         <include refid="table" />
         <set>
+            phone=#{phone},
             VERSION = #{version}+1 ,
             updatetime=now(),
             fdel_flag=#{fdelFlag},

@@ -1,0 +1,297 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="索证测试" enableSupcan="true">
+<script type="text/javascript">
+Ext.onReady(function() {
+	
+	var toolbar = Ext.create('Ext.toolbar.Toolbar', 
+			{id:'form_toolbar',layout: {overflowHandler: 'Menu'},
+		items: Ext_BuildToolbarBtns(['save','close','handup','send','settle'])
+	});
+	
+	var billForm = Ext.create('Ext.form.Panel', {
+	    layout: {
+	        type: 'vbox',
+	        align: 'stretch'
+	    },
+	    border: false,
+	    autoScroll:false,
+	    tbar : toolbar,
+	    id:'billForm',
+	    items: [{
+	    	height:160,
+	        xtype: 'container',
+	        layout:'fit',
+	        border:false,
+	        contentEl : 'supcan_form_top_div'
+	    },{
+	    	flex:1,
+	    	xtype:'container',
+	    	layout:'fit',
+	    	border:false,
+	    	contentEl : 'supcan_treelist_div'
+	    }]
+	});
+	var viewport = new Ext.Viewport({
+		layout : 'fit',
+		id:'viewport',
+		items : [billForm ]
+	});
+
+    
+});
+</script>
+<script type="text/javascript">
+var treelist;
+var topfreeform;
+var bottomfreeform;
+var bottomfreeform2;
+var topRead = false;
+var bottomRead = false;
+var bottomRead2 = false;
+var dtlRead = false;
+function OnReady(id){
+	if(id == "masTop"){
+		topfreeform = Ext.create("Ext.supcan.FreeForm", {freeFormObj : masTop});
+		masTopReady(id);
+		topfreeform.setObjectProp(masTop, "fmlNo", "visible", "false");
+		topRead = true;
+	}
+	if(topRead){
+		treelist = Ext.create("Ext.supcan.TreeList", {treeListObj : dtl});
+		dtlReady("dtl");
+		dtlRead = true;
+	} 
+	if(topRead && dtlRead){
+		//hideWaitMsg();
+		
+		return;
+
+			treelist.load(dtl, "/ivinfo/getDtlDataByIvpurimas.gx?fbillNo=RK1705010002");
+			topfreeform.load(masTop, "/ivinfo/getSingleDataByIvpurimas.gx?fbillNo=RK1705010002");
+			bottomfreeform.load(masBottom, "/ivinfo/getSingleDataByIvpurimas.gx?fbillNo=RK1705010002");
+			bottomfreeform2.load(masBottom2, "/ivinfo/getSingleDataByIvpurimas.gx?fbillNo=RK1705010002");
+
+			//window.parent.$("billwin").setTitle("编辑索证索票登记");
+		//topfreeform.setObjectProp(masTop, "fcreateAt", "editAble", false);
+		topfreeform.setValue(masTop, "fgmo", "0");
+		var fenterWhAt = topfreeform.getValue(masTop,'fenterWhAt');
+		if(isEmpty(fenterWhAt))
+			topfreeform.setValue(masTop,'fenterWhAt','2017-05-02 00:01:49');
+		
+		
+		hideWaitMsg();
+	}
+}
+function dtlAfterBuild(){
+	return;
+	treelist.setDroplistProp(dtl, "DropList_fitemNo", "dataURL", "="+_global_context+"'/listBy.gx?query_frefectoryId=&query_key='+encodeURIComponent(data)");
+}
+function masTopAfterBuild(){
+	return;
+	masTop.func("SetFiles","imageUrl\r\n1");
+	topfreeform.setObjectProp(masTop, "frefectoryName", "editAble", false);
+	topfreeform.setObjectProp(masTop, "fdeptName", "editAble", false);
+	topfreeform.setObjectProp(masTop, "fschoolName", "editAble", false);
+}
+function dtlLoad(id, Event, p1, p2, p3, p4){
+	return;
+	treelist.deleteRows(dtl, "fitemNo = '' or fitemNo = null");
+}
+
+var dtlDropdownSelChanged = {
+		ykc610:function(id, Event, p1, p2, p3, p4){
+			var h = treelist.getDropListHandle(dtl, "ykc610");
+			var row = treelist.getDropListCurRow(dtl, h);
+			var settleNo = treelist.getDropListCellData(dtl, h, row, "settleNo");
+			var merName = treelist.getDropListCellData(dtl, h, row, "merName");
+
+			treelist.setCellData(dtl, p1, "yka111", settleNo);
+			treelist.setCellData(dtl, p1, "yka112", merName);
+		}
+}
+
+var EventCfg = {
+		dtl:{
+			Load:function(id, Event, p1, p2, p3, p4){
+			},
+			DropdownSelChanged:function(id, Event, p1, p2, p3, p4){
+				dtlDropdownSelChanged[p2](id, Event, p1, p2, p3, p4);
+			},
+			BeforeDropdown:function(id, Event, p1, p2, p3, p4){
+				console.log('BeforeDropdown');
+				
+			},
+			SelChanged:function(id, Event, p1, p2, p3, p4){
+				console.log('SelChanged');
+				
+			},
+			EditChanged:function(id, Event, p1, p2, p3, p4){
+				console.log('EditChanged');
+				
+			},
+			MenuBeforePopup:function(id, Event, p1, p2, p3, p4){
+				console.log('MenuBeforePopup');
+			},
+			LooseFocus:function(id, Event, p1, p2, p3, p4){
+				console.log('LooseFocus');
+			},
+			EditKeydown:function(id, Event, p1, p2, p3, p4){
+				
+			},
+			EditChar:function(id, Event, p1, p2, p3, p4){
+				
+			}
+		}
+};
+
+function OnEvent(id, Event, p1, p2, p3, p4) {
+	console.log(Event);
+	EventCfg[id][Event](id, Event, p1, p2, p3, p4);
+	/*
+	if(id == "masTop"){
+		if(Event == "EditChanged") {
+	    }else if(Event == "DropdownSelChanged") {
+			masTopDropdownSelChanged(id, Event, p1, p2, p3, p4);
+		}else if(Event == "ButtonClicked"){
+	    }else if(Event == "EditKeydown"){
+			if(p2 == 13){
+				var isLast = topfreeform.getObjectProp(masTop, p1, "isLastInput");
+				if(isLast == "true"){
+					var topXml = topfreeform.getChangedXML(masTop);
+					if(topXml == "0"){
+						return false;
+					}
+					treelist.selectCell(dtl, 0, "fitemNo");
+				}
+			}else if(isInputKeyNumber(p2)){
+				var editType = topfreeform.getObjectProp(masTop, p1, "type");
+				editType = editType.toLowerCase();
+				if(editType == "editwithbutton"){
+					var val = topfreeform.getValue(masTop, p1);
+					topfreeform.editButtonDialog(masTop, function(){
+						topfreeform.selectCell(masTop, p1);
+					});
+				}
+			}
+		}
+	}else if(id == "dtl"){
+		if(Event == "Load"){
+			dtlLoad(id, Event, p1, p2, p3, p4);
+		}else if(Event == "DropdownSelChanged") {
+			dtlDropdownSelChanged(id, Event, p1, p2, p3, p4);
+		}else if(Event == "BeforeDropdown") {
+			dtlBeforeDropdown(id, Event, p1, p2, p3, p4);
+		}else if(Event == "SelChanged"){
+			if(p2 = 'funitName'){
+			dtlSelChanged(id, Event, p1, p2, p3, p4);
+		}
+		}else if(Event == "EditChanged"){
+			dtlEditChanged(id, Event, p1, p2, p3, p4);
+		}else if(Event == "MenuBeforePopup"){
+			dtlDisabledSomeMenu();
+		}
+	}
+	*/	
+}
+</script>
+
+<div id="supcan_treelist_div" style="width:100%;height:100%;display:none"><script>insertTreeList('dtl', 'Hue=Lilian');</script></div>
+<script>
+function dtlReady(id){
+	TenzePreLoad(['com.tenze.test.Custom'],function(){
+		var xml = Supcan_BuildTreeList('com.tenze.test.Custom',{
+			Properties:{
+				'@editAble':true
+			}
+		});
+		dtl.func("Build", xml);
+		dtl.func("DisableMenu","selectCol \r\n false");
+		try{dtlAfterBuild(id);}catch(e){}
+		var xml1 = Supcan_BuildTreeList('com.tenze.pms.facade.dto.his.HisSettleDto',{
+		});
+		console.log(xml1);
+		treelist.setDroplistProp(dtl,'customer12','treelistUrl',xml1);
+		treelist.setDroplistProp(dtl,'customer12','dataUrl','="'+_global_context+'/his/listByHisSettle.tz?query_key="+encodeURIComponent(data)');
+		treelist.insertRows(dtl, 0);
+	});
+}
+Ext.onReady(function(){
+	document.getElementById("supcan_treelist_div").style.display="block";
+});
+function dtlDisabledSomeMenu(){
+	dtl.func("DisableMenu", "copy \r\n true");
+	dtl.func("DisableMenu", "pasteNewRow \r\n true");
+	dtl.func("DisableMenu", "paste \r\n true");
+	dtl.func("DisableMenu", "print \r\n true");
+	dtl.func("DisableMenu", "import \r\n true");
+}
+</script>
+
+<div id="supcan_form_top_div" style="width:100%;height:100%;display:none;"><script>insertFreeForm('masTop', 'Border=none;');</script></div>
+<script>
+	function isCreateBill(formId){
+		var isCreate =  true;
+			var fbillNo = masTop.func("GetValue", "fbillNo");
+			if(isEmpty(fbillNo)){
+				isCreate = true;
+			}else{
+				isCreate = false;
+			}
+		if(isEmpty($("isCreate"))){
+			$(formId).add({
+				xtype:'hiddenfield',
+				name:'isCreate',
+				id:'isCreate',
+			});
+		}
+		$("isCreate").setValue(isCreate);
+		if(isCreate){
+			return "create";
+		}else{
+			return "update";
+		}
+		
+	}
+function masTopReady(id){
+	TenzePreLoad(['com.tenze.test.Custom','com.tenze.pms.facade.dto.his.HisSettleDto'],function(){
+		var xml = Supcan_BuildFreeForm('com.tenze.test.Custom',{
+		});
+		masTop.func("Build", xml);
+		try{masTopAfterBuild(id);}catch(e){}
+		var xml1 = Supcan_BuildTreeList('com.tenze.pms.facade.dto.his.HisSettleDto',{
+			Properties:{
+				'@dataUrl':_global_context+'/his/listByHisSettle.tz'
+			}
+		});
+		console.log(xml1);
+		topfreeform.setDroplistProp(masTop,'customer12','treelistUrl',xml1);
+	});
+	
+	/*
+	jQuery.ajax({
+		type:'get',
+		url:'${base}/test/form1.xml'
+		,dataType:'text'
+	}).done(function(resp){
+		masTop.func("Build", resp);
+		try{masTopAfterBuild(id);}catch(e){}
+			TenzePreLoad(['com.tenze.test.Custom'],function(){
+			var xml = Supcan_BuildTreeList('com.tenze.test.Custom',{
+				Properties:{
+					'@dataUrl':_global_context+'/treelistdata/customer.txt'
+				}
+			});
+			console.log(xml);
+			//masTop.func('BuildTreelist',xml);
+			topfreeform.setDroplistProp(masTop,'customer','treelistUrl',xml);
+			//masTop.func("BuildTreelist", "customer \r\n treelistUrl \r\n "+xml);			
+			});
+	});
+	*/
+}
+Ext.onReady(function(){
+	document.getElementById("supcan_form_top_div").style.display="block";
+});
+</script>
+
+</@CommonMacro.page>

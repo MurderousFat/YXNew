@@ -1,0 +1,93 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="统筹结果查询">
+<#assign scope="his"/>
+<#assign curPre="hisFeeSettle"/>
+<#assign curDef="HisFeeSettle"/>
+<#assign curClass="com.tenze.pms.facade.dto.his.HisFeeSettleDto"/>
+<script type="text/javascript">
+var ${curPre}GridItemdbclick;
+var bt_add_OnClick;
+var bt_edit_OnClick;
+var bt_refresh_OnClick;
+var bt_del_OnClick;
+var bt_search_OnClick;
+var search_btQuery_OnClick;
+var form_bt_save_OnClick;
+var form_bt_close_OnClick;
+var getParams;
+Ext.onReady(function() {
+		
+	var toolbar_promise = jQuery.ajax({
+		type:'get',
+		url:'${base}/sys/roleMenuFuncsPermBySysPerm.tz?mainMenuId=${mainMenuId}',
+		dataType:'json'
+	}).done(function(resp){
+		var arr = [];
+		for(var i in resp){
+			arr.push(resp[i].functionBtn);
+		}
+		TenzeExt.${curPre}GridToolbar = Ext_BuildToolbarBtns(arr);
+	});
+		
+		
+		 TenzePreLoad(['${curClass}',toolbar_promise],function(){
+			 Ext_BuildGrid('${curClass}','${curPre}',{
+				url:'${base}/${scope}/listPageBy${curDef}.tz',
+				tbar:TenzeExt.${curPre}GridToolbar
+			 });
+			 
+			 
+		    
+		     TenzeExt.${curPre}GridStore.on("beforeload", function(){
+		 		Ext.apply(TenzeExt.${curPre}GridStore.proxy.extraParams, {});
+		 	});                 
+		                       
+		     //刷新
+		     bt_refresh_OnClick = function() {       
+		        TenzeExt.${curPre}GridStore.load();
+		     }
+		     
+		 	 var viewport = new Ext.Viewport({
+					layout : 'border',
+					items : [{
+						region : 'center',
+						layout : 'fit',
+						border : false,
+						items : [ TenzeExt.${curPre}Grid ]
+					} ]
+			});
+		 	 
+		 	function query${curDef}() {       
+		 		TenzeExt.${curPre}GridStore.load();
+		     }
+		 	
+		 	search_btQuery_OnClick = function(){
+		 		query${curDef}();
+		 	}
+		    
+		 	Ext_BuildSearchWin('${curClass}','');
+		 	
+		 	getParams = function(){
+		 		return TenzeExt['search_getParams']();
+		 	}
+		 	
+		 	bt_search_OnClick = function(){
+		 		TenzeExt.search_Win.show();
+		 	};
+		 	
+			window.btn_query_merName_preview_OnClick = function(){
+		 		TenzeExt.pickupMerchantWin.show();	
+		 	};
+		 	
+		 	function pickupMerchantSelectCallback(obj, record, item, index, e, eOpts){
+		 		$('query_merId').setValue(record.raw.id);
+		 		$('query_merName').setValue(record.raw.merName);
+		 		//$('hisNo').stValue(record.raw.hisNo);
+		 	}
+		 	
+		 	<#include '/template/include/pickup_merchant.js'/>
+		 });
+
+});
+</script>
+</@CommonMacro.page>

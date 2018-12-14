@@ -1,0 +1,989 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+	<@CommonMacro.page title="门诊结算" enableSupcan="true">
+	<script type="text/javascript" src="${base}/resources/commonjs/template.js"></script>
+	<script type="text/javascript" src="/resources/commonjs/md5.js"></script>
+	<script id="dy-template" type="text/html">
+		<span>社会保障号</span>:<span>{{result.cac002}}</span><br/>
+		<span>姓名</span>:<span>{{resulsc006}}</span><br/>
+		<span>险种类型 </span>:<span>{{result.aae140}}</span><br/>
+		<span>职工类别</span>:<span>{{result.cac089}}</span><br/>
+		<span>公务员类别</span>:<span>{{result.cac007}}</span><br/>
+		<span>首诊定点医疗机构</span>:<span>{{result.ckc866}}</span><br/>
+		<span>基本医疗参保日期</span>:<span>{{result.ckc619}}</span><br/>
+		<span>基本医疗参保状态</span>:<span>{{result.ckc555}}</span><br/>
+		<span>基本医疗报销比例</span>:<span>{{result.aae185}}</span><br/>
+		<span>基本医疗可保金额</span>:<span>{{result.ckc800}}</span><br/>
+		<span>补充医疗可保金额</span>:<span>{{result.bcylkbje}}</span><br/>
+		<span>门诊支付比例</span>:<span>{{result.ckc799}}</span><br/>
+		<span>参保档次</span>:<span>{{result.caa013}}</span><br/>
+		<span>结算方式</span>:<span>{{result.cke611}}</span><br/>
+		<span>门诊年度余额</span>:<span>{{result.ckc574}}</span><br/>
+		<span>联系电话</span>:<span>{{result.aae005}}</span><br/>
+		<span>本年可报金额</span>:<span>{{result.ckc606}}</span><br/>
+		<span>本年已报金额</span>:<span>{{result.ckc516}}</span><br/>
+		<span>本月累计可消费金额</span>:<span>{{result.eka527}}</span><br/>
+	</script>
+
+
+	<iframe id="print" width="0" height="0" style="display:none;"></iframe>
+	<object id="embed1" type="application/x-delphi-demo-plugin" width=0 height=0>
+		<param name="param1" value="1" />
+		<param name="param2" value="2" />
+	</object>
+	<script type="text/javascript">
+        var ckz543 = '${ckz543?default('')}';
+        var aae011 = '${aae011?default('')}';
+        var sessionid = '${sessionid?default('')}';
+
+        var nextStep = '${nextStep?default('')}';
+        var hisBillState = '0';
+        var masId;
+        var jmc,jyc;
+        var my = '${my?default('')}';
+        <#if mas.id?exists && mas.id!=0>
+        hisBillState = '${mas.hisBillState?default('0')}';
+        masId = '${id?default('')}';
+        </#if>
+        <#if mas.id?exists && mas.id!=0 && mas.hisBillState?exists && mas.hisBillState=='6'>
+            var printFrame = document.getElementById('print');
+        printFrame.width = document.documentElement.clientWidth;
+        printFrame.height = document.documentElement.clientheight;
+        setTimeout(function(){
+            printFrame.src = '${base}/his/tcjg_HisSettleMas.tz?masId=${mas.id?default('')}';
+        },1000);
+        </#if>
+        var allEditAble = hisBillState=='0';
+        Ext.onReady(function() {
+
+            var btns_cfg = {
+                '0':['save','close','seize','send','read','settle1'],
+                '1':['close','settle','settle2','back'],
+                '2':['close'],
+                '3':['close','settle3'],
+                '4':['close'],
+                '5':['close'],
+                '6':['close','preview','back1','print'],
+            };
+
+            var toolbar = Ext.create('Ext.toolbar.Toolbar',
+                {id:'form_toolbar',layout: {overflowHandler: 'Menu'},
+                    items: Ext_BuildToolbarBtns(btns_cfg[hisBillState])
+                });
+            if(hisBillState=='0'){
+                $('bt_send').setText('传送处方');
+                $('bt_seize').setText('待遇享受判断');
+                $('bt_settle1').setText('自费结算');
+            }
+            if(hisBillState=='1'){
+                $('bt_back').setText('回退处方');
+                $('bt_settle').setText('社保结算');
+                $('bt_settle2').setText('乡银保结算');
+            }
+            if(hisBillState=='3'){
+                $('bt_settle3').setText('社保自付结算');
+            }
+            if(hisBillState=='6'){
+                $('bt_preview').setText('查看统筹结果');
+                $('bt_back1').setText('回退社保结算');
+            }
+
+            //自费结算
+            window.bt_settle1_OnClick = function(){
+                var masId = topfreeform.getValue(masTop, "id");
+                if(!masId || masId==''){
+                    showErrorMsg('请先保存');
+                    return;
+                }
+                var settleTypeFlag = topfreeform.getValue(masTop, "settleTypeFlag");
+                if(!settleTypeFlag || settleTypeFlag==''){
+                    showErrorMsg('请先选择支付类型');
+                    return;
+                }
+                saveCallback(function(_d){
+                    var settleTypeFlag = topfreeform.getValue(masTop, "settleTypeFlag");
+                    if(settleTypeFlag!='1'){
+                        jQuery.ajax({
+                            method:'get',
+                            url:'${base}/his/updateCashPayByHisSettleMas.tz?id='+masId,
+                            dataType:'json'
+                        }).done(function(_resp){
+                            if(_resp.success){
+                                window.location.href = "${base}/his/supcan_HisSettleMas.tz?id="+masId;
+                            }else{
+                                showErrorMsg('自费结算失败');
+                            }
+                        });
+                    }
+
+                    /*else{
+                        //TODO 乡银保
+                        var phone = topfreeform.getValue(masTop, "cab053");
+                        if(isEmpty(phone)){
+                            showErrorMsg('请先填写手机号码');
+                            return;
+                        }
+                        var akc264 = topfreeform.getValue(masTop, "akc264");     // akc264  结算总金额
+                        this.nonce=(Math.random()*1000);                        // 随机数
+                        var date = new Date();
+						this.timestamp = date.getTime();                        // 时间戳
+						this.version = "1.0.0";                                 // 版本号 默认是1.0.0
+						this.key = "qazwsxedc";                                 // 参数秘钥
+						this.biz_content = md5(content).toUpperCase();            // 内容
+						var content = {
+						    no:aaz217,
+							mobile:phone
+                        }
+
+
+                        topfreeform.getValue(masTop, "selfPay", akc264);
+                        jQuery.ajax({
+                            method:'post',
+                            url:'/order/prescription/mobile/notify',
+                            data:{
+                                version:"1.0.0",
+								appid:"3",
+								nonce:nonce,
+								timestamp:time,
+								phone:phone,
+                                txnAmt:akc264
+                            },
+                            dataType:'json'
+                        }).done(function(_resp){
+                            if(_resp.success){
+                                topfreeform.setValue(masTop, "xybOrderNo",_resp.orderNo);
+                                saveCallback(function(_d){
+                                    jQuery.ajax({
+                                        method:'get',
+                                        url:'${base}/his/updateCashPayByHisSettleMas.tz?id='+masId,
+
+                                        dataType:'json'
+                                    }).done(function(_resp){
+                                        if(_resp.success){
+                                            window.location.href = "${base}/his/supcan_HisSettleMas.tz?id="+masId;
+                                        }else{
+                                            showErrorMsg('自费结算失败');
+                                        }
+                                    });
+                                });
+                            }else{
+                                showErrorMsg('自费结算失败');
+                            }
+                        });
+                    }*/
+
+                });
+            }
+
+            // 待遇享受判断
+            window.bt_seize_OnClick = function(){
+                var aac044 = topfreeform.getValue(masTop, "aac044");
+                var ake007 = topfreeform.getValue(masTop, "ake007");
+                treatmentJudgment({
+                    aac044:aac044,
+                    bbd068:'1',//业务类别
+                    ake007:ake007.replace(/-/g,'').replace(/\./g,'')//就诊日期
+                },function(result){
+                    var _html = template('dy-template',{result:result});
+                    showTitMsg(_html,function(){});
+                });
+            }
+
+            //  读卡
+            window.bt_read_OnClick = function(){
+                var result = embed1.ReadCard(my);
+                var arr = result.split(',');
+                var _my = arr[0];
+                var _idCard = arr[1];
+                var _jyc = arr[2];
+                var _jmc = arr[3];
+                if(!_idCard || _idCard==''){
+                    showErrorMsg('读取卡失败');
+                }else{
+                    showTitMsg('读取卡成功');
+                    //topfreeform.setValue(masTop, "aac044", _idCard);
+                }
+
+                var result1 = embed1.ReadCardOriginal('1002');
+                var obj = jQuery.xml2json(result1.replace('<1002>','<ROOT>').replace('</1002>','</ROOT>'));
+                topfreeform.setValue(masTop, "aac044", obj.idCard);
+                topfreeform.setValue(masTop, "personName", obj.name);
+            }
+
+            // 传送处方
+            window.bt_send_OnClick = function(){
+                var settleTypeFlag = topfreeform.getValue(masTop, "settleTypeFlag");
+                if(!settleTypeFlag || settleTypeFlag==''){
+                    showErrorMsg('请先选择支付类型');
+                    return;
+                }
+                var id = topfreeform.getValue(masTop, "id");
+                if(!id || id==''){
+                    nextStep = '1';
+                    bt_save_OnClick();
+                }else{
+                    var gridJson = treelist.getChangedJSON(dtl);
+                    if(gridJson == "0"){
+                        return false;
+                    }
+                    var topJson = topfreeform.getChangedJSON(masTop);
+                    if(topJson == "0"){
+                        return false;
+                    }
+                    var _mas =  jQuery.parseJSON(topJson);
+
+                    var t_dtl = jQuery.parseJSON(gridJson);
+                    var _dtl =  jQuery.isArray(t_dtl)?t_dtl:[t_dtl];
+
+                    sendPrescription(_mas.form.row,_dtl,[
+                        'hisBillState',
+                        'merchantName',
+                        'aaz217',     //  就诊记录号
+                        'ykc675',
+                        'ykc618',
+                        'id',
+                        'version',
+                        'merchantId'
+                        ,'fdelFlag'
+                        ,'xybOrderNo'
+                        ,'settleTypeFlag'
+                        ,'selfPay'
+                    ],[
+                        'masId',
+                        'id',
+                        'version',
+                        'fdelFlag'
+                    ],function(resp){
+                        jQuery.ajax({
+                            method:'post',
+                            url:'${base}/his/updateSendPrescriptionByHisSettleMas.tz',
+                            data:{
+                                id:id,
+                                aaz217:resp.aaz217
+                            },
+                            dataType:'json'
+                        }).done(function(_resp){
+                            if(_resp.success){
+                                window.location.href = "${base}/his/supcan_HisSettleMas.tz?id="+id;
+                            }else{
+                                showErrorMsg('保存就诊记录号失败');
+                            }
+                        });
+                    });
+                }
+
+            };
+            //    社保结算
+            window.bt_settle_OnClick = function(){
+                var result = embed1.ReadCard(my);
+                var arr = result.split(',');
+                var _my = arr[0];
+                var _idCard = arr[1];
+                jyc = arr[2];
+                jmc = arr[3];
+                if(!_idCard || _idCard==''){
+                    showErrorMsg('读取卡失败');
+                    return;
+                }
+                var id = topfreeform.getValue(masTop, "id");
+                var aac044 = topfreeform.getValue(masTop, "aac044");
+                var ykc675 = topfreeform.getValue(masTop, "ykc675");
+                var aaz217 = topfreeform.getValue(masTop, "aaz217");
+                var akc264 = topfreeform.getValue(masTop, "akc264");
+                var jbrmc = topfreeform.getValue(masTop, "jbrmc");
+                var aae013 = topfreeform.getValue(masTop, "aae013");
+                var _params = {
+                    aac044:aac044,
+                    ykc675:ykc675,//结算类型
+                    aaz217:aaz217,//就诊记录号
+                    akc264:akc264,
+                    jbrmc:jbrmc,
+                    aae013:aae013,
+                }
+                feeSettlement(_params,function(_r){
+                    var masId = topfreeform.getValue(masTop, "id");
+                    var masType = 'BDGR05';
+                    var content = _r;
+                    if(!_r.ake039 || _r.ake039=='')_r.ake039=0;
+                    if(!_r.ckc504 || _r.ckc504=='')_r.ckc504=0;
+                    fillSsLog(masId,masType,JSON.stringify(content),function(){
+                        jQuery.ajax({
+                            method:'post',
+                            url:'${base}/his/updateFeeSettleMentByHisSettleMas.tz',
+                            data:{
+                                id:id,
+                                ykc618:_r.ykc618,
+                                selfPay:Number(_r.akc264) - (Number(_r.ake039 || 0 )+ Number(_r.ckc504 || 0))
+                            },
+                            dataType:'json'
+                        }).done(function(_resp){
+                            if(_resp.success){
+                                window.location.href = "${base}/his/supcan_HisSettleMas.tz?id="+id;
+                                //bt_settle2_OnClick();
+                            }else{
+                                showErrorMsg('更新状态失败');
+                            }
+                        });
+                    });
+                });
+
+            };
+
+            // 乡银保结算
+            window.bt_settle2_OnClick = function(){
+                var masId = topfreeform.getValue(masTop, "id");
+                //saveCallback(function(_d){
+                        var phone = topfreeform.getValue(masTop, "cab053");
+                        if(isEmpty(phone)){
+                        showErrorMsg('请先填写手机号码');
+                        return;
+                        }
+                        var aaz217 = topfreeform.getValue(masTop, "aaz217");     // 就诊记录号
+                        var akc264 = topfreeform.getValue(masTop, "akc264");     // akc264  结算总金额
+                        this.nonce=(Math.random()*1000);                        // 随机数
+                        var date = new Date();
+                        this.timestamp = date.getTime();                        // 时间戳
+                        this.version = "1.0.0";                                 // 版本号 默认是1.0.0
+						this.appid = "3";
+                        this.key = "qazwsxedc";                                 // 参数密钥
+                        var content = {
+                            "no":aaz217,                                          // 就诊记录号
+                            "mobile":phone,                                       // 手机号
+                        };
+                        this.biz_content = md5(content).toUpperCase();          // 内容
+						// ****************************************************     校验值
+						var signature1="appid"+this.appid+"&biz_content="+this.biz_content+"&nonce="+this.nonce+"&timestamp="+this.timestamp+"&version="+this.version+"&key="+this.key;
+						this.signature = md5(signature1).toUpperCase();            // 校验值加密
+						this.openapi='http://www.yxunionpay.com:8091/openPayApi/order/prescription/mobile/notify';
+
+                        topfreeform.getValue(masTop, "selfPay", akc264);
+                        jQuery.ajax({
+                            method:'post',
+                            url:openapi+"?appid="+this.appid+"&version="+this.version+"&nonce="+this.nonce+"&timestamp="+this.timestamp+"&signature="+this.signature,
+                            data:{
+                                "version":version,
+                                "appid":appid,
+                                "nonce":nonce,
+                                "timestamp":timestamp,
+								"sinature":signature,
+								"biz_content":biz_content
+                            },
+                            dataType:'json'
+                        }).done(function(_resp){
+                            if(_resp.success){
+                                topfreeform.setValue(masTop, "xybOrderNo",_resp.orderNo);
+                                saveCallback(function(_d){
+                                    jQuery.ajax({
+                                        method:'get',
+                                        url:'${base}/his/updateCashPayByHisSettleMas.tz?id='+masId,
+
+                                        dataType:'json'
+                                    }).done(function(_resp){
+                                        if(_resp.success){
+                                            window.location.href = "${base}/his/supcan_HisSettleMas.tz?id="+masId;
+                                        }else{
+                                            showErrorMsg('乡银保结算失败');
+                                        }
+                                    });
+                                });
+                            }else{
+                                showErrorMsg('乡银保结算失败');
+                            }
+                        });
+               // });
+            }
+
+            //          社保自付结算
+            window.bt_settle3_OnClick = function(){
+
+                var settleTypeFlag = topfreeform.getValue(masTop, "settleTypeFlag");
+                var masId = topfreeform.getValue(masTop, "id");
+
+                if(settleTypeFlag!='1'){
+                    jQuery.ajax({
+                        method:'get',
+                        url:'${base}/his/updateUnionPayByHisSettleMas.tz?id='+masId,
+                        dataType:'json'
+                    }).done(function(_resp){
+                        if(_resp.success){
+                            window.location.href = "${base}/his/supcan_HisSettleMas.tz?id="+masId;
+                        }else{
+                            showErrorMsg('社保结算自付失败');
+                        }
+                    });
+                }else{
+                    //TODO 乡银保
+                    var phone = topfreeform.getValue(masTop, "cab053");
+                    if(isEmpty(phone)){
+                        showErrorMsg('请先填写手机号码');
+                        return;
+                    }
+                    var selfPay = topfreeform.getValue(masTop, "selfPay");
+                    jQuery.ajax({
+                        method:'post',
+                        url:'/order/prescription/mobile/notify',
+                        data:{
+                            phone:phone,
+                            selfPay:selfPay,
+                            merNm:_global_merchant.merchantName
+                        },
+                        dataType:'json'
+                    }).done(function(_resp){
+                        if(_resp.success){
+                            topfreeform.setValue(masTop, "xybOrderNo",_resp.orderNo);
+                            saveCallback(function(_d){
+                                jQuery.ajax({
+                                    method:'post',
+                                    url:'/order/prescription/mobile/notify',
+                                    data:{
+                                        id:masId,
+                                    },
+                                    dataType:'json'
+                                }).done(function(_resp){
+                                    if(_resp.success){
+                                        window.location.href = "${base}/his/supcan_HisSettleMas.tz?id="+masId;
+                                    }else{
+                                        showErrorMsg('社保结算自付失败');
+                                    }
+                                });
+                            });
+                        }else{
+
+                            showErrorMsg( _resp.failure );
+                        }
+                    });
+                }
+            }
+
+
+            window.bt_back_OnClick = function(){
+                var id = topfreeform.getValue(masTop, "id");
+                var aac044 = topfreeform.getValue(masTop, "aac044");
+                var aaz217 = topfreeform.getValue(masTop, "aaz217");
+
+                backPrescription(aac044,aaz217,function(){
+                    jQuery.ajax({
+                        method:'post',
+                        url:'${base}/his/updateBackPrescriptionByHisSettleMas.tz',
+                        data:{
+                            id:id
+                        },
+                        dataType:'json'
+                    }).done(function(_resp){
+                        if(_resp.success){
+                            window.location.href = "${base}/his/supcan_HisSettleMas.tz?id="+id;
+                        }else{
+                            showErrorMsg('更新状态失败');
+                        }
+                    });
+                });
+            };
+
+            window.bt_preview_OnClick = function(){
+                //alert("test123");
+                var aaz217 = topfreeform.getValue(masTop, "aaz217");
+                var ykc618 = topfreeform.getValue(masTop, "ykc618");
+
+                art.dialog.data('HisSettleMas_TCJG_DATA',{});
+                tcjgFuc(aaz217,ykc618,function(_r){
+                    art.dialog.data('HisSettleMas_TCJG_DATA',_r);
+                    var url = '${base}/his/tcjg_HisSettleMas.tz?masId=${mas.id?default('')}&printFlag=true';
+                    document.getElementById('supcan_form_top_div').style.width=0;
+                    document.getElementById('supcan_treelist_div').style.width=0;
+                    art.dialog.open(url, {
+                        title : '查看统筹结果',
+                        padding : 0,
+                        width : document.documentElement.clientWidth,
+                        height: document.documentElement.clientHeight,
+                        lock:true,
+                        close:function(){
+                            document.getElementById('supcan_form_top_div').style.width=document.documentElement.clientWidth;
+                            document.getElementById('supcan_treelist_div').style.width=document.documentElement.clientWidth;
+                        }
+                    }, false);
+                });
+            };
+
+
+            window.bt_print_OnClick = function(){
+                var aaz217 = topfreeform.getValue(masTop, "aaz217");
+                var ykc618 = topfreeform.getValue(masTop, "ykc618");
+
+                art.dialog.data('HisSettleMas_TCJG_DATA',{});
+
+                tcjgFuc(aaz217,ykc618,function(_r){
+
+                    art.dialog.data('HisSettleMas_TCJG_DATA',_r);
+
+                    if(typeof(art.dialog.data('HisSettleMas_TCJG_PRINT'))=="function"){
+                        art.dialog.data('HisSettleMas_TCJG_PRINT')();
+                    }else{
+
+                        (function(){
+                            // window.bt_preview_OnClick();
+                            printFrame.src = '${base}/his/tcjg_HisSettleMas.tz?masId=${mas.id?default('')}';
+                        })();
+
+                        //  printFrame.src = '/YX/his/tcjg_HisSettleMas.tz?masId=877064122540228609';
+                        //	alert("不存在的函数");
+                    }
+
+
+                });
+            };
+
+
+            window.bt_back1_OnClick = function(){
+                var id = topfreeform.getValue(masTop, "id");
+                var aac044 = topfreeform.getValue(masTop, "aac044");
+                var aaz217 = topfreeform.getValue(masTop, "aaz217");
+                var ykc618 = topfreeform.getValue(masTop, "ykc618");
+                backFeeSettlement(aac044,aaz217,ykc618,function(){
+                    jQuery.ajax({
+                        method:'post',
+                        url:'${base}/his/updateBackFeeSettleMentByHisSettleMas.tz',
+                        data:{
+                            id:id,
+                        },
+                        dataType:'json'
+                    }).done(function(_resp){
+                        if(_resp.success){
+                            window.location.href = "${base}/his/supcan_HisSettleMas.tz?id="+id;
+                        }else{
+                            showErrorMsg('更新状态失败');
+                        }
+                    });
+                });
+            };
+
+            var billForm = Ext.create('Ext.form.Panel', {
+                layout: {
+                    type: 'vbox',
+                    align: 'stretch'
+                },
+                border: false,
+                autoScroll:false,
+                tbar : toolbar,
+                id:'billForm',
+                items: [{
+                    height:200,
+                    xtype: 'container',
+                    layout:'fit',
+                    border:false,
+                    contentEl : 'supcan_form_top_div'
+                },{
+                    flex:1,
+                    xtype:'container',
+                    layout:'fit',
+                    border:false,
+                    contentEl : 'supcan_treelist_div'
+                }]
+            });
+            var viewport = new Ext.Viewport({
+                layout : 'fit',
+                id:'viewport',
+                items : [billForm ]
+            });
+
+            window.bt_close_OnClick = function(){
+                parent.closeWin();
+            }
+
+            function saveCallback(func){
+                var gridJson = treelist.getChangedJSON(dtl);
+                if(gridJson == "0"){
+                    return false;
+                }
+                var topJson = topfreeform.getChangedJSON(masTop);
+                if(topJson == "0"){
+                    return false;
+                }
+                var _mas =  jQuery.parseJSON(topJson);
+                var t_dtl = jQuery.parseJSON(gridJson);
+                var _dtl =  jQuery.isArray(t_dtl)?t_dtl:[t_dtl];
+                var temp_akc264 = 0;
+                for(var i in _dtl){
+                    temp_akc264 += (_dtl[i].akc264 &&  _dtl[i].akc264!='')?Number(_dtl[i].akc264):0;
+                }
+                var payload = {
+                    mas:_mas.form.row,
+                    dtl:_dtl
+                };
+                payload.mas.akc264 = temp_akc264;
+                var version = topfreeform.getValue(masTop, "version");
+                jQuery.ajax({
+                    type:'post',
+                    url:'${base}/his/updateByHisSettleMas.tz?nextStep='+nextStep,
+                    contentType:'application/json; charset=utf-8',
+                    dataType:'json',
+                    data:jQuery.toJSON(payload)
+                }).done(function(result){
+                    if(result.success){
+                        var version = topfreeform.getValue(masTop,'version');
+                        topfreeform.setValue(masTop,'version',Number(version||0)+1);
+                        if(func){
+                            func(result.id);
+                        }
+                    }else{
+                        showErrorMsg(result.failure);
+                    }
+                });
+            }
+
+            window.bt_save_OnClick =function(){
+                saveCallback(function(_id){
+                    window.location.href = '${base}/his/supcan_HisSettleMas.tz?id='+_id;
+                });
+            }
+            function getBillChanged(){
+                var tophandle = topfreeform.getHandle(masTop);
+                var bottomhandle = bottomfreeform.getHandle(masBottom);
+                var param = "include="+tophandle+","+bottomhandle;
+                var rtn = topfreeform.getChanged(masTop, param);
+                if(rtn == "1"){
+                    return rtn;
+                }else{
+                    var treelistrtn = treelist.getRowChanged(dtl);
+                    if(treelistrtn == ""){
+                        return "0";
+                    }
+                    return "1";
+                }
+            }
+
+            if(nextStep=='1'){
+                nextStep = '';
+                setTimeout(function(){
+                    bt_send_OnClick();
+                },800);
+            }
+        });
+	</script>
+	<script type="text/javascript">
+        var treelist;
+        var topfreeform;
+        var topRead = false;
+        var dtlRead = false;
+        function OnReady(id){
+            if(id == "masTop"){
+                topfreeform = Ext.create("Ext.supcan.FreeForm", {freeFormObj : masTop});
+                masTopReady(id);
+                topfreeform.setObjectProp(masTop, "fmlNo", "visible", "false");
+                var aaz217= "${(mas.aaz217)!}";
+                if(aaz217!=""){
+                    topfreeform.setObjectProp(masTop, "aaz217", "value", aaz217);
+                }
+                var selfPay= "${(mas.selfPay)!}";
+                if(selfPay!=""){
+                    topfreeform.setObjectProp(masTop, "selfPay", "value", selfPay);
+                }
+                topRead = true;
+            }
+            if(topRead){
+                treelist = Ext.create("Ext.supcan.TreeList", {treeListObj : dtl});
+                dtlReady("dtl");
+                dtlRead = true;
+            }
+            if(topRead && dtlRead){
+                //hideWaitMsg();
+                return;
+                //window.parent.$("billwin").setTitle("编辑索证索票登记");
+                //topfreeform.setObjectProp(masTop, "fcreateAt", "editAble", false);
+                //topfreeform.setValue(masTop, "fgmo", "0");
+                //var fenterWhAt = topfreeform.getValue(masTop,'fenterWhAt');
+                //if(isEmpty(fenterWhAt))
+                //	topfreeform.setValue(masTop,'fenterWhAt','2017-05-02 00:01:49');
+
+                hideWaitMsg();
+            }
+        }
+        function dtlAfterBuild(){
+            return;
+        }
+        function masTopAfterBuild(){
+            return;
+            masTop.func("SetFiles","imageUrl\r\n1");
+            topfreeform.setObjectProp(masTop, "frefectoryName", "editAble", false);
+            topfreeform.setObjectProp(masTop, "fdeptName", "editAble", false);
+            topfreeform.setObjectProp(masTop, "fschoolName", "editAble", false);
+        }
+        function dtlLoad(id, Event, p1, p2, p3, p4){
+            return;
+            treelist.deleteRows(dtl, "fitemNo = '' or fitemNo = null");
+        }
+
+        var dtlDropdownSelChanged = {
+            akc222y:function(id, Event, p1, p2, p3, p4){
+
+                var h = treelist.getDropListHandle(dtl, "akc222y");
+                var row = treelist.getDropListCurRow(dtl, h);
+                var settleNo = treelist.getDropListCellData(dtl, h, row, "settleNo");
+                var cnName = treelist.getDropListCellData(dtl, h, row, "cnName");
+
+                // var settleType = treelist.getDropListCellData(dtl, h, row, "settleType");
+                // 表头的 【就诊类别】
+                //			var settleType = topfreeform.getValue(masTop, "aka130");
+
+                var price = treelist.getDropListCellData(dtl, h, row, "price");
+                //对项目金额处理
+                price=Number(price).toFixed(2);
+
+                treelist.setCellData(dtl, p1, "akc222y", settleNo);
+                treelist.setCellData(dtl, p1, "akc223y", cnName);
+                //			treelist.setCellData(dtl, p1, "yka111", settleType);
+                //			treelist.setCellData(dtl, p1, "yka112", _getDatadicText('aka130',settleType));
+
+                treelist.setCellData(dtl, p1, "yka111", "B07");
+                treelist.setCellData(dtl, p1, "yka112", "西药费");
+
+                treelist.setCellData(dtl, p1, "akc226", 1);
+                treelist.setCellData(dtl, p1, "akc225", price);
+                treelist.setCellData(dtl, p1, "akc264", price);
+                treelist.setCellData(dtl, p1, "aae011", price);
+
+            }
+        }
+
+        var dtlEditChanged = {
+            akc226:function(id, Event, p1, p2, p3, p4){
+                var _qty = treelist.getCellData(dtl, p1, "akc226");
+                var _price = treelist.getCellData(dtl, p1, "akc225");
+                if(Number(_qty)<0){
+                    _qty=null;
+                    treelist.setCellData(dtl, p1, "akc226", _qty);
+                    alert("格式有误,请重新输入");
+                }
+                if(Number(_price)<0){
+                    _price=null;
+                    treelist.setCellData(dtl, p1, "akc225", _price);
+                    alert("格式有误,请重新输入");
+                }
+                var _amount=(Number(_qty)*Number(_price)).toFixed(2);
+                treelist.setCellData(dtl, p1, "akc264", _amount);
+            }
+            ,akc225:function(id, Event, p1, p2, p3, p4){
+                var _qty = treelist.getCellData(dtl, p1, "akc226");
+                var _price = treelist.getCellData(dtl, p1, "akc225");
+                if(Number(_qty)<0){
+                    _qty=null;
+                    treelist.setCellData(dtl, p1, "akc226", _qty);
+                    alert("格式有误,请重新输入");
+                }
+                if(Number(_price)<0){
+                    _price=null
+                    treelist.setCellData(dtl, p1, "akc225", _price);
+                    alert("格式有误,请重新输入");
+                }
+                var _amount=(Number(_qty)*Number(_price)).toFixed(2);
+                treelist.setCellData(dtl, p1, "akc264", _amount);
+            }
+            ,yka111:function(id, Event, p1, p2, p3, p4){
+                var _y111Value = treelist.getCellData(dtl, p1, "yka111");
+                treelist.setCellData(dtl, p1, "yka112", _getDatadicText('yka111',_y111Value) );
+            }
+        }
+
+        var EventCfg = {
+            dtl:{
+                Load:function(id, Event, p1, p2, p3, p4){
+                },
+                DropdownSelChanged:function(id, Event, p1, p2, p3, p4){
+                    if(dtlDropdownSelChanged[p2])dtlDropdownSelChanged[p2](id, Event, p1, p2, p3, p4);
+                },
+                BeforeDropdown:function(id, Event, p1, p2, p3, p4){
+
+                },
+                SelChanged:function(id, Event, p1, p2, p3, p4){
+
+                },
+                EditChanged:function(id, Event, p1, p2, p3, p4){
+                    if(dtlEditChanged[p2])dtlEditChanged[p2](id, Event, p1, p2, p3, p4);
+
+                },
+                MenuBeforePopup:function(id, Event, p1, p2, p3, p4){
+
+                },
+                LooseFocus:function(id, Event, p1, p2, p3, p4){
+
+                },
+                EditKeydown:function(id, Event, p1, p2, p3, p4){
+
+                },
+                EditChar:function(id, Event, p1, p2, p3, p4){
+
+                }
+            },
+            masTop:{
+                EditChanged:function(id, Event, p1, p2, p3, p4){
+
+                }
+                ,EditKeydown:function(id, Event, p1, p2, p3, p4){
+
+                }
+                ,EditChar:function(id, Event, p1, p2, p3, p4){
+
+                }
+                ,LooseFocus:function(id, Event, p1, p2, p3, p4){
+
+                }
+                ,BeforeDropdown:function(id, Event, p1, p2, p3, p4){
+
+                }
+                ,DropdownSelChanged:function(id, Event, p1, p2, p3, p4){
+
+                }
+                ,ButtonClicked:function(id, Event, p1, p2, p3, p4){
+
+                }
+                ,HyperLink:function(id, Event, p1, p2, p3, p4){
+
+                }
+                ,MenuClicked:function(id, Event, p1, p2, p3, p4){
+
+                }
+                ,MenuBeforePopup:function(id, Event, p1, p2, p3, p4){
+
+                }
+            }
+        };
+
+        function OnEvent(id, Event, p1, p2, p3, p4) {
+
+            //  SelChanged  BeforeEdit BeforeDropdown  EditChanged
+            if(EventCfg[id][Event])EventCfg[id][Event](id, Event, p1, p2, p3, p4);
+            /*
+            if(id == "masTop"){
+                if(Event == "EditChanged") {
+                }else if(Event == "DropdownSelChanged") {
+                    masTopDropdownSelChanged(id, Event, p1, p2, p3, p4);
+                }else if(Event == "ButtonClicked"){
+                }else if(Event == "EditKeydown"){
+                    if(p2 == 13){
+                        var isLast = topfreeform.getObjectProp(masTop, p1, "isLastInput");
+                        if(isLast == "true"){
+                            var topXml = topfreeform.getChangedXML(masTop);
+                            if(topXml == "0"){
+                                return false;
+                            }
+                            treelist.selectCell(dtl, 0, "fitemNo");
+                        }
+                    }else if(isInputKeyNumber(p2)){
+                        var editType = topfreeform.getObjectProp(masTop, p1, "type");
+                        editType = editType.toLowerCase();
+                        if(editType == "editwithbutton"){
+                            var val = topfreeform.getValue(masTop, p1);
+                            topfreeform.editButtonDialog(masTop, function(){
+                                topfreeform.selectCell(masTop, p1);
+                            });
+                        }
+                    }
+                }
+            }else if(id == "dtl"){
+                if(Event == "Load"){
+                    dtlLoad(id, Event, p1, p2, p3, p4);
+                }else if(Event == "DropdownSelChanged") {
+                    dtlDropdownSelChanged(id, Event, p1, p2, p3, p4);
+                }else if(Event == "BeforeDropdown") {
+                    dtlBeforeDropdown(id, Event, p1, p2, p3, p4);
+                }else if(Event == "SelChanged"){
+                    if(p2 = 'funitName'){
+                    dtlSelChanged(id, Event, p1, p2, p3, p4);
+                }
+                }else if(Event == "EditChanged"){
+                    dtlEditChanged(id, Event, p1, p2, p3, p4);
+                }else if(Event == "MenuBeforePopup"){
+                    dtlDisabledSomeMenu();
+                }
+            }
+            */
+        }
+	</script>
+
+	<div id="supcan_treelist_div" style="width:100%;height:100%;display:none"><script>insertTreeList('dtl', 'Hue=Lilian');</script></div>
+	<script>
+        function dtlReady(id){
+            TenzePreLoad(['com.tenze.pms.facade.dto.his.HisSettleDtlDto'],function(){
+                var xml = Supcan_BuildTreeList('com.tenze.pms.facade.dto.his.HisSettleDtlDto',{
+                    Properties:{
+                        '@editAble':allEditAble
+                        ,'@isTree':false
+                        ,'@treeFormat':'normal'
+                    }
+                });
+                dtl.func("Build", xml);
+                dtl.func("DisableMenu","selectCol \r\n false");
+                try{dtlAfterBuild(id);}catch(e){}
+                var xml1 = Supcan_BuildTreeList('com.tenze.pms.facade.dto.his.HisSettleDto',{
+                });
+                treelist.setDroplistProp(dtl,'customer12','treelistUrl',xml1);
+                treelist.setDroplistProp(dtl,'customer12','dataUrl','="'+_global_context+'/his/listByHisSettle.tz?query_key="+encodeURIComponent(data)');
+            <#if mas.id?exists && mas.id!=0>
+                    treelist.load(dtl, "${base}/his/listByHisSettleDtl.tz?masId=${mas.id}");
+            <#else>
+                treelist.insertRows(dtl, 0);
+            </#if>
+            });
+        }
+        Ext.onReady(function(){
+            document.getElementById("supcan_treelist_div").style.display="block";
+        });
+        function dtlDisabledSomeMenu(){
+            dtl.func("DisableMenu", "copy \r\n true");
+            dtl.func("DisableMenu", "pasteNewRow \r\n true");
+            dtl.func("DisableMenu", "paste \r\n true");
+            dtl.func("DisableMenu", "print \r\n true");
+            dtl.func("DisableMenu", "import \r\n true");
+        }
+	</script>
+
+	<div id="supcan_form_top_div" style="width:100%;height:100%;display:none;"><script>insertFreeForm('masTop', 'Border=none;');</script></div>
+	<script>
+        function isCreateBill(formId){
+            var isCreate =  true;
+            var fbillNo = masTop.func("GetValue", "fbillNo");
+            if(isEmpty(fbillNo)){
+                isCreate = true;
+            }else{
+                isCreate = false;
+            }
+            if(isEmpty($("isCreate"))){
+                $(formId).add({
+                    xtype:'hiddenfield',
+                    name:'isCreate',
+                    id:'isCreate',
+                });
+            }
+            $("isCreate").setValue(isCreate);
+            if(isCreate){
+                return "create";
+            }else{
+                return "update";
+            }
+
+        }
+        function masTopReady(id){
+            TenzePreLoad(['com.tenze.pms.facade.dto.his.HisSettleMasDto','com.tenze.pms.facade.dto.his.HisSettleDto'],function(){
+                var xml = Supcan_BuildFreeForm('com.tenze.pms.facade.dto.his.HisSettleMasDto',{
+                    Properties:{
+                        '@editAble':allEditAble
+                    }
+                });
+                masTop.func("Build", xml);
+                try{masTopAfterBuild(id);}catch(e){}
+                var xml1 = Supcan_BuildTreeList('com.tenze.pms.facade.dto.his.HisSettleDto',{
+                    Properties:{
+                        '@dataUrl':_global_context+'/his/listByHisSettle.tz',
+                    }
+                });
+                topfreeform.setDroplistProp(masTop,'customer12','treelistUrl',xml1);
+            <#if mas.id?exists && mas.id!=0>
+                    topfreeform.load(masTop, "${base}/his/getSingleByHisSettleMas.tz?id=${mas.id}");
+            </#if>
+            });
+        }
+        Ext.onReady(function(){
+            document.getElementById("supcan_form_top_div").style.display="block";
+        });
+        <#include 'btn_click.js'/>
+	</script>
+
+</@CommonMacro.page>

@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>医疗保险门诊统筹报销计算表  - 单据打印</title>
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="${base}/resources/h4/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="${base}/resources/h4/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="${base}/resources/h4/css/animate.min.css" rel="stylesheet">
+    <link href="${base}/resources/h4/css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+	<style type="text/css">
+		@media print{
+			.noprint{
+				display:none;	
+			}	
+		}
+	</style>
+</head>
+ 
+
+<body class="white-bg">
+    <div class="wrapper wrapper-content p-xl">
+        <div class="ibox-content p-xl">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <address>
+                        <h3>医疗保险门诊统筹报销计算表</h3>
+                    </address>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                	<table style="border: 1px none ;" width="985" height="182">
+               			<tr>
+	                        <td style="text-align:right;width:120px;" ><strong>社保机构：</strong></td>
+							<td style="text-align:left;width:80px;" id="area"></td>
+	                        <td style="text-align:right;width:60px;"><strong>日期：</strong></td>
+	                        <td style="text-align:left;width:80px;" id="date"></td>
+	                        <td style="text-align:right;width:100px;"><strong>参保类别：</strong></td>
+	                        <td style="text-align:left;width:120px;" id="cblx"></td>
+	                        <td style="text-align:right;width:80px;"><strong>结算序号：</strong></td>
+	                        <td style="text-align:left;width:120px" id="jsxh"></td>
+               			</tr> 
+               			
+               			<tr>
+               				<td style="text-align:right;width:120px;" ><strong>姓名：</strong></td>
+	                        <td style="text-align:left;width:140px;" colspan="2"  id="perName"></td>
+	                        <td style="text-align:right;width:180px;" colspan="2"  ><strong>公民身份证：</strong></td>
+	                        <td style="text-align:left;width:120px;" colspan="3" id="perIdCard"></td>
+	                     </tr> 
+ 
+               			<tr>
+	                        <td style="text-align:right;width:120px;"><strong>就诊日期：</strong></td>
+	                        <td style="text-align:left;width:80px;" id="jzrq"></td>
+	                        <td style="text-align:right;width:60px;"><strong>诊断：</strong></td>
+	                        <td style="text-align:left;width:80px;" id="zd"></td>
+	                        <td style="text-align:right;width:80px;"><strong>就诊医院：</strong></td>
+	                        <td style="text-align:left;width:100px;" colspan="3" id="jzyy"></td>
+               			</tr>
+               				
+               			<tr>
+	                        <td style="text-align:right;width:140px;" ><strong>医疗费用总额：</strong></td>
+	                        <td style="text-align:left;width:80px;" colspan="2" id="ylfyze"></td>
+	                        <td style="text-align:right;width:100px;"><strong>报销金额：</strong></td>
+	                        <td style="text-align:left;width:80px;" id="bxje"></td>
+	                        <td style="text-align:right;width:80px;"><strong>(大写：)</strong></td>
+	                        <td style="text-align:left;" colspan="3" id="bxjedx"></td>
+	                        
+               			</tr> 	
+               			<tr>
+	                        
+	                        <td style="text-align:right;width:200px;" colspan="3" ><strong>本年累计门诊统筹支付金额：</strong></td>
+               				<td style="text-align:left;width:140px;" id="bnljmztczfje"></td>
+	                        
+	                        <td style="text-align:right;width:220px;" colspan="2" ><strong>本年门诊基金可用金额：</strong></td>
+	                        <td style="text-align:left;width:200px;" colspan="2"  id="bnmzjjkyje"></td>
+               				
+               			</tr>  
+               			
+               			<tr>
+	                        
+	                        <td style="text-align:right;width:200px;" colspan="3" ><strong>定点医疗机构经办人：</strong></td>
+               				<td style="text-align:left;width:140px;"  > ${user_in_session.hisLoginCfg?default('')}</td>
+	                        
+	                        <td style="text-align:right;width:220px;" colspan="2" ><strong>定点医疗机构电话：</strong></td>
+	                        <td style="text-align:left;width:200px;" colspan="2" >${user_in_session.hisPhone?default('')}</td>
+               				
+               			</tr>  
+               			
+               			<tr>
+	                        <td style="text-align:right;" colspan="2" ><strong>患者签名：</strong></td>
+	                        <td style="text-align:left;" colspan="2"></td>
+	                        <td style="text-align:right;width:100px;"><strong>制表日期：</strong></td>
+	                        <td style="text-align:left;width:120px;" colspan="3" id="zbrq"></td>
+	                        
+               			</tr> 
+               			
+               			              			
+                	</table>
+                </div>
+                <#if printFlag?exists>
+               <div class="col-sm-12 " style="height:20px;">
+                	&nbsp;
+                </div>
+			   <div class="col-sm-12 " style="height:20px;">
+			   	<input value="打印" type="button" class="noprint" onclick="window.print()"/>
+                </div>
+                </#if>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="${base}/resources/h4/js/jquery.min.js?v=2.1.4"></script>
+    <script src="${base}/resources/h4/js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="${base}/resources/h4/js/content.min.js?v=1.0.0"></script>
+        <script type="text/javascript" src="${base}/resources/artdialog/artDialog.js"></script>
+<script type="text/javascript" src="${base}/resources/artdialog/iframeTools.js"></script>
+<script type="text/javascript" src="${base}/resources/artdialog/jquery.json-2.4.min.js"></script>
+
+    <script type="text/javascript">
+    
+    function formatMoney(mnum)
+    {
+    	var mnum = parseFloat(mnum);
+    	var strOutput="",strTemp="",strInTemp='';
+    	var unitArray = new Array("圆万亿","仟佰拾","零壹贰叁肆伍陆柒捌玖");
+    	var mnumArray = mnum.toString().split('.');
+    	var integralnum = mnumArray[0];
+    	var integrallen = integralnum.length;
+    	var decimalnum = (mnum.toString().indexOf('.')>=0) ? mnumArray[1].substr(0, 2) : '0';
+    	var decimallen = decimalnum.length;
+    	var ints = parseInt(integrallen/4);
+    	var inty = integrallen%4;
+    	if (ints>3 || (ints==3 && inty>0)) return "超出范围";
+    	if (inty>0)
+    	{
+    		ints++;
+    		integralnum = "0000".substr(inty)+integralnum;
+    		integrallen = integralnum.length;
+    	}
+    	var i = 0;
+    	while (i<integrallen)
+    	{
+    		var strOutTemp = "";
+    		strTemp = integralnum.substr(i, 4);
+    		i += 4;
+    		for (var j=0; j<4; j++)
+    		{
+    			strInTemp = parseInt(strTemp.substr(j, 1));
+    			strOutTemp += unitArray[2].substr(strInTemp, 1);
+    			if (strInTemp>0 && j<3) strOutTemp += unitArray[1].substr(j, 1);
+    		}
+    		strOutTemp = strOutTemp.replace(/零+$/, "");
+    		ints--;
+    		if (strOutTemp!="") strOutTemp += unitArray[0].substr(ints, 1);
+    		if (strTemp.substr(3,1)=='0') strOutTemp += "零";
+    		strOutput += strOutTemp;
+    	}
+    	strOutput = strOutput.replace(/零+/g, "零").replace(/^零/, "").replace(/零$/, "");
+    	if (strOutput=="圆") strOutput = "";
+    	if (decimallen==2)
+    	{
+    		strOutput += (decimalnum.charAt(0)!='0') ? unitArray[2].substr(parseInt(decimalnum.charAt(0)), 1)+"角" : "零";
+    		if (strOutput=="零") strOutput = "";
+    		strOutput += unitArray[2].substr(parseInt(decimalnum.charAt(1)), 1)+"分";
+    	}
+    	else
+    	{
+    		if (decimalnum!='0') strOutput += unitArray[2].substr(parseInt(decimalnum), 1)+"角";
+    		if (strOutput!="") strOutput += "整";
+    	}
+    	if (strOutput=="") strOutput = "零";
+    	return strOutput;
+    }
+
+    //转换小数点留2位
+    function toDecimal2(x) {
+        var f = parseFloat(x);
+        if (isNaN(f)) {
+            return false;
+        }
+        var f = Math.round(x*100)/100;
+        var s = f.toString();
+        var rs = s.indexOf('.');
+        if (rs < 0) {
+            rs = s.length;
+            s += '.';
+        }
+        while (s.length <= rs + 2) {
+            s += '0';
+        }
+        return s;
+    }
+
+    //匹配社保号
+    var sbjgjson=[{code:'441301',codedesc:'市直'}
+        ,{code:'441302',codedesc:'惠城区'}
+        ,{code:'441303',codedesc:'惠阳区'}
+        ,{code:'441322',codedesc:'博罗县'}
+        ,{code:'441323',codedesc:'惠东县'}
+        ,{code:'441324',codedesc:'龙门县'}
+        ,{code:'441340',codedesc:'大亚湾区'}
+        ,{code:'441341',codedesc:'仲恺区'}
+    ];
+
+    function fillData(){
+    	var data = art.dialog.data('HisSettleMas_TCJG_DATA');
+
+      	var fsdate = data.ykc701 ;
+      	fsdate = fsdate.substring(0,4) +"-" + fsdate.substring(4,6) +"-" + fsdate.substring(6,8) ;
+      	var jzDate = data.ykc701
+        jzDate = jzDate.substring(0,4) +"-" + jzDate.substring(4,6) +"-" + jzDate.substring(6,8) ;
+    	
+    	if (data !== undefined) {
+    	    var re="";
+            var json=eval(sbjgjson);
+            $.each(json,function(i,n){
+                    if(json[i].code==data.bae001){
+                        re=json[i].codedesc;
+                        return false;
+                    }
+                }
+            )
+            $('#area').text(re);
+			$('#date').text( fsdate );
+			$('#cblx').text(data.aac027);
+			$('#jsxh').text(data.ykc618);
+			$('#perName').text(data.aac003);
+			$('#perIdCard').text(data.aac044);
+			$('#jzrq').text( jzDate  );
+			$('#zd').text(data.akc185);
+			$('#jzyy').text(data.ckb519);
+//			$('#ylfyze').text(data.akc264);
+			$('#ylfyze').text(toDecimal2(data.akc264));
+			$('#bxje').text(Number(data.ake039 || 0 )+ Number(data.ckc504 || 0));
+			$('#bxjedx').text(formatMoney(Number(data.ake039 || 0 )+ Number(data.ckc504 || 0)));
+			$('#bnljmztczfje').text(data.yka430 || 0);
+			$('#bnmzjjkyje').text(data.ckc573 || 0);
+			$('#jbr').text(data.jsjbrmc);
+			$('#zfje').text(Math.round((Number(data.akc264)- (Number(data.ake039 || 0 )+ Number(data.ckc504 || 0)))*100)/100 );
+			var d = new Date();
+			var year = d.getFullYear();
+			var month = d.getMonth()+1;
+			var day = d.getDate();
+			var zbrq = year+'年'+month+'月'+day+'日';
+			$('#zbrq').text(zbrq);
+
+
+        }
+    }
+
+
+
+    function ppp(){
+//        window.print();
+		fillData();
+    }
+    
+//   	art.dialog.data('HisSettleMas_TCJG_PRINT',function(){
+//   		ppp();
+//   	});
+       
+    </script>
+<script>
+	$(function() {
+		ppp();
+	});
+</script>
+
+</body>
+
+</html>

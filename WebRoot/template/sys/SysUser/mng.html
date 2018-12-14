@@ -1,0 +1,250 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="菜单管理">
+<#assign scope="sys"/>
+<#assign curPre="sysUser"/>
+<#assign curDef="SysUser"/>
+<#assign curClass="com.tenze.pms.facade.dto.sys.SysUserDto"/>
+<script src="${base}/resources/layer/Upload.js"></script>
+<script type="text/javascript">
+var ${curPre}GridItemdbclick;
+var bt_add_OnClick;
+var bt_edit_OnClick;
+var bt_refresh_OnClick;
+var bt_del_OnClick;
+var bt_search_OnClick;
+var search_btQuery_OnClick;
+var form_bt_save_OnClick;
+var form_bt_close_OnClick;
+var getParams;
+var btn_roleName_preview_OnClick;
+Ext.onReady(function() {
+		
+	var toolbar_promise = jQuery.ajax({
+		type:'get',
+		url:'${base}/sys/roleMenuFuncsPermBySysPerm.tz?mainMenuId=${mainMenuId}',
+		dataType:'json'
+	}).done(function(resp){
+		var arr = [];
+		for(var i in resp){
+			arr.push(resp[i].functionBtn);
+		}
+		TenzeExt.${curPre}GridToolbar = Ext_BuildToolbarBtns(arr);
+	});
+		
+		
+		 TenzePreLoad(['${curClass}',toolbar_promise],function(){
+			 Ext_BuildGrid('${curClass}','${curPre}',{
+				url:'${base}/${scope}/listPageBy${curDef}.tz',
+				tbar:TenzeExt.${curPre}GridToolbar
+			 });
+
+
+			 
+			 Ext_BuildForm('${curClass}','${curPre}',{
+				 
+			 });
+			 
+		     var win = Ext.create('Ext.Window', {
+		        title: '编辑',
+		        width: 600,
+                 height :600,
+		        border : false,
+		        x: 5,
+		        y: 5,
+		        resizable : true,
+				draggable : true,
+				closeAction : 'close',
+		        plain: true,
+                 autoScroll:true,
+		        layout: 'fit',
+		        items : [ TenzeExt.${curPre}Form],
+		        tbar : Ext_BuildToolbarBtns(['save','close'],{preffix:'form_'})
+		    });
+		    
+		     TenzeExt.${curPre}GridStore.on("beforeload", function(){
+		 		Ext.apply(TenzeExt.${curPre}GridStore.proxy.extraParams, {});
+		 	});                 
+		                       
+		     <#--新增按钮-->
+		     bt_add_OnClick = function() {
+		        win.show();
+		        initPerm();
+                 document.getElementsByName("hisCert")[0].onfocus=function () {
+                     btnUpload_click(10,"图片上传","","hisCert")
+                 };
+                 document.getElementsByName("isminimerchantCodePri")[0].onfocus=function () {
+                     btnUpload_click2(10,"图片上传2","","isminimerchantCodePri");
+                 };
+                 }
+		     <#--关闭-->
+		     form_bt_close_OnClick = function() {
+		        TenzeExt.${curPre}Form.form.reset();
+		        win.hide();
+		     }
+		     <#--编辑-->
+		     bt_edit_OnClick = function() {
+		     	var record =TenzeExt.${curPre}Grid.getSelectionModel().getLastSelected();
+		        showWin(record);		
+		     }
+		     ${curPre}GridItemdbclick = function(obj, record, item, index, e, eOpts){
+		     	showWin(record);	
+		     };
+		     function showWin(record){
+		 	   if (isEmpty(record)) {			
+		 			showErrorMsg('请选择行');
+		 			return false;
+		 	   }
+		       TenzeExt.${curPre}Form.getForm().loadRecord(record);	
+		       $('password').setValue('');
+		       $('confirmPassword').setValue('');
+		       win.show();
+		       initPerm();
+                 document.getElementsByName("hisCert")[0].onfocus=function () {
+                     btnUpload_click(10,"图片上传","","hisCert")
+                 };
+                 document.getElementsByName("isminimerchantCodePri")[0].onfocus=function () {
+                     btnUpload_click2(10,"图片上传2","","isminimerchantCodePri");
+                 };
+
+		     }
+		     bt_del_OnClick = function() {
+		     	batchRemove('${base}/${scope}/removeBy${curDef}.tz', TenzeExt.${curPre}Grid, "id", function(response){
+		     		var text = response.responseText;
+		     		var kk = Ext.JSON.decode(text).success;
+		     		if(!isEmpty(kk) && kk == "true"){
+		     		 	showTitMsg('删除成功', function(){
+		 	    			query${curDef}(); 
+		 	        	});
+		     		}else{
+		     			showErrorMsg(Ext.JSON.decode(text).failure);
+		     		}
+		     	});
+		     }
+
+
+
+
+		     //刷新
+		     bt_refresh_OnClick = function() {       
+		        TenzeExt.${curPre}GridStore.load();
+
+         }
+		     form_bt_save_OnClick = function() {
+		     	var fdeptNo = TenzeExt.${curPre}Form.getValues().id;
+		     	if(isEmpty(fdeptNo)){
+		     		submitForm('${base}/${scope}/createBy${curDef}.tz', TenzeExt.${curPre}Form, function(form, action){
+		 	    		showTitMsg('保存成功', function(){
+		 	    			query${curDef}() ;
+		 	    			win.hide();
+		 	    		});
+		 	    	},function(form, action){
+		 	    		var errmsg = action.result.failure;
+		 				showErrorMsg(errmsg);
+		 	    	});
+		     	}else{
+		 	    	submitForm('${base}/${scope}/updateBy${curDef}.tz', TenzeExt.${curPre}Form, function(form, action){
+		 	    		showTitMsg('保存成功', function(){
+		 	    			query${curDef}() ;
+		 	    			win.hide();
+		 	    		});
+		 	    	},function(form, action){
+		 	    		var errmsg = action.result.failure;
+		 				showErrorMsg(errmsg);
+		 	    	});
+		     	}
+		     }
+		    
+		     win.on("hide", function(){
+		     	TenzeExt.${curPre}Form.form.reset();
+		 	});
+		 	
+		 	 var viewport = new Ext.Viewport({
+					layout : 'border',
+					items : [{
+						region : 'center',
+						layout : 'fit',
+						border : false,
+						items : [ TenzeExt.${curPre}Grid ]
+					} ]
+			});
+		 	 
+		 	function query${curDef}() {       
+		 		TenzeExt.${curPre}GridStore.load();
+		     }
+		 	
+		 	search_btQuery_OnClick = function(){
+		 		query${curDef}();
+		 	}
+		    
+		 	Ext_BuildSearchWin('${curClass}','');
+		 	
+		 	getParams = function(){
+		 		return TenzeExt['search_getParams']();
+		 	}
+		 	
+		 	bt_search_OnClick = function(){
+		 		TenzeExt.search_Win.show();
+		 	};
+		 	
+		 	btn_roleName_preview_OnClick = function(){
+		 		TenzeExt.pickupRoleWin.show();	
+		 	};
+		 	
+		 	function pickupRoleSelectCallback(obj, record, item, index, e, eOpts){
+		 		$('roleId').setValue(record.data.id);
+		 		$('roleName').setValue(record.data.roleName);
+		 	}
+		 	
+		 	<#include '/template/include/pickup_role.js'/>
+		 	
+		 	window.btn_unionName_preview_OnClick = function(){
+		 		TenzeExt.pickupUnionWin.show();
+		 	}
+		 	
+		 	function pickupUnionSelectCallback(obj, record, item, index, e, eOpts){
+		 		$('unionId').setValue(record.raw.id);
+		 		$('unionName').setValue(record.raw.unionName);
+		 	}
+		 	
+		 	<#include '/template/include/pickup_union.js'/>
+		 	
+		 	window.btn_merchantName_del_OnClick	= function(){
+		 		$('merchantId').setValue('');
+		 		$('merchantName').setValue('');
+		 	}
+		 	
+			window.btn_merchantName_preview_OnClick = function(){
+		 		TenzeExt.pickupMerchantWin.show();	
+		 	};
+		 	
+		 	function pickupMerchantSelectCallback(obj, record, item, index, e, eOpts){
+		 		$('merchantId').setValue(record.raw.id);
+		 		$('merchantName').setValue(record.raw.merName);
+		 	}
+		 	
+		 	<#include '/template/include/pickup_merchant.js'/>
+		 	
+		 	function initPerm(){
+			 	<#if user_in_session.unionId?exists && user_in_session.unionId!=0>
+			 		$('btn_unionName_preview').hide();
+			 		$('unionId').setValue(_global_union.unionId);
+			 		$('unionName').setValue(_global_union.unionName);
+			 		//$('query_unionId').setValue(_global_union.unionId);
+			 		//$('query_unionName').setValue(_global_union.unionName);
+			 	</#if>
+			 	<#if user_in_session.merchantId?exists && user_in_session.merchantId!=0>
+			 	$('btn_merchantName_preview').hide();
+			 	$('btn_merchantName_del').hide();
+		 		$('merchantId').setValue(_global_merchant.merchantId);
+		 		$('merchantName').setValue(_global_merchant.merchantName);
+			 	</#if>
+		 	}
+
+		 });
+
+
+
+});
+</script>
+
+</@CommonMacro.page>

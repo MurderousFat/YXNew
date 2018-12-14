@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>格讯电梯安全监管平台</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<script type="text/javascript" src="/TZ_M2M/resources/artdialog/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/TZ_M2M/resources/artdialog/artDialog.js"></script>
+<script type="text/javascript" src="/TZ_M2M/resources/artdialog/iframeTools.js"></script>
+<script type="text/javascript" src="/TZ_M2M/resources/artdialog/jquery.json-2.4.min.js"></script>
+<script type="text/javascript" src="/TZ_M2M/resources/mqtt/mqttws31.js"></script>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+var client;
+
+var initMqtt = function(_host,_port,_clientId,destination,_user,_password){
+			
+	  if( !window.WebSocket) {
+		  alert('该浏览器不支持websocket, 建议使用火狐、360等浏览器。');
+	  } else {
+	    
+	    var onConnect = function(frame) {
+		      console.log("connected to MQTT");
+		      client.subscribe(destination);
+		    };  
+
+		    // this allows to display debug logs directly on the web page
+
+	    var onFailure = function(failure) {
+	      console.log("mqtt:failure");
+	      console.log(failure.errorMessage);
+	    }  ;
+
+	    var onMessageArrived = function(message) {
+	    	console.log(message.payloadString);
+	    	var msg = eval('('+message.payloadString+')');
+	    	var event = art.dialog.data('mqtt.msg.arrived');
+	    	if(event && event[msg.ftype]){
+	    		event[msg.ftype](msg.fdata);
+	    	}
+	    };
+
+	    var onConnectionLost = function(responseObject) {
+	      if (responseObject.errorCode !== 0) {
+	        console.log(client.clientId + ": " + responseObject.errorCode + "\n");
+	      }
+	    };
+
+	      var host = _host;
+	      var port = _port;
+	      var clientId = _clientId;
+	      var user = _user || "";
+	      var password = _password || "";
+	      
+	      client = new Messaging.Client(host, Number(port), clientId);
+
+	      client.onConnect = onConnect;
+	  
+	      client.onMessageArrived = onMessageArrived;
+	      client.onConnectionLost = onConnectionLost;            
+
+	      client.connect({
+	        userName:user, 
+	        password:password, 
+	        onSuccess:onConnect, 
+	        onFailure:onFailure
+	      }); 
+
+	    // the client is notified when it is connected to the server.
+	    
+	  }
+	
+}
+
+	var _c = art.dialog.data('mqttConfig');
+	if(_c){
+		initMqtt(_c.host,_c.port,_c.clientId,_c.topic,_c.user,_c.password);
+	}
+
+
+var mqttSubscribe = function(topic){
+	client.subscribe(topic);
+}
+var mqttPublish = function(content){
+	if(content){
+		var message = new Messaging.Message($.toJSON(content));
+	   	message.destinationName = '/m2m';
+	   	client.send(message);
+	}
+}
+art.dialog.data('mqtt.subscribe',mqttSubscribe);
+art.dialog.data('mqtt.publish',mqttPublish);
+
+</script>
+</html>

@@ -1,0 +1,92 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="角色管理">
+<#assign scope="sys"/>
+<#assign curPre="sysRole"/>
+<#assign curDef="SysRole"/>
+<#assign curClass="com.tenze.pms.facade.dto.sys.SysRoleDto"/>
+<script type="text/javascript">
+var ${curPre}GridItemdbclick;
+var bt_add_OnClick;
+var bt_edit_OnClick;
+var bt_refresh_OnClick;
+var bt_del_OnClick;
+var bt_search_OnClick;
+var search_btQuery_OnClick;
+var getParams;
+Ext.onReady(function() {
+		
+		// 'copyPerm','pastePerm',
+		 TenzePreLoad(['${curClass}','com.tenze.pms.facade.dto.sys.SysMenuDto'],function(){
+			 Ext_BuildGrid('${curClass}','${curPre}',{
+				url:'${base}/${scope}/listPageBy${curDef}.tz',
+				tbar: Ext_BuildToolbarBtns(['menuPerm','btnsPerm','exit'])
+			 });
+		    
+		    TenzeExt.${curPre}GridStore.on("beforeload", function(){
+		 		Ext.apply(TenzeExt.${curPre}GridStore.proxy.extraParams, {});
+		 	});                 
+		    
+		    window.bt_menuPerm_OnClick = function(){
+		    	var record =TenzeExt.${curPre}Grid.getSelectionModel().getLastSelected();
+			    if (isEmpty(record)) {			
+					showErrorMsg('请选择列表中的行');
+					return false;
+			    }
+			    showMenuPermWindow(record);
+		    }
+		    
+		    window.bt_btnsPerm_OnClick = function(){
+		    	var record =TenzeExt.${curPre}Grid.getSelectionModel().getLastSelected();
+			    if (isEmpty(record)) {			
+					showErrorMsg('请选择列表中的行');
+					return false;
+			    }
+		    	showBtnsPermWindow(record);
+		    }
+		    
+		    window.bt_copyPerm_OnClick = function(){
+		    	alert('copy perm');
+		    	
+		    }
+		    
+		    window.bt_pastePerm_OnClick = function(){
+		    	alert('paste perm');
+		    	
+		    }
+		                       
+		 	
+		 	 var viewport = new Ext.Viewport({
+					layout : 'border',
+					items : [{
+						region : 'center',
+						layout : 'fit',
+						border : false,
+						items : [ TenzeExt.${curPre}Grid ]
+					} ]
+			});
+		 	 
+		 	function query${curDef}() {       
+		 		TenzeExt.${curPre}GridStore.load();
+		     }
+		 	
+		 	search_btQuery_OnClick = function(){
+		 		query${curDef}();
+		 	}
+		    
+		 	Ext_BuildSearchWin('${curClass}','');
+		 	
+		 	getParams = function(){
+		 		return TenzeExt['search_getParams']();
+		 	}
+		 	
+		 	bt_search_OnClick = function(){
+		 		TenzeExt.search_Win.show();
+		 	};
+		 	
+		 	<#include 'menuPerm.js'/>
+		 	<#include 'btnPerm.js'/>
+		 });
+    
+});
+</script>
+</@CommonMacro.page>

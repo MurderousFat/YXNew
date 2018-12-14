@@ -1,0 +1,125 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>工作台</title> 
+
+<link href="${base}/resources/webui/pages/css/base.css" rel="stylesheet">
+<link rel="stylesheet" href="${base}/resources/webui/custom/uimaker/easyui.css">
+<link rel="stylesheet" href="${base}/resources/webui/pages/css/workbench.css">
+</head> 
+<body style="padding:10px;">
+    <div class="container">
+        <div id="hd">
+            
+        </div>
+
+        <div id="bd">
+            <div class="bd-content">
+                <div class="right-zone">
+                    <div class="inform item-box">
+                        <div class="inform-hd">
+                            <label>通知公告</label>
+                            <a href="javascript:;">更多<span>&gt;</span></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <span></span>
+                                <a href="javascript:;" class="ellipsis">欢迎使用 社保金融服务应用平台<i></i></a>
+                                <label>04-13</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="attached item-box">
+                        <div class="inform-hd">
+                            <label>常用附件下载</label>
+                            <a href="javascript:;">更多<span>&gt;</span></a>
+                        </div>
+                        <div class="attached-tab">
+                            <a href="javascript:;" class="current item-left" attached="public-attached">公开附件</a>
+                            <a href="javascript:;" class="item-right" attached="inner-attached">内部附件</a>
+                        </div>
+                        <ul class="public-attached">
+                            <li>
+                                <span></span>
+                                <a href="javascript:;" class="ellipsis">系统操作帮助手册</a>
+                            </li>
+                        </ul>
+                        <ul class="inner-attached hide">
+                           <li>
+                                <span></span>
+                                <a href="javascript:;" class="ellipsis">系统使用管理规范</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="center-part">
+                    <div class="center-items todo">
+                        <div class="calendar-part">
+                             <div class="easyui-calendar" style="width:205px;height:231px;"></div>
+                        </div>
+                        <ul class="work-items clearfix">
+                        <#if !user_in_session.merchantId?exists>
+                            <li>
+                                <div class="work-inner" onclick="openTab('${base}/mer/mng_MerFaultRepair.tz?mainMenuId=860559549583589376','860559549583589376','故障受理','icon_16_20141101_062')">
+                                    <div class="work-item green">
+                                        <i class="iconfont">&#xe61f;</i>
+                                        <span class="num">0&nbsp;<span class="unit">个</span></span>
+                                        <label>故障未受理</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </#if>
+                            <li>
+                                <div class="work-inner">
+                                    <div class="work-item yellow">
+                                         <i class="iconfont">&#xe61d;</i>
+                                        <span class="num">0&nbsp;<span class="unit">封</span></span>
+                                        <label>邮件未读</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ft"></div>
+    </div>
+    <script type="text/javascript" src="${base}/resources/webui/custom/jquery.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/webui/custom/jquery.easyui.min.js"></script>
+    <!-- <script type="text/javascript" src="${base}/resources/webui/pages/js/menu.js"></script> -->
+    <script type="text/javascript" src="${base}/resources/webui/pages/js/echarts-all.js"></script>
+    
+  
+
+    
+    <script type="text/javascript">
+    function openTab(url,id,title,iconCls){
+    	var mainTabs = parent.getMainTabs();
+    	var n = mainTabs.getComponent(id);
+		if (!n) {
+			n = mainTabs.add({
+				id : id,
+				iconCls:iconCls,
+				title : title,
+				closable : true,
+				layout : 'fit',
+				html : '<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="'+ url + '"></iframe>'
+			});
+		}
+		mainTabs.setActiveTab(n);
+    }
+    //公开附件tab事件处理
+    $(".attached-tab").on("click","a",function(){
+        $(this).closest(".attached-tab").find("a").removeClass("current");
+        $(this).addClass("current");
+        $(this).closest(".attached").find("ul").addClass("hide");   
+        $(this).closest(".attached").find("ul." + $(this).attr("attached")).removeClass("hide");    
+    })
+                    
+    </script>
+</body> 
+</html>

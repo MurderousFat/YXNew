@@ -1,0 +1,218 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="按钮管理">
+<#assign scope="sys"/>
+<#assign curPre="sysFunction"/>
+<#assign curDef="SysFunction"/>
+<#assign curClass="com.tenze.pms.facade.dto.sys.SysFunctionDto"/>
+<script type="text/javascript">
+Ext.onReady(function() {
+	
+	var tempMenuTree;
+	var tempFuncList;
+	var funcPermList;
+	
+	var menuTree_promise = jQuery.ajax({
+		type:'get',
+		url:'${base}/sys/listRoleMenuBySysPerm.tz?roleId=${roleId}',
+		dataType:'json'
+	}).done(function(resp){
+		tempMenuTree = resp || [];
+	});
+	
+	var functionBtn_promise = jQuery.ajax({
+		type:'get',
+		url:'${base}/sys/listBySysFunction.tz',
+		dataType:'json'
+	}).done(function(resp){
+		tempFuncList = resp || [];
+	});
+	
+	var functionRole_promise = jQuery.ajax({
+		type:'get',
+		url:'${base}/sys/functionRoleDataBySysPerm.tz?roleId=${roleId}',
+		dataType:'json'
+	}).done(function(resp){
+		funcPermList = resp || [];
+	});
+	
+		
+		 TenzePreLoad(['${curClass}',menuTree_promise,functionBtn_promise,functionRole_promise],function(){
+			 
+			 var menuFuncListMap = {};
+			 var funcPermMap = {};
+			 var _tobj;
+			 var _tf;
+			 for(var i in tempFuncList){
+				 _tf = tempFuncList[i];
+				 if(!_tf.menuId || _tf.menuId=='' || !_tf.functionUrl || _tf.functionUrl=='' || _tf.functionUrl=='#')continue;
+				 _tobj = menuFuncListMap[_tf.menuId+''];
+				 if(!_tobj){
+					_tobj =  menuFuncListMap[_tf.menuId+''] = [];
+				 }
+				 _tobj.push(tempFuncList[i]);
+			 }
+			 
+			 if(!funcPermList)funcPermList=[];
+			 for(var i in funcPermList){
+				 funcPermMap[funcPermList[i].functionId+''] = funcPermList[i].functionId;
+			 }
+			 
+			 Ext_BuildTree('com.tenze.pms.facade.dto.sys.SysMenuDto','menu',{
+				 url:'${base}/sys/listRoleMenuBySysPerm.tz?roleId=${roleId}',
+				 rootText:'菜单',
+				 rootVisible:true,
+				 listTreeSetting:{
+					 convertProps:[{key:'expandedFlag',target:'expanded'},{key:'leafFlag',target:'leaf'}],
+					 extIdKey:'id',
+					 extTextKey:'menuName',
+					 simpleData:{
+						 idKey:'menuNo',
+						 pIdKey:'parentNo'
+					 }
+				 }
+			 });
+		     
+		 	
+		 	 TenzeExt.menuTree.on('load',function(){
+			     TenzeExt.menuTree.expandAll();
+		     });
+		 	 
+		 	
+		 	window.menuTreeItemClick = function(view, re, item, index, e, eOpts){
+		 		/*
+		 		tempMenuId = re.raw.id;
+		 		$('query_menuId').setValue(re.raw.id);
+		 		query${curDef}();
+		 		*/
+		 		var menuid = rec.raw.id;
+				if(!isEmpty($("fieldset_"+menuid))){
+					var nums = $("fieldset_"+menuid).getBox();
+					$('newBtnForm').scrollBy(0, nums.y-70, true);
+				}
+		 	}
+		 	
+		 	
+		 	<#-- BUILD MENU CHECKBOX GROUP -->
+		 	var groupFieldArr = [];
+		 	
+		 	function _BuildGroupField(_menu){
+		 		var _boxArr = [];
+		 		_boxArr.push({
+	            		boxLabel: '<b style="color:red">全选</b>', 
+		            		name: 'all',
+		            		id:'all_'+_menu.id,
+		            		listeners : {<#--每个全选按钮的全选事件-->
+		            			'change' : function(obj, newValue, oldValue, eOpts){
+		            				var array = Ext.getCmp('cbg_'+_menu.id).items;  
+		                           	array.each(function(item){  
+										if(item.id!='all_'+_menu.id){
+											item.setValue(newValue);	
+										}
+		                           	}); 
+		            			}
+		            		}
+            	});
+		 		var _funcArr = menuFuncListMap[_menu.id+''];
+		 		for(var i in _funcArr){
+		 			_boxArr.push({boxLabel: _funcArr[i].functionName, checked:(funcPermMap[_funcArr[i].id+'']?true:false), name: 'key',id:'functions_'+_funcArr[i].id,inputValue:''+_funcArr[i].id});
+		 		}
+		 		var _groupField = {
+ 						xtype: 'fieldset',
+ 						title: '<b>'+_menu.menuName+'</b>',
+ 						collapsible : false,
+ 						autoHeight : true,
+ 						layout: 'form',
+ 						id:'fieldset_'+_menu.id,
+ 						items: [
+ 							{
+ 					            xtype: 'checkboxgroup',
+ 					            cls: 'x-check-group-alt',
+ 					            id:'cbg_'+_menu.id,
+ 					            columns: 4,
+ 					            items: _boxArr
+ 					        }
+ 						]
+ 					}	
+		 		
+		 		return _groupField;
+		 	}
+		 	
+		 	groupFieldArr.push({xtype:'hiddenfield',name:'roleId',id:'roleId',value:'${roleId}'});
+		 	
+		 	for(var i in tempMenuTree){
+		 		if(!menuFuncListMap[tempMenuTree[i].id+''])continue;
+		 		groupFieldArr.push(_BuildGroupField(tempMenuTree[i]));
+		 	}
+		 	
+		 	
+		 	var newBtnForm = Ext.create(
+		 			'Ext.form.Panel',{
+		 				title : '',
+		 				frame : true,
+		 				id : 'newBtnForm',
+		 				trackResetOnLoad : false,
+		 				width : 800,
+		 				autoHeight : true,
+		 				hidden : false,
+		 				border : false,
+		 				autoScroll : true,
+		 				bodyStyle : 'padding:5px 5px 0',
+		 				fieldDefaults : {
+		 					msgTarget : 'side',
+		 					labelAlign : 'right',
+		 					width : 220
+		 				},
+		 				defaultType : 'checkboxfield',
+		 				items : groupFieldArr
+		 		});
+		 		<#--border布局-->
+		 	    var viewport = new Ext.Viewport({
+		 			layout : 'border',
+		 			items : [ {
+		 				title : '被授权的菜单',
+		 				iconCls : 'layout_contentIcon',
+		 				collapsible : true,
+		 				width : 200,
+		 				split : true,
+		 				region : 'west',
+		 				autoScroll : true,
+		 				layout:'fit',
+		 				items : [ TenzeExt.menuTree ]
+		 			}, {
+		 				region : 'center',
+		 				layout : 'fit',
+		 				border : false,
+		 				items : [ {
+		 					xtype :'panel',
+		 					title : '按钮授权',
+		 					tbar : Ext_BuildToolbarBtns(['save','close']),
+		 					layout:'fit',
+		 					id : 'btn_panel',
+		 					items : [ newBtnForm ]
+		 				} ]
+		 			} ]
+		 		});	
+		 		<#--关闭窗口-->
+		 		bt_close_OnClick = function(){
+		 			window.parent.$("newBtnPermWin").hide();
+		 		}
+		 		<#--保存-->
+		 		bt_save_OnClick = function(){
+		 			submitForm('${base}/sys/createFunctionRoleListBySysPerm.tz', newBtnForm, function(form, action){
+		 				showTitMsg('保存按钮权限成功', function(){
+		 				});
+		 			},function(form, action){
+		 				var errmsg = action.result.failure;
+		 				showErrorMsg(errmsg);
+		 			});
+		 		}
+		 		
+		 		try{
+			 		window.parent.Ext.MessageBox.hide();
+		 		}catch(e){}
+		 	
+		 });
+    
+});
+</script>
+</@CommonMacro.page>

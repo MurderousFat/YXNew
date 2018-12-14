@@ -1,0 +1,26 @@
+package com.tenze.pms.service.impl.bi;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tenze.background.common.core.dao.BaseDao;
+import com.tenze.background.common.core.service.BaseServiceImpl;
+import com.tenze.pms.dao.bi.BiPartTypeDao;
+import com.tenze.pms.facade.dto.bi.BiPartTypeDto;
+import com.tenze.pms.facade.service.bi.BiPartTypeService;
+
+
+@Service("biPartTypeService")
+public class BiPartTypeServiceImpl extends BaseServiceImpl<BiPartTypeDto> implements
+        BiPartTypeService {
+    
+    @Autowired
+    private BiPartTypeDao biPartTypeDao;
+
+    @Override
+    protected BaseDao<BiPartTypeDto> getDao() {
+        return biPartTypeDao;
+    }
+
+
+}

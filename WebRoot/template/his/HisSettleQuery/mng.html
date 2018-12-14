@@ -1,0 +1,91 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="" enableSupcan="true">
+<#assign scope="his"/>
+<#assign curPre="hisSettleQuery"/>
+<#assign curDef="HisSettleQuery"/>
+<#assign curClass="com.tenze.pms.facade.dto.his.HisSettleQueryDto"/>
+<script type="text/javascript">
+var ${curPre}GridItemdbclick;
+var bt_add_OnClick;
+var bt_edit_OnClick;
+var bt_refresh_OnClick;
+var bt_del_OnClick;
+var bt_search_OnClick;
+var search_btQuery_OnClick;
+var form_bt_save_OnClick;
+var form_bt_close_OnClick;
+var getParams;
+
+var ckz543 = '${ckz543?default('')}'; 
+var aae011 = '${aae011?default('')}';
+var sessionid = '${sessionid?default('')}';
+
+Ext.onReady(function() {
+		
+	var toolbar_promise = jQuery.ajax({
+		type:'get',
+		url:'${base}/sys/roleMenuFuncsPermBySysPerm.tz?mainMenuId=${mainMenuId}',
+		dataType:'json'
+	}).done(function(resp){
+		var arr = [];
+		for(var i in resp){
+			arr.push(resp[i].functionBtn);
+		}
+		TenzeExt.${curPre}GridToolbar = Ext_BuildToolbarBtns(arr);
+	});
+		
+		console.log(TenzeExt.${curPre}GridToolbar);
+		 TenzePreLoad(['${curClass}','com.tenze.pms.facade.dto.his.HisSettleQueryConditionDto',toolbar_promise],function(){
+			 
+			 Ext_BuildModel('${curClass}','HisSettleQueryModel');
+			 
+			 Ext_BuildForm('com.tenze.pms.facade.dto.his.HisSettleQueryConditionDto','cond',{
+				 toolbar:TenzeExt.${curPre}GridToolbar,
+				 preffix:'cond_'
+			 });
+			 
+			 Ext_BuildForm('${curClass}','${curPre}',{
+				 title:'查询结果',
+				 labelWidth:200
+			 });
+			 
+		 	 var viewport = new Ext.Viewport({
+					layout : 'border',
+					items : [
+					{
+						region : 'north',
+						border : false,
+						height: 80,
+						items : [ TenzeExt.condForm ]
+					} ,
+					{
+						region : 'center',
+						layout : 'fit',
+						border : false,
+						height: (document.documentElement.clientHeight - 80),
+						items : [ TenzeExt.${curPre}Form ]
+					} 
+					]
+			});
+		 	 
+		 	window.bt_reset_OnClick = function(){
+		 		TenzeExt.${curPre}Form.getForm().reset();
+		 	}
+		 	
+		 	window.bt_search_OnClick = function(){
+		 		var aaz217 = $('cond_aaz217').getValue();
+		 		var ykc618 = $('cond_ykc618').getValue();
+		 		console.log(aaz217);
+		 		console.log(ykc618);
+		 		tcjgFuc(aaz217,ykc618,function(_r){
+		 			TenzeExt.${curPre}Form.loadRecord(Ext.create('HisSettleQueryModelData',_r));
+		 		});
+		 	}
+		 	
+		 });
+    
+});
+
+<#include 'biz.js'/>
+</script>
+</@CommonMacro.page>

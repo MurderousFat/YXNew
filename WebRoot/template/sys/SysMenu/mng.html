@@ -1,0 +1,340 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="菜单管理">
+<script type="text/javascript">
+var staticVar = "";
+var staticId = "";
+var staticRec ;
+var menuItemClick;
+var menuGridItemdbclick;
+var bt_add_OnClick;
+var form_bt_close_OnClick;
+var pickupMenu_bt_close_OnClick;
+var bt_edit_OnClick;
+var bt_refresh_OnClick;
+var bt_del_OnClick;
+var btn_parentName_preview_OnClick;
+var pickupMenuTreeItemDblClick;
+var form_bt_save_OnClick;
+var search_btQuery_OnClick;
+var bt_search_OnClick;
+var btn_query_parentName_preview_OnClick;
+Ext.onReady(function() {
+	
+		var toolbar_promise = jQuery.ajax({
+			type:'get',
+			url:'${base}/sys/roleMenuFuncsPermBySysPerm.tz?mainMenuId=${mainMenuId}',
+			dataType:'json'
+		}).done(function(resp){
+			var arr = [];
+			for(var i in resp){
+				arr.push(resp[i].functionBtn);
+			}
+			TenzeExt.testGridToolbar = Ext_BuildToolbarBtns(arr);
+		});
+		
+		
+		 TenzePreLoad(['com.tenze.pms.facade.dto.sys.SysMenuDto',toolbar_promise],function(){
+			 Ext_BuildGrid('com.tenze.pms.facade.dto.sys.SysMenuDto','menu',{
+				url:'${base}/sys/listPageBySysMenu.tz',
+				tbar:TenzeExt.testGridToolbar
+			 });
+			 
+			 Ext_BuildTree('com.tenze.pms.facade.dto.sys.SysMenuDto','menu',{
+				 url:'${base}/sys/listBySysMenu.tz',
+				 rootText:'菜单',
+				 rootVisible:true,
+				 listTreeSetting:{
+					 convertProps:[{key:'expandedFlag',target:'expanded'},{key:'leafFlag',target:'leaf'}],
+					 extIdKey:'id',
+					 extTextKey:'menuName',
+					 simpleData:{
+						 idKey:'menuNo',
+						 pIdKey:'parentNo'
+					 }
+				 }
+			 });
+			 
+			 Ext_BuildForm('com.tenze.pms.facade.dto.sys.SysMenuDto','menu',{
+				 
+			 });
+			 
+		     var win = Ext.create('Ext.Window', {
+		        title: '编辑',
+		        width: 700,
+		        border : false,
+		        x: 100,
+		        y: document.documentElement.clientWidth / 10,
+		        resizable : true,
+				draggable : true,
+				closeAction : 'close',
+		        plain: true,
+		        layout: 'fit',
+		        items : [ TenzeExt.menuForm],
+		        tbar : Ext_BuildToolbarBtns(['save','close'],{preffix:'form_'})
+		    });
+		    
+		     TenzeExt.menuGridStore.on("beforeload", function(){
+		 		Ext.apply(TenzeExt.menuGridStore.proxy.extraParams, {parentNo : staticId});
+		 	});                 
+		                       
+		                  
+		     //树节点单击事件
+		     menuTreeItemClick =function(view,re) {
+		     	staticVar =re.data.text;
+		         staticId =re.raw.menuNo;
+		         staticRec = re;
+		         queryMenu(staticId);       
+		     }
+		     <#--新增按钮-->
+		     bt_add_OnClick = function() {
+		        win.show();
+		     }
+		     <#--关闭-->
+		     form_bt_close_OnClick = function() {
+		        TenzeExt.menuForm.form.reset();
+		        win.hide();
+		     }
+		     <#--编辑-->
+		     bt_edit_OnClick = function() {
+		     	var record =TenzeExt.menuGrid.getSelectionModel().getLastSelected();
+		        showWin(record);		
+		     }
+		     menuGridItemdbclick = function(obj, record, item, index, e, eOpts){
+		     	showWin(record);	
+		     };
+		     function showWin(record){
+		 	   if (isEmpty(record)) {			
+		 			showErrorMsg('请选择行');
+		 			return false;
+		 	   }
+		        TenzeExt.menuForm.getForm().loadRecord(record);	
+		        /*
+		        $('parentName').setValue(record.get('parentName')); 
+		        $('parentNo').setValue(record.get('parentNo'));   
+		         //编辑的上级编号不能修改                    
+		         if (!isEmpty(TenzeExt.menuForm.getValues().fdeptNo)) {            
+		             $('parentName').readOnly=true;
+		         }
+		         */
+		         win.show();
+		     }
+		     bt_del_OnClick = function() {
+		     	batchRemove('${base}/sys/removeBySysMenu.tz', TenzeExt.menuGrid, "menuNo", function(response){
+		     		var text = response.responseText;
+		     		var kk = Ext.JSON.decode(text).success;
+		     		if(!isEmpty(kk) && kk == "true"){
+		     		 	showTitMsg('删除成功', function(){
+		     		 		var rec = TenzeExt.menuGrid.getSelectionModel().getLastSelected();
+		     				var node = TenzeExt.menuTreeStore.getNodeById(rec.data.parentNo);
+		 		 			if(!isEmpty(node)){
+		     		 			node.set('leaf', false);
+		     		 			TenzeExt.menuTreeStore.load({
+		     		 				node : node
+		     		 			});
+		 		 			}
+		 	    			queryMenu(staticId); 
+		 	        	});
+		     		}else{
+		     			showErrorMsg(Ext.JSON.decode(text).failure);
+		     		}
+		     	});
+		     }
+		     
+		     //刷新
+		     bt_refresh_OnClick = function() {       
+		        TenzeExt.menuGridStore.load();
+		     }
+		     
+		     art.dialog.data('menuSelectIconCallback',function(iconName){
+		    	 $('iconCls').setValue(iconName);
+		     });
+		     
+		     window.btn_iconCls_preview_OnClick  = function(){
+		    	 var url = '${base}/sys/icons_SysMenu.tz';
+		    	 art.dialog.open(url, {
+		 			title : '选择图标',
+		 			padding : 5,
+		 			width : document.documentElement.clientWidth ,
+		 			height: document.documentElement.clientHeight 
+		 		}, false);
+		     }
+		     
+		     form_bt_save_OnClick = function() {
+		     	var fdeptNo = TenzeExt.menuForm.getValues().id;
+		     	if(isEmpty(fdeptNo)){
+		     		submitForm('${base}/sys/createBySysMenu.tz', TenzeExt.menuForm, function(form, action){
+		 	    		showTitMsg('保存成功', function(){
+		 	    			queryMenu(staticId) ;
+		 	    			var parentNo = $("parentNo").getValue();
+		 	    			if(isEmpty(parentNo)){
+		 	    				parentNo = '0';
+		 	    			}
+		 	    			var node = TenzeExt.menuTreeStore.getNodeById(parentNo);
+		 		 			if(!isEmpty(node)){
+		     		 			node.set('leaf', false);
+		     		 			TenzeExt.menuTreeStore.load({
+		     		 				node : node
+		     		 			});
+		 		 			}	
+		 	    			win.hide();
+		 	    		});
+		 	    	},function(form, action){
+		 	    		var errmsg = action.result.failure;
+		 				showErrorMsg(errmsg);
+		 	    	});
+		     	}else{
+		 	    	submitForm('${base}/sys/updateBySysMenu.tz', TenzeExt.menuForm, function(form, action){
+		 	    		console.log(action);
+		 	    		showTitMsg('保存成功', function(){
+		 	    			queryMenu(staticId) ;
+		 	    			var parentNo = $("parentNo").getValue();
+		 	    			if(isEmpty(parentNo)){
+		 	    				parentNo = '0';
+		 	    			}
+		 	    			var node = TenzeExt.menuTreeStore.getNodeById(parentNo);
+		 		 			if(!isEmpty(node)){
+		     		 			node.set('leaf', false);
+		     		 			TenzeExt.menuTreeStore.load({
+		     		 				node : node
+		     		 			});
+		 		 			}		
+		 	    			win.hide();
+		 	    		});
+		 	    	},function(form, action){
+		 	    		var errmsg = action.result.failure;
+		 				showErrorMsg(errmsg);
+		 	    	});
+		     	}
+		     }
+		    
+		     win.on("hide", function(){
+		     	TenzeExt.menuForm.form.reset();
+		 	});
+		 	/**
+		 	 * 布局
+		 	 */
+		 	var viewport = new Ext.Viewport({
+		 		layout : 'border',
+		 		items : [ {
+		 			title : '菜单',
+		 			iconCls : 'layout_contentIcon',
+		 			tools : [ ],
+		 			collapsible : true,
+		 			width : 180,
+		 			split : true,
+		 			region : 'west',
+		 			autoScroll : true,
+		 			layout:'fit',
+		 			items : [ TenzeExt.menuTree ]
+		 		}, {
+		 			region : 'center',
+		 			layout : 'fit',
+		 			border : false,
+		 			items : [ TenzeExt.menuGrid ]
+		 		} ]
+		 	});
+		 	
+		 	 TenzeExt.menuTree.on('load',function(){
+			     TenzeExt.menuTree.expandAll();
+		     });
+		 	
+		 	function queryMenu(queryId) {       
+		 		TenzeExt.menuGridStore.load({
+		 		    params : {
+		 				parentNo:queryId	
+		 			}
+		 		});
+		     }
+		     
+		 	function form_btNext_OnClick(){
+		     	moveToNextRecord(TenzeExt.menuGrid,TenzeExt.menuForm,1);
+		     } 
+		 	
+		     function form_btPre_OnClick(){
+		     	moveToNextRecord(TenzeExt.menuGrid,TenzeExt.menuForm,0);
+		     }    
+		     
+		     var uplevelSelectCallback;
+		     
+		     btn_parentName_preview_OnClick = function(view, record, item, index, e, eOpts){
+		    	 uplevelWin.show();
+		    	 uplevelSelectCallback = function(view, record, item, index, e, eOpts){
+		    		 $('parentNo').setValue(record.raw.menuNo);
+			    	 $('parentName').setValue(record.raw.menuName);
+			    	 uplevelWin.hide();
+		    	 }
+		     }
+		     
+		     btn_query_parentName_preview_OnClick = function(){
+		    	 uplevelWin.show();
+ 				 uplevelSelectCallback = function(view, record, item, index, e, eOpts){
+ 					 $('query_parentNo').setValue(record.raw.menuNo);
+ 			    	 $('query_parentName').setValue(record.raw.menuName);
+ 			    	 uplevelWin.hide();
+		    	 }
+		     }
+		     
+		     Ext_BuildTree('com.tenze.pms.facade.dto.sys.SysMenuDto','pickupMenu',{
+				 url:'${base}/sys/listBySysMenu.tz',
+				 rootText:'所有菜单',
+				 rootVisible:false,
+				 dblClickevent:true,
+				 listTreeSetting:{
+					 convertProps:[{key:'expandedFlag',target:'expanded'},{key:'leafFlag',target:'leaf'}],
+					 extIdKey:'id',
+					 extTextKey:'menuName',
+					 simpleData:{
+						 idKey:'menuNo',
+						 pIdKey:'parentNo'
+					 }
+				 }
+			 });
+		     
+		     pickupMenuTreeItemDblClick = function(view, record, item, index, e, eOpts){
+		    	 uplevelSelectCallback(view, record, item, index, e, eOpts);
+		     }
+		     
+		     var uplevelWin = Ext.create('Ext.Window', {
+			        title: '编辑',
+			        width:document.documentElement.clientWidth * 0.5,
+			        height:document.documentElement.clientHeight,
+			        border : false,
+			        resizable : true,
+					draggable : true,
+					closeAction : 'close',
+			        plain: true,
+			        layout: 'fit',
+			        items : [TenzeExt.pickupMenuTree],
+			        tbar : Ext_BuildToolbarBtns(['close'],{preffix:'pickupMenu_'})
+			 });
+		     TenzeExt.pickupMenuTree.on('load',function(){
+			     TenzeExt.pickupMenuTree.expandAll();
+		     });
+		     
+		     pickupMenu_bt_close_OnClick = function(){
+		    	 uplevelWin.hide();
+		     }
+		     
+		     function queryMenu() {       
+			 		TenzeExt.menuGridStore.load();
+		     }
+		 	
+		    
+		 	Ext_BuildSearchWin('com.tenze.pms.facade.dto.sys.SysMenuDto','');
+		 	
+		 	getParams = function(){
+		 		return TenzeExt['search_getParams']();
+		 	}
+		 	
+		 	bt_search_OnClick = function(){
+		 		TenzeExt.search_Win.show();
+		 	};
+		 	
+		 	search_btQuery_OnClick = function(){
+		 		queryMenu();
+		 	}
+		 });
+    
+});
+</script>
+</@CommonMacro.page>

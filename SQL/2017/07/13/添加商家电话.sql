@@ -1,0 +1,1 @@
+alter table bi_merchant add column `phone` varchar(40) DEFAULT NULL;

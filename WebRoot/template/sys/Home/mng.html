@@ -1,0 +1,842 @@
+<#import "/include/CommonTagMacro.html" as CommonMacro>
+<@CommonMacro.page title="" isHome=true>
+<div id="div.card.nav" style="overflow: auto;  width: 100%;"></div>
+<div id="bottom_div" style="display:none;background:#D9E7F8;height:20px;line-height:20px;color:#4798D7;padding-left:10px">
+	<table width="100%">
+		<tr>
+			<td align="left">
+				<img src="${base}/resources/extjs4/resources/image/ext/comments2.png" />
+				欢迎您,${user_in_session.username?default('')}！  
+				帐户:${user_in_session.account?default('')}
+				角色:${user_in_session.roleName?default('')}
+			</td>
+			<#--
+			<td align="right" style="padding-right:20px">
+				Copyright&copy 2017 <a style=";color:#4798D7" href="http://www.gxsofts.com" target="_blank">格讯软件</a> 版本号：1.0.20170420152432
+			</td>
+			-->
+		</tr>
+	</table>
+</div>
+<div id="downloads" style="display:none">
+<table width="100%">
+	<tr>
+		<td style="padding:3px;height:25px">
+			<b>1</b>、<a href="${base}/resources/install_lodop32.rar" style="color:#000000">操作说明</a>
+		</td>
+	</tr>
+</table></div>
+<a id="jumpTarget" target="_blank" ></a>
+<script id="msgtip" type="text/javascript" async="async"></script>
+<link rel="stylesheet" type="text/css" href="${base}/resources/css/ExtTit.css"/>
+<script src="${base}/resources/commonjs/ExtTit.js"></script>
+<script src="${base}/resources/plug-in/jquery-plugs/fileupload/js/jquery.1.9.1.min.js"></script>
+<script src="${base}/resources/layer/Upload.js"></script>
+
+
+
+	<script>
+function showUnReadMsg(){
+	var id = "tab_id_01010402";
+	var mainTabs = $('mainTabs');
+	var n = mainTabs.getComponent(id);
+	var url = "/baseinfos/receive_Message.gx?main_menuid=01010402"
+	if (!n) {
+		n = mainTabs.add({
+			id : id,
+			title : "我的收件箱", 
+			closable : true,
+			layout : 'fit',
+			html : '<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src='
+					+ url + '></iframe>'
+		});
+	}
+	mainTabs.setActiveTab(n);	
+}
+
+function getMainTabs(){
+	return  $('mainTabs');
+}
+
+var menuTreeItemClick;
+Ext.onReady(function() {
+	 TenzePreLoad(['com.tenze.pms.facade.dto.sys.SysMenuDto'],function(){
+		 Ext_BuildTree('com.tenze.pms.facade.dto.sys.SysMenuDto','menu',{
+			 url:'${base}/sys/roleMenuPermBySysPerm.tz',
+			 rootText:'菜单',
+			 rootVisible:false,
+			 listTreeSetting:{
+				 extIdKey:'id',
+				 extTextKey:'menuName',
+				 convertProps:[{key:'expandedFlag',target:'expanded'},{key:'leafFlag',target:'leaf'}],
+				 simpleData:{
+					 idKey:'menuNo',
+					 pIdKey:'parentNo'
+				 }
+			 }
+		 });
+		 
+		 var viewport = Ext.create('Ext.Viewport', {
+				id : 'border-example',
+				layout : 'border',
+				animateTarget : document.body,
+				listeners : {
+					afterlayout : function() {
+						document.getElementById("bottom_div").style.display="block";
+						var updateClock = function () {
+							var now = new Date();
+							var hour = now.getHours();
+							var minute = now.getMinutes();
+							var second = now.getSeconds();
+							hour = hour<10?"0"+hour:hour;
+							minute = minute<10?"0"+minute:minute;
+							second = second < 10?"0"+second:second;
+							var str = hour+":"+minute+":"+second;
+		     				Ext.fly('clock').update(str);
+						}
+						var task = Ext.TaskManager.start({
+						     run: updateClock,
+						     interval: 1000
+						});
+					}
+				},
+				items : [{
+						region : 'north',
+						split : true,
+						height : 45,
+						minSize : 100,
+						maxSize : 200,
+						border:false,
+						collapsible : false,
+						collapsed : false,
+						margins : '0 0 0 5',
+						layout:'border',
+						bodyStyle:{
+							background:'#D9E7F8'
+						},
+						items : [{
+							region : 'west',
+							width:350,
+							height:45,
+							border:false,
+							bodyStyle:{
+								background:'#D9E7F8'
+							},
+							html:'<img src="${base}/resources/images/login_banner.png" height="45"/>'
+						}
+						,{
+							region : 'east',
+							width:150,
+							height:45,
+							border:false,
+							layout:'column',
+							bodyStyle:{
+								background:'#D9E7F8'
+							},
+							items:[first_item, first_item2]
+						},{
+							region : 'center',
+							height:45,
+							border:false,
+							bodyStyle:{
+								background:'#D9E7F8'
+							},
+							html:'<br /><br /><div><div style="color:#4798D7;float:left;padding-left:20px"><a style="text-decoration:none;color:#4798D7;" href="" target="blank"></a></div><div style="color:#4798D7;float:right;padding-right:20px">早上好,管理员! 今天是:2017-04-25 星期二  当前时间：<span id="clock"></span>  </div></div>'
+						}]
+					}, {
+						region : 'south',
+						split : false,
+						border:false,
+						height : 20,
+						minSize : 100,
+						maxSize : 200,
+						collapsible : false,
+						collapsed : false,
+						margins : '0 0 0 0',
+						contentEl:'bottom_div'
+					}, {
+						title : '功能菜单',
+						iconCls : 'layout_contentIcon',
+						tools : [ ],
+						collapsible : true,
+						width : 185,
+						split : true,
+						region : 'west',
+						autoScroll : true,
+						items : [TenzeExt.menuTree]
+				}, Ext.create('Ext.tab.Panel', {
+					id : 'mainTabs',					
+					region : 'center', 
+					plugins : Ext.create('Ext.ux.TabCloseMenu', {
+						extraItemsTail : ['-', {
+									text : '可否关闭',
+									checked : true,
+									hideOnClick : true,
+									handler : function(item) {
+										currentItem.tab
+												.setClosable(item.checked);
+									}
+								}],
+						listeners : {
+							aftermenu : function() {
+								currentItem = null;
+							},
+							beforemenu : function(menu, item) {
+								var menuitem = menu.child('*[text="可否关闭"]');
+								currentItem = item;
+								menuitem.setChecked(item.closable);
+							}
+						}
+					}),
+					activeTab : 0, 
+					items : [{
+						id : 'workbench',
+						title : "我的工作台", 
+						closable : false,
+						iconCls:'application_homeIcon',
+						layout : 'fit',
+						html : '<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="${base}/sys/workbench_Home.tz"></iframe>'
+					 }]
+				})]
+			});
+			
+		 
+	 },function(){
+		 console.log('fail');
+	 });
+		
+	var downloadwin = Ext.create('Ext.Window', {
+        title: '常用下载',
+        width: 400,
+        border : false,
+        resizable : true,
+		draggable : true,
+		closeAction : 'close',
+        plain: true,
+        layout: 'fit',
+        id:'downloadwin',
+        modal:true,
+        contentEl: 'downloads',
+        tbar:[
+        	{xtype:'button',text:'关闭',iconCls:'deleteIcon',handler:function(){
+        		$("downloadwin").hide();
+        	}}
+        ]
+    });
+	
+	var mainMenu = new Ext.menu.Menu({
+		id : 'mainMenu',
+		items : [
+            {
+                text : '用户信息',
+                iconCls : 'keyIcon',
+                handler : function() {
+                    var mainTabs = Ext.getCmp('mainTabs')
+                    mainTabs.setActiveTab(0);
+                    loadIntroduction();
+                    changeWinUser.show();
+                }
+            },
+		    {
+			text : '密码修改',
+			iconCls : 'keyIcon',
+			handler : function() {
+				var mainTabs = Ext.getCmp('mainTabs')
+				mainTabs.setActiveTab(0);	
+				changeWin.show();
+			}
+			},
+			{
+			text : '系统锁定',
+			iconCls : 'lockIcon',
+			handler : function() {
+				var mainTabs = Ext.getCmp('mainTabs')
+				mainTabs.setActiveTab(0);	
+				lockWindow.show();
+				Ext.getCmp("password").setValue('');
+				setCookie("gx.lockflag", '1', 240);
+			}
+		},{
+			text : '常用下载',
+			iconCls : 'downloadIcon',
+			handler : function() {
+				var mainTabs = Ext.getCmp('mainTabs')
+				mainTabs.setActiveTab(0);	
+				document.getElementById("downloads").style.display="block";
+				downloadwin.show();
+			}
+		}
+		,{
+			text : '检查更新',
+			iconCls : 'downloadIcon',
+			handler : function() {
+				var mainTabs = Ext.getCmp('mainTabs')
+				mainTabs.setActiveTab(0);
+				checkUpdate();	
+			}
+		}
+		]
+	});
+	var first_item = Ext.create('Ext.Button', {
+		    text : '首选项',
+			iconCls : 'config2Icon',
+			iconAlign : 'left',
+			scale : 'medium',
+			width : 100,
+			tooltip : '<span style="font-size:12px">退出系统</span>',
+			pressed : true,
+			style:{
+				marginTop:'10px'
+			},
+			menu:mainMenu
+	});
+	var first_item2 = Ext.create('Ext.Button', {
+			iconCls : 'cancel_48Icon',
+			iconAlign : 'left',
+			scale : 'medium',
+			style:{
+				marginLeft:'10px',
+				marginTop:'10px'
+			},
+			tooltip : '<span style="font-size:12px">退出系统</span>',
+			pressed : true,
+		    handler: function() {
+				var mainTabs = Ext.getCmp('mainTabs')
+				mainTabs.setActiveTab(0);		    	
+		    	Ext.Msg.confirm('确认','<span style="color:red">你确定退出系统吗?</span>', function(bid){
+		    		if(bid == "yes"){
+		    			window.location='${base}/logout.tz'
+		    		}
+		    	});
+		    }
+	});
+	var currentItem;
+	
+	menuTreeItemClick = function(view, re, item, index, e, eOpts){
+		var menuid = re.raw.id;
+		var id = "tab_id_" + menuid;
+		var url = re.raw.request;
+		var iconCls = re.raw.iconCls;				
+		var mainTabs = Ext.getCmp('mainTabs');
+		if (url == '#' || url == '') {
+			view.expand(re);
+			return;
+		} else if(url.indexOf('$')>-1){
+			jQuery('#jumpTarget').attr('href',url.substring(1));			
+			var evt = document.createEvent("MouseEvents");
+			evt.initEvent("click",false,false);
+			jQuery('#jumpTarget').get(0).dispatchEvent(evt);
+		} else if(url.indexOf('@')>-1){
+			var _id = url.substring(1);
+			var n = mainTabs.getComponent(_id+'__'+menuid);
+			if (!n) {
+				n = mainTabs.add(Ext.create(_id+'__'+menuid));
+			}
+			mainTabs.setActiveTab(n);
+		}else {
+			var index = url.indexOf('.tz');
+			if (index != -1){
+				if(url.indexOf('?') == -1)
+					url = _global_context + url + '?mainMenuId=' + menuid;
+				else
+					url = _global-context + url + '&mainMenuId=' + menuid;
+			}
+			var n = mainTabs.getComponent(id);
+			if (!n) {
+				n = mainTabs.add({
+					id : id,
+					iconCls:iconCls,
+					title : re.data.text, 
+					closable : true,
+					layout : 'fit',
+					html : '<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="'+ url + '"></iframe>'
+				});
+			}
+			mainTabs.setActiveTab(n);
+		}
+	}	
+   var lockForm = Ext.create('Ext.panel.Panel', {
+	   	layout:'fit',
+	    bodyPadding: 6,
+	    defaultType: 'textfield',
+	    border:false,
+	    items: [
+	    	{
+				xtype : 'form',
+				id : 'lockForm',
+        		border:false,
+				defaultType : 'textfield',
+				items : [{
+					fieldLabel : '密&nbsp;码',
+					labelAlign:'right',
+					labelWidth:50,
+					name : 'password',
+					id : 'password',
+					inputType : 'password',
+					blankText : '密码不能为空，请输入！',
+					maxLength : 20,
+					maxLengthText : '账号的最大长度为30个字符',
+					allowBlank : false,
+					listeners : {
+						specialkey : function(field, e) {
+							if (e.getKey() == Ext.EventObject.ENTER) {
+								unlockSystem();
+							}
+						}
+					}
+				}]
+			}
+	    ]
+	});
+	var lockWindow = Ext.create('Ext.window.Window', {
+	    title: '系统锁定',
+	    height: 100,
+	    width: 260,
+	    iconCls:'lockIcon',
+	    closable:false,
+	    border:false,
+	    resizable:false,
+	    draggable:false,
+	    modal:true,
+	    layout: 'fit',
+	    items:[lockForm],
+	    animateTarget : document.body,
+	    buttons : [{
+					text : '解锁',
+					iconCls : 'keyIcon',
+					handler : function() {
+						unlockSystem();
+					}
+				}, {
+					text : '重新登录',
+					iconCls : 'tbar_synchronizeIcon',
+					handler : function() {
+						setCookie("gx.lockflag", '0', 240);
+						window.location.href = '/logout.gx';
+					}
+				}]
+	});
+	if (getCookie("gx.lockflag") == '1') {
+		lockWindow.show();
+	}
+	function unlockSystem() {
+		if (Ext.getCmp('lockForm').form.isValid()) {
+			Ext.getCmp('lockForm').form.submit({
+				url : '/lockOut.gx',
+				waitTitle : '提示',
+				method : 'POST',
+				waitMsg : '正在验证您的身份,请稍候...',
+				success : function(form, action) {
+					lockWindow.hide();
+					setCookie("gx.lockflag", '0', 240);
+				},
+				failure : function(form, action) {
+					var errmsg = action.result.failure;
+					lockWindow.hide();
+					showErrorMsg('<span style="color:red">'+errmsg+'</span>', function(){
+						lockWindow.show();	
+					});
+				}
+			});
+		}
+	}
+
+
+	var changeForm = Ext.create("Ext.form.Panel", {
+		autoWidth : true,    
+        border : false,                
+        defaultType: 'textfield',
+        defaults : {
+        	width : 260,
+			labelWidth: 60
+		},
+		bodyStyle:'padding:5px 0 5px 5px',
+		items: [
+        	{
+				fieldLabel : '原密码',
+				name : 'srcpassword',
+				id : 'srcpassword',
+				inputType : 'password',
+				blankText : '密码不能为空，请输入！',
+				maxLength : 20,
+				maxLengthText : '账号的最大长度为30个字符',
+				allowBlank : false,
+				listeners : {
+					specialkey : function(field, e) {
+						if (e.getKey() == Ext.EventObject.ENTER) {
+							login();
+						}
+					}
+				}
+			},
+			{
+				fieldLabel : '新密码',
+				name : 'newpassword',
+				id : 'newpassword',
+				inputType : 'password',
+				blankText : '密码不能为空，请输入！',
+				maxLength : 20,
+				maxLengthText : '账号的最大长度为30个字符',
+				allowBlank : false,
+				listeners : {
+					specialkey : function(field, e) {
+						if (e.getKey() == Ext.EventObject.ENTER) {
+							login();
+						}
+					}
+				}
+			}
+			,
+			{
+				fieldLabel : '确认密码',
+				name : 'confirmpassword',
+				id : 'confirmpassword',
+				inputType : 'password',
+				blankText : '密码不能为空，请输入！',
+				maxLength : 20,
+				maxLengthText : '账号的最大长度为30个字符',
+				allowBlank : false,
+				listeners : {
+					specialkey : function(field, e) {
+						if (e.getKey() == Ext.EventObject.ENTER) {
+							login();
+						}
+					}
+				}
+			}
+        ]
+	});
+	var changeWin = Ext.create('Ext.window.Window',{
+		title:'修改密码',
+		width:300,
+		height:150,
+		layout:'fit',
+		modal:true,
+		items:[changeForm],
+		buttons : [{
+			text : '保存',
+			iconCls : 'acceptIcon',
+			handler : function() {
+				submitForm('/baseinfos/changePasswordBySysuser.gx', changeForm, function(form, action){
+	    			changeWin.hide();
+		    		showTitMsg('数据保存成功！');
+		    	},function(form, action){
+		    		var errmsg = action.result.failure;
+		    		changeWin.hide();
+					showErrorMsg('<span style="color:red">'+errmsg+'</span>',function(){
+						changeWin.show();
+					});
+		    	});
+			}
+		},{
+			text : '取消',
+			iconCls : 'deleteIcon',
+			handler : function() {
+				changeWin.hide();
+			}
+		}]
+	});
+
+
+    var changeFormUser = Ext.create("Ext.form.Panel", {
+        autoWidth : true,
+        border : false,
+        defaultType: 'textfield',
+        defaults : {
+            width : 410,
+            labelWidth: 60
+        },
+        autoScroll: true,
+        bodyStyle:'padding:5px 0 5px 5px',
+        xtype : 'form',
+        items: [{
+            xtype: 'form',
+            frame: true,
+//            bodyPadding: 10,
+            id:'usermanage-addprisoner-form',
+            fileUpload : true,
+            items: [
+                {type:'string',name:'id',fieldLabel:'id',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true},
+                {type:'string',name:'version',fieldLabel:'version',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true},
+                {type:'string',name:'createtime',fieldLabel:'createtime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true},
+                {type:'string',name:'updatetime',fieldLabel:'updatetime',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true},
+                {type:'string',name:'fdelFlag',fieldLabel:'fdelFlag',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true},
+                {type:'string',name:'enabled',xtype:'hidden',datadic:'ENABLED',hidden:true,allowBlank:false,queryFlag:true},
+                {type:'string',name:'unionId',text:'',xtype:'hidden',width:200,hidden:true,allowBlank:true,queryFlag:false},
+                {type:'string',name:'merchantId',text:'',xtype:'hidden',width:200,hidden:true,allowBlank:true,queryFlag:false},
+                {type:'string',name:'roleId',text:'roleId',xtype:'hidden',hidden:true,allowBlank:true,queryFlag:true},
+                {type:'string',name:'roleName',text:'角色',xtype:'hidden',width:300,hidden:true,allowBlank:false,queryFlag:true,readOnly:true},
+                {type:'string',name:'account',id:'account',fieldLabel:'账号', width:400,layout:'column',xtype:'textfield',hidden:false,allowBlank:false,queryFlag:true,readOnly:true},
+                {type:'string',name:'username',id:'username',fieldLabel:'用户名',width:400,xtype:'textfield',hidden:false,allowBlank:false,queryFlag:true,readOnly:true,readOnly:true},
+                {type:'string',name:'remark',id:'remark',fieldLabel:'备注',width:400,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:false},
+                {type:'string',name:'villTown',fieldLabel:'乡镇名称',width:400,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true},
+                {type:'string',name:'adminVill',fieldLabel:'行政村名称',width:400,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true},
+                {type:'string',name:'hisName',id:'hisName',fieldLabel:'村医名称',width:400,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true},
+                {type:'string',name:'address',id:'address',fieldLabel:'地址',width:400,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true,readOnly:true},
+                {type:'string',name:'merchantName',id:'merchantName',fieldLabel:'所属商家',width:400,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true,readOnly:true},
+                //{type:'string',name:'merchant_id',id:'merchant_id',fieldLabel:'商户', width:400,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true,readOnly:true},
+//                {type:'string',name:'merchantName',fieldLabel:'所属商家',xtype:'btnfield',readOnly:true,btns:['del','preview'],width:200,hidden:false,allowBlank:true,queryFlag:false},
+                {type:'string',fieldLabel:'性别',xtype:'radiogroup', columns: 2,
+                    items: [
+                        { boxLabel: "男", name: "hisGender", inputValue: "1" },
+                        { boxLabel: "女", name: "hisGender", inputValue: "0" }
+                    ]  ,hidden:false,allowBlank:true,queryFlag:true},
+                {type:'string',name:'hisAge',fieldLabel:'年龄',width:400,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true},
+                {type:'string',name:'hisSfzh',fieldLabel:'身份证号码',width:400,maxLength : 18,maxLengthText : "温馨提示：最大长度只能为 18 个字符" ,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true},
+                {type:'string',name:'mphone',fieldLabel:'手机号',width:400,maxLength : 11,maxLengthText : "温馨提示：最大长度只能为 11 个字符" ,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true},
+                {type:'string',name:'edu',fieldLabel:'学历',width:400,xtype:'combo',hidden:false,allowBlank:true,queryFlag:true,
+                    displayField : 'text',
+                    width:400,
+                    valueField : 'value',
+                    emptyText: '请选择学历',
+                    store : new Ext.data.SimpleStore({
+                        fields : ['value','text'],
+                        data : [
+                            [0, '初中及以下'], [1, '高中'], [2,'中技'],[3,'中专'],[4,'大专'],[5,'本科'],[6,'硕士'],[7,'博士']
+                        ]
+                    }),
+                },
+                {type:'string',fieldLabel:'是否医生',xtype:'radiogroup', columns: 2,
+                    items: [
+                        { boxLabel: "是", name: "isHis", inputValue: "1" },
+                        { boxLabel: "否", name: "isHis", inputValue: "0" }
+                    ]  ,hidden:false,allowBlank:true,queryFlag:true},
+
+                {type:'string',name:'hisStart',id:'hisStart',fieldLabel:'正式从业日期',width:400,maxLength : 8,maxLengthText : "温馨提示：最大长度只能为 8 个字符",xtype:'datefield',hidden:false,allowBlank:true,queryFlag:true,},
+                {
+                    xtype:'textfield',
+                    width:400,
+                    emptyText: '请选择上传文件...',
+                    fieldLabel: '医疗执业资格上传',
+                    id:'hisCert',
+                    name: 'hisCert',
+                    allowBlank: true,
+                    blankText: '文件名称不能为空.',
+                    buttonCfg: {
+                        iconCls: 'btn-upload-icon'
+                        // 上传文件时的本地查找按钮
+                    },
+                    listeners : {
+                        'focus' : function(e) {
+//                            var value="值";
+//                            openUpload("txt-xls-doc-docs-pds","hisCert");
+                            btnUpload_click(10,"图片上传","","hisCert")
+//                            Ext.getCmp("remark").setValue(value);
+//                            console.log(Ext.getCmp("remark").getValue());
+
+                        }
+                    }
+
+                },
+                {type:'string',fieldLabel:'是否申请小微商户',xtype:'radiogroup', columns: 2,width:400,
+                    items: [
+                        { boxLabel: "是", name: "isminimerchant", inputValue: "1" },
+                        { boxLabel: "否", name: "isminimerchant", inputValue: "0" }
+                    ]  ,hidden:false,allowBlank:true,queryFlag:true},
+                {type:'string',name:'isminimerchantCode', id:"isminimerchantCode",fieldLabel:'小微商户号',width:400,xtype:'textfield',hidden:false,allowBlank:true,queryFlag:true},
+                {
+                    xtype:'textfield',
+                    width:400,
+                    emptyText: '请选择上传文件...',
+                    fieldLabel: '小微商户收款图',
+                    id:'isminimerchantCodePri',
+                    name: 'isminimerchantCodePri',
+                    allowBlank: true,
+                    blankText: '文件名称不能为空.',
+                    buttonCfg: {
+                        iconCls: 'btn-upload-icon'
+                        // 上传文件时的本地查找按钮
+                    },
+                    listeners : {
+                        'focus' : function(e) {
+                            btnUpload_click2(10,"图片上传2","","isminimerchantCodePri")
+                        }
+                    }
+                },
+
+            ]
+        }]
+
+    });
+    var changeWinUser = Ext.create('Ext.window.Window',{
+        title: '用户信息',
+        width: 430 ,
+        border : false,
+        x: 190,
+        y: 77, //y: document.documentElement.clientWidth / 10,
+        resizable : true,
+        draggable : true,
+        closeAction : 'close',
+        plain: true,
+        layout: 'fit',
+        items:[changeFormUser],
+        buttons : [{
+            text : '保存',
+            iconCls : 'acceptIcon',
+            handler : function() {
+                submitForm('/sys/updateBySysUser.tz', changeFormUser, function(form, action) {
+                    changeWinUser.hide();
+                    showTitMsg('数据保存成功！');
+                },function(form, action){
+                    var errmsg = action.result.failure;
+                    changeWinUser.hide();
+                    showErrorMsg('<span style="color:red">'+errmsg+'</span>',function(){
+                        changeWinUser.show();
+                    });
+                });
+            }
+        },{
+            text : '取消',
+            iconCls : 'deleteIcon',
+            handler : function() {
+                changeWinUser.hide();
+            }
+        }],
+    });
+
+    var uploadForm=new Ext.FormPanel({
+        id:'uploadForm',
+        width:520,
+        frame:true,
+        fileUpload: true,
+        autoHeight:true,
+        bodyStyle:'10px 10px 0px 10px',
+        labelWidth:50,
+        enctype: 'multipart/form-data',
+        defaults:{
+            anchor: '95%',
+            allowBlank: false
+        },
+        items:[
+            {
+                xtype:'fileuploadfield',
+                emptyText: '请选择上传文件...',
+                fieldLabel: '文件：',
+                id:'uploadFile',
+                name: 'upload',
+                allowBlank: false,
+                blankText: '文件名称不能为空.',
+                buttonCfg: {
+                    text: '选择...'// 上传文件时的本地查找按钮
+                }
+            }
+        ],
+        buttons: [{
+            text: '上传',
+            handler: function(){
+                if(uploadForm.getForm().isValid()){
+                    uploadForm.getForm().submit({
+                        url:basePath+ '/documentManage/upload_upload.action',
+                        method:'POST',
+                        waitTitle: '请稍后',
+                        waitMsg: '正在上传文档文件 ...',
+                        success: function(fp, action){
+                            Ext.MessageBox.alert('信息', action.result.msg);
+                            Ext.getCmp("uploadFile").reset();          // 指定文件字段的id清空其内容
+                            addwin.hide();
+                            grid.store.load({params:{start : 0,limit : combo.value}});
+                        },
+                        failure: function(fp, action){
+                            Ext.MessageBox.alert('警告', action.result.msg);
+                            addwin.hide();
+                        }
+                    });
+                }
+            }
+        },{
+            text: '重置',
+            handler: function(){
+                uploadForm.getForm().reset();
+            }
+        }]
+
+    });
+
+
+    function upload(e) {
+        alert(e.files[0]);
+        var form = Ext.getCmp("usermanage-addprisoner-form").getForm();
+		alert(form);
+        alert(JSON.stringify(form) );
+//        var $input = $("#photoUpload");
+//        alert($input);
+//        var files = $input.prop("files");
+//        alert(files[0]);
+//        var fd = new FormData();
+//        fd.append("file", files[0]);
+        $.ajax({
+            url: "http://image.yinxindata.com/Upload",
+            type: "POST",
+            data: "",
+            cache: false,
+            processData: false,
+            contentType: false,
+			success: function(){
+                 alert(data);
+        }});
+    }
+    //加载数据
+    function loadIntroduction() {
+        var params = changeFormUser.getForm().getValues();
+        changeFormUser.getForm().load({
+            params: params,
+            url: "/sys/getUserInfoBySysUser.tz",
+//            url: "/getUserInfo.tz",
+            method: "GET",
+//            waitMsg:"加载中，请稍后……",
+            success: function (form, action)
+            {
+
+				//加载成功的处理
+//                Ext.MessageBox.alert("提示", action.data);
+            },
+            failure: function (form, action)
+            {
+                //加载失败的处理
+//                Ext.MessageBox.alert("提示", action.data);
+            }
+        })
+
+    }
+
+
+
+
+
+
+
+	changeWin.on("show", function(){
+		Ext.getCmp("srcpassword").setValue("");
+		Ext.getCmp("newpassword").setValue("");
+		Ext.getCmp("confirmpassword").setValue("");
+	});
+	
+	
+var mainAreaWindow = Ext.create('Ext.Window', {
+	title: '食堂预警看板',
+    width: document.body.clientWidth,
+    height:document.body.clientHeight,
+    border : false,
+    modal : true,
+	draggable : true,
+	maximizable : true,
+	closeAction : 'close',
+    layout: 'fit',
+    id:'mainAreaWindow',
+    html:'<iframe scrolling="auto" id="billwin_frame" frameborder="0" width="100%" height="100%"></iframe>',
+});	
+	
+	
+	var msgtip = document.getElementById('msgtip');
+	msgtip.src = '/baseinfos/readMsgByRpUserMsg.gx';
+
+
+
+});
+
+window.onbeforeunload = function(){
+	return ("您的操作会导致您离开社保金融服务应用平台");
+}
+
+</script>
+</@CommonMacro.page>
