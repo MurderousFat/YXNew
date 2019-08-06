@@ -2,8 +2,8 @@ package com.tenze.pms.action.his;
 
 public interface WebserviceConst {
 
-	public static final String LOGIN_SOAP_XML = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://services.agent.sinobest.cn/\"><soapenv:Header/><soapenv:Body><ser:login><arg0>#INTERFACE_ID#</arg0><arg1><![CDATA[<?xml version=\"1.0\"  encoding=\"UTF-8\"  standalone=\"yes\" ?><input><ckz543>#HIS_ID#</ckz543><operid>#OPERID#</operid><password>#PASSWORD#</password></input> ]]></arg1></ser:login></soapenv:Body></soapenv:Envelope>";
-	public static final String SOAP_XML = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://services.agent.sinobest.cn/\"><soapenv:Header/><soapenv:Body><ser:process><arg0>#INTERFACE_ID#</arg0><arg1><![CDATA[<?xml version=\"1.0\"  encoding=\"UTF-8\"  standalone=\"yes\" ?>#XML_CONTENT#]]></arg1></ser:process></soapenv:Body></soapenv:Envelope>";
+	public static final String LOGIN_SOAP_XML = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://services.agent.sinobest.cn/\"><soapenv:Header/><soapenv:Body><ser:login><arg0>#INTERFACE_ID#</arg0><arg1><![CDATA[<input><ckz543>#HIS_ID#</ckz543><operid>#OPERID#</operid><password>#PASSWORD#</password></input> ]]></arg1></ser:login></soapenv:Body></soapenv:Envelope>";
+	public static final String SOAP_XML = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://services.agent.sinobest.cn/\"><soapenv:Header/><soapenv:Body><ser:process><arg0>#INTERFACE_ID#</arg0><arg1><![CDATA[#XML_CONTENT#]]></arg1></ser:process></soapenv:Body></soapenv:Envelope>";
 
 	/** 登录 */
 	public static final String LONGIN = "100";

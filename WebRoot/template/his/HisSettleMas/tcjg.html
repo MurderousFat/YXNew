@@ -31,6 +31,7 @@
                 <div class="col-sm-12 text-center">
                     <address>
                         <h3>医疗保险门诊统筹报销计算表</h3>
+						<HR>
                     </address>
                 </div>
             </div>
@@ -43,16 +44,18 @@
 	                        <td style="text-align:right;width:60px;"><strong>日期：</strong></td>
 	                        <td style="text-align:left;width:80px;" id="date"></td>
 	                        <td style="text-align:right;width:100px;"><strong>参保类别：</strong></td>
-	                        <td style="text-align:left;width:120px;" id="cblx"></td>
-	                        <td style="text-align:right;width:80px;"><strong>结算序号：</strong></td>
+	                        <td style="text-align:left;width:150px;" id="cblx"></td>
+	                        <td style="text-align:right;width:100px;"><strong>结算序号：</strong></td>
 	                        <td style="text-align:left;width:120px" id="jsxh"></td>
                			</tr> 
                			
                			<tr>
-               				<td style="text-align:right;width:120px;" ><strong>姓名：</strong></td>
-	                        <td style="text-align:left;width:140px;" colspan="2"  id="perName"></td>
-	                        <td style="text-align:right;width:180px;" colspan="2"  ><strong>公民身份证：</strong></td>
-	                        <td style="text-align:left;width:120px;" colspan="3" id="perIdCard"></td>
+               				<td style="text-align:right;width:120px;" ><strong>姓　　名：</strong></td>
+	                        <td style="text-align:left;width:150px;" colspan="2" id="perName"></td>
+	                        <td style="text-align:right;width:140px;" colspan="2"><strong>证件号码：</strong></td>
+	                        <td style="text-align:left;width:10px;" colspan="1" id="perIdCard"></td>
+							<td style="text-align:right;width:120px;"><strong>医疗救助对象：</strong></td>
+							<td style="text-align:left;width:120px" id="yljzdx"></td>
 	                     </tr> 
  
                			<tr>
@@ -65,36 +68,84 @@
                			</tr>
                				
                			<tr>
-	                        <td style="text-align:right;width:140px;" ><strong>医疗费用总额：</strong></td>
+	                        <td style="text-align:left;width:140px;" colspan="3"><strong>一、医疗费用总额：</strong></td>
 	                        <td style="text-align:left;width:80px;" colspan="2" id="ylfyze"></td>
-	                        <td style="text-align:right;width:100px;"><strong>报销金额：</strong></td>
+						</tr>
+
+
+						<tr>
+	                        <td style="text-align:left;width:100px;" colspan="3"><strong>二、基本医疗报销金额合计：</strong></td>
 	                        <td style="text-align:left;width:80px;" id="bxje"></td>
 	                        <td style="text-align:right;width:80px;"><strong>(大写：)</strong></td>
 	                        <td style="text-align:left;" colspan="3" id="bxjedx"></td>
-	                        
-               			</tr> 	
-               			<tr>
-	                        
-	                        <td style="text-align:right;width:200px;" colspan="3" ><strong>本年累计门诊统筹支付金额：</strong></td>
+               			</tr>
+
+						<tr>
+							<td style="text-align:left;width:140px;" colspan="3"><strong>三、医疗救助金额合计：</strong></td>
+							<td style="text-align:left;width:80px;" colspan="2" id="yljzhj"></td>
+						</tr>
+						<tr><td><strong>其中：</strong></td></tr>
+						<tr>
+							<td style="text-align:left;width:100px;" colspan="3"><strong>1、医疗救助支付：</strong></td>
+							<td style="text-align:left;width:80px;" id="yljzzf"></td>
+							<td style="text-align:right;width:180px;"><strong>报销比例：</strong></td>
+							<td style="text-align:left;" colspan="3" id="yljzbxb"></td>
+						</tr>
+						<tr>
+							<td style="text-align:left;width:100px;" colspan="3"><strong>2、二次医疗救助支付：</strong></td>
+							<td style="text-align:left;width:80px;" id="ecyljz"></td>
+							<td style="text-align:right;width:180px;"><strong>报销比例：</strong></td>
+							<td style="text-align:left;" colspan="3" id="ecylxb"></td>
+						</tr>
+
+						<tr>
+							<td style="text-align:left;width:200px;" colspan="3" ><strong>四、个人支付费用合计：</strong></td>
+							<td style="text-align:center;width:140px;" id="grzzfyhj"></td>
+						</tr>
+						<tr><td>　　</td></tr>
+						<tr style="border-bottom:1px solid grey">
+							<td style="text-align:right;width:100px;" colspan="3"><strong>(患者)亲属签名</strong></td>
+							<td style="text-align:right;width:80px;" colspan="3"><strong>(与患者关系)</strong></td>
+							<td style="text-align:right;width:80px;" colspan="3"><strong></strong></td>
+						</tr>
+
+						<tr><td><strong>医保：</strong></td></tr>
+
+						<tr>
+
+	                        <td style="text-align:left;width:200px;" colspan="3" ><strong>本年累计门诊统筹支付金额：</strong></td>
                				<td style="text-align:left;width:140px;" id="bnljmztczfje"></td>
 	                        
 	                        <td style="text-align:right;width:220px;" colspan="2" ><strong>本年门诊基金可用金额：</strong></td>
 	                        <td style="text-align:left;width:200px;" colspan="2"  id="bnmzjjkyje"></td>
+						</tr>
+
+						<tr><td><strong>医疗救助：</strong></td></tr>
+
+						<tr>
+
+
+							<td style="text-align:left;width:200px;" colspan="3" ><strong>本年累计医疗救助支付金额：</strong></td>
+							<td style="text-align:left;width:120px;" id="bnljyljzzfje" ></td>
+
+							<td style="text-align:right;width:200px;" colspan="2" ><strong>本年累计自费金额：</strong></td>
+							<td style="text-align:left;width:120px;" id="bnljzfje"></td>
+						</tr>
+						<tr>
+
+							<td style="text-align:left;width:220px;" colspan="3" ><strong>本年累计二次医疗救助支付金额：</strong></td>
+							<td style="text-align:left;width:120px;" colspan="2"  id="bnljecyljzzfje"></td>
+
+               			</tr>  
+						<tr><td><strong>备注：</strong></td></tr>
+               			<tr >
+							<td style="text-align:left;width:200px;" colspan="6"><p>1、个人支付费用合计=医疗总费用-基本医疗报销金额合计-医疗救助金额合计<br>
+									2、符合医疗救助的人群范围：参加惠州市社会基本医疗保险的惠州城乡最低生活保障对象、特困供养人员、孤儿、各县(区)政府认定的扶贫对象；二次医疗救助起付金额为5000元，限额5万元；医疗救助咨询电话：0752-2881131。</p></td>
                				
                			</tr>  
                			
-               			<tr>
-	                        
-	                        <td style="text-align:right;width:200px;" colspan="3" ><strong>定点医疗机构经办人：</strong></td>
-               				<td style="text-align:left;width:140px;"  > ${user_in_session.hisLoginCfg?default('')}</td>
-	                        
-	                        <td style="text-align:right;width:220px;" colspan="2" ><strong>定点医疗机构电话：</strong></td>
-	                        <td style="text-align:left;width:200px;" colspan="2" >${user_in_session.hisPhone?default('')}</td>
-               				
-               			</tr>  
-               			
-               			<tr>
-	                        <td style="text-align:right;" colspan="2" ><strong>患者签名：</strong></td>
+               			<tr style="border-bottom:1px solid grey">
+	                        <td style="text-align:right;" colspan="2" ><strong>经办人：</strong></td>
 	                        <td style="text-align:left;" colspan="2"></td>
 	                        <td style="text-align:right;width:100px;"><strong>制表日期：</strong></td>
 	                        <td style="text-align:left;width:120px;" colspan="3" id="zbrq"></td>
@@ -217,7 +268,12 @@
       	fsdate = fsdate.substring(0,4) +"-" + fsdate.substring(4,6) +"-" + fsdate.substring(6,8) ;
       	var jzDate = data.ykc701
         jzDate = jzDate.substring(0,4) +"-" + jzDate.substring(4,6) +"-" + jzDate.substring(6,8) ;
-    	
+
+      	var jzdx = data.ckc938;
+      	if (data.ckc938 == "1") {
+      	    jzdx = "是";
+		}else jzdx = "否";
+
     	if (data !== undefined) {
     	    var re="";
             var json=eval(sbjgjson);
@@ -234,15 +290,26 @@
 			$('#jsxh').text(data.ykc618);
 			$('#perName').text(data.aac003);
 			$('#perIdCard').text(data.aac044);
+            $('#yljzdx').text(jzdx);
 			$('#jzrq').text( jzDate  );
 			$('#zd').text(data.akc185);
 			$('#jzyy').text(data.ckb519);
 //			$('#ylfyze').text(data.akc264);
 			$('#ylfyze').text(toDecimal2(data.akc264));
-			$('#bxje').text(Number(data.ake039 || 0 )+ Number(data.ckc504 || 0));
+			$('#bxje').text(toDecimal2(Number(data.ake039 || 0.00 )+ Number(data.ckc504 || 0.00)));
+            $('#yljzhj').text(toDecimal2(Number(data.ckc939 || 0.00 )+ Number(data.ckc940 || 0.00)));
+            $('#yljzzf').text(toDecimal2(data.ckc939) || 0);
+            var strArray = (data.ckc946).split("@@");
+            $('#yljzbxb').text((Number(strArray[0])*100).toString().replace(/(\.\d{2})\d+$/,"$1")+'%' || 0);
+			$('#ecyljz').text(toDecimal2(data.ckc940) || 0.00);
+			$('#ecylxb').text((Number(strArray[1])*100).toString().replace(/(\.\d{2})\d+$/,"$1")+'%' || 0);
+			$('#grzzfyhj').text(toDecimal2(Number(data.akc253 || 0 )+ Number(data.akc254 || 0)+Number(data.aka151 || 0 )+ Number(data.ykc627 || 0)+ Number(data.ckc688 || 0 )+ Number(data.ykc631 || 0)- Number(data.akc630 || 0 )- Number(data.ckc939 || 0)- Number(data.ckc940 || 0)));
 			$('#bxjedx').text(formatMoney(Number(data.ake039 || 0 )+ Number(data.ckc504 || 0)));
-			$('#bnljmztczfje').text(data.yka430 || 0);
-			$('#bnmzjjkyje').text(data.ckc573 || 0);
+			$('#bnljmztczfje').text(toDecimal2(data.yka430) || 0.00);
+			$('#bnmzjjkyje').text(toDecimal2(data.ckc573) || 0.00);
+			$('#bnljyljzzfje').text(toDecimal2(data.ckc943) || 0.00);
+			$('#bnljzfje').text(toDecimal2(data.ckc944) || 0.00);
+			$('#bnljecyljzzfje').text(toDecimal2(data.ckc945) || 0.00);
 			$('#jbr').text(data.jsjbrmc);
 			$('#zfje').text(Math.round((Number(data.akc264)- (Number(data.ake039 || 0 )+ Number(data.ckc504 || 0)))*100)/100 );
 			var d = new Date();
